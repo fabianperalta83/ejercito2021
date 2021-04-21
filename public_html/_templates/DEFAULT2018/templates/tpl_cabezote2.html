@@ -1,0 +1,98 @@
+<a name="top"></a>
+<input type="hidden" value="{$sql_query}" />
+<div id="cabezote">
+    <span class="saltarnavegacion">[<a href="#cont">{$smarty.const._ROT_GO_CONTENT}</a>]</span>
+
+    <h2>{$smarty.const._ROT_NAV_TOOLS}</h2>
+    <div class="menu_util"><map title="{$smarty.const._ROT_NAV_TOOLS}" name="nav_herramientas">
+        <p>
+        <span>[<a href="#fin1">{$smarty.const._ROT_SKIP_TOOLS}</a>]</span>
+        <span>[</span><a href="?idcategoria={$smarty.const._SINICIO}" class="inicio{if $idcategoria== $esHome} seleccionado{/if}" accesskey="1">{$smarty.const._ROT_INICIO}</a><span>]</span>
+        {section name=mysec loop=$menuHerramientas}
+        <span>[</span><a href="{$menuHerramientas[mysec].vinculo}" title="" {if $idcategoria==$menuHerramientas[mysec].id}class="seleccionado"{/if}>{$menuHerramientas[mysec].nombre}</a><span>]</span>
+        {/section}
+        <span>[</span><a name="fin1" class="findelista">{$smarty.const._ROT_END_TOOLS}</a><span>]</span>
+		
+        </p>
+    </map></div>
+
+	<!--IDIOMAS
+	 <h2>{$smarty.const._ROT_SEL_IDIOMAS}</h2>
+	<form action="" class="hijos">
+		<p>
+		<span>{$smarty.const._ROT_IDIOMAS}:</span>
+		<select onChange="enrutar(this.value)">
+			<option>{$smarty.const._ROT_SEL_IDIOMAS}</option>
+			{section name=idioma loop=$idiomas}
+	    	<option value="{$idiomas[idioma].idcategoria}" id="{$idiomas[idioma].idcategoria}">{$idiomas[idioma].nombre}</option>
+			{/section}
+	    </select>
+		</p>
+	</form> -->
+
+   
+    
+     <div id="navegacion_principal">
+<!--MENU-->
+<ul class="menu2">
+	{section name=mysec loop=$menuInstitucional}
+            
+    <li class="top"><span class="down"><div class="seleccionado"> <a  class="top_link" href="?idcategoria={$menuInstitucional[mysec].idcategoria}">{$menuInstitucional[mysec].nombre} {if $menuInstitucional[mysec].hijos != ''}&gt;{/if}</a> </div></span>
+	<!--[if gte IE 7]><!--><!--<![endif]--><!--iba en la mitad de loscomentarios </a>-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<ul class="sub">			
+			{section name=myhijos loop=$menuInstitucional[mysec].hijos}
+                <li {if $smarty.section.myhijos.last}class="liLast"{/if}>
+                    <a href="?idcategoria={$menuInstitucional[mysec].hijos[myhijos].idcategoria}">{$menuInstitucional[mysec].hijos[myhijos].nombre}</a>
+            {/section}
+		</ul>
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+	</li>
+	{/section}
+	{strip}
+    <div class="buscador">
+
+    <form id="cse-search-box" action="https://www.google.com/cse">
+        <input type="hidden" value="011756002726448516891:hueq_9iqabi" name="cx"/>
+	<input type="text" size="28" title="image" id="q" name="q" class="texto" value="Buscar" onblur="if(this.value=='') this.value='Buscar';" onfocus="if(this.value=='Buscar') this.value='';"/>	
+	<input type="image" title="image" class="boton" alt="Buscar" src="_templates/Default2010/recursos/images/button_buscar.gif" name="submit"/>    
+    </form>
+    </div>
+    {/strip}
+</ul>	
+<!-- FIN MENU-->
+</div>
+ 
+  		
+  
+<!--Banner-->
+    <div id="banner">
+    <a href="{$smarty.const._URL}" title="{$smarty.const._NOMBRESITIO}: {$smarty.const._URL}" class="logo">
+        <img src="{$smarty.const._DIRIMAGES}cabezote/escudo_ejercito.png" alt="{$smarty.const._ROT_ESCUDO_INST}:{$smarty.const._NOMBRESITIO}">
+    </a>
+    <a href="{$smarty.const._URL}" title="{$smarty.const._NOMBRESITIO}: {$smarty.const._URL}" class="escudo">
+        <img src="{$smarty.const._DIRIMAGES}cabezote/escudo_colombia.png" alt="{$smarty.const._ROT_ESCUDO_INST}:{$smarty.const._NOMBRESITIO}">
+    </a>
+	{*if $tipo == 1}
+		<img src="{$smarty.const._DIRIMAGES}cabezote/banner/imagen/{banner}">
+	{else}
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="676" height="136">
+		  <param name="movie" value="{$smarty.const._DIRIMAGES}cabezote/banner/flash/banner_cabezote.swf" /> 
+		  <param name="quality" value="high" />
+		  <embed src="{$smarty.const._DIRIMAGES}cabezote/banner/flash/banner_cabezote.swf" quality="high" pluginspage="https://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="676" height="136"></embed>
+		</object>
+	{/if*}
+	
+    <NOSCRIPT>{$smarty.const._ROT_NOSCRIPT}</NOSCRIPT>
+    </div>
+    
+</div>
+{literal}
+<script type='text/javascript'>
+	function enrutar(valor)
+		{
+		window.location = "?idcategoria="+valor;
+		}
+</script>
+{/literal}
+<NOSCRIPT>{$smarty.const._ROT_NOSCRIPT}</NOSCRIPT>

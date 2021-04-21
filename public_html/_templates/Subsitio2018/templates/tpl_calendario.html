@@ -1,0 +1,83 @@
+<div id="calendario">
+
+    <table id="meses" summary="Meses"><!--cellspacing="0"-->
+        <caption>{$smarty.const._ROT_CALENDARIO_MESES}</caption>
+            <tbody>
+                <tr>
+                    {section loop=$calendar->array_meses name=meses}
+                    {foreach from=$calendar->array_meses[meses] key=id item=nombre}
+                    {if $id==7}
+                <tr>
+                    {/if}
+                    <td style="background:{cycle values='#fff,#efefef'}">
+                    <a href="?idcategoria={$idcategoria}&amp;mes={$id}" title="Cambiar a mes.">{$nombre}</a>
+
+                    {/foreach}
+                    {/section}
+            </tbody>
+    </table>
+
+    <table id="mes" summary=""><!--cellspacing="0"-->
+        <caption>{$calendar->fecha|date_format:"%B"} de {$calendar->ano}</caption>
+        <colgroup>
+            <col id="semCol"><col id="domCol"><col id="lunCol"><col id="marCol"><col id="mieCol"><col id="jueCol"><col id="vieCol"><col id="sabCol">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">Sem
+                <th scope="col">DOM
+                <th scope="col">LUN
+                <th scope="col">MAR
+                <th scope="col">MIE
+                <th scope="col">JUE
+                <th scope="col">VIE
+                <th scope="col" class="last">SAB
+        </thead>
+        <tbody>
+            {foreach from=$calendar->matriz_mes item=semana key=dia_semana}
+            <tr  style="background:{cycle values='#fff,#edf5ff'}">
+                <td class="semana">
+                    {$dia_semana}
+
+                    {section name=dias loop=$semana}
+                        {if !empty($semana[dias])}
+                            {if $smarty.section.dias.index==0||$smarty.section.dias.index==6}
+                                <td class="{if $smarty.section.dias.last}last{/if} {if $semana[dias].evento == 1}evento{/if}">
+                                    {if $semana[dias].evento == 1}
+                                        <a href="?idcategoria={$idcategoria}&amp;dia={$semana[dias].dia}&amp;mes={$calendar->mes}&amp;ano={$calendar->ano}" title="Ver dia.">{$semana[dias].dia}</a>
+                                    {else}
+                                        {$semana[dias].dia}
+                                    {/if}
+                            {else}
+                                <td class="{if $smarty.section.dias.last}last{/if} {if $semana[dias].evento == 1}evento{/if}">
+                                    {if $semana[dias].evento == 1}
+                                        <a href="?idcategoria={$idcategoria}&amp;dia={$semana[dias].dia}&amp;mes={$calendar->mes}&amp;ano={$calendar->ano}" title="Ver dia.">{$semana[dias].dia}</a>
+                                    {else}
+                                        {$semana[dias].dia}
+                                    {/if}
+                            {/if}
+                        {else}
+                            {if $smarty.section.dias.index==0||$smarty.section.dias.index==6}
+                                <td class="no_habil {if $smarty.section.dias.last}last{/if}">
+                            {else}
+                                <td>
+                            {/if}
+                        {/if}
+                    {/section}
+            {/foreach}
+        </tbody>
+    </table>
+
+    <div id="eventos_dia">
+        {section loop=$calendar->eventos name=indice}
+            {if $smarty.section.indice.index == 0}
+                <div class="fecha_evento">
+                    Eventos para el d&iacute;a {$calendar->eventos[indice].fecha2|date_format:"%d de %B  %Y"}
+                </div>
+            {/if}
+            <div class="nombre_evento">
+                <a href="?idcategoria={$calendar->eventos[indice].idcategoria}">{$calendar->eventos[indice].nombre}</a>
+            </div>
+        {/section}
+    </div>
+</div>

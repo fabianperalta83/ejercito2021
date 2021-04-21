@@ -1,0 +1,295 @@
+<link href="{$DIRCSS}estilo_estadistica.css" rel="stylesheet" type="text/css">
+<script src="js/js.js"></script>
+{if $errores > 0 and $flg_enviar=='ok'}
+		<div class="error">
+					<ul>
+						{section name=indice loop=$errores}
+							<li>{$errores[indice]}</li>
+						{/section}
+					</ul>
+		</div>
+		<br>
+{/if}
+{literal}
+<!-- 
+<style>
+#fondo{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:1650px;
+	height:1100px;
+	background-color: #000;
+  	filter:alpha(opacity=50);
+  	-moz-opacity: 0.6;
+  	opacity: 0.6;
+  	z-index:90;
+}
+</style> -->
+{/literal}
+
+<div id="fondo">
+		
+</div>
+<div class="titulo_formulario" style="font-size:small;">{$lb_titulo_reportes}</div><br><br>
+<table id="tabla_estadistica" align="left"">
+
+    		
+
+			<form id="form_estadistica" action="" method="POST" name="confirm">
+
+			<table width="100%">
+
+				<tr>
+					<td>
+
+						<div style="float:left;background-color:#F3F7FA;margin-right:15px;">
+
+							<div style="">{$lb_fecha_inicial}</div>
+
+							<div style=""><input type="text" name="fecha_inicial" size="10" maxlength="10" value="{$fecha_inicial|truncate:10:""}"></div>
+
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+
+						</div>
+
+						<div style="background-color:#F3F7FA;">
+
+							<div style="">{$lb_fecha_final}</div>
+
+							<div style=""><input type="text" name="fecha_final" size="10" maxlength="10" value="{$fecha_final|truncate:10:""}"></div>
+
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+
+						</div>
+					
+					</td>
+					
+				</tr>
+				
+				<tr>
+					<td>
+						<div style="">Ingrese el título del informe:</div>
+						<div><input type="text" name="titulo_informe" id="titulo_informe" size="40" maxlength="60" value="{$titulo_informe}"></div>
+						<div style="font-size:smaller;">     </div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<div style="">Escriba en ### el número del Oficio:</div>
+						<div><input type="text" name="oficio_numero" id="oficio_numero" size="40" maxlength="60" value="{$oficio_numero}"></div>
+						<div style="font-size:smaller;">     </div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div style="">Escriba el periodo</div>
+						<div><input type="text" name="periodo" value="tercer trimestre del año 2008" size="40"></div>	
+					</td>
+				</tr>	
+				<!--INSERCION DE LA NUEVA PARTE DELINFORME EL SELECT QUE GENERA SEGUN EL TIPO DE INFORME.---------FP -->
+				<tr>
+				<td>
+				
+						{$titulo_select}<br>
+						<select name="datos" onchange="poner()" style="border:1px solid #f80">
+						<option value="0">Seleccione...</option>
+						
+						<option value="1" {if $dato eq 1} selected {/if}>{$titulo_1}</option>
+						
+						
+						<option value="2" {if $dato eq 2} selected {/if}>{$titulo_2}</option>
+						
+						</select><br>
+						
+						{if $dato eq 1}
+						
+						<br>
+						<div style="display:;width:100" name="titulo_espe1" id="titulo_espe1">{$titulo_espe1}</div><br>
+						
+						<table width="300">
+						<tr>
+							<td width="10"><div style="display:;width:100" name="asunto_titulo" id="asunto_titulo">ASUNTO:</div></td><td><input type="text" name="asunto" size="50" style="border:1px solid #f80" value="{$asunto}"><td>
+						</tr>
+						<tr>
+							<td width="10"><div style="display:;width:70" name="al" id="al">AL:</div></td><td><input type="text" name="al" size="50" style="border:1px solid #f80"border:1px solid #f80" value="{$al}"></td>
+						</tr>
+						<tr>
+							<td width="10"><div style="display:;width:70" name="cargo" id="cargo">CARGO:</div></td><td><input type="text" name="firma" size="50" style="border:1px solid #f80"border:1px solid #f80" value="{$firma}"></td>
+						</tr>
+						</table>
+						<br>
+						<div style="display:;width:100" name="titulo_espe1" id="titulo_espe2">{$titulo_espe2}</div><br>
+						<table>
+						<tr>
+							<td><div style="display:;width:70" name="rango" id="rango">RANGO:</div></td><td><input type="text" name="rango" size="50" style="border:1px solid #f80" value="{$rango}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:;width:70" name="nombre" id="nombre">NOMBRE:</div></td><td><input type="text" name="nombre" size="50" style="border:1px solid #f80" value="{$nombre}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:;width:70" name="elaboro" id="elaboro">Elaborado:</div></td><td><input type="text" name="elaboro" size="50" style="border:1px solid #f80" value="{$elaboro}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:;width:70" name="visto" id="visto">Vo Bo MV.</div></td><td><input type="text" name="visto" size="50" style="border:1px solid #f80" value="{$visto}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:;width:70" name="ayudante" id="ayudante">Ayudante</div></td><td><input type="text" name="ayudante" size="50" style="border:1px solid #f80" value="{$ayudante}"></td>
+						</tr>	
+						<tr>
+							<td><div style="display:;width:70" name="ayudante_cargo" id="ayudante_cargo">Cargo del Ayudante</div></td><td><input type="text" name="ayudante_cargo" size="50" style="border:1px solid #f80" value="{$ayudante_cargo}"></td>
+						</tr>						
+						</table>
+						
+						{else}
+						<br>
+						<div style="display:none;width:100" name="titulo_espe1" id="titulo_espe1">{$titulo_espe1}</div><br>
+						
+						<table width="300">
+						<tr>
+							<td width="10"><div style="display:none;width:100" name="asunto_titulo" id="asunto_titulo">ASUNTO:</div></td><td><input type="hidden" name="asunto" size="50" style="border:1px solid #f80"border:1px solid #f80" value="{$asunto}"><td>
+						</tr>
+						<tr>
+							<td width="10"><div style="display:none;width:70" name="al" id="al">AL:</div></td><td><input type="hidden" name="al" size="50" style="border:1px solid #f80" value="{$al}"></td>
+						</tr>
+						<tr>
+							<td width="10"><div style="display:none;width:70" name="cargo" id="cargo">CARGO:</div></td><td><input type="hidden" name="firma" size="50" style="border:1px solid #f80" value="{$firma}"></td>
+						</tr>
+						</table>
+						<br>
+							<div style="display:none;width:100" name="titulo_espe1" id="titulo_espe2">{$titulo_espe2}</div><br>
+						<table>
+						<tr>
+							<td><div style="display:none;width:70" name="rango" id="rango">RANGO:</div></td><td><input type="hidden" name="rango" size="50" style="border:1px solid #f80" value="{$rango}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:none;width:70" name="nombre" id="nombre">NOMBRE:</div></td><td><input type="hidden" name="nombre" size="50" style="border:1px solid #f80" value="{$nombre}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:none;width:70" name="elaboro" id="elaboro">Elaborado:</div></td><td><input type="hidden" name="elaboro" size="50" style="border:1px solid #f80" value="{$elaboro}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:none;width:70" name="visto" id="visto">Vo Bo MV.</div></td><td><input type="hidden" name="visto" size="50" style="border:1px solid #f80" value="{$visto}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:none;width:70" name="ayudante" id="ayudante">Ayudante</div></td><td><input type="hidden" name="ayudante" size="50" style="border:1px solid #f80" value="{$ayudante}"></td>
+						</tr>
+						<tr>
+							<td><div style="display:none;width:70" name="ayudante_cargo" id="ayudante_cargo">Cargo del Ayudante</div></td><td><input type="hidden" name="ayudante_cargo" size="50" style="border:1px solid #f80" value="{$ayudante_cargo}"></td>
+						</tr>
+						</table>
+										
+						
+						{/if}
+				</td>
+				</tr>			
+				<!--TERMINA LA INSERCION DEL SELECT DE TIPO DE INFORME---------FP -->
+				<tr>
+					<td align="left">
+						<div><input type="submit" name="enviar" value="Generar Informe"></div>
+					</td>					
+				</tr>
+
+		</table>
+					
+				
+					
+			<table width="100" align="center">
+				
+				<tr>
+					<td>
+						{if $flg_enviar=='ok' && $continuar=='ok'}
+
+						<br><div><input type="submit" name="pdf" value="Descargar Archivo PDF" title="Espere mientras se cargan las imágenes"></div><br>
+						{/if}
+					</td>
+				</tr>
+
+			</table>
+
+			
+
+	<tr>
+
+		<td>
+
+			{if $flg_enviar=='ok' && $continuar=='ok'}
+			
+
+			<!--<img src="{$imagen_reporte}"   border="0" align="center"><br><br><br>
+			Este espacio esta disponible para escribir lo relacionado con el grafico anterior.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<textarea name="por_tipo" cols="57">.</textarea><br><br>-->
+
+	<!--		<img src="{$imagen_reporte1}"  border="0" align="center"><br><br><br>
+<textarea name="grafico1" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			<!--<img src="{$imagen_reporte2}"  border="0" align="center"><br><br><br>
+			Este espacio esta disponible para escribir lo relacionado con el grafico anterior.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<textarea name="por_jefatura" cols="57"></textarea><br><br>-->
+	<!--		<img src="{$imagen_reporte3}"  border="0" align="center"><br><br><br>
+<textarea name="grafico3" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			<!--<img src="{$imagen_reporte4}"  border="0" align="center"><br><br><br>
+			Este espacio esta disponible para escribir lo relacionado con el grafico anterior.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<textarea name="por_asunto" cols="57"></textarea><br><br>-->
+			<!--<img src="{$imagen_reporte5}"  border="0" align="center"><br><br><br>
+<textarea name="grafico5" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			<img src="{$imagen_reporte9}"   border="0" align="center"  alt=""><br><br><br>
+			<div align="left"><b>{$titulo_tipo_y_jefatura}</b></div>
+			<textarea name="portyj" cols="59" rows="3"></textarea><br><br>
+
+			<img src="{$imagen_reporte6}"  border="0" align="center"  alt=""><br><br><br>
+			<div align="left"><b>{$titulo_medio_recepcion}</b></div>
+			<textarea name="por_mrecepcion" cols="59" rows="3"></textarea><br><br>
+			<!--<img src="{$imagen_reporte7}"  border="0" align="center"><br><br><br>
+<textarea name="grafico7" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+		<!--	<img src="{$imagen_reporte8}"  border="0" align="center"><br><br><br>
+			<textarea name="grafico8" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			
+			<!--<img src="{$imagen_reporte10}"  border="0" align="center"><br><br><br>
+		
+			<textarea name="grafico10" id="grafico10" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			<img src="{$imagen_reporte11}"  border="0" align="center"  alt=""><br><br><br>
+			<div align="left"><b>{$titulo_tipo_y_asunto}</b></div>
+			<textarea name="portya" cols="59" rows="3"></textarea><br><br>
+			
+			<!--<img src="{$imagen_reporte12}"  border="0" align="center"><br><br><br>
+			Este espacio esta disponible para escribir lo relacionado con el grafico anterior.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<textarea name="por_estado" cols="57"></textarea><br><br>-->
+			<!--<img src="{$imagen_reporte13}"  border="0" align="center"><br><br><br>
+			<textarea name="grafico13" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			<!--<img src="{$imagen_reporte14}"  border="0" align="center"><br><br><br>
+			Este espacio esta disponible para escribir lo relacionado con el grafico anterior.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<textarea name="tiempomepj" cols="57"></textarea><br><br>-->
+			<!--<img src="{$imagen_reporte15}"  border="0" align="center"><br><br><br>
+<textarea name="grafico15" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			
+			<img src="{$imagen_reporte15}"  border="0" align="center"  alt=""><br><br><br>
+			<div align="left"><b>{$tiempo_medio}</b></div>
+			<textarea name="medio_respuesta" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_seguimiento}</b></div>
+			<textarea name="seguimiento" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_indicadores}</b></div>
+			<textarea name="indicadores" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_conclusiones}</b></div>
+			<textarea name="conclusiones" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_recomendaciones}</b></div>
+			<textarea name="recomendaciones" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_demo}</b></div>
+			<textarea name="demo" cols="57" rows="3"></textarea><br><br>
+			
+			<div align="left"><b>{$titulo_apoyo}</b></div>
+			<textarea name="apoyo" cols="57" rows="3"></textarea><br><br>
+			<!--<img src="{$imagen_reporte17}"  border="0" align="center"><br><br><br>
+<textarea name="grafico17" cols="57">Escriba aqui el texto relacionado con el grafico anterior..</textarea><br><br>-->
+			{/if}
+
+		</td>
+
+	</tr>
+
+</table></form>

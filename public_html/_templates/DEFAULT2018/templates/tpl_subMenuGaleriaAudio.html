@@ -1,0 +1,62 @@
+{literal}
+    <script type="text/javascript">
+    	function thisMovie(movieName) {
+    	  if (navigator.appName.indexOf ("Microsoft") !=-1) {
+    	    return window[movieName]
+    	  }	else {
+    	    return document[movieName]
+    	  }
+    	}
+    	function setVariable(theValue) {
+    		if (theValue != '') {
+    			thisMovie('mp3Custom').SetVariable('song.text', 'recursos_user' + theValue);
+    		} else {
+    			alert("No tiene un archivo de audio asociado.");
+    		}
+    	}
+    </script>
+    <noscript></noscript>
+{/literal}
+<!-- Objeto Player-->
+<!--<div class="object">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="158" height="77" id="mp3Custom">
+        <param name="allowScriptAccess" value="sameDomain">
+        <param name="movie" value="tools/player.swf">
+        <param name="quality" value="high">
+        <param name="bgcolor" value="#ffffff">
+        <embed src="tools/player.swf" name="mp3Custom" id="mp3Custom" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+    </object>
+</div>-->
+<!--Template Galeria de Im�genes-->
+
+<ol id="lista_resumen_contenidos">
+    {section name=mysec loop=$subMenu}
+        <li>
+            <div class="encabezados">
+                <h5 class="s_titulo wrap8">{$subMenu[mysec].nombre}</h5>
+            </div>
+            <div class="contenido">
+                {if $subMenu[mysec].imagen != ""}
+                    <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}/{$subMenu[mysec].imagen}&amp;w=160" alt="{$subMenu[mysec].nombre}">
+                {/if}
+                {if $subMenu[mysec].entradilla != ""}
+                    <p class="listaEntradilla">{$subMenu[mysec].entradilla}</p>
+                {/if}
+                <br>
+                <audio controls="" style="width: 100%;">
+                    <source src="recursos_user/{$subMenu[mysec].descripcion}" type="audio/mpeg">
+                </audio> <!-- NUEVO PLUGIN PARA REPRODUCTOR DE AUDIO 29/05/2019 -->
+                
+<!--                <a class="linkEscuchar dVermas" onkeypress="window.status = 'Ejecutar Archivo';"  onClick="window.status = 'Ejecutar Archivo';" href="javascript:setVariable('{$subMenu[mysec].descripcion}')">{$smarty.const._ROT_ESCUCHAR}</a>
+                <a class="linkEscuchar dVermas" onkeypress="window.status = 'Descargar Archivo';"  onClick="window.status = 'Descargar Archivo';" href="recursos_user/{$subMenu[mysec].descripcion}">Descargar Audio</a>--> <!-- CONTENEDOR ORIGINAL -->
+            </div>
+        </li>
+    {/section}
+</ol>
+
+{if $verMas != ""}
+	{$verMas}
+{/if}
+<!--Fin Template Galeria de Im�genes-->
+
+

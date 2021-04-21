@@ -1,0 +1,2276 @@
+{literal}
+<div>
+    <style>
+        /*html, body, head {
+            max-width: 100%;
+            overflow-x: hidden;
+        }*/
+        .skip {
+            transition: all ease .5s;
+            /* position: absolute; */
+            /* top: 10px; */
+            left: -9000px;
+            height: 1px;
+            width: 1px;
+            text-align: left;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        a.skip:active,
+        a.skip:focus,
+        a.skip:hover {
+            transition: all ease .3s;
+            left: 10px;
+            /* top: 10px; */
+            width: auto;
+            height: auto;
+            overflow: visible;
+        }
+        
+        @media screen and (max-width: 580px) {
+            .navbar .nav-item {
+                background-size: 7%;
+            }
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-item.active .nav-link {
+            color: #ff0000;
+        }
+    </style>
+
+    <style type="text/css">
+            
+            * {
+                margin:0px;
+                padding:0px;
+            }
+            
+            #header {
+                margin:auto;
+                width:500px;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            html, body, head {
+              height: 100%;
+              margin: 0;
+            }
+            
+            ul, ol {
+                list-style:none;
+            }
+            
+            .nav1 > li {
+                float:left;
+                 border-bottom: 40px;
+            }
+            
+            .nav1 li a {
+                background-color: transparent;
+                
+                text-decoration:none;
+                padding:4px 12px;
+                display:block;
+                font-size: 12px;
+                font-weight: bold;
+                
+                color:#ffffff;
+                
+                
+                
+            }
+
+            
+
+             .nav1 li ul a{
+               
+               
+                color:#000000;
+                
+                
+                
+            }
+
+
+            .nav1 li a:hover {
+                
+                color: red;
+
+            }
+            
+            .nav1 li ul {
+                display:none;
+                position:absolute;
+                min-width:140px;
+                background-color: white;
+            }
+            
+            .nav1 li:hover > ul {
+                display:block;
+            }
+            
+            .nav1 li ul li {
+                position:relative;
+            }
+            
+            .nav1 li ul li ul {
+                right:-140px;
+                top:0px;
+            }
+
+
+
+
+
+
+	    .nav2 > li {
+                float:left;
+                 border-bottom: 40px;
+            }
+            
+            .nav2 li a {
+                background-color: transparent;
+                
+                text-decoration:none;
+                padding:4px 12px;
+                display:block;
+                font-size: 10px;
+                font-weight: bold;
+                
+                color:#ffffff;
+                
+                
+                
+            }
+            
+            .nav2 li a:hover {
+                
+                color: red;
+
+            }
+            
+            .nav2 li ul {
+                display:none;
+                position:absolute;
+                min-width:140px;
+                background-color: white;
+            }
+            
+            .nav2 li:hover > ul {
+                display:block;
+            }
+            
+            .nav2 li ul li {
+                position:relative;
+            }
+            
+            .nav2 li ul li ul {
+                right:-140px;
+                top:0px;
+            }
+
+
+
+
+             .nav3 a {
+               
+                
+                color:#000000;
+                
+                
+                
+            }
+
+
+             .nav4 > li {
+                
+                 border-bottom: 40px;
+            }
+            
+            .nav4 li a {
+                background-color: transparent;
+                
+                text-decoration:none;
+                padding:4px 12px;
+                display:block;
+                font-size: 12px;
+                font-weight: bold;
+                
+                color:#ffffff;
+                
+                
+                
+            }
+
+            
+
+             .nav4 li ul a{
+               
+               
+                color:#000000;
+                
+                
+                
+            }
+
+
+            .nav4 li a:hover {
+                
+                color: red;
+
+            }
+            
+            .nav4 li ul {
+                display:none;
+                position:absolute;
+                min-width:140px;
+                background-color: white;
+            }
+            
+            .nav4 li:hover > ul {
+                display:block;
+            }
+            
+            .nav4 li ul li {
+                position:relative;
+            }
+            
+            .nav4 li ul li ul {
+                right:-140px;
+                top:0px;
+            }
+
+            
+
+            .nav12
+            {
+                border-left: 6px solid red;
+                height: 500px;
+            }
+
+
+            .slide-destacados1 p {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados1 p::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 140px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+
+
+            .slide-destacados2 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados2 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 90px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+            
+             .slide-destacados3 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados3 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 110px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+            
+
+            .slide-destacados4 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados4 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 60px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+
+            .slide-destacados5 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados5 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 80px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+
+
+
+            .slide-destacados6 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados6 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 140px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+
+
+            .slide-destacados7 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados7 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 130px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+
+
+            .slide-destacados8 a {
+                padding-left: 15px;
+                position:  relative;
+            }
+
+            .slide-destacados8 a::before {
+                content: '';
+                width: 2px;
+                opacity: 0.7;
+                height: 110px;
+                display: block;
+                left: 5px;
+                background: #90240D;
+                position:  absolute;
+            }
+        </style>
+
+        <style>
+
+            .fondo1{
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background: url('_templates/DEFAULT2018/recursos/images/web.png') center center;
+                background-size: cover;
+                background-color: transparent;
+                background-repeat: no-repeat;
+            }
+            .fondo2{
+                
+                background:#FFF;
+            }
+
+            .visible1{
+                visibility: visible;
+                height: auto;
+                width: auto;
+            }
+
+            .visible2{
+                visibility: collapse;
+                height: 0px;
+                width: 0px;
+            }
+
+            .wrap {
+                width:100%;
+                height:357px;
+                background-color:transparent;
+                overflow:hidden;
+                text-align:center;
+                transform: scale(1);
+            }
+            .wrap1{
+
+            }
+
+            .wrap2{
+
+            }
+
+            .wrap3{
+
+            }
+            .wrap4{
+
+            }
+             .wrap5{
+                font-size: 0.65em;
+            }
+
+            .wrap6{
+                width: 1.2em;
+                height: 1.2em;
+                background: linear-gradient( -45deg, black, black 51%, white 49%, white 51%, white 49% ); 
+                border-radius: 50%;
+            }
+            .wrap7{
+                color:black!important;
+            }
+
+            
+        </style>
+</div>
+{/literal}
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<script src="{$smarty.const._DIRJS}cabezote.js"></script>
+{literal}
+<script type="text/javascript">
+    function mostrar_menu() {
+        if (document.getElementById('div_menu_oculto').style.display == 'none') {
+            $('#div_menu_oculto').toggle('slow');
+        } else {
+            $('#div_menu_oculto').toggle('hide');
+        }
+    }
+</script>
+
+<link href="_templates/DEFAULT2018/recursos/Bicentenario/bicentenario.css" rel="stylesheet" type="text/css" />
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!-- Bootstrap core CSS -->
+<link href="_templates/DEFAULT2018/recursos/Bicentenario/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="_templates/DEFAULT2018/recursos/Bicentenario/css/mdb.min.css" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="_templates/DEFAULT2018/recursos/Bicentenario/css/style.css" rel="stylesheet">
+
+ 
+
+ <!--<script src="https://www.youtube.com/iframe_api?v=3.0.0" id="YTAPI"></script>-->
+
+ <!--<script src="http://kids-club.bold-themes.com/main-demo/wp-content/plugins/kids-club/jquery.mb.YTPlayer.min.js"></script>-->
+ 
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSNTPBZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+<script type="text/javascript">
+    function mostrar_menu_otro() {
+        if (document.getElementById('div_menu_oculto_otro').style.display == 'none') {
+            $('#div_meyoutubenu_oculto_otro').toggle('slow');
+        } else {
+            $('#div_menu_oculto_otro').toggle('hide');
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("navbar").style.padding = "5px 10px";
+            document.getElementById("logo").style.fontSize = "25px";
+            
+            document.getElementById("menuhome1").style.color = "#ffffff";
+            document.getElementById("conozco1").style.color = "#ffffff";
+            
+            $('#conozco1').removeClass('nav2');
+            $('#conozco1').addClass('nav1');
+           
+        } else {
+            document.getElementById("navbar").style.padding = "10px 10px";
+            document.getElementById("logo").style.fontSize = "35px";
+
+            document.getElementById("menuhome1").style.color = "#000000";
+            document.getElementById("conozco1").style.color = "#000000";
+            
+            $('#conozco1').removeClass('nav2');
+            $('#conozco1').addClass('nav1');
+        }
+    }
+</script>
+
+
+{/literal}
+
+
+<script>
+/*
+$(function()
+{
+    document.scroll(){
+    
+        if (document.scrollTop() > 80){
+            $('#imagen-logo1').attr('src','_templates/DEFAULT2018/recursos/Bicentenario/img/LOGO-EJC-ROJO.png');
+            alert("aaa");
+        }
+        else
+        {
+             $('#imagen-logo1').attr('src','_templates/DEFAULT2018/recursos/Bicentenario/img/Logo EJC.png');
+             alert("bbb");
+        }
+    }
+}*/
+/*
+$(document).ready(function(){
+    $(document).scroll(function(){
+        if ($(document).scrollTop() > 80){
+            $('#imagen-logo1').attr('src','_templates/DEFAULT2018/recursos/Bicentenario/img/LOGO-EJC-ROJO.png');
+        }
+        else
+        {
+             $('#imagen-logo1').attr('src','_templates/DEFAULT2018/recursos/Bicentenario/img/Logo EJC.png');
+        }
+    });
+});*/
+
+
+window.onscroll = function() 
+{
+    var VarraDes = window.scrollY;
+
+    
+    if (VarraDes > 30) {
+        //alert("aaa");
+        document.getElementById("imagen-logo1").src ="_templates/DEFAULT2018/recursos/Bicentenario/img/LOGO-EJC-ROJO.png";
+        /*document.getElementById("imagen-logo1").left="0px";
+        document.getElementById("imagen-logo1").width="0px";*/
+         $(".color_menu1").css("color", "#000");
+        // $(".color_menu1").css("background-color", "#FFF");
+
+
+        var element = document.getElementById("menu_sup32");
+         element.classList.add("fondo2");
+         element.classList.remove("fondo1");
+
+         var x = $(window).width();
+        if( x < 700)
+        {
+            $(".color_menu1").css("background-color", "#FFF");
+        }
+
+          //$(".fondo1").css("background", "#FFF");
+    } else {
+        //alert("bbb");
+        document.getElementById("imagen-logo1").src ="_templates/DEFAULT2018/recursos/Bicentenario/img/Logo EJC.png";
+        /*document.getElementById("imagen-logo1").left="0px";
+        document.getElementById("imagen-logo1").width="43px";*/
+        $(".color_menu1").css("color", "#FFF");
+        //$(".color_menu1").css("background-color", "#000");
+        
+        var element = document.getElementById("menu_sup32");
+         element.classList.add("fondo1");
+         element.classList.remove("fondo2");
+
+         var x = $(window).width();
+        if( x < 700)
+        {
+            $(".color_menu1").css("background-color", "#000");
+        }
+
+         //$(".fondo1").css("background", "url('_templates/DEFAULT2018/recursos/images/web.png') center center");
+    }
+};
+
+function myFunction_resize1()
+{
+   var x = $(window).width();
+    if( x < 700)
+    {
+         var element = document.getElementById("menuhome1");
+         element.classList.add("nav4");
+         element.classList.remove("nav1");
+    } 
+    else
+    {
+        var element = document.getElementById("menuhome1");
+         element.classList.add("nav1");
+         element.classList.remove("nav4");
+    }  
+   // alert("terminno");
+};
+
+function pasarVariables(pagina, nombres) {
+  pagina +="?";
+  nomVec = nombres.split(",");
+  for (i=0; i<nomVec.length; i++)
+    pagina += nomVec[i] + "=" + escape(eval(nomVec[i]))+"&";
+  pagina = pagina.substring(0,pagina.length-1);
+  location.href=pagina;
+}
+
+
+</script>
+
+<style type="text/css">
+    .imginfder 
+    {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
+
+
+    #forolink {
+    -moz-transform: rotateZ(-90deg);
+    -webkit-transform: rotateZ(-90deg);
+    -moz-transform: rotateZ(-90deg);
+    -o-transform: rotateZ(-90deg);
+    background-color: rgba(124,8,8,1);
+    border-radius: 25px 25px 0 0;
+    margin: 0;
+    padding: 1.5em 0.6em;
+    position: fixed;
+    right: -30px;
+    top: 20%;
+}
+</style>
+
+<input type="hidden" name="url_video_youtube1" id="url_video_youtube1" value="{$smarty.const.VIDEO_BANNER_YOUTUBE}">
+<input type="hidden" name="time_video_youtube1" id="time_video_youtube1" value="{$smarty.const._TIEMPO_VIDEO_BANNER}">
+
+<header>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script>
+        
+        $(document).ready(function(){
+            
+            var x = $(window).width();
+
+            if( x < 700)
+            {
+                 var element = document.getElementById("menuhome1");
+                 element.classList.add("nav4");
+                 element.classList.remove("nav1");
+                 $(".color_menu1").css("background-color", "#000");
+
+                 document.getElementById("iframe23").style="width: 100%; height: auto; min-height: 350px;";
+
+                 
+                 
+                 document.getElementById("img_estr").style="min-height:80px; margin-top:30px;";
+                 //$(".rightbottom2").css("top", "77%");
+                 //$(".rightbottom1").css("top", "77%");
+                 element = document.getElementById("estr_4ejc");
+                 element.classList.remove("my-5");
+
+                 document.getElementById("socialFooter").style="text-align: center;margin-top:6px";
+
+
+                 document.getElementById("heroes_bicentenarios").style="font-size: 1.6em;font-weight: bold; margin: 30px 0;";
+
+                 document.getElementById("EJERCITO_REDES1").style="font-size: 1.5em; font-weight: bold; margin-top: 30px; margin-bottom: 25px;";
+
+
+
+
+                 
+                 
+
+            } 
+            else
+            {
+                var element = document.getElementById("menuhome1");
+                 element.classList.add("nav1");
+                 element.classList.remove("nav4");
+
+
+                 
+            }  
+           /* var element = document.getElementById("imagen_banner");
+             x = element.width();
+            ye= element.height();*/
+
+           /* var constante1 = 1152/864;
+            var constante2= x/ye;
+            var constante3 =constante2 - constante1;
+
+             if(constante3 > 0)
+            {
+                var respuesta1= 1 + constante3;
+            }
+            else
+            {
+                var respuesta1= 1 - constante3;
+            }*/
+
+           
+            
+
+             //$(".wrap").css("height", ye);
+
+            // $(".wrap").css("height", ye);
+            /*var ye = $(window).height();
+            var x = $(window).width();*/
+
+            
+
+             //$(".wrap").css("transform", "scale(" + respuesta1 + ", 1.5)");
+
+             //$(".wrap").css("transform", "scale(" + respuesta1 + ","+ constante3*700 +")");
+
+
+            //document.getElementById("imagen_banner").style="min-height:250px; height:100%;width:100%; transform: scale(" + respuesta1 + ");";
+
+            //document.getElementsByClassName("wrap").style="min-height:250px; height:100%;width:100%;transform: scale(" + respuesta1 + ");";
+
+           
+            //$(".wrap").css("transform", "scale({$respuesta1})");
+            
+
+           // document.getElementById("home-silder").style="border-bottom: none !important; height:100%; width:100%;transform: scale(" + respuesta1 + ");";
+
+          if(localStorage.getItem("invertirse1")=="si")
+          {
+            invertir();
+          }
+            
+
+          $(window).resize(function(){
+            /*var elmnt = document.getElementById("home-silder");
+            var ye = elmnt.scrollHeight;
+            var x = elmnt.scrollWidth;*/
+            
+            //alert({$smarty.const.esHome});
+             
+            var x = $(window).width();
+
+            
+            if( x < 700)
+            {
+                 
+                 var element = document.getElementById("menuhome1");
+                 element.classList.add("nav4");
+                 element.classList.remove("nav1");
+                 $(".color_menu1").css("background-color", "#000");
+
+                 document.getElementById("iframe23").style="width: 100%; height: auto; min-height: 350px;";
+                 
+
+                 
+                 //$(".rightbottom2").css("top", "77%");
+                 //$(".rightbottom1").css("top", "77%");
+                document.getElementById("img_estr").style="min-height:80px; margin-top:30px;";
+                element = document.getElementById("estr_4ejc");
+                element.classList.remove("my-5");
+                document.getElementById("socialFooter").style="text-align: center;margin-top:6px;";
+
+                 document.getElementById("heroes_bicentenarios").style="font-size: 1.6em;font-weight: bold; margin: 30px 0;";
+
+                 
+                 document.getElementById("EJERCITO_REDES1").style="font-size: 1.5em; font-weight: bold; margin-top: 30px; margin-bottom: 25px;";
+
+            } 
+            else
+            {
+                                
+                var element = document.getElementById("menuhome1");
+                 element.classList.add("nav1");
+                 element.classList.remove("nav4");
+                 $(".color_menu1").css("background-color", "transparent");
+                 document.getElementById("iframe23").style="width: 100%; height: auto; min-height: 350px; padding-left: 40px; ";
+                 
+                 document.getElementById("socialFooter").style="text-align: right;";                
+                 
+
+                 document.getElementById("heroes_bicentenarios").style="font-size: 2.3em;font-weight: bold; margin: 30px 0;";
+
+                 document.getElementById("EJERCITO_REDES1").style="font-size: 2.6em; font-weight: bold; margin-top: 30px; margin-bottom: 25px;";
+
+
+                 
+
+            }   
+
+           /* var element = document.getElementById("imagen_banner");
+            x = element.width();
+            ye= element.height();*/
+            /*var constante1 = 1152/864;
+            var constante2= x/ye;
+            var constante3 =constante2 - constante1;
+
+            if(constante3 > 0)
+            {
+                respuesta1= 1 + constante3;
+            }
+            else
+            {
+                respuesta1= 1 - constante3;
+            }
+           // alert(x);
+            //alert(ye);
+
+            
+            
+
+             $(".wrap").css("height", ye);*/
+
+             var ye = $(window).height();
+
+             $(".wrap").css("height", "auto");
+
+            var elmnt2 = document.getElementById("home-silder");
+            var ye1 = elmnt2.scrollHeight;
+            var x1 = elmnt2.scrollWidth;
+
+            var constante1 =1;
+            var constante2 =1;
+
+            $(".wrap").css("height", ye - 5);
+
+
+            if(ye1 < ye)
+            {
+                constante1 = ye/ye1;
+                //$(".wrap").css("transform", "scale(" + constante1 + ", 1)");
+            }
+            else
+            {
+                constante2 = ye1/ye;
+                //$(".wrap").css("transform", "scale(1, " + constante2 + ")");
+            }
+
+            var video_banner1 = document.getElementById("hay_video_banner").value;
+
+            if (video_banner1 == "no")
+            {
+
+                        
+                if( x < 700)
+                {
+                    /*document.getElementById("pauseButton1").style="top: 92% !important;";
+                    document.getElementById("playButton1").style="top: 92% !important;";*/
+                }
+                else
+                {
+                    /*$(".rightbottom2").css("top", "92%");
+                    $(".rightbottom1").css("top", "92%");*/
+                }
+
+                $(".wrap").css("transform", "scale(" + constante1 + ", " + constante2 + ")");
+             }
+
+             else
+            {
+                if( x < 900)
+                {
+                    document.getElementById("ytplayer").style="transform: scale(4.4, 5.5);position: relative; z-index: 10; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;";   
+                }
+                else
+                {
+                    document.getElementById("ytplayer").style="transform: scale(1.55, 1.7);position: relative; z-index: 10; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;";   
+                }
+
+                $(".wrap").css("height", ye);
+                $(".wrap2").css("height", ye);
+                $(".wrap1").css("height", ye - 6);
+
+
+                
+               
+
+                if( x < 700)
+                    {
+                    
+
+                   
+                    /*document.getElementById("texto_banner23").style="font-size: 30px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";*/
+                    // $(".wrap4").css("font-size", 30);
+                     document.getElementById("texto_banner23").style="font-size: 30px; font-weight: bold; margin-top: 110%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";
+                     
+
+                     //document.getElementById("BOTON_BANNER2").style="background-color:rgba(125,125,125,1)!important;text-align:center;color:white; ";
+
+                }
+                else
+                {
+                    
+                    /*document.getElementById("texto_banner23").style="font-size: 50px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";*/
+                    
+                    document.getElementById("texto_banner23").style="font-size: 50px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";
+                    //$(".wrap4").css("font-size", 50);
+                     
+
+                     //document.getElementById("BOTON_BANNER2").style="background-color:rgba(125,125,125,1)!important;text-align:center;color:white; ";
+                }
+
+            }
+            
+
+ 
+             
+
+           
+             //$(".wrap").css("transform", "scale(" + respuesta1 + ", 1.5)");
+
+            
+            //document.getElementById("imagen_banner").style="min-height:250px; height:100%;width:100%;transform: scale(" + respuesta1 + ");";
+
+            //document.getElementsByClassName("wrap").style="min-height:250px; height:100%;width:100%;transform: scale(" + respuesta1 + ");";
+
+           
+           //document.getElementById("home-silder").style="border-bottom: none !important; height:100%; width:100%;transform: scale(" + respuesta1 + ");";
+
+          
+
+           /* alert(constante1);
+            alert(constante2);
+            alert(constante3);
+            alert(respuesta1);*/
+
+            
+
+           // $(".wrap").css("transform", "scale({$respuesta1})");
+            //$("span").text(x += 1);
+          });
+
+        $(".wrap").css("height", "auto");
+
+        var elmnt3 = document.getElementById("home-silder");
+        var ye1 = elmnt3.scrollHeight;
+        var x1 = elmnt3.scrollWidth;
+
+        var ye = $(window).height();
+        
+
+        var constante1 =1;
+        var constante2 =1;
+
+         $(".wrap").css("height", ye);
+
+        if(ye1 < ye)
+        {
+            constante1 = ye/ye1;
+            //$(".wrap").css("transform", "scale(" + constante1 + ", 1)");
+        }
+        else
+        {
+            constante2 = ye1/ye;
+            //$(".wrap").css("transform", "scale(1, " + constante2 + ")");
+        }
+
+
+        $(".wrap").css("height", ye);
+
+
+        
+
+        //if(window.location.href == "https://www.ejercito.mil.co/")
+       
+         var video_banner1 = document.getElementById("hay_video_banner").value;
+
+
+        if (video_banner1 == "no")
+        { 
+            if( x < 700)
+            {
+               
+                /*document.getElementById("pauseButton1").style="top: 92% !important;";
+                document.getElementById("playButton1").style="top: 92% !important;";*/
+            }
+            else
+            {
+                /*$(".rightbottom2").css("top", "92%");
+                $(".rightbottom1").css("top", "92%");*/
+            }
+
+            $(".wrap").css("transform", "scale(" + constante1 + ", " + constante2 + ")");
+        }
+                
+        else
+        {
+             
+            
+            if( x < 900)
+            {
+                document.getElementById("ytplayer").style="transform: scale(4.4, 5.5);position: relative; z-index: 10; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;";   
+            }
+            else
+            {
+                document.getElementById("ytplayer").style="transform: scale(1.55, 1.7);position: relative; z-index: 10; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;";   
+            }
+
+             
+
+            
+            $(".wrap").css("height", ye);
+            $(".wrap1").css("height", ye - 6);
+            $(".wrap2").css("height", ye);
+           
+            
+            //alert(window.location.href);
+            
+                 
+            if( x < 700)
+            {
+                /*document.getElementById("BOTON_BANNER2").style="background-color:rgba(96,5,12,1); width:30%; height:100px; border-radius: 50%; margin-top: 43%;text-align:center;margin-left:35%;color:white; font-size:30px;";*/
+
+                /*document.getElementById("texto_banner23").style="font-size: 30px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";*/
+
+
+               // $(".wrap4").css("font-size", 30);
+                document.getElementById("texto_banner23").style="font-size: 30px; font-weight: bold; margin-top: 110%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";
+
+
+                //$(".wrap3").css("margin-top", 500);
+
+                //document.getElementById("BOTON_BANNER2").style="background-color:rgba(125,125,125,1)!important;text-align:center;color:white;";
+              
+            }
+            else
+            {
+                /*document.getElementById("BOTON_BANNER2").style="background-color:rgba(96,5,12,1); width:30%; height:100px; border-radius: 50%; margin-top: 35%;text-align:center;margin-left:35%;color:white; font-size:30px;";*/
+                /*document.getElementById("texto_banner23").style="font-size: 50px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";*/
+
+                //$(".wrap4").css("font-size", 50);
+
+                document.getElementById("texto_banner23").style="font-size: 50px; font-weight: bold; margin-top: 30%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);";
+
+                 //$(".wrap3").css("margin-top", 650);
+
+                 //document.getElementById("BOTON_BANNER2").style="background-color:rgba(125,125,125,1)!important;text-align:center;color:white; ";
+            }
+        }
+        
+    });
+
+
+
+     var fontSize = 1;
+     var invertirse = false;
+ 
+        // funcion para aumentar la fuente
+        function zoomIn() {
+            
+            fontSize += 0.1;
+
+           if(fontSize < 2)
+            {
+                var fontSize2= fontSize - 0.5 ;
+                document.body.style.fontSize = fontSize + "em";
+                
+
+                
+                $(".wrap5").css("font-size", fontSize + "em");
+
+
+              
+
+                if(document.getElementById("es_home_principal").value == "no")
+                {
+                    $(".wrap9").css("font-size", fontSize + "em");
+
+                    var fontSize3= fontSize + 0.5 ;
+                    $(".titulo-interna").css("font-size", fontSize3 + "em");
+                    $(".wrap8").css("font-size", fontSize + "em");     
+                }
+                else
+                {
+                      document.getElementById("noticias_interes1").style="font-weight: bold;font-size: "+ fontSize +"em";
+                       document.getElementById("ver_noticias1").style="font-size: 0.5em;font-weight: bold;padding-top: -10px; font-size:"+ fontSize2 +"em";
+
+                }
+            }
+           
+        }
+ 
+        // funcion para disminuir la fuente
+        function zoomOut() {
+            fontSize -= 0.1;
+
+            if(fontSize > 0.7)
+            {
+             
+                var fontSize2= fontSize - 0.5 ;
+                document.body.style.fontSize = fontSize + "em";
+                $(".wrap5").css("font-size", fontSize + "em");
+
+                if(document.getElementById("es_home_principal").value == "no")
+                {
+                     $(".wrap9").css("font-size", fontSize + "em");  
+
+                     var fontSize3= fontSize + 0.5 ;
+                    $(".titulo-interna").css("font-size", fontSize3 + "em");
+                     $(".wrap8").css("font-size", fontSize + "em"); 
+                }
+                else
+                {
+                      document.getElementById("noticias_interes1").style="font-weight: bold;font-size: "+ fontSize +"em";
+                       document.getElementById("ver_noticias1").style="font-size: 0.5em;font-weight: bold;padding-top: -10px; font-size:"+ fontSize2 +"em";
+
+                }
+            }
+        }
+
+        function invertir(){
+            if(invertirse)
+            {
+
+                localStorage.setItem("invertirse1", "no");
+
+                document.getElementById("cuerpo_contenido").style="";
+                invertirse=false;
+
+                document.getElementById("menu_sup32").style="background-repeat: no-repeat; z-index:12;";
+
+                document.getElementById("imagen-logo1").style="padding-top: 15px;";
+
+
+
+                
+
+                //document.getElementById("iframe23").style="width: 100%; height: auto; min-height: 350px; padding-left: 40px;";  
+
+                if(document.getElementById("es_home_principal").value == "no")
+                {
+                    $(".titulo-interna").css("color", "black");
+                    $(".wrap8").css("color", "black");
+                    /*document.getElementById("entradilla_row1").style="";
+                    document.getElementById("default_descripcion").style="";*/
+                    $(".secondaryBody").css("background", "transparent");
+
+
+                    document.getElementById("cabezote-internas").style="border-bottom: none !important;background: url({$smarty.const._DIRIMAGES}cabezote/banner/DSC_0024.JPG) no-repeat; background-position: center center; height: 400px;opacity: .9;";
+
+
+                    $(".menuSegNivel").css("background", "transparent");
+                    $(".wrap9").css("color", "black");
+
+                    $(".entradilla").css("color", "black");
+                    $(".default_descripcion").css("color", "black");
+
+                    $(".s_fecha").css("color", "black");
+                    $(".listaEntradilla").css("color", "black");
+
+
+                }
+                else
+                {   
+
+                    document.getElementById("home-silder3").style="";
+
+                    document.getElementById("descatados1").style="font-family: 'Fira Sans', sans-serif; ";
+
+                    document.getElementById("descatados2").style="font-family: 'Fira Sans', sans-serif; background: white; margin-top:-2px; color:black;";
+
+                     document.getElementById("SliderBicentenario").style="margin-top:20px;";
+
+
+                    document.getElementById("internacional1").style="";
+                    document.getElementById("nacional1").style="";
+                    document.getElementById("actualidad1").style="";
+                    //$(".wrap7").css("color", "black");
+                    //document.getElementById("noticias_interes1").style="font-size: 1.25em;font-weight: bold;";
+                    document.getElementById("EJERCITO_REDES1").style="font-size: 2.6em; font-weight: bold; margin-top: 30px; margin-bottom: 25px;";
+
+                    document.getElementById("heroes_bicentenarios").style="font-size: 2.3em;font-weight: bold; margin: 30px 0;";  
+
+                    $(".wrap10").css("background", "transparent");         
+                }
+
+            }
+            else
+            {
+                localStorage.setItem("invertirse1", "si");
+
+                document.getElementById("cuerpo_contenido").style=" background:black!important;";
+                invertirse = true;
+
+                document.getElementById("menu_sup32").style="-webkit-filter: invert(100%);filter: invert(100%);";
+
+                document.getElementById("imagen-logo1").style="padding-top: 15px;-webkit-filter: grayscale(100%);filter: grayscale(100%);";
+
+                
+
+                
+
+
+                if(document.getElementById("es_home_principal").value == "no")
+                {
+                    $(".titulo-interna").css("color", "white");
+                    $(".wrap8").css("color", "white");
+                    $(".secondaryBody").css("background", "black");
+                    document.getElementById("cabezote-internas").style="border-bottom: none !important;background: url({$smarty.const._DIRIMAGES}cabezote/banner/DSC_0024.JPG) no-repeat; background-position: center center; height: 400px;opacity: .9; z-index:1;";
+                    $(".menuSegNivel").css("background", "black");
+                    $(".wrap9").css("color", "white");
+
+                    $(".entradilla").css("color", "white");
+                    $(".default_descripcion").css("color", "white");
+
+                     $(".s_fecha").css("color", "white");
+                    $(".listaEntradilla").css("color", "white");
+                }
+                else
+                {  
+                    document.getElementById("descatados1").style="font-family: 'Fira Sans', sans-serif;  background:black!important;";
+
+                    document.getElementById("descatados2").style="font-family: 'Fira Sans', sans-serif; margin-top:-2px; background:black!important; color:white";
+
+                     document.getElementById("SliderBicentenario").style="margin-top:20px; color:white;";
+
+                      document.getElementById("internacional1").style="color: white!important;";
+                    document.getElementById("nacional1").style="color: white!important;";
+                    document.getElementById("actualidad1").style="color: white!important;";
+
+                    document.getElementById("EJERCITO_REDES1").style="font-size: 2.6em; font-weight: bold; margin-top: 30px; margin-bottom: 25px; color:white;";
+
+                    document.getElementById("heroes_bicentenarios").style="font-size: 2.3em;font-weight: bold; margin: 30px 0;  color:white;";
+
+                    $(".wrap10").css("background", "black");
+                }
+                // document.getElementById("iframe23").style="width: 100%; height: auto; min-height: 350px; padding-left: 40px; -webkit-filter: grayscale(100%);filter: grayscale(100%);"; 
+
+
+                
+               // document.getElementById("noticias_interes1").style="font-size: 1.25em;font-weight: bold; color:white;";
+
+                //$(".wrap7").css("color", "white");
+            }
+
+        }
+
+        function invertir1(){
+            if(invertirse)
+            {
+
+                document.getElementById("cuerpo_contenido").style="";
+                invertirse=false;
+
+                document.getElementById("menu_sup32").style="background-repeat: no-repeat; z-index:12;";
+                document.getElementById("home-silder3").style="";
+
+                
+            }
+            else
+            {
+                document.getElementById("cuerpo_contenido").style="-webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg); background:white!important;";
+                invertirse = true;
+
+                document.getElementById("menu_sup32").style="background-repeat: no-repeat; z-index:12; -webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);";
+
+                document.getElementById("home-silder3").style="-webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);";
+
+               
+            }
+
+        }
+        
+    </script>
+    <!--
+        -webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);
+       
+         -webkit-filter: blur(4px);filter: blur(4px);
+
+         -webkit-filter: invert(100%);filter: invert(100%);
+
+         -webkit-filter: grayscale(100%);filter: grayscale(100%);
+    -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar fondo1" style="background-repeat: no-repeat; z-index:12;" id="menu_sup32">
+        <div class="container-fluid">
+        <div class="">
+            <div class="row" style="font-family: 'Fira Sans', sans-serif;">
+                <!-- Brand -->
+                <div class="col-md-3 col-sm-12 col-xs-12">
+
+                    <a  href="/" id="logo">
+
+                        <img class="img img-responsive img-cabezotes" id="imagen-logo1" style="padding-top: 15px;" alt="Logo-Eje" src="_templates/DEFAULT2018/recursos/Bicentenario/img/Logo EJC.png" alt=""></a>
+
+                    </a>
+
+                    <!--</div>-->
+                    <!-- Collapse -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                </div>
+                <!-- Links -->
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    {if $infoUsuario}
+                    <div class="row hidden-xs" style="margin-top: -6px;">
+                        <div class="col-md-1 col-sm-12 col-xs-12">
+                            <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank"></a>
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12">
+                            <div style="float: right; padding: 10px;" >
+                                <ul class="nav1 ml-auto hidden-xs">
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="english" style="font-size: 0.7em;font-weight: bold;background-color: transparent;text-transform: full-width;"><i class="fa fa-globe"></i>&nbsp;INGLES</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="index.php?idcategoria={$smarty.const._SMICUENTA}" title="Usuario Autenticado" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><i class="fa fa-user"></i>&nbsp;{$infoUsuario.nombres|capitalize} {$infoUsuario.apellidos|capitalize}</a>
+                                    </li>
+                                    {if $infoUsuario.idzona == $smarty.const._ZONAADMIN}
+                                    <li class="nav-item"><a href="index.php?idcategoria={$smarty.const._SADMIN}&amp;ne" class="color_menu1" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><span style="color:white;">| </span>{$smarty.const._ROT_ADMIN}</a></li>
+                                    {/if} {if $infoUsuario.acceso_pqr == true}
+                                    <li class="nav-item">
+                                        <a href="index.php?idcategoria={$smarty.const._PQR_ADMINISTRACION}&amp;ne" class="color_menu1" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><span style="color:white;">| </span>Administrar Solicitudes</a>
+                                    </li>
+                                    {/if} {if $infoUsuario.es_editor > 0 or $infoUsuario.idzona == $smarty.const._ZONAADMIN}
+                                    <li {if $modoEdicion===TRUE}{/if} class="nav-item">
+                                        {if $modoEdicion === TRUE}
+                                        <a href="index.php?idcategoria={$idcategoria}&amp;ne" class="color_menu1" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><span style="color:white;">| </span>{$smarty.const._ROT_VER_PAGINA}</a>                                        {else}
+                                        <a href="index.php?idcategoria={$idcategoria}&amp;e" class="color_menu1" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><span style="color:white;">| </span>{$smarty.const._ROT_EDITAR_PAGINA}</a>                                        {if $infoUsuario.idzona == $smarty.const._ZONAADMIN}
+                                    </li>
+                                    <li {if $modoEdicion===TRUE}{/if} class="nav-item">
+                                        <!-- <a href="?idcategoria=226051">Administrar Página Inicial</a> -->
+                                    </li>
+                                    {/if} {/if}
+                                    </li>
+                                    {/if}
+
+                                    <li class="nav-item">
+                                        <a href="index.php?idcategoria={$smarty.const._SINICIO}&amp;logout=1" title="{$smarty.const._ROT_TERMINAR_SESION}" class="color_menu1" style="font-size: 0.7em;background-color: transparent;font-weight: bold;"><span style="color:white;">| </span><i class="fa fa-sign-out"></i>&nbsp;
+                                     {$smarty.const._ROT_TERMINAR_SESION}
+                                 </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <header>
+                    
+                         <!--<input type="image"  name="hola23" onclick="zoomIn()" src="_templates/DEFAULT2018/recursos/images/AUMENTA-FONT.png">
+                         <input type="image"  name="hola24" onclick="zoomOut()" src="_templates/DEFAULT2018/recursos/images/REDUCE-FONT.png">
+                         <button onclick="zoomOut()">A-
+                             
+                         </button>-->
+                                        
+                        </header>
+                        </div>
+                    </div>
+                    {else}
+                    <div class="row hidden-xs" style="margin-top: -6px;">
+                        <div class="col-md-1 col-sm-12 col-xs-12">
+                            <!--                <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank"></a>-->
+                        </div>
+                        <div class="col-md-11 col-sm-12 col-xs-12">
+                            <div style="float: right; padding: 10px;" >
+
+                                <ul class="nav1 ml-auto hidden-xs">
+                                    <!--                            <li class="nav-item" style="padding-left: 20px;
+                                                             background-size: 20%;
+                                                             background-image: url('_templates/DEFAULT2018/recursos/Bicentenario/img/espana.svg');
+                                                             background-repeat: no-repeat;
+                                                             background-position: center left;">-->
+
+                                    {if $smarty.const._EN_INGLES !=1}
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="english" style="font-size: 0.7em;font-weight: bold;background-color: transparent;text-transform: full-width;"><i class="fa fa-globe"></i>&nbsp;INGLES</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="buscar" style="font-size: 0.7em;background-color: transparent;font-weight: bold;text-transform: full-width;"><span style="color:white;">| </span><i class="fa fa-search"></i>&nbsp;BUSCAR</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                    <a class="color_menu1" href="login" style="font-size: 0.7em;background-color: transparent;font-weight: bold;text-transform: full-width;"><span style="color:white;">| </span><i class="fa fa-lock"></i>&nbsp;LOGIN</a>
+                                    </li>
+
+                                    {else}
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="https://www.ejercito.mil.co" style="font-size: 0.7em;font-weight: bold;background-color: transparent;text-transform: full-width;"><i class="fa fa-globe"></i>&nbsp;SPANISH</a>
+
+
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="buscar" style="font-size: 0.7em;background-color: transparent;font-weight: bold;text-transform: full-width;"><span style="color:white;">| </span><i class="fa fa-search"></i>&nbsp;SEARCH</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="color_menu1" href="https://www.army.mil.co/index.php?idcategoria=113889" style="font-size: 0.7em;background-color: transparent;font-weight: bold;text-transform: full-width;"><span style="color:white;">| </span><i class="fa fa-lock"></i>&nbsp;LOGIN</a>
+                                    </li>
+                                    {/if}
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Right -->
+
+                    </div>
+                    {/if}
+                    <div class="row" style="margin-top: -7px;">
+                        <div class="col-md-12 col-sm-12 col-xs-12 collapse navbar-collapse"  id="navbarSupportedContent">
+                            <div>
+
+                               
+                                {if $smarty.const._EN_INGLES !=1}
+
+                                    <ul class="nav1"  id="menuhome1" style="font-size: 1em;background-color: transparent;font-weight: bold;">
+                                        <li><a href="/conozcanos" id="conozco1" class="color_menu1" style="font-size: 0.8em;">CONÓZCANOS <br> <br></a>
+                                            <ul style="left:-30px;" class="hidden-xs"><!-- left:-120px;top:40px;-->
+                                                <table style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                   
+                                                     <tr>
+                                                        <td class="slide-destacados2">
+                                                            <a href="/conozcanos/mision_vision_362168&download=Y" class="wrap5">Misión y Visión</a>
+                                                        </td>
+                                                        <td class="slide-destacados2">
+                                                             <a href="/conozcanos/simbolos_grados_distintivos_279752&download=Y" class="wrap5">Cultura militar</a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/conozcanos/organigrama&download=Y" class="wrap5">Organigrama</a>
+                                                        </td>
+                                                        <td>
+                                                             <a href="/conozcanos/sinai_mision_paz&download=Y" class="wrap5">Sinaí, Misión de Paz</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/conozcanos/principios_valores&download=Y" class="wrap5">Principios y Valores</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/conozcanos/directorio_cuartel_general_ejercito&download=Y" class="wrap5">Directorio Cuartel<br>General Ejército</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                             <a href="/conozcanos/unase_ejercito&download=Y" class="wrap5">Únase al Ejército</a>
+                                                        </td>
+                                                        <td>
+                                                             <a href="/conozcanos/linea_mando&download=Y" class="wrap5">Línea de Mando</a> 
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                </table>
+                                               
+                                            </ul>
+                                        </li>
+                                        <li><a href="/informes_noticias" class="color_menu1" style="font-size: 0.8em;">INFORMES Y NOTICIAS<br> <br></a>
+                                            <ul style="left:-30px" class="hidden-xs">
+                                               <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                <caption style="padding:0px"></caption> 
+                                                <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                  
+                                                     <tr>
+                                                         <td class="slide-destacados7">
+                                                            
+                                                            <li><a href="/informes_noticias/noticias&download=Y" class="wrap5">Noticias</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados8">
+                                                             
+                                                              <li><a href="/informes_noticias/actualidad&download=Y" class="wrap5">Actualidad</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/internacional&download=Y" class="wrap5">Internacional</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/ejercito_medios&download=Y" class="wrap5">Ejército en los medios</a></li>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                             <li><a href="/informes_noticias/informes_especiales&download=Y" class="wrap5">Informes Especiales</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/memoria_historica&download=Y" class="wrap5">Memoria Histórica</a></li>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/enterese_proceso_paz&download=Y" class="wrap5">Entérese sobre el proceso de paz</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/habla_comandante&download=Y" class="wrap5">Habla el comandante</a></li>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>
+                                                             <li><a href="/informes_noticias/notificaciones_aviso&download=Y" class="wrap5">Notificaciones por Aviso</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/informes_noticias/asuntos_etnicos&download=Y" class="wrap5">Asuntos Étnicos</a></li>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/index.php?idcategoria=459101&download=Y" class="wrap5">Campaña Bicentenario</a></li>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                   
+
+                                               </table>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li><a href="/tramites_servicios" class="color_menu1" style="font-size: 0.8em;">TRÁMITES Y SERVICIOS<br> <br></a>
+                                            <ul style="left:-30px;" class="hidden-xs">
+                                                
+                                                <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                   
+
+                                                    <tr>
+                                                        <td class="slide-destacados2">
+                                                             <li><a href="/tramites_servicios/contratacion" class="wrap5">Contratación</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados4">
+                                                             <li><a href="/tramites_servicios/prestaciones_sociales_224594" class="wrap5">Prestaciones Sociales</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/tramites_servicios/departamento_control_comercio_armas_285542" class="wrap5">Departamento Control Comercio de Armas y Municiones</a></li>
+                                                        </td>
+                                                        <td>
+                                                           <li><a href="/tramites_servicios/publicacion_actas_terminacion_334508_334508" class="wrap5">Publicación Actas de Terminación de Contratos</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/tramites_servicios/listado_tramites_servicios" class="wrap5">Listado de Tramites y Servicios</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/tramites_servicios/suit_sistema_unico_informacion_409082" class="wrap5">SUIT</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/tramites_servicios/gobierno_linea_443692" class="wrap5">Gobierno Digital</a></li>
+                                                        </td>
+                                                       
+                                                    </tr>
+                                                     
+
+                                                </table>
+                                               
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="/servicio_ciudadano" class="color_menu1" style="font-size: .8em;">SERVICIO AL CIUDADANO <br> <br></a>
+                                            <ul style="left:-30px;" class="hidden-xs">
+
+                                                <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                         <td class="slide-destacados3">
+                                                             <li><a href="/servicio_ciudadano/crear_consultar_una_peticion&download=Y" class="wrap5">Crear o Consultar una petición</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados3">
+                                                             <li><a href="/servicio_ciudadano/crear_consultar_una_denuncia_389719&download=Y" class="wrap5">Crear o Consultar una denuncia</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados3">
+                                                            <li><a href="/servicio_ciudadano/chat_atencion_ciudadana_208224&download=Y" class="wrap5">Chat Atencion Ciudadana</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/cumplimiento_sentencias&download=Y" class="wrap5">Cumplimiento de Sentencias</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/glosario&download=Y" class="wrap5">Glosario</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/preguntas_frecuentes_334201&download=Y" class="wrap5">Preguntas frecuentes</a></li>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                             <li><a href="/servicio_ciudadano/centros_atencion_medica_334326&download=Y" class="wrap5">Centros de Atención Medica</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/mapa_ubicacion_servicio_ciudadano_342999&download=Y" class="wrap5">Mapa de Ubicación Servicio al Ciudadano Ejército</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/mapa_georeferenciacion&download=Y" class="wrap5">Mapa de Georeferenciación</a></li>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/directorio_telefonico&download=Y" class="wrap5">Directorio Telefónico</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/carta_trato_digno_ciudadano&download=Y" class="wrap5">Carta del trato digno al Ciudadano</a></li>
+                                                        </td>
+                                                        <td>
+                                                             <li><a href="/servicio_ciudadano/protocolos_atencion&download=Y" class="wrap5">Protocolos de atención</a></li>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                             <li><a href="/servicio_ciudadano/reporte_quejas_reclamos&download=Y" class="wrap5">Reporte quejas y reclamos</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/informes_retroalimentacion_379082&download=Y" class="wrap5">Informes de retroalimentación y satisfacción al ciudadano</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/servicio_ciudadano/videos_instructivos&download=Y" class="wrap5">Videos Instructivos</a></li>
+                                                        </td>
+                                                    </tr>
+
+                                                    </tr>
+                                                    
+
+                                                </table>
+
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="/s_i_g_223717" class="color_menu1" style="font-size: 0.8em;">S.I.G. <br> <br></a>
+                                            <ul style="left:-30px;" class="hidden-xs">
+                                                
+                                                <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                    <tr>
+                                                         <td class="slide-destacados6">
+                                                             <li><a href="/s_i_g/administracion_riesgo&download=Y" class="wrap5">Administración del Riesgo</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados6">
+                                                             <li><a href="/s_i_g/planeacion_estrategica_347095&download=Y" class="wrap5">Departamento de Planeación CEDE5</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados3">
+                                                            <li><a href="/s_i_g/mapas_sig_2015_223720&download=Y" class="wrap5">Mapas SIG</a></li>
+                                                        </td>
+                                                    
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/s_i_g/direccion_planeacion_presupuestal_444608&download=Y" class="wrap5">Dirección de Planeación Presupuestal DIPAP</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/directivas_estructurales_digec&download=Y" class="wrap5">Directivas Estructurales DIGEC</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/normatividad_sistema_gestion_22&download=Y" class="wrap5">Normatividad Sistema de Gestión de Calidad</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/s_i_g/documentos_calidad_281864&download=Y" class="wrap5">Documentos de Calidad</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/manual_calidad&download=Y" class="wrap5">Manual de Calidad</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/objetivos_institucionales_calidad_223721&download=Y" class="wrap5">Objetivos Estratégicos</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/s_i_g/politica_calidad_223722&download=Y" class="wrap5">Politica de Calidad</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/politica_prevencion_consumo_alcohol&download=Y" class="wrap5">Política de Prevención del Consumo de Alcohol, Tabaco y Sustancias Psicoactivas en el Ámbito Laboral</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/politica_seguridad_salud_trabajo_392294&download=Y" class="wrap5">Política de Seguridad y Salud en el Trabajo Ver.2a</li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/s_i_g/procesos_procedimientos_281781&download=Y" class="wrap5">Procesos y Procedimientos</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/s_i_g/sistema_gestion_seguridad_salud_406311_406311&download=Y" class="wrap5">Sistema de Gestión Seguridad y Salud en el Trabajo</a></li>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    
+                                                </table>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="/transparencia_acceso_informacion" class="color_menu1" style="font-size: 0.8em;">TRANSPARENCIA Y ACCESO...</a><!--  A LA INFORMACIÓN-->
+                                            <ul style="left:150px;" class="hidden-xs">
+                                                
+                                                <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                         <td class="slide-destacados2">
+                                                            <li><a href="/transparencia_acceso_informacion/mecanismos_contacto_ejercito_397407_397407&download=Y" class="wrap5">Mecanismos de contacto con el Ejército Nacional</a></li>
+                                                        </td>
+                                                        <td class="slide-destacados2">
+                                                            <li><a href="/transparencia_acceso_informacion/informacion_interes_397422&download=Y" class="wrap5">Información de interés</a></li> 
+                                                        </td>
+                                                        <td class="slide-destacados2">
+                                                            <li><a href="/transparencia_acceso_informacion/estructura_organica_talento_humano_397423&download=Y" class="wrap5">Estructura orgánica y talento humano</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/normatividad&download=Y" class="wrap5">Normatividad</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/presupuesto_397425&download=Y" class="wrap5">Presupuesto</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/planeacion_397426&download=Y" class="wrap5">Planeación</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/control_397427&download=Y" class="wrap5">Control</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/contratacion_397428&download=Y" class="wrap5">Contratación</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/tramites_servicios_397429&download=Y" class="wrap5">Trámites y servicios</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/instrumentos_gestion_informacion_397430_397430&download=Y" class="wrap5">Instrumentos de gestión de la información</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/transparencia_acceso_informacion/rendicion_cuentas_400166&download=Y" class="wrap5">Rendición de Cuentas</a></li>
+                                                        </td>
+                                                        <td>
+                                                             <li><a href="/index.php?idcategoria=456647&download=Y" class="wrap5">Campaña Estado Simple Colombia Ágil</a></li>
+                                                        </td>
+                                                    </tr>
+                                                   
+                                                </table>
+                                            
+                                            </ul>
+                                        </li>
+                                        <li><a href="/multimedia_236629" class="color_menu1" style="font-size: 0.8em;">MULTIMEDIA<br> <br></a>
+                                            <ul style="left:640px;" class="hidden-xs">
+                                                
+                                                 <table  style=" box-shadow: 2px 2px 5px #999;">
+                                                    <caption style="padding:0px"></caption>
+                                                    <tr>
+                                                         <th></th>
+                                                          <th></th>
+                                                           <th></th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        
+                                                         <td  class="slide-destacados3">
+                                                            <li><a href="/multimedia/publicaciones&download=Y" class="wrap5">Publicaciones Ejército</a></li>
+                                                        </td>
+                                                        <td  class="slide-destacados3">
+                                                           <li><a href="/multimedia/programas_television_237493&download=Y" class="wrap5">Programas de Televisión</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>
+                                                            <li><a href="/multimedia/galeria_fotografica&download=Y" class="wrap5">Galería Fotográfica</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/multimedia/galeria_audios&download=Y" class="wrap5">Galería de Audios</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>
+                                                            <li><a href="/_425192&download=Y" class="wrap5">Soy Lancita</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/multimedia/campanas_institucionales&download=Y" class="wrap5">Campañas Institucionales</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>
+                                                            <li><a href="/multimedia/red_emisoras&download=Y" class="wrap5">Emisora Ejército</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/multimedia/medios_comunicacion&download=Y" class="wrap5">Medios de Comunicacion</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <td>
+                                                            <li><a href="/multimedia/_421095&download=Y" class="wrap5">Biblioteca Virtual</a></li>
+                                                        </td>
+                                                        <td>
+                                                            <li><a href="/multimedia/galeria_video&download=Y" class="wrap5">Galería de video</a></li>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                {else}
+
+                                    <ul class="nav1 navbar-nav ml-auto">
+                                        {section name=mysec loop=$menuInstitucional}
+                                            <li class="nav-item" id="menuB">
+                                                <a class="nav-link" href="index.php?idcategoria={$menuInstitucional[mysec].idcategoria}" style="font-size: 0.7em;background-color: transparent;font-weight: bold;text-transform: lowercase;">
+                                                    <font style="text-transform: capitalize;">{$menuInstitucional[mysec].nombre}</font>
+                                                </a>
+                                            </li>
+                                        {/section}
+                                    </ul>
+
+                                {/if}
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            
+        </div>
+    </nav>
+    {if $esHome}
+     <input type="hidden" name="es_home_principal" id="es_home_principal" value="si">
+    <div id="home-silder1"></div>
+    <div class="container-fluid" id="home-silder3" style="">
+        <div class="row" style="font-family: 'Fira Sans', sans-serif;">
+            
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="carousel slide carousel-fade"    data-ride="carousel" id="home-silder" style="border-bottom: none !important; height:100%; width:100%;">
+                        
+                    {if $smarty.const.VIDEO_BANNER_YOUTUBE != ""}
+
+                    <input type="hidden" name="hay_video_banner" id="hay_video_banner" value="si">
+
+                    <div   id="fondo_gris1" class="wrap2" style="background-color:rgba(0,0,0,0.5); width:100%; height:100%;position:absolute; z-index:11;">
+                       
+                       <div class="col-12 col-xs-12 px-0 wrap4" id="texto_banner23" style="font-size: 2.5em;
+                        font-weight: bold; margin-top: 50%;text-align:center; margin-bottom: 25px;color:rgba(255,255,255,0.7);">
+                              {$smarty.const.TEXTO_VIDEO_BANNER}
+                        </div>
+                         
+                        {if $smarty.const.URL_BOTON_BANNER != ""} 
+                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                        <div class="col-md-12 " style="text-align:center">
+                        <a href="{$smarty.const.URL_BOTON_BANNER}" target="_blank" >
+                            
+                            <button type="button" id="BOTON_BANNER2"  class="btn-secondary" style="text-align: center center; color: white; background-color: rgb(125, 125, 125) !important;height:50px; padding:10px;border: none;"> {$smarty.const.BOTON_BANNER}</button>
+                            
+                            </a>
+                           <!-- <button type="button" class="btn btn-light " style="text-align:center;margin-left:39%;"> {$smarty.const.BOTON_BANNER}</button>
+                            -->
+
+                        <!--<div id="BOTON_BANNER2" class="wrap3" style="background-color:rgba(96,5,12,1); width:30%; height:100px; border-radius: 50%; margin-top: 34%;text-align:center;margin-left:35%;color:white; font-size:30px;">
+
+                            <div class="" style="font-size: 30px;font-weight: bold;">
+                                {$smarty.const.BOTON_BANNER}
+                            </div> 
+
+                         </div>-->
+                         </div>
+                         </div>
+                        {/if}
+                        
+                    </div>
+                       <!--<iframe  class="wrap" id="iframe24" style="transform: scale(1.55 , 1.55); position: relative; z-index: 10; height: 1080px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{$smarty.const.NOCHE_HEROES}?rel=0&amp;mute=1&amp;loop=1&amp;autoplay=1&amp;modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5da88225697e7&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;rel=0" unselectable="on">
+                        </iframe>-->
+
+
+                        <!--<iframe class="wrap"  id="iframe24" src="{$smarty.const.NOCHE_HEROES}?rel=0&amp;autoplay=1&mute=1" width="560" height="315" frameborder="0" allowfullscreen></iframe>-->
+
+                        <!-- IFRAME MUPETS-->
+                        <!--
+                        <iframe class="wrap"  width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&playlist=tgbNymZ7vqY&loop=1&mute=1">
+                        </iframe>-->
+
+                        <!--<iframe class="wrap"  width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&playlist=tgbNymZ7vqY&loop=1&mute=1">
+                        </iframe>-->
+
+
+
+                        
+                       <!-- <iframe id="mbYTP_bt_section5de15a7764a62" class="playerBox" style="position: absolute; z-index: 0; width: 1092px; height: 791.92px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none; margin-top: -116.96px; margin-left: -362.5px; transition-property: opacity; transition-duration: 1000ms;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/jYZN9zjTdQE?autoplay=0&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5de15a7764a62&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;wmode=transparent&amp;iv_load_policy=3&amp;html5=1&amp;widgetid=1" unselectable="on"></iframe>-->
+
+
+
+
+                       <div id="ytplayer" class="wrap wrap1" style="height:1080px; width:100%; transform: scale(4.5, 4.5);"></div>
+
+                       <!-- <div id="player" class="wrap wrap1" style="height:1080px; width:100%; transform: scale(4.5, 4.5);"></div>-->
+                        
+
+                        <!--<iframe class="wrap wrap1 playerBox"  id="iframe24"  width="1920" height="1080" allowfullscreen="1" allow="accelerometer; autoplay;" src="https://www.youtube.com/embed/jYZN9zjTdQE?autoplay=0&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5de15a7764a62&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;wmode=transparent&amp;iv_load_policy=3&amp;html5=1&amp;widgetid=1" unselectable="on"src="{$smarty.const.VIDEO_BANNER_YOUTUBE}?version=3&start=10&end=15&loop=1&autoplay=1&playlist={$smarty.const.PLAY_CONTENT_YOUTUBE}&mute=1&rel=0&showinfo=0" style=" z-index: 0;  top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none; margin-top: -116.96px; margin-left: -362.5px; transition-property: opacity; transition-duration: 1000ms;height:1080px; width:100%; transform: scale(4.5, 4.5);">
+                        </iframe>-->
+                        
+                        
+
+
+
+
+                        <!--<div  style=" z-index: 0; min-width: 100%; min-height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 1; transition-property: opacity; transition-duration: 1000ms;"><iframe id="mbYTP_bt_section5de00d3e852f5" class="playerBox" style=" z-index: 0; width: 1666.12px; height: 811px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none; margin-top: -61px; margin-left: -201.56px; transition-property: opacity; transition-duration: 1000ms;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/jYZN9zjTdQE?autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5de00d3e852f5&amp;loop=1&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;wmode=transparent&amp;iv_load_policy=3&amp;html5=1&amp;widgetid=1" unselectable="on"></iframe><div class="YTPOverlay" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></div></div>-->
+
+                       
+                       <!-- <iframe class="wrap wrap1"  id="iframe24" style="transform: scale(1.5 , 1.3); position: relative; z-index: 10; height: 811px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{$smarty.const.NOCHE_HEROES}?rel=0&amp;mute=1&amp;autoplay=1&amp;modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5da88225697e7&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;rel=0" unselectable="on">
+                        </iframe>-->
+
+                        <!--<iframe class="wrap" src="{$smarty.const.NOCHE_HEROES}?rel=0&amp;loop=1&amp;autoplay=1;mute=1&amp;" width="560" height="315" frameborder="0" allowfullscreen></iframe>-->
+                        
+                        <!--<iframe class="wrap" src="https://www.youtube.com/embed/HJ8nP7nvhh4" > </iframe>-->
+
+                        <!--<iframe class="wrap" style="position: relative; z-index: 10; width: 3000.12px; height: 811px; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;  transition-property: opacity; transition-duration: 1000ms;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/HJ8nP7nvhh4?autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=mbYTP_bt_section5da88225697e7&amp;origin=http%3A%2F%2Fkids-club.bold-themes.com&amp;allowfullscreen=true&amp;wmode=transparent&amp;iv_load_policy=3&amp;html5=1&amp;widgetid=1" unselectable="on">
+                        </iframe>
+                       -->
+                    {else}
+                    <input type="hidden" name="hay_video_banner" id="hay_video_banner" value="no">
+                        <div class="carousel-inner" role="listbox">
+
+                            <!-- {section name=baner loop=$slide_home}
+                                    <div class="item {if $smarty.section.baner.first}active{/if}">
+                                            <img class="img-responsive" src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$slide_home[baner].imagen}&w=2000" alt="Imagen Carrusel" longdesc="Esto es una prueba del funcionamiento de la etique longdesc">
+                                    </div>
+                            {/section} -->
+                            {if $const and $idcategoria !=113867} {section name=ban loop=$banners} {if $banners[ban].subsitio_grafico_link == ''}
+                            <div class="item {if $smarty.section.ban.first}active{/if}" style="height:100%">
+                                <span class="hidden">{$banners[ban].subsitio_grafico_descripcion}</span>
+                                <img  id="imagen_banner" class="wrap" style=" height:1080px;width:100% " src="tools/microsThumb.php?src={$banners[ban].subsitio_grafico_ruta}&w=1900" alt="{$banners[ban].subsitio_grafico_descripcion}" />
+
+                               
+                            </div>
+                            {else}
+                            <div class="item {if $smarty.section.ban.first}active{/if}" style="height:100%">
+                                <a href="{$banners[ban].subsitio_grafico_link}" target="_blank" title="{$banners[ban].subsitio_grafico_descripcion}">
+                                    <img  id="imagen_banner" class="wrap" style=" height:1080px;width:100% " src="tools/microsThumb.php?src={$banners[ban].subsitio_grafico_ruta}&w=1900" alt="{$banners[ban].subsitio_grafico_descripcion}" />
+
+                                    
+                                    <!--<div class="fonfo_destacado">-->
+                                    <!--<div class="img_dest1"></div>-->
+
+                                   
+
+                                    <!--</div>-->
+                                </a>
+                            </div>
+                            {/if} {/section} {/if} {if $idcategoria == 113867} {section name=ban loop=$slider} {if $slider[ban].autor == ""}
+                            <div class="item {if $smarty.section.ban.first}active{/if}" style="height:100%">
+                                <span class="hidden">{$slider[ban].nombre}</span>
+                                <img  id="imagen_banner" class="wrap" style=" height:1080px;width:100% " src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}/{$slider[ban].imagen}&w=1900" alt="" />
+
+                                 
+                            </div>
+                            {else}
+                            <div class="item {if $smarty.section.ban.first}active{/if}" style="height:100%">
+                                <a href="{$slider[ban].autor}" target="_blank" title="{$slider[ban].nombre}"> <span class="hidden">{$slider[ban].nombre}</span>
+                                    <img  id="imagen_banner" class="wrap" style=" height:1080px;width:100%" src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}/{$slider[ban].imagen}&w=1900" alt="{$slider[ban].nombre}" alt="" />
+                                    
+                                </a>
+                            </div>
+                            {/if} {/section} {/if}
+                        </div>
+                    {/if}
+                    </div>
+                    <!--						<div id="carouselButtons">
+                                                                        <button id="pauseButton" type="button" class="btn btn-default btn-xs fa fa-pause"></button>
+                                                                    </div>-->
+                    {if $smarty.const.VIDEO_BANNER_YOUTUBE == ""}
+                    <a class="left carousel-control hidden-xs " href="#home-silder" role="button" data-slide="prev">
+                        <div class="left-banner">
+                            <p class="hidden">Left</p>
+                        </div>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control hidden-xs" href="#home-silder" role="button" data-slide="next">
+                        <div class="right-banner">
+                            <p class="hidden">Right</p>
+                        </div>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <div class="col-lg-12 col-xs-12 col-sm-12 wrap10">
+                    <div class="col-md-10 col-lg-12 col-xs-12 col-sm-12">
+                    <div class="title_destacados">
+                        <font style="font-size: 0.9em;background-color: transparent;text-transform: full-width;color:white;">SIGUENOS</font>
+                        <br>
+                       <a href="{$smarty.const.__FACEBOOK}" title="Facebook" target="_blank" class="">
+                            <img  src="_templates/DEFAULT2018/recursos/images/redes/face.png" alt="">
+                            <p class="hidden">{$smarty.const.__FACEBOOK}</p>
+                        </a>
+                        <a href="{$smarty.const.__TWITTER}" title="Twitter" target="_blank" class="" alt="{$smarty.const.__TWITTER}">
+                                <img  src="_templates/DEFAULT2018/recursos/images/redes/twiter.png" alt="">
+                                <p class="hidden">{$smarty.const.__TWITTER}</p>
+                            </a>
+                        <a href="{$smarty.const.__FLICKR}" title="Flickr" target="_blank" class="">
+                            <img  src="_templates/DEFAULT2018/recursos/images/redes/punto.png" alt="">
+                            <p class="hidden">{$smarty.const.__FLICKR}</p>
+                        </a>
+                        <a href="{$smarty.const.__YOUTUBE}" title="Youtube" target="_blank" class="">
+                            <img  src="_templates/DEFAULT2018/recursos/images/redes/youtube.png" alt="">
+                            <p class="hidden">{$smarty.const.__YOUTUBE}</p>
+                        </a>
+                        <a href="{$smarty.const.__INSTAGRAM}" title="Instagram" target="_blank" class="">
+                            <img  src="_templates/DEFAULT2018/recursos/images/redes/instagram.png" alt="">
+                            <p class="hidden">{$smarty.const.__INSTAGRAM}</p>
+                        </a>
+                        <a href="{$smarty.const.__BLOG}" title="Blog" target="_blank" class="">
+                            <img  src="_templates/DEFAULT2018/recursos/images/redes/b.png" alt="">
+                            <p class="hidden">{$smarty.const.__BLOG}</p>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="col-md-2 col-lg-12 col-xs-12 col-sm-12">
+                    <!--  id="pauseButton1"-->
+                    <a  id="playButton1" class="rightbottom1 carousel-control title_destacados" href="#home-silder" role="button" data-slide="cycle" style="margin-top: -58px !important; ">
+                        <div class="play1-banner">
+                            <p class="hidden">Play</p>
+                        </div>
+                        <span class="sr-only">Play</span>
+                    </a>
+
+                     <a   id="pauseButton1" class="rightbottom2 carousel-control title_destacados" href="#home-silder" role="button" data-slide="pause" style="margin-top: -58px !important; ">
+                        <div class="pause1-banner">
+                            <p class="hidden">pause</p>
+                        </div>
+                        <span class="sr-only">Pause</span>
+                    </a>
+                    </div>
+                    </div>
+                     {/if}
+                    <!--<a onmouseup="mouseUp1()" id="pauseButton1" class="rightbottom2 carousel-control" href="#home-silder" role="button" data-slide="pause">
+                        <div  id="pauseButton2" class="pause1-banner">
+                            <p class="hidden">Right</p>
+                        </div>
+                        <span class="sr-only">Next</span>
+                    </a>-->
+
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    {else}
+    <input type="hidden" name="es_home_principal" id="es_home_principal" value="no">
+    <div class="container-fluid" style="font-family: 'Fira Sans', sans-serif;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <!--<div class="row">-->
+                <div class="row" id="cabezote-internas" style="border-bottom: none !important;background: url({$smarty.const._DIRIMAGES}cabezote/banner/DSC_0024.JPG) no-repeat; background-position: center center; height: 400px;opacity: .9;">
+                    <div class="mascara-cabezote"></div>
+                    <div class="alto_contraste">
+                    </div>
+                </div>
+                <div class="container container-cabezote">
+                    <div class="nombre-slide-interna hidden-xs" id="slide-internas" style="margin:18% 0 0 0; ">{$rutetoroot[3].nombre}</div>
+                    <div class="nombre-slide-interna hidden-lg" id="slide-internas" style="margin:60% 0 0 0; ">{$rutetoroot[3].nombre}</div>
+                    <!--<div class="line-cabezote"></div>-->
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div id="forolink" style="z-index: 1100;">
+  
+    <button class="wrap6" onclick="invertir()"></button>
+     <button onclick="zoomOut()" style="font-family: 'Times New Roman'; font-weight: 700;background: transparent; color:white;border:0px; transform: rotate(90deg); font-size: 1.3em;">T- &nbsp</button>
+      <button onclick="zoomIn()" style="font-family: 'Times New Roman'; font-weight: 700;background:transparent; color:white;border:0px; transform: rotate(90deg); font-size: 1.3em;">T+ &nbsp</button>
+     
+</div>
+</header>
+
+<!--<script type="text/javascript" src="_templates/DEFAULT2018/recursos/Bicentenario/js/jquery-3.3.1.min.js"></script>-->
+<!-- Bootstrap tooltips -->
+<!--<script type="text/javascript" src="_templates/DEFAULT2018/recursos/Bicentenario/js/popper.min.js"></script>-->
+<!-- Bootstrap core JavaScript -->
+<!--
+<script type="text/javascript" src="_templates/DEFAULT2018/recursos/Bicentenario/js/bootstrap.min.js"></script>-->
+<!-- MDB core JavaScript -->
+<!--<script type="text/javascript" src="_templates/DEFAULT2018/recursos/Bicentenario/js/mdb.min.js"></script>-->
+
+<!--<script>
+    function myfunction1(){
+       
+       var xxx = $(document).scrollTop();
+        if (xxx > 0)
+        {
+            $(".nav1 li a").css("color","#000000");
+        }else
+        {
+            $(".nav1 li a").css("color","#ffffff");
+        }
+    }
+
+    function myfunction2(){
+       
+       var xxx = document.scrollTop();
+        if (xxx > 0)
+        {
+            $(".nav1 li a").css("color","#000000");
+        }else
+        {
+            $(".nav1 li a").css("color","#ffffff");
+        }
+    }
+</script>-->
+
+
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+    
+<script type="text/javascript">
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: 'HJ8nP7nvhh4',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+    function onPlayerReady(event) {
+
+        loopStart();
+        player.playVideo();
+        player.mute();
+    }
+    function loopStart() {
+        player.seekTo(27);   // Start at 7 seconds
+    }
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+            setTimeout(loopStart, 15000); // After 5 seconds, restart the loop
+        }
+    }
+</script>
+
+<script>
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var url_video_youtube2 = document.getElementById("url_video_youtube1").value;
+var time_video_youtube2 = document.getElementById("time_video_youtube1").value;
+//alert(document.getElementById("url_video_youtube1").value);
+
+
+var videoId = url_video_youtube2;
+var startSeconds = 1;
+var endSeconds =  time_video_youtube2;
+
+// Replace the 'ytplayer' element with an <iframe> and
+// YouTube player after the API code downloads.
+var player;
+
+var playerConfig = {
+  height: '100%',
+  width: '100%',
+  videoId: videoId,
+  playerVars: {
+    autoplay: 1, // Auto-play the video on load
+    controls: 0, // Show pause/play buttons in player
+    showinfo: 0, // Hide the video title
+    modestbranding: 1, // Hide the Youtube Logo
+    fs: 1, // Hide the full screen button
+    cc_load_policy: 0, // Hide closed captions
+    iv_load_policy: 3, // Hide the Video Annotations
+    start: startSeconds,
+    end: endSeconds,
+    autohide: 0, // Hide video controls when playing
+  },
+  /*events: {
+    'onStateChange': onStateChange
+  }*/
+  events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onStateChange
+            }
+
+
+};
+
+function onYouTubePlayerAPIReady() {
+  player = new YT.Player('ytplayer', playerConfig);
+  
+}
+
+function onStateChange(state) {
+  if (state.data === YT.PlayerState.ENDED) {
+    player.loadVideoById({
+      videoId: videoId,
+      startSeconds: startSeconds,
+      endSeconds: endSeconds
+    });
+  }
+}
+ function onPlayerReady(event) {
+
+        
+        player.playVideo();
+        player.mute();
+    }
+
+
+    </script>

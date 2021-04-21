@@ -1,0 +1,280 @@
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+{literal}
+<script type="text/javascript" src="{/literal}{$DIRJS}select_dependientes.js{literal}"></script>
+{/literal}
+<form id="form_solicitud" name="form_solicitud" action="" method="post" enctype="multipart/form-data">
+<table id="tabla_pqr" align="center">
+{if $ver_solicitudes==0}
+	{if $continuar=='no' || $flg_enviar=='no'}
+		<tr>
+		    <td colspan="4">
+		    	{if $flg_enviar=='ok'}
+					<div class="error">
+						<ul>
+							{section name=indice loop=$errores}
+								<li>{$errores[indice]}</li>
+							{/section}
+						</ul>
+					</div>
+				{else}
+					{if $flg_usuario_registrado=='no'}
+						<div style="border-top:solid 1px;border-bottom:solid 1px;text-align:center;background-color:#F1F6F9">
+							<div><br>CONSULTAR EL ESTADO DE UNA SOLICITUD</div>
+								Digite el código
+								<input type="text" name="consulta_hash" id="consulta_hash" />
+								<input type="hidden" name="ver_solicitudes" id="ver_solicitudes" value="1" />
+								<input type="submit" name="envia_consulta_hash" id="envia_consulta_hash" value="Consultar" />
+								<br>&nbsp;
+						</div>
+					{else}
+						<div class="boton_resaltado_pqr"><a href="{$esta_pagina}&ver_solicitudes=1">Consultar el estado de mis solicitudes</a></div>
+					{/if}
+					<div class="texto_normal"><br />{$lb_introduccion_formulario}</div>
+				{/if}
+		    	<div class="titulo_formulario">{$lb_titulo_datos_personales}</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="150px">
+				<div class="lb_formulario">{$lb_nombre}</div>
+			</td>
+			<td colspan="3">
+				<div><input type="text" id="nombre" name="nombre" value="{$nombre}" size="40" {if $flg_disabled_nombre=='1'}disabled{/if} /></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="lb_formulario_izq">{$lb_tipo_identificacion}</div>
+			</td>
+			<td colspan="3">
+				<div class="lb_formulario_izq">
+		    		<select id="tipo_identificacion" name="tipo_identificacion" onchange="mostrarDigitoVerificacion(this.id,'digito_verificacion')" onload="mostrarDigitoVerificacion(this.id,'digito_verificacion')">
+		    			{html_options values=$select_tipo_identificacion.id output=$select_tipo_identificacion.nombre selected="$tipo_identificacion"}
+		    		</select>
+		    	</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_numero_identificacion}</div>
+			</td>
+			<td colspan="3">
+				<div class="textbox_izq"><input type="text" id="numero_identificacion" name="numero_identificacion" value="{$numero_identificacion}" size="40" /></div>
+				<div id="digito_verificacion" style="visibility:{$digito_verificacion_visibility}">&nbsp;- <input type="text" name="digito_verificacion" value="{$digito_verificacion}" size="1" maxlength="1" /></div>
+			</td>
+		</tr>
+
+		{if $flg_originador_visible=='1'}
+			<tr>
+				<td>
+					<div class="lb_formulario">{$lb_tipo_persona}</div>
+				</td>
+				<td colspan="3">
+					<div class="input_normal">
+						<select id="tipo_persona" name="tipo_persona">
+							{html_options values=$select_tipo_persona.id output=$select_tipo_persona.nombre selected="$tipo_persona"}
+						</select>
+					</div>
+				</td>
+			</tr>
+		{/if}
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_direccion}</div>
+			</td>
+			<td colspan="3">
+				<div><input type="text" id="direccion" name="direccion" value="{$direccion}" size="40" {if $flg_disabled_direccion=='1'}disabled{/if} /></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_telefono}</div>
+			</td>
+			<td colspan="3">
+				<div><input type="text" id="telefono" name="telefono" value="{$telefono}" size="40" {if $flg_disabled_telefono=='1'}disabled{/if} /></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_celular}</div>
+			</td>
+			<td colspan="3">
+				<div><input type="text" id="celular" name="celular" value="{$celular}" size="40"/></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_email}</div>
+			</td>
+			<td colspan="3">
+				<div><input type="text" id="email" name="email" value="{$email}" size="40" {if $flg_disabled_email=='1'}disabled{/if} /></div>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<div class="lb_formulario">{$lb_ubicacion}</div>
+			</td>
+			<td colspan="3">
+				<table>
+					{section name=section_region loop=$select_region}
+						<tr>
+							<td>
+								{$select_region[section_region]}
+							</td>
+						</tr>
+					{/section}
+				</table>
+		</tr>
+		<tr>
+		    <td colspan="4">
+		    	<div class="titulo_formulario">{$lb_titulo_info_solicitud}</div>
+			</td>
+		</tr>
+		{if $flg_estado==1}
+			<tr>
+				<td>
+					<div class="lb_formulario">{$lb_estado}</div>
+				</td>
+				<td colspan="3">
+		    		<select name="estado">
+		    			{html_options values=$select_estado.id output=$select_estado.nombre selected="$estado"}
+		    		</select>
+				</td>
+			</tr>
+		{/if}
+		{if $flg_medio_recepcion==1}
+			<tr>
+				<td>
+					<div class="lb_formulario">{$lb_medio_recepcion}</div>
+				</td>
+				<td colspan="3">
+		    		<select name="medio_recepcion">
+		    			{html_options values=$select_medio_recepcion.id output=$select_medio_recepcion.nombre selected="$medio_recepcion"}
+		    		</select>
+				</td>
+			</tr>
+		{/if}
+		<tr>
+			<td>
+				<div class="lb_formulario">{$lb_tipo_solicitud}</div>
+			</td>
+			<td colspan="3">
+	    		<select name="tipo_solicitud">
+	    			{html_options values=$select_tipo_solicitud.id output=$select_tipo_solicitud.nombre selected="$tipo_solicitud"}
+	    		</select>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<div class="lb_formulario">{$lb_dependencia}</div>
+			</td>
+			<td colspan="3">
+				<table>
+			 		{section name=section_dependencia loop=$select_dependencia}
+						<tr>
+							<td>
+								{$select_dependencia[section_dependencia]}
+							</td>
+						</tr>
+					{/section}
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<div class="lb_formulario">{$lb_asunto}</div>
+			</td>
+			<td colspan="3">
+				<table>
+			 		{section name=section_asunto loop=$select_asunto}
+						<tr>
+							<td>
+								{$select_asunto[section_asunto]}
+							</td>
+						</tr>
+					{/section}
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td valign=top>
+				<div class="lb_formulario">{$lb_solicitud}</div>
+			</td>
+			<td colspan="3">
+				<div><textarea id="solicitud" name="solicitud" rows=10 cols=40>{$solicitud}</textarea></div>
+			</td>
+		</tr>
+		{if $flg_resumen==1}
+			<tr>
+				<td valign=top>
+					<div class="lb_formulario">{$lb_resumen}</div>
+				</td>
+				<td colspan="3">
+					<div><textarea id="resumen" name="resumen" rows=10 cols=40>{$resumen}</textarea></div>
+				</td>
+			</tr>
+		{/if}
+		<tr>
+			<td colspan="4">
+				<div class="lb_formulario">{$lb_lista_documentos}</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<dl>
+	   			<dt><label>{$lb_archivos}:</label></dt>
+	        			{* Aqui se adicionan los campos de subir archivos *}
+	   			<dd>
+	   			<div id="adjuntos">
+	   				<input type="file" name="archivos[]" /><br />
+	   			</div>
+					</dd>
+	   			<dd><input type="button" onClick="addCampo()" value="{$lb_lk_subir_mas}" class="boton_small_pqr"></dd>
+	     		</dl>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="4">
+				<div class="lb_formulario">{$lb_adjuntar_advertencia}</div>
+			</td>
+		</tr>
+		{if $flg_hash==1}
+			<tr>
+				<td colspan="4">
+					<div class="titulo_formulario">{$lb_titulo_confirmacion}</div>
+					<div class="lb_formulario_centro">
+						{$lb_confirmacion_codigo}:  <input type="text" name="hash" id="hash">
+					</div>
+					<div class="lb_formulario_centro">
+						<img src="tools/captcha.php" alt="Esto nos ayuda a prevenir los registros automatizados.">
+					</div>
+				</td>
+			</tr>
+		{/if}
+		<tr>
+			<td colspan="4" align="center">
+				<div>
+					<input type="submit" id="enviar" name="enviar" value="{$btn_lb_enviar}">
+				</div>
+			</td>
+		</tr>
+		</form>
+	{else}
+		<tr>
+			<td align="center">
+				<div class="mensaje_usuario">
+					{$msg_respuesta}
+				</div>
+				<a href="{$esta_pagina}">Continuar</a>
+			</td>
+		</tr>
+	{/if}
+{else}
+	<div class="boton_resaltado_pqr"><a href="{$esta_pagina}&ver_solicitudes=0">Volver</a></div>
+	{$solicitudes_html}
+{/if}
+</table>
+{if $flg_administrador_pqr=='ok'}
+	<div class="boton_resaltado_pqr" >{$link_menu_administracion}</div>
+{/if}

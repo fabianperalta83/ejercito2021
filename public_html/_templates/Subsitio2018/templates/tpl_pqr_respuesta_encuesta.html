@@ -1,0 +1,81 @@
+
+<div>
+{$lbl_titulo}
+</div>
+<br><br>
+<font size="4">PREGUNTAS</font>
+<br>
+<div>
+	{section name=j loop=$arreglo_total}
+		<li><b>{$arreglo_total[j].pregunta}</b></li>
+	{/section}
+</div>
+
+<br><br>
+<div align="center">
+<form name="filtro" method="POST">
+
+	{section name=error loop=$errores}
+	<li>{$errores[error]}</li>
+	{/section}
+
+	<table>
+		<tr>
+			<td><input type="text" name="desde" value="{$desde}" size="10"></td>
+			<td><input type="text" name="hasta" value="{$hasta}" size="10"></td>
+			<td>
+				<input type="submit" value="Filtrar" name="filtrar">
+				<input type="submit" value="Descargar XML" name="descarga">
+			</td>
+		</tr>
+		<tr>
+			<td>aaaa-mm-dd</td>
+			<td>aaaa-mm-dd</td>
+		</tr>
+	</table>
+</form>
+</div>
+
+<br><br>
+<table cellpadding="10" border="1" class="tabla_result" cellspacing="0">
+	<!-- ENCABEZADO -->
+	<tr>
+		<td rowspan="2" style="text-align:center">
+			<b>PREGUNTAS</b>
+		</td>
+		<td colspan="3" style="text-align:center">
+			<b>OPCIONES</b>
+		</td>
+	</tr>
+	<tr>
+		{section name=i loop=$arreglo_hijos}
+			<td>
+			<font size="2"><b> {$arreglo_hijos[i]} </b>
+			</td>
+		{/section}
+	</tr>
+
+	<!-- DATOS -->
+
+	{section name=j loop=$arreglo_total}
+	<tr>
+		<td>
+		{$arreglo_total[j].pregunta}
+		</td>
+		{section name=k loop= $arreglo_total[j].cantidad}
+			<td>
+			<b> {$arreglo_total[j].cantidad[k]}</b>
+			</td>
+		{/section}
+	</tr>
+	{/section}
+
+	<tr>
+		<td style="text-align:right">
+			<b><font size="3">Total Encuestas</b>
+		</td>
+		<td colspan="3" style="text-align:center">
+			<b><font size="3">{$suma}</font></b>
+		</td>
+	</tr>
+</table>

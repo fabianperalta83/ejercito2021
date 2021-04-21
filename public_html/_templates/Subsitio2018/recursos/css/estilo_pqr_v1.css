@@ -1,0 +1,199 @@
+/**
+* Archivo de estilos para la sección de atención al ciudadano
+**/
+
+/* Estilo para los vínculos resaltados */
+.boton_resaltado_pqr {
+		text-align:center;
+		margin:0 auto;
+		padding:3px 0;
+}
+.boton_resaltado_pqr a{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	background-color:#FFC668;
+	border:1px solid #C55821;
+	padding:3px 5px;
+}
+
+.boton_small_pqr{
+	font-size:0.8em;
+}
+
+#tabla_pqr {width:100%;}
+#tbl_cambios{width:100%;}
+.titulo_formulario {
+	text-align:center;
+	color: black;
+	font-size:medium;
+
+	font-weight:bold;
+	background-color:#B2B2B2;
+}
+
+.texto_normal{
+	text-align:justify;
+	color:#000000;
+	border:thick;
+	border-color:gray;
+}
+
+.subtitulo_formulario{
+	margin-top:2px;
+	color:#000000;
+	background-color:#F8F9FA;
+}
+
+.lb_formulario{
+	text-align:left;
+	font-weight:bold;
+}
+
+.lb_formulario_izq{
+	float:left;
+	margin-right:10px;
+	font-weight:bold;
+}
+
+.lb_formulario_centro{
+	text-align:center;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.lb_formulario_2{
+	text-align:left;
+	margin-left:15px;
+}
+.error{
+	color:red;
+}
+.mensaje_usuario{
+	text-align:center;
+	color:#4F559E;
+	border:thick;
+	border-color:gray;
+	font-size:larger;
+	font-weight:bold;
+}
+.carga_archivo{
+	margin-top:5px;
+}
+.subtitulo_formulario_izq{
+	float:left;
+	text-align:left;
+
+}
+.subtitulo_formulario_der{
+	margin-left:50%;
+	text-align:left;
+}
+
+.subtitulo_formulario_valor{
+	float:left;
+	margin-left:20px;
+}
+
+#gestion_texto_solicitud{
+	margin-left:15%;
+	text-align:justify;
+}
+#gestion_lista_documentos{
+	margin-left:25%;
+	text-align:left;
+}
+#adjuntos .archivo{
+	margin-top:3px;
+}
+
+#solicitud {
+	border:1px solid #FF8000;
+}
+
+.textbox_izq{
+	float:left;
+}
+.select_dependiente{
+	border-style:solid;
+	border-width:1px;
+	border-color:#292C7D;
+	border-left:hidden;
+	border-right:hidden;
+}
+/* Estilos para el formulario principal de gestion de PQR */
+
+	#ordenar {float:left}
+	#ordenar #input_ordenar {float:left;margin-right:5px}
+	#ordenar #enviar {text-align:right}
+
+	#lista_solicitudes {text-align:center}
+
+	/* Estilos para el campo que indica el estado de la solicitud
+	en el listado de solicitudes */
+	.estado_abierto{
+		color:#ffffff;
+		font: bold 1em arial,helvetica,sans-serif;
+		background-color:#FF0000;
+		border:1px solid #FF47BD;
+	}
+	.estado_cerrado{
+		color:#ffffff;
+		font: bold 1em arial,helvetica,sans-serif;
+		background:#009900;
+		border:1px solid #5C9318;
+	}
+	.estado_entramite{
+		color:#FFFFFF;
+		font: bold 1em arial,helvetica,sans-serif;
+		background-color:#FFAA2C;
+		border:1px solid #FFAA2C;
+	}
+
+/* Fin de estilos para el formulario principal de gestion de PQR */
+
+#solicitante{background-color:#F7F7F7;margin-top:3px;margin-bottom:3px}
+#info_solicitud{background-color:#F7F7F7;margin-bottom:3px}
+#estado_actual{background-color:#F7F7F7;margin-top:3px;margin-bottom:3px}
+#documentos{background-color:#F7F7F7;margin-top:3px;margin-bottom:3px}
+#transacciones{background-color:#F7F7F7;margin-top:3px;margin-bottom:3px}
+
+#solicitud_completa #solicitante{background-color:#F7F7F7;margin:3px 3px 3px 3px}
+#solicitud_completa #info_solicitud{background-color:#F7F7F7;margin:3px 3px 3px 3px}
+#solicitud_completa #estado_actual{background-color:#F7F7F7;margin:3px 3px 3px 3px}
+#solicitud_completa #documentos{background-color:#F7F7F7;margin:3px 3px 3px 3px}
+#solicitud_completa #transacciones{background-color:#F7F7F7;margin:3px 3px 3px 3px}
+
+
+#solicitud_completa{background-color:#F7F7F7;;border-style:solid;border-width:1px;border-color:black}
+.titulo_bloque{
+	text-align:center;
+	color: #FFFFFF;
+	font-size:medium;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	background-color:#E2E3DF;
+	background-image:url(../images/fondo_titulo_pqr.gif);
+	background-repeat:repeat-x;
+}
+
+.lb_formulario_gestion_izq{
+	float:left;
+	margin-right:10px;
+	font-weight:bold;
+	width:160px;
+}
+
+#asunto {
+	margin-left:170px;
+}
+
+.btn_1 {
+	text-align:center;
+	margin-top:10px;
+}
+.boton_eliminar {
+	font-size:0.8em;
+}
+.paginacion_pqr {text-align:center;border:1px solid #ccc;background:#eee;padding:5px;font:bold 1em tahoma;color:#6699CC;margin-top:5px}
+.paginacion_pqr a {color:#555;cursor:pointer;}

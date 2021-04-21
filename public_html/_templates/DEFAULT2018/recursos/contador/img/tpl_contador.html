@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Plan 48 Horas
+        </title>
+        <style>
+            body 
+            {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-color: #464646;
+                font-family:'Open Sans', Arial, sans-serif;
+                font-size:14px;
+                font-weight:300;
+                line-height:1.6em;
+                animation-play-state:running;
+            }
+            
+            .div_centrado 
+            {
+                position: absolute;
+                top: 89%; /* Buscamos el centro horizontal (relativo) del navegador */
+                left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
+                width: 600px; /* Definimos el ancho del objeto a centrar */
+                height: 400px; /* Definimos el alto del objeto a centrar */
+                margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+                text-align: center
+            }
+            
+            #clock
+            {
+                font-family:'Bahnschrift Regular';
+                font-weight:normal;
+                font-size:56px;
+                line-height: 36px;
+                color: #FFFFFF;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="font-style/style.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body onclick="funcion_redireccionar();">
+        <input type="hidden" id="validar_url" value="0" />
+        <div class="div_centrado">
+            <div id="clock"></div>
+        </div>       
+    </body>
+    <script>        
+        var temp = getParameterByName('temp');        
+        var end = new Date(temp);
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+        
+        function getParameterByName(name) 
+        {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function showRemaining() 
+        {
+            var now = new Date();
+            var distance = end - now;
+            
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+            
+            if (distance < 0) 
+            {
+                $("body").css("background-image", "url(img/img_despues_cuenta.png");
+                $("#validar_url").val("1");
+                //$("#clock").empty();
+                
+                document.getElementById('clock').innerHTML = '0 días ';
+                document.getElementById('clock').innerHTML += '00 : ';
+                document.getElementById('clock').innerHTML += '00 : ';
+                document.getElementById('clock').innerHTML += '00 ';
+                
+                clearInterval(timer);
+                return;
+            }
+            else
+            {
+                $("body").css("background-image", "url(img/img_antes_cuenta.png");                
+                
+                if (hours < 10)
+                {
+                    hours = "0"+hours;
+                }
+                
+                if (minutes < 10)
+                {
+                    minutes = "0"+minutes;
+                }
+                
+                if (seconds < 10)
+                {
+                    seconds = "0"+seconds;
+                }
+                
+                document.getElementById('clock').innerHTML = days + ' días ';
+                document.getElementById('clock').innerHTML += hours + ' : ';
+                document.getElementById('clock').innerHTML += minutes + ' : ';
+                document.getElementById('clock').innerHTML += seconds + ' ';
+            }
+        }
+        
+        function funcion_redireccionar()
+        {
+            var validar_url = document.getElementById('validar_url').value;
+            
+            if (validar_url == 1)
+            {
+                url_redireccionar = getParameterByName('url');
+                window.open(url_redireccionar, '_blank');
+            }
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    </script>
+</html>

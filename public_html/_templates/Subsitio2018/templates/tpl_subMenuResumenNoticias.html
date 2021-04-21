@@ -1,0 +1,77 @@
+<!-- Template Menu Primer Nivel Noticias -->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div class="row">
+		{section name=mysec loop=$subMenu}
+			<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style="height: 420px;">
+				{if $subMenu[mysec].imagen != ""}
+					<a href="index.php?idcategoria={$subMenu[mysec].idcategoria}" target="_blank">
+						<p class="hidden">lista con cuadrado</p>
+						<div style="background: url('tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&h=200')!important;
+                                    background-size: cover!important;
+                                    background-repeat: no-repeat!important;
+                                    background-position: center center!important;
+                                    width: 100%;
+                                    height: 200px;
+                                    margin-top: 15px;">
+							
+						</div>
+						<!-- <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&h=200" class="center-block img-resposive img-rounded" alt="{$subMenu[mysec].nombre}" style="border-radius: 0;"> -->
+					</a>
+				{/if}
+				<div id="titulo_actualidad" style="margin-top: 15px; margin-bottom:10px; height: 60px;">
+					<a style="text-decoration:none;" href="index.php?idcategoria={$subMenu[mysec].idcategoria}">
+						<strong style="color:#000000;font-size:0.813em;" class="wrap8">{$subMenu[mysec].nombre}</strong>
+					</a>		
+				</div>
+				<div class="line-interna" style="margin-bottom: 15px;"></div>
+				<div class="textarea_slider wrap8" style="height: 50px;">
+					<p>{$subMenu[mysec].entradilla|truncate:150:"...":"true"}</p>
+				</div>
+				
+				<div class="vermasTitle" style="text-align: right;">
+					<a class="dVermas" href="index.php?idcategoria={$subMenu[mysec].idcategoria}">
+						<span class="wrap8">VER MAS</span> <strong style="color: #333; font-size:15px"> > </strong>
+					</a>
+				</div>
+				<div class="line-noticias-cuadro"></div>
+			</div>
+	    {/section}
+	</div>
+</div>
+
+<!-- Paginación de la categoria-->
+{if $verMas != ""}
+	{$verMas}
+{/if}
+
+<!-- Fin Template Menu Primer Nivel -->
+<style type="text/css">
+	.dVermas{
+		color: #000000;
+	}
+
+	@media (min-width: 1200px){
+		.col-lg-4 {
+		    width: 31%;
+		}
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		Actualizar_Tamano();
+	});
+	
+	jQuery(window).resize(function(e) {
+		Actualizar_Tamano();
+	});
+	
+	function Actualizar_Tamano(){
+		var width = window.innerWidth;
+		
+		if(width <= 1024){
+			$('.textarea_slider').attr('cols', "9");
+		}else{
+			$('.textarea_slider').attr('cols', "22");
+		}  
+	}
+</script>

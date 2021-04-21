@@ -1,0 +1,77 @@
+<!--Template Foros-->
+<div id="foros">
+
+{if $respuesta == "si"}
+	<!--Foros:Responder-->
+	<form action="{$c_phpself}" name="foro_responder_00" method="post" class="formulario">
+		<div id="foro_resp_comentada">
+			<p class="foro_resp_rotulo">{$rotuloRespuesta}</p>
+			<p class="foro_resp_comentario">{$tema.comentario}</p>
+			<p class="foro_resp_autor">{if $tema.autor != ""}{$rotuloAutor} {$tema.autor}{/if}{if $tema.fecha != ""} [{$tema.fecha}]{/if}</p>
+	    </div>
+		<div id="foro_resp_formulario">
+		    <span id="foro_resp_rotuloNombre">{$rotuloNombre}</span>
+		    
+		    {if $infoUsuario.nombres}
+		    	{$infoUsuario.nombres}<br>
+		    	<input type="hidden" name="nombreRespuesta" size="30" value="{$infoUsuario.nombres}"><br>
+		    {else}
+	    		<input type="text" name="nombreRespuesta" size="30" class="foro_resp_inptxt"><br>
+	    	{/if}	    	
+	    	
+			<textarea name="comentario" cols="65" rows="5" class="foro_resp_txa"></textarea><br>
+		    <input type="hidden" name="padre" value="{$tema.id}">
+		    <input type="submit" name="submit" value="{$responder}" class="foro_resp_submit">
+	    </div>
+	</form>
+	<!--Fin Foros:Responder-->
+{else}
+
+	<form action="{$c_phpself}" name="form_ir_resp" method="post" id="form_ir_resp">
+		<input type="hidden" name="idRespuesta" value="{$idcategoria}">
+		<input type="submit" name="submit" value="{$responder}" class="foro_ir_resp_boton">
+	</form>
+	<!--Fin Foros:Responder-->
+	
+	{if $subSec!=""}
+		<!--Foros:Respuestas-->
+		<div id="foros_respuestas">
+			<ul>
+				{section name=mysec loop=$subSec}
+				<li>
+					<form action="{$c_phpself}" method="post" name="foro_responder_{$subSec[mysec].id}">
+						<p class="foro_respuesta_autor">{$rotuloAutor}
+						{if $subSec[mysec].autor != ""}{$subSec[mysec].autor} {else}Anonimo{/if} [{$subSec[mysec].fecha}]</p>
+						<p class="foro_respuesta_contenido">{$subSec[mysec].nombre}</p>
+						<input type="hidden" name="idRespuesta" value="{$subSec[mysec].id}">
+						<input type="submit" name="submit" value="{$responder}" class="foro_ir_resp_boton">
+					</form>
+				
+					{if $subSec[mysec].hijos != ""}
+						<ul>
+							{section name=mysec2 loop=$subSec[mysec].hijos}
+							<li>
+						    	<p class="foro_respuesta_autor">{$rotuloAutor}
+							        {if $subSec[mysec].hijos[mysec2].autor != ""}{$subSec[mysec].hijos[mysec2].autor}{else}Anonimo{/if}
+							        ({$subSec[mysec].hijos[mysec2].fecha})
+						        </p>
+						        <p class="foro_respuesta_contenido">{$subSec[mysec].hijos[mysec2].nombre}</p>
+							</li>
+							{/section}
+						</ul>
+					{/if}
+				</li>
+				{/section}
+			</ul>
+		</div>
+	    <!--Foros:Respuestas-->
+	{/if}
+
+{/if}
+
+{if $c_imprimir != ""}
+	<div id="foros_imprimir">{$c_imprimir}</div>
+{/if}
+
+</div>
+<!--Fin Template Foros-->

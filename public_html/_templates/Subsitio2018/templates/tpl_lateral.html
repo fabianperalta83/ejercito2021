@@ -1,0 +1,17 @@
+<div class="col-md-12 col-lg-12">
+    <div class="row div_left">
+        <div class="menuSegNivel" style=" background-color: #862024;">
+            <h2>{$smarty.const._ROT_MENU_USER}</h2>
+            <div class="red_line"></div>
+            <ul class="lista_sencilla_menu">
+                {section name=link loop=$menuSegNivel}       
+                    <li class="item{$smarty.section.link.index}" {if $smarty.section.link.last} style="border-bottom: 0;" {/if}>
+                        <a href="index.php?idcategoria={$menuSegNivel[link].idcategoria}" class="" style="color:white!important;">
+                            {$menuSegNivel[link].nombre}
+                        </a>
+                    </li>
+                {/section}
+            </ul>       
+        </div>
+    </div>
+</div>

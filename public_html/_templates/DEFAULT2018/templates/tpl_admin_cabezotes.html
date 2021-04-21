@@ -1,0 +1,219 @@
+<script language="javascript" src="js/cabezotes.js"></script>
+
+{literal}
+<style>
+.titulos{background:#000;color:#fff;font-weight:bold}
+</style>
+{/literal}
+{*muestro los errores que se cometan*}
+<ul>
+{section name=errores loop=$errores}
+	<li>{$errores[errores]}
+{/section}
+</ul>
+
+<form method="post">
+<table width="100%">
+	<tr>
+		<td colspan="2" class="titulos">
+			SELECCIONE EL SUBSITIO PARA CARGAR EL BANNER
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Seleccione el sitio 
+		</td>
+		<td>
+			<select name="lista_subsitios">
+				{section name=sitios loop=$lista_subsitios}
+					<option value="{$lista_subsitios[sitios].idcategoria}" {if $sitios == $lista_subsitios[sitios].idcategoria}selected{/if}>
+						{$lista_subsitios[sitios].nombre}
+					</option>
+				{/section}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Que desea ver?
+		</td>
+		<td>
+			Imagen <input type="radio"  name="tipo_banner" value="1" checked="checked" {if $tipo_banner == 1}checked{/if}>
+			Flash <input type="radio" name="tipo_banner" value="2" {if $tipo_banner == 2}checked{/if}>
+			
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="submit" value="Cargar" name="cargar">
+		</td>
+	</tr>
+</table>
+</form>
+
+
+{if $bandera2 == true}
+<form method="post">
+<table width="100%">
+	<tr>
+		<td>
+			<img src="_editor/images/mini_subir_old.gif" width="30px" height="25px"  alt="">		
+		<td>
+		<td>
+			Activar Banner
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<img src="_editor/images/mini_bajar.gif" width="30px" height="25px"  alt="">
+		<td>
+		<td>
+			Desactivar Banner
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<img src="_editor/images/boton_borrar_on.gif" width="30px" height="25px"  alt="">
+		<td>
+		<td>
+			Eliminar Banner
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<img src="_editor/images/reload.png" width="30px" height="25px"  alt="">
+		<td>
+		<td>
+			Recargar pagina, ver cambios
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<img src="_editor/images/boton_categoria_off.gif" width="30px" height="25px"  alt="">
+		<td>
+		<td>
+			Banner Desactivado
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<img src="_editor/images/boton_categoria_on.gif" width="30px" height="25px"  alt="">
+		<td>
+		<td>
+			Banner Activado
+		<td>
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+	<table width="100%">
+		<tr>
+			<td colspan="3" class="titulos">
+				ESTOS SON LOS BANNERS ACTUALES DEL SITIO
+			</td>
+		</tr>
+		<tr>
+			<td class="titulos" align="center">
+				ESTADO
+			</td>
+			<td class="titulos" align="center">
+				BANNER
+			</td>
+			<td class="titulos" align="center">
+				ACCIONES
+			</td>
+		</tr>
+		{section name=lista loop=$banners}
+		<tr id="celda{$banners[lista].idbanner}">
+			<td align="center">
+			<div id="estado{$banners[lista].idbanner}">
+				{if $banners[lista].activo == 1}
+					<img src="_editor/images/boton_categoria_on.gif" title="Actualmente Activo"  alt="">
+				{else}
+					<img src="_editor/images/boton_categoria_off.gif" title="Actualmente Desactivado"  alt="">
+				{/if}
+			</div>
+			</td>
+			<td align="center">
+			{if $tipo_banner == 1}
+				<img src="tools/microsThumb.php?src={$ruta_banner}{$banners[lista].banner}&w=300"  alt="">
+			{else}
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="300" height="60">
+				  <param name="movie" value="{$ruta_banner}{$banners[lista].banner}" />
+				  <param name="quality" value="high" />
+				  <embed src="{$ruta_banner}{$banners[lista].banner}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="300" height="60"></embed>
+				</object>
+			{/if}			
+			</td>
+			<td align="center">
+				{if $banners[lista].activo == 1}
+					<div id="desactivar{$banners[lista].idbanner}" style="float:left"><img src="_editor/images/mini_bajar.gif" title="Desactivar" onClick="cabezotes('{$banners[lista].idcategoria}','{$banners[lista].idbanner}','desactivar')"  alt=""></div>
+				{else}
+					<div id="activar{$banners[lista].idbanner}" style="float:left"><img src="_editor/images/mini_subir_old.gif" title="Activar" onClick="cabezotes({$banners[lista].idcategoria},{$banners[lista].idbanner},'activar')"  alt="" ></div>
+				{/if}
+					<img src="_editor/images/boton_borrar_on.gif" title="Eliminar" onClick="cabezotes({$banners[lista].idcategoria},{$banners[lista].idbanner},'eliminar')"  alt="">
+			</td>
+		</tr>
+		
+		{/section}
+		<tr>
+			<td colspan="2">
+				<a href="index.php?idcategoria={$idcategoria}&nuevo={$sitios}&tipo={$tipo_banner}"><img src="_editor/images/reload.png" title="Recargar Página"  alt=""></a>
+			</td>
+		</tr>
+		{*
+		<tr>
+			<td colspan="2">
+				<a href="index.php?idcategoria={$idcategoria}&nuevo={$sitios}&tipo={$tipo_banner}">Cargar Nuevo Banner</a>
+			</td>
+		</tr>
+		*}
+
+	</table>
+</form>
+
+
+
+
+<form method="post" action="_include/upload.php" enctype="multipart/form-data" target="marco" name="conf">
+<table width="100%">
+<input type="hidden" value="{$sitios}" name="sitio">
+<input type="hidden" value="{$tipo_banner}" name="tipo_banner">
+<input type="hidden" value="{$ruta_banner}" name="plantilla">
+<input type="hidden" value="{$idcategoria}" name="idcategoria">
+<input type="hidden" value="upload" name="action">
+
+	<tr>
+		<td colspan="3" class="titulos">
+			PUEDE CARGAR U NUEVO BANNER PARA EL SITIO SELECCIONADO
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			Seleccione la imagen a cargar<input type="file" name="archivo"><input type="submit" name="cargar_nuevo" value="Cargar Nuevo">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" class="titulos">
+			ESTA CONFIGURACION LE DIRA QUE SE MOSTRARA EN EL CABEZOTE
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Seleccione la configuración que pondra en el Banner
+		</td>
+		<td colspan="2">
+			Imagen <input type="radio" name="configuracion" value="1" {if $config == 1}checked{/if} onClick="cabezotes(document.conf.sitio.value,this.value,'imagen')">
+			Flash <input type="radio" name="configuracion" value="2" {if $config == 2}checked{/if} onClick="cabezotes(document.conf.sitio.value,this.value,'flash')">
+		</td>
+	</tr>
+</table>
+</form>
+<iframe src="_include/upload.php" name="marco" width="100%" scrolling="no" height="60" frameborder="0" marginwidth="0" marginheight ="0"></iframe>
+{/if}

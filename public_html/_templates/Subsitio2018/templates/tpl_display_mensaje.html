@@ -1,0 +1,29 @@
+<!-- Mensaje del sistema -->
+<table style="width:95%;background:#69C" cellpadding=3 cellspacing=1 align=center summary="Mensaje del sistema">
+<tr>
+    <td style="background:#F0F7FF;text-align:center">
+{if $tipo == "error"}
+    <img src="{$smarty.const._DIR_IMAGES_EDITOR}msg_error.gif" alt="Error">
+{else}    
+    <img src="{$smarty.const._DIR_IMAGES_EDITOR}msg_info.gif" alt="Advertencia">
+{/if}    
+    </td>
+    <td style="background:#F0F7FF;text-align:left">
+		<table width="100%" cellpadding=5 cellspacing=0 summary="Mensajes">
+		<tr>
+		<th style="background:#F0F7FF">{$rotMensaje}</th>
+		</tr>
+{section name=mysec loop=$elementoMenu}
+{strip}
+		<tr>
+		<td style='background:{cycle values="#F0F7FF,#FFFFFF"}'>
+			{$elementoMenu[mysec]}
+		</td>
+		</tr>
+{/strip}
+{/section}
+	</table>
+	</td>
+	</tr>  
+</table>
+<!-- FIN Mensaje del sistema -->

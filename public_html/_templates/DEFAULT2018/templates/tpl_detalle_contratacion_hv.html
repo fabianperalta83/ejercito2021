@@ -1,0 +1,161 @@
+<link href="{$smarty.const._DIRCSS}estilo_contratacion.css" rel="stylesheet" type="text/css">
+
+<div class="contratacion">
+<!--TITULO DE CONTRATACION-->
+<h2>{$info.titulo}</h2>
+
+<h3>Hoja de Vida:</h3>
+<h4>Las Hojas de Vida estar&aacute;n publicadas 3 d&iacute;as h&aacute;biles.</h4>
+<p>{$info.objeto}</p>
+
+<!--INFORMACION DEL CONTRATO-->
+<table summary="">
+	{*<tr class="troscuro">
+		<td>Fecha de Creación</td>
+		<td>{$info.fecha_creacion}</td>
+	</tr>*}
+	<tr>
+		<td>Fecha de Apertura</td>
+		<td>{$info.fecha_apertura}</td>
+	</tr>
+	<tr class="troscuro">
+		<td>Fecha y Hora de Cierre de contrato</td>
+		<td>{$info.fecha_cierre}</td>
+	</tr>
+	<tr>
+		<td>Cedula</td>
+		<td>{$info.cuantia}</td>
+	</tr>
+	<tr class="troscuro">
+		<td>Estado</td>
+		<td class="estado{$info.estadoid}">{if $info.estadoid == '3'}En Revisi&oacute;n{else}Revisado{/if}</td>
+	</tr>
+</table>
+
+<!--INFORMACION COMPLEMENTARIA-->
+<h3>Archivos Adjuntos</h3>
+<table summary="" style="width:99%">
+	{section name=idinfoComp loop=$infoComp}
+	<tr {cycle values=",class=\"troscuro\""}>
+		<td>{$infoComp[idinfoComp].nombre}</td>
+		<td>{$infoComp[idinfoComp].valor}</td>
+	</tr>
+	{/section}
+</table>
+
+<!--INFORMACION DE LAS ETAPAS-->
+{*<h3>Etapas</h3>
+<table summary="" cellpadding="0" cellspacing="5" style="width:99%">
+	<tr>
+		<td style="width:20px;padding:0;background:#FFFF00">&nbsp;</td>
+		<td>Fecha Proyectada</td>
+		<td style="width:20px;padding:0;background:#FFBB00">&nbsp;</td>
+		<td>Fecha Pasada</td>
+		<td style="width:20px;padding:0;background:#00CC00">&nbsp;</td>
+		<td>Fecha en Curso</td>
+	</tr>
+</table>*}
+<br>
+<table summary="" class="tablaEtapas" style="width:99%">
+	{section name=idinfoEtapa loop=$infoEtapas}
+	<tr {cycle name=idcycle values=",class=\"troscuro\""}>
+		{*<td>{$infoEtapas[idinfoEtapa].titulo}</td>
+		<td>{$infoEtapas[idinfoEtapa].paso}</td>*}
+		<td>
+			{section name=idfile loop=$infoEtapas[idinfoEtapa].archivos}
+				{assign var=archivo value=$infoEtapas[idinfoEtapa].archivos[idfile]}
+				<div style="padding:5px;display:block;{cycle name=idcycle2 values=",background:#C6EBFF"}"><img src="{$archivo.img_extension}" alt="">&nbsp;&nbsp;<a href="?idcategoria={$archivo.idcategoria}&amp;download=Y" title="Publicado el dia {$archivo.fecha}">{$archivo.nombre}</a>&nbsp;<span style="font-size:0.8em;color:#555;">[{$archivo.fecha}]</span></div>
+			{/section}
+		</td>
+		{*<td style="text-align:center;background:{$infoEtapas[idinfoEtapa].color_fecha_apertura}">{$infoEtapas[idinfoEtapa].fecha_apertura}</td>*}
+	</tr>
+	{/section}
+</table>
+<!--Template Foros-->
+<div id="foros">
+{if $respuesta == "si"}
+	<!--Foros:Responder-->
+	<form action="{$c_phpself}" name="foro_responder_00" method="post">
+		<div id="foro_resp_comentada">
+			<p class="foro_resp_rotulo">{$rotuloRespuesta}</p>
+			<p class="foro_resp_comentario">Su solicitud de aclaracion o comentario sera guardado y revisado por los administradores del sistema, usted no podra ver sus comentarios ni los de otras personas.{*$tema.comentario*}</p>
+			<p class="foro_resp_autor">{if $tema.autor != ""}{$rotuloAutor} {$tema.autor}{/if}{*if $tema.fecha != ""} [{$tema.fecha}]{/if*}</p>
+	    </div>
+		<div id="foro_resp_formulario">
+		    <span id="foro_resp_rotuloNombre">{$rotuloNombre}</span>
+
+		    {if $infoUsuario.nombres}
+		    	{$infoUsuario.nombres}<br>
+		    	<input type="hidden" name="nombreRespuesta" size="30" value="{$infoUsuario.nombres}"><br>
+		    {else}
+	    		<input type="text" name="nombreRespuesta" size="30" class="foro_resp_inptxt"><br>
+	    	{/if}
+
+			<textarea name="comentario" cols="65" rows="5" class="foro_resp_txa"></textarea><br>
+		    <input type="hidden" name="padre" value="{$tema.id}">
+		    <input type="submit" name="submit" value="Enviar Aclaraci&oacute;n" class="foro_resp_submit">
+	    </div>
+	</form>
+	<!--Fin Foros:Responder-->
+{else}
+
+	<div><h2 style="margin:20px 0 10px 0;padding:0 0 0 10px;font:bold 1.4em arial,helvetica;color:#003366;background:url({$smarty.const._DIRIMAGES}bullet3.gif) no-repeat left">Aclaraciones</h2></div>
+	<div style="font:bold 1.2em arial,helvetica;">¿Desea solicitar alguna aclaraci&oacute;n sobre este proceso?</div>
+	<form action="{$c_phpself}" name="form_ir_resp" method="post" id="foro_ir_resp">
+		<input type="hidden" name="idRespuesta" value="{$idcategoria}">
+		{if $info.estadoid == '3'}<input type="submit" name="submit" value="solicitar Aclaraci&oacute;n" class="foro_ir_resp_boton">{else}Foro Cerrado{/if}
+	</form>
+
+	<!--Fin Foros:Responder-->
+	{if $subSec!=""}
+		<!--Foros:Respuestas-->
+		<div id="foros_respuestas">
+			<ul>
+				{section name=mysec loop=$subSec}
+				<li>
+					<form action="{$c_phpself}" method="post" name="foro_responder_{$subSec[mysec].id}">
+						<p class="foro_respuesta_autor">{$rotuloAutor}
+						{if $subSec[mysec].autor != ""}{$subSec[mysec].autor} {else}Anonimo{/if} [{$subSec[mysec].fecha}]</p>
+						<p class="foro_respuesta_contenido">{$subSec[mysec].nombre}</p>
+						<input type="hidden" name="idRespuesta" value="{$subSec[mysec].id}">
+		{if $info.estadoid == '3'}<input type="submit" name="submit" value="Responder" class="foro_ir_resp_boton">{/if}
+					</form>
+
+					{if $subSec[mysec].hijos != ""}
+						<ul>
+							{section name=mysec2 loop=$subSec[mysec].hijos}
+							<li>
+						    	<p class="foro_respuesta_autor">{$rotuloAutor}
+							        {if $subSec[mysec].hijos[mysec2].autor != ""}{$subSec[mysec].hijos[mysec2].autor}{else}Anonimo{/if}
+							        ({$subSec[mysec].hijos[mysec2].fecha})
+						        </p>
+						        <p class="foro_respuesta_contenido">{$subSec[mysec].hijos[mysec2].nombre}</p>
+							</li>
+							{/section}
+						</ul>
+					{/if}
+				</li>
+				{/section}
+			</ul>
+		</div>
+	    <!--Foros:Respuestas-->
+		{/if}
+	{/if}
+
+
+
+<!-- FIN FORO --->
+
+<!--Fin Default:Cuerpo-->
+
+	{if ($c_subir != "" || $c_imprimir != "" || $c_cuentele != "")}
+	        <!--Default:Utilitarios-->
+		<div id="default_utilitarios">
+			{if $c_subir != ""}{$c_subir}{/if}
+			{if $c_imprimir != ""}{$c_imprimir}{/if}
+			{if $c_cuentele != ""}{$c_cuentele}{/if}
+		</div>
+        <!--Fin Default:Utilitarios-->
+	{/if}
+</div>
+

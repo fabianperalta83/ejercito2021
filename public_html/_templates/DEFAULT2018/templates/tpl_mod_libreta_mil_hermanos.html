@@ -1,0 +1,29 @@
+<div style="border: 1px solid black;">
+<table style="width:100%;" cellpading="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td>Nombre del<br/>Hermano</td>
+			<td><input class="" size="40" maxlength="254" type="text" name="nombreHermano{$numHermano}" value="{$nombreHermano}" id="nombreHermano{$numHermano}_ID" /></td>
+		</tr>
+		<tr>
+			<td>Fecha de<br/>Nacimiento</td>
+			<td><input class="fecha_formulario_rdga" maxlength="254" type="text" name="fechaNacimientoHermano{$numHermano}" value="{$fechaNacimientoHermano}" id="fechaNacimientoHermano{$numHermano}_ID" size="12" /></td>
+		</tr>
+		<tr>
+			<td>Profesi&oacute;n, Ocupaci&oacute;n<br/>u Oficio</td>
+			<td>
+				<select class="tpl_input_edicion_requerido" name="codEmpleoHermano{$numHermano}" id="codEmpleoHermano{$numHermano}_ID" >
+					<option value="">Seleccione...</option>
+					{foreach key=key item=item from=$grupoCodEmpleo}
+						<option value="{$key}" {if ($codEmpleoHermano neq "") and ($codEmpleoHermano eq $key)} selected="selected" {/if}>{$item}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Direcci&oacute;n</td>
+			<td><input class="tpl_input_edicion_requerido" maxlength="254" type="text" name="direccionResidenciaHermano{$numHermano}" value="{$direccionResidenciaHermano}" id="direccionResidenciaHermano{$numHermano}_ID" /></td>
+		</tr>
+	</tbody>
+</table>
+</div>

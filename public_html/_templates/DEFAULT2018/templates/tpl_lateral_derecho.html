@@ -1,0 +1,214 @@
+<script type="text/javascript">
+	 $(document).ready(function(){
+		/*if(localStorage.getItem("mostrar_Tbl_lateral")=="no")
+	    {
+
+	        $(".tabla_lateral1").css("display", "none");
+	        localStorage.setItem("mostrar_Tbl_lateral", "si");
+	    }*/
+
+	   	var str = window.location.href;
+		var n = str.indexOf("administra");
+		if(n == -1)
+		{
+			//document.getElementById("demo").innerHTML ="no";
+			$(".tabla_lateral1").css("display", "block");
+		}
+		else
+		{
+			
+		}
+
+	    
+	    
+     });
+</script>
+
+{if $tipoCategoria==22 || $tipoCategoria==21 || $tipoCategoria==20}
+	<div class="col-md-12 col-lg-12" >
+	    <div class="row div_left">
+	        <div class="menuSegNivel">
+	            <h2>{$smarty.const._ROT_MENU_USER}</h2>
+	            <div class="red_line"></div>
+	            <ul class="lista_sencilla_menu">
+	                {section name=link loop=$menuSegNivel}       
+	                    <li class="item{$smarty.section.link.index}" {if $smarty.section.link.last} style="border-bottom: 0;" {/if}>
+	                        <a href="index.php?idcategoria={$menuSegNivel[link].idcategoria}" class="wrap9">
+	                            {$menuSegNivel[link].nombre}
+	                        </a>
+	                    </li>
+	                {/section}
+	            </ul>       
+	        </div>
+	    </div>
+	</div>
+{/if}
+<div class="row tabla_lateral1" style="display: none">
+	
+	<div class="col-md-12 col-lg-12" id="destacados-lateral">
+		<div class="slide slide-destacados alto_contraste col-sm-12" >
+			<div class="row" >
+				<a href="https://www.reclutamiento.mil.co/" target="_blank">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest1" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div class="" style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Incorporaci&oacute;n</div>
+						
+	                    
+	                    {else}
+	                        <div class="" style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Enlistment</div>
+						
+	                    {/if}
+
+
+	                    </div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="slide slide-destacados alto_contraste col-sm-12">
+			<div class="row">
+				<a href="https://www.ejercito.mil.co/informes_noticias/enterese_proceso_paz">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest2" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+						
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Pedagog&iacute;a para la paz</div>
+						
+	                    
+	                    {else}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Pedagogy for Peace</div>
+						
+	                    {/if}
+
+						
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="slide slide-destacados alto_contraste col-sm-12">
+			<div class="row">
+				<a href="https://www.ejercito.mil.co/informes_noticias/habla_comandante">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest3" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">La voz del comandante</div>
+						
+	                    
+	                    {else}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">The Voice of the Comander</div>
+						
+	                    {/if}
+
+						
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="slide slide-destacados alto_contraste col-sm-12">
+			<div class="row">
+				<a href="https://www.ejercito.mil.co/servicio_ciudadano/cumplimiento_sentencias">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest4" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+						
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Notificaciones judiciales</div>
+						
+	                    
+	                    {else}
+	                       <div style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Judical Notification's</div>
+						
+	                    {/if}
+
+
+						
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="slide slide-destacados alto_contraste col-sm-12">
+			<div class="row">
+				<a href="http://www.pqr.mil.co/">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest5" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Registre sus solicitudes</div>
+						
+	                    
+	                    {else}
+	                       <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Submit your Request</div>
+						
+	                    {/if}
+						
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="slide slide-destacados alto_contraste col-sm-12">
+			<div class="row">
+				<a href="https://www.clublancita.mil.co/" target="_blank">
+					<div class="fonfo_destacado-lateral">
+						<div class="" style="width:100%;"></div>
+						<div class="img_dest6" style="height: 190px; width:250px;"></div>
+						<div style="background-color: white;margin-top:-10px;padding-top:10px;">
+						<div class="" style="background-color: #862024;height: 3px;width: 200px;margin-top:10px;margin-left: 20px;"></div>
+						{if $smarty.const._EN_INGLES !=1}
+	                        <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Soy lancita</div>
+						
+	                    
+	                    {else}
+	                      <div  style="color:black;font-family: Roboto; margin-top: 7px; font-size: 1.2em; font-weight: bold;margin-left:20px;">Im Lancita</div>
+						
+	                    {/if}
+
+
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{literal}
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  // slick carousel
+		  $('#destacados-lateral').slick({
+		    autoplay: true,
+		    speed: 4000,
+        	autoplaySpeed: 3000,
+		    dots: false,
+		    vertical: true,
+		    slidesToShow: 3,
+		    slidesToScroll: 1,
+		    verticalSwiping: true,
+		    nextArrow: '<div class="slick-next right-slide-lateral"></div>',
+          	prevArrow: '<div class="slick-prev left-slide-lateral"></div>',
+		  });
+		});
+	</script>
+{/literal}
+

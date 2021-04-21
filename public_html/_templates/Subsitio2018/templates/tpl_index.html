@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"> 
+	<head>
+		<title>{$tituloPagina}</title>
+		{if FriendlyURL::$enable}<base href="{$smarty.const._URL}">{/if}
+		<!-- <meta http-equiv="pragma" content="no-cache"> -->
+		<meta name="google-site-verification" content="jGxcjLj1cmeZbqF9QvVRNLqshLoBEa3FvqhNzwpklqE">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="author" content="{$smarty.const._AUTHOR}">
+		<meta name="copyright" content="{$smarty.now|date_format:"%Y"} &copy; Micrositios Ltda. www.micrositios.net">
+		<META NAME="description" CONTENT="{$smarty.const._METADESCRIPTION}">
+		<META NAME="Robots" CONTENT="index,follow">
+		<META NAME="keywords" CONTENT="{$smarty.const._METAKEYWORDS}">
+		<META NAME="classification" CONTENT="{$smarty.const._METACLASSIFICATION}">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="generator" content="Micrositios CMS http://www.micrositios.net">
+
+		<!-- Jquery youtube Popup-->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const._DIRCSS}jquery_youtube_popup/css/lightbox.min.css">
+		<script type="text/javascript" src="{$smarty.const._DIRCSS}jquery_youtube_popup/js/jquery.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const._DIRCSS}jquery_youtube_popup/js/lightbox.js"></script>
+
+		<!-- MetaTags facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="https://www.ejercito.mil.co/_templates/Default2011/recursos/images/cabezote/escudo_ejercito.png">
+		<meta property="og:site_name" content="Ejército Nacional de Colombia ">
+		<meta property="fb:admins" content="100002005634412">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+			
+		<link href="https://www.ejercito.mil.co/favicon1.ico" rel="shortcut icon">
+
+		{if $version_imprimir === TRUE}
+			<link href="{$smarty.const._DIRCSS}estilo_imprimir.css" rel="stylesheet" type="text/css" title="Versión Imprimir">
+		{else}
+			<!-- Bootstrap -->
+	        <link href="{$smarty.const._DIRCSS}bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+			<link href="{$smarty.const._DIRCSS}bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css" media="all">
+			<link href="{$smarty.const._DIRCSS}estilo_general.css" rel="stylesheet" type="text/css" title="Versión Normal" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}style.css?{$smarty.now}" rel="stylesheet" type="text/css" title="Versión Normal" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}ejercito.css?{$smarty.now}" rel="stylesheet" type="text/css" title="Versión Normal" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}subsitios.css?{$smarty.now}" rel="stylesheet" type="text/css" title="Versión Normal" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}estilo_herramientas.css" rel="stylesheet" type="text/css" media="screen,print">
+			<link href="{$smarty.const._DIRCSS_ADMIN}estilo_admin.css" rel="stylesheet" type="text/css" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}flexslider.css" rel="stylesheet" type="text/css" media="screen,print">
+			<link href="{$smarty.const._DIRCSS}jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen,print">
+		{/if}	
+		<link rel="alternate" TITLE="{$smarty.const._NOMBRESITIO} : RSS" HREF="rss/" TYPE="application/rss+xml">
+				
+		<script src="js/scripts_misc_01.js" type="text/javascript"></script>
+		<script src="js/misc.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/objetoajax.js"></script>
+		<script type="text/javascript" src="js/responsive-nav.js"></script>	
+  		<script src="https://use.fontawesome.com/89a7330f63.js"></script>
+		
+		{if $smarty.const._SINICIO == 1 ||$smarty.const._SINICIO == 113867 }
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+		    <script type="text/javascript" src="js/tabs_automaticos.js"></script>
+		    <script src="tools/colorbox/jquery.colorbox.js"></script>		  
+			<link rel="stylesheet" href="tools/colorbox/colorbox.css" /> 
+        {/if}	
+        
+        <script type="text/javascript" src="{$smarty.const._DIRCSS}bootstrap/bootstrap.js"></script>
+		<script type="text/javascript" src="{$smarty.const._DIRJS}bootstrap-hover-dropdown.min.js"></script>
+		<!-- Slider Kit scripts -->
+		<script type="text/javascript" src="js/sliderkit-2015/js/sliderkit/jquery.sliderkit.1.9.2.pack.js"></script>
+		<script type="text/javascript" src="js/sliderkit-2015/js/sliderkit/addons/sliderkit.counter.1.0.pack.js"></script>
+		<script type="text/javascript" src="js/sliderkit-2015/js/sliderkit/addons/sliderkit.imagefx.1.0.pack.js"></script>
+		<script type="text/javascript" src="js/sliderkit-2015/js/sliderkit/addons/sliderkit.delaycaptions.1.1.pack.js"></script>
+		<script type="text/javascript" src="js/sliderkit-2015/js/external/jquery.easing.1.3.min.js"></script>
+		<script type="text/javascript" src="js/sliderkit-2015/js/external/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+
+		<script type="text/javascript" src="js/instafeed.min.js"></script>
+		<script type="text/javascript" src="js/slick.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="_templates/DEFAULT2018/recursos/css/slick-theme.css">
+		<script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- jQuery Plugin scripts -->
+		<link rel="stylesheet" type="text/css" href="js/sliderkit-2015/css/sliderkit-core.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="js/sliderkit-2015/css/sliderkit-demos.css" media="screen" />
+
+		<link rel="stylesheet" href="{$smarty.const._DIRCSS}jqueryjustified/justifiedGallery.min.css" />
+		<script src="{$smarty.const._DIRCSS}jqueryjustified/jquery.justifiedGallery.min.js"></script>
+
+		<!-- Implementacion efecto Nieve Navidad-->
+		<!--<script src="{$smarty.const._DIRCSS}efecto_nieve/snowstorm.js"></script>-->
+            
+	</head>		
+    <body style=" background: rgba(230,230,230,1);">
+        <!-- Div efecto artificiasl 
+        <div id="fireworks-template">
+            <div id="fw" class="firework"></div>
+            <div id="fp" class="fireworkParticle"><img src="{$smarty.const._DIRCSS}efecto_artificial/image/particles.gif" alt="" /></div>
+        </div>
+        <div id="fireContainer"></div>-->
+		<!-- JS SDK -->
+		<div id="fb-root"></div>
+
+		<div class="secondaryBody">
+			<h1>{$smarty.const._NOMBRESITIO}</h1>
+			{$tpl_cabezote}
+			<!--Panel de Navegación-->
+			<!--            <div id="social_network" class="hidden-sm hidden-xs">--> <!--Contenedor Original -->
+                <div id="social_network" class="hidden-sm hidden-xs hide"> <!-- Ajuste de contenedor de redes sociales, se oculta para nueva ubicación dentro de la pagina 13/05/2019 -->
+				<div id="fb_red" class="red_social_item" style="width:55px"><a href="{$smarty.const.__FACEBOOK}" title="Facebook" target="_blank" class=""><p class="hidden">{$smarty.const.__FACEBOOK}</p></a></div>
+				<div id="tw_red" class="red_social_item" style="width:55px"><a href="{$smarty.const.__TWITTER}" title="Twitter" target="_blank" class=""><p class="hidden">{$smarty.const.__TWITTER}</p></a></div>
+				<div id="yt_red" class="red_social_item" style="width:55px"><a href="{$smarty.const.__YOUTUBE}" title="Youtube" target="_blank" class=""><p class="hidden">{$smarty.const.__YOUTUBE}</p></a></div>
+				<div id="in_red" class="red_social_item" style="width:55px"><a href="{$smarty.const.__LINKEDIN}" title="Google +" target="_blank" class=""><p class="hidden">{$smarty.const.__LINKEDIN}</p></a></div>
+			</div>
+			{if $esHome == 1}
+				{$tpl_contenido} 
+			{else if $tipoCategoria==22 || $tipoCategoria==21 || $tipoCategoria==20}
+				<div class="container">
+					<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12" style="background-color: #EAEAEA; margin-top: 36px;">
+						<!--Datos de Contenido -->
+						{$tpl_contenido} 
+						{if  $tipoCategoria==22 || $tipoCategoria==21 || $tipoCategoria==20}
+							</div>
+							</div>
+						{/if}
+					</div>
+					<div class="col-md-3 col-lg-3 hidden-sm hidden-xs">
+						<div class="row">{$tpl_lateral_derecho}</div>
+					</div>
+				</div>
+			{else}
+				<div class="container">
+					<div class="col-md-3 col-lg-3 hidden-xs hidden-sm" style="margin-top: 80px; z-index: 1;">
+						<div class="row">{$tpl_lateral}</div>
+					</div>
+					<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style=" margin-top: 50px;">
+						{$tpl_contenido}
+					</div>
+					<div class="col-md-3 col-lg-3 hidden-sm hidden-xs" style="margin-top: 80px; z-index: 1; left:40px;">
+						<div class="row">{$tpl_lateral_derecho}</div>
+					</div>
+				</div>
+			{/if}
+			{$tpl_pie}				
+		</div>
+		{if $version_imprimir === TRUE}
+			<script type="text/javascript">
+					if (confirm('¿Desea imprimir esta página?')) self.print();
+			</script>
+		{/if}
+        {literal}
+			<script>
+				setTimeout(function()
+				{  
+					$("html").removeAttr("class");
+					$("#twitter-widget-0").prop('title', 'timeline_twitter-portal-web');
+				}, 1000);
+			</script>
+			<script type="text/javascript">
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', '{/literal}{$smarty.const._GOOGLE_ANALYTICS}{literal}', 'auto');
+			  ga('send', 'pageview');
+
+			</script>
+		{/literal}	

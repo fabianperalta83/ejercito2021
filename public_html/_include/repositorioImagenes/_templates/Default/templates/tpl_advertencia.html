@@ -1,0 +1,18 @@
+<!-- el texto de advertencia de derechos de autor va en el resumen de la categoria -->
+{if $zona_edicion}
+<div>
+<ul class="mainDav">
+<li>
+<a href="index.php?idcategoria={$catrevision}">Administración Imagenes</a>
+</li>
+</ul>
+</div>
+{/if}
+
+<form action="" id="aceptarcondiciones" method="POST">
+<div align="center">
+<input class="boton" type="submit" name="acepta" id="acepta" value="acepto">
+<input class="boton" type="submit" name="noacepta" id="noacepta" value="no acepto">
+<span>{$smarty.const._ACEPTAR_CONDICIONES}</span>
+</div>
+</form>

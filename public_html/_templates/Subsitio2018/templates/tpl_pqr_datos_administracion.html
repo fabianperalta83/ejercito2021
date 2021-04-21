@@ -1,0 +1,29 @@
+<table width="100%">
+	<tr align="center" bgcolor="#F0F1FC">
+		<td>Id</td>
+		<td>Nombre</td>
+		<td>Descripci&oacute;n</td>
+		{if $form=='dependencias'}
+			<td>Correo</td>
+		{/if}
+		<td colspan="2">Acciones</td>
+	</tr>
+		{section name=indice loop=$lista}
+			<tr bgcolor="{cycle values="#CCD7E3,#DDE5EE"}">
+				<td align="center">{$lista[indice].id}</td>
+				<td>{$lista[indice].nombre}</td>
+				<td>{$lista[indice].descripcion}</td>
+				{if $form=='dependencias'}
+					<td>{$lista[indice].email}</td>
+				{/if}
+				<td align="center">
+					<table>
+						<tr>
+							<td><a href="#"><img style="margin-right:10px;border:none;" src="{$dir_admin_images}btn_eliminar.jpg" onclick=enviarAccion(document.form_solicitud,1,{$lista[indice].id})></a></td>
+							<td><a href="#"><img style="border:none;" src="{$dir_admin_images}btn_modificar.jpg" onclick=enviarAccion(document.form_solicitud,2,{$lista[indice].id})></a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		{/section}
+</table>

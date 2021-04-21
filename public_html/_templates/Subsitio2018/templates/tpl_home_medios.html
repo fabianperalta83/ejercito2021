@@ -1,0 +1,28 @@
+<div id="actualidad">
+
+	<ol id="secActualidadMain">
+	 {section name=idmedios loop=$hijoDestacadoMedios start=0 loop=4 step=1}
+
+	     {if $smarty.section.idmedios.index eq 2}
+			         
+				 <li name="secActualidad" style="width:94%;*padding-bottom: 17px">
+			   
+			{else}
+			   
+			     <li name="secActualidad" style="border-bottom:0px dotted #000000;width:94%;*padding-bottom: 17px">
+			      
+		 {/if}
+						
+						<a href="index.php?idcategoria={$hijoDestacadoMedios[idmedios].idcategoria}" target="_blank" 
+						  title="{$hijoDestacadoMedios[idmedios].nombre}">
+						  
+								 <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$hijoDestacadoMedios[idmedios].imagen}&amp;w=129&amp;h=97" alt="{$hijoDestacadoMedios[idmedios].nombre}#" /> 
+										 
+								 <span>{$hijoDestacadoMedios[idmedios].nombre|truncate:100:"":true}</span>
+						</a> 
+				
+			     </li>  
+			
+	 {/section}
+    </ol>
+</div>	

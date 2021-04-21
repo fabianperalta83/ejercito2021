@@ -1,0 +1,61 @@
+<div id="default">
+<h2><a name="cont">{$smarty.const._ROT_CONTENT}</a></h2>
+
+<!--Default:Encabezado-->
+    {if $c_antetitulo != ""}<p class="dAntetitulo">{$c_antetitulo}</p>{/if}
+    <div id="dEncabezados">
+        {if $c_titulo != ""}
+            <div class="fondo_title_home" style="margin: 0 15px">
+                <div id="title_noticias" style="width:20%;">{$c_titulo|upper}</div>
+            </div>
+        {/if}
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="red_gray_home" style=" margin-top:5px"></div>
+        </div>
+        {if $c_subtitulo != ''}<p class="dSubtitulo">{$c_subtitulo}</p>{/if}
+    </div>
+    <div class="default-aux-1">
+        {if $c_fecha != "" and $c_fecha != "0000-00-00"}
+        <p class="fecha">{$c_fecha}</p>
+        {/if}
+
+        <!-- {if $l_imagen or $c_entradilla or $c_descripcion}
+    	    <div class="default_entradilla" id="default_entradilla">
+    			{if $l_imagen != ""}
+    				<div style="text-align:{$alinea};{if $c_entradilla || $c_descripcion}margin:{if $fwidth <= $anchomedio}0 15px 5px 0;float:{$alinea};{else}0 0 20px 0;{/if};{else}text-align:center;margin:0em;{/if}{if $width >= $smarty.const._IMGANCHOMAXIMO+100}width:{$fwidth}px;margin:0 auto 20px auto;text-align:right;{/if}">
+    					<img class="imgDefault" src="tools/microsThumb.php?src={$l_imagen}&amp;w={$fwidth}" alt="{$c_titulo}">
+    					{if $width >= $smarty.const._IMGANCHOMAXIMO+100}
+    						<a class="ampliar" href="{$smarty.const._DIRIMAGES_USER}{$imagen}" title="{$smarty.const._ROT_AMPLIAR_IMAGEN}">{$smarty.const._ROT_IMAGEN} [+]</a>
+    					{/if}
+    				</div>
+    			{/if}
+
+    			{if $c_entradilla != ""}
+    				<div class="entradilla">{$c_entradilla}</div>
+    			{/if}
+    			{if $c_descripcion != ""}
+    				<div class="default_descripcion" id="default_descripcion">{$c_descripcion}</div>
+    			{/if}
+    			{if $c_autor != ""}
+    				<p class="default_autor">{$c_autor}</p>
+    			{/if}
+    		</div>
+        {/if} -->
+
+        {if $c_submenu != ""}
+            <div class="default_submenu">
+                <h4>{$smarty.const._ROT_SUBCATEGORIAS}</h4>
+                {$c_submenu}
+            </div>
+        {/if}
+
+        {if ($c_subir != "" || $c_imprimir != "" || $c_cuentele != "")}
+            <div id="default_utilitarios">
+                <h4>{$smarty.const._ROT_UTILIDADES}</h4>
+                {if $c_subir != ""}<span>[</span>{$c_subir}<span>]</span>{/if}
+                {if $c_imprimir != ""}<span>[</span>{$c_imprimir}<span>]</span>{/if}
+                {if $c_cuentele != ""}<span>[</span>{$c_cuentele}<span>]</span>{/if}
+            </div>
+        {/if}
+    </div>
+</div>

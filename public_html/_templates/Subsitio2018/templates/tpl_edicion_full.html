@@ -1,0 +1,285 @@
+{literal}
+	
+  <script src="js/tinymce/tinymce.min.js"></script>
+	
+  <script type="text/javascript" src="js/preview.js"></script>
+
+  <script type="text/javascript" src="_lib/image_manager/assets/dialog.js"></script>
+  <script type="text/javascript" src="_lib/image_manager/IMEStandalone.js"></script>
+
+  <!-- Calendario -->
+  <script type="text/javascript" src="_lib/jscalendar/calendar.php"></script>
+  <!-- language for the calendar -->
+
+  <script type="text/javascript" src="_lib/jscalendar/lang/calendar-es.js"></script>
+  <!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+  <script type="text/javascript" src="_lib/jscalendar/calendar-setup.js"></script>
+
+  <style type="text/css">
+    @import url("_lib/jscalendar/calendar-win2k-1.css");
+    @import url("_templates/Default/recursos/css/estilo_secab.css");
+  </style>
+  
+  <script type="text/javascript" src="js/simpleFacebookGraph.js"></script>
+
+
+  <script type="text/javascript">
+    //<![CDATA[
+
+    //Create a new Imanager Manager, needs the directory where the manager is
+    //and which language translation to use.
+    var manager = new ImageManager('_lib/image_manager','en');
+
+    //Image Manager wrapper. Simply calls the ImageManager
+    ImageSelector =
+    {
+      //This is called when the user has selected a file
+      //and clicked OK, see popManager in IMEStandalone to
+      //see the parameters returned.
+      update : function(params)
+      {
+        if(this.field && this.field.value != null)
+        {
+          this.field.value = params.f_file; //params.f_url
+        }
+      },
+      //open the Image Manager, updates the textfield
+      //value when user has selected a file.
+      select: function(textfieldID)
+      {
+        this.field = document.getElementById(textfieldID);
+        manager.popManager(this);
+      }
+    };
+
+    /**************************************************************/
+    /**
+     * Function cargarImagen
+     */
+    function cargarImagen(img) {
+      var objImg = document.getElementById("imgth");
+      var val = img.replace(/^\s*(.+)\s*$/, "$1");
+      if (val != '') {
+        objImg.src = unescape("tools/microsThumb.php?src=recursos_user/imagenes" + img);
+        objImg.style.display = 'block';
+      } else {
+        objImg.style.display = 'none';
+      }
+    }
+    //]]>
+    </script>
+	
+	
+	
+	<!-- **************** 
+	                   JAVASCRIPT PUBLICAR REDES SOCIALES 
+	                                        **************************** -->
+									   
+	<script type="text/javascript">
+	    
+	// Cuando la pagina carga miramos si ya hay un usuario identificado.
+    fb.ready(function(){ 
+       if (fb.logged)
+       {
+          // Cambiamos el link de identificarse por el nombre y la foto del usuario.
+          html = "<p style='background-position:center'><strong>Bienvenido:</strong> " + fb.user.name + "</p>";
+          html += '<p style=background-position:center><img src="' + fb.user.picture + '"/></p>';
+          html += '<p><a href="#" onclick="fb.logout(); return false;">Salir</a></p>';
+          document.getElementById("conectar_facebook").innerHTML = html;
+       }
+    });
+
+    function validar_caracteres(campo_validar)
+ 	{
+ 		entradilla_form = document.getElementById(campo_validar).value;
+ 		numeroCaracteres = entradilla_form.length;
+ 		inicioBlanco = /^ /
+		// El $ indica final de cadena
+		finBlanco = / $/
+		// El global (g) es para obtener todas las posibles combinaciones
+		variosBlancos = /[ ]+/g 
+
+		entradilla_form = entradilla_form.replace(inicioBlanco,"");
+		entradilla_form = entradilla_form.replace(finBlanco,"");
+		entradilla_form = entradilla_form.replace(variosBlancos," ");
+
+		// Creamos un array con las diferentes palabras. Teniendo en 
+		// cuenta que la separación entre palabras es el espacio en blanco.
+		textoAreaDividido = entradilla_form.split(" ");
+		numeroPalabras = textoAreaDividido.length;
+
+		// Mostramos los datos.
+		// Tendremos en cuenta si hay que escribir en plural o en singular.
+		tC = (numeroCaracteres==1)?" carácter":" caracteres";
+		tP = (numeroPalabras==1)?" palabra":" palabras";
+		 
+		alert (numeroCaracteres + tC +"\n" + numeroPalabras + tP);
+ 	}
+ 
+ 
+   // Funcion para logarse con Facebook.
+    function login() {
+      fb.login(function(){ 
+       if (fb.logged) {
+         // Cambiamos el link de identificarse por el nombre y la foto del usuario.
+        html = "<p style='background-position:center'><strong>Bienvenido:</strong> " + fb.user.name + "</p>";
+        html += "<p style='background-position:center'><img src='" + fb.user.picture + "'/></p>";
+		html += '<p><a href="#" onclick="fb.logout(); return false;">Salir</a></p>';//para cerrar sesión
+        document.getElementById("conectar_facebook").innerHTML = html;
+    } else {
+      alert("No se pudo identificar al usuario");
+    }
+   })
+  };
+ 
+// Funcion para publicar un mensaje en tu muro
+    var publish = function () {
+ 
+ 
+     //capturamos variables del formulario
+ 
+ 
+    //var mensaje = wEditor.entradilla_form.value;  IE
+    var mensaje = "";
+    	
+    // var imagen  = wEditor.imagen_form.value;  IE
+	var imagen  = document.getElementById('imagen_form').value;
+	
+    //var linkpag = wEditor.link.value;  IE
+	var linkpag =  document.getElementById('link').value;
+	
+    //var titulo  = wEditor.nombre_form.value;  IE
+	var titulo  = document.getElementById('nombre_form').value;
+	
+    
+	//var resumen = wEditor.Text1.value;    IE
+	var resumen = document.getElementById('entradilla_form').value;
+	
+ 
+ 
+    fb.publish({
+	
+ 
+	//Mensaje que va a aparecer debajo del nombre de perfil
+    //  message : "'Humbert’ era el encargado de reclutar y entrenar jóvenes para las bandas criminales en el Meta y Vichada",
+	  message : mensaje,
+	//Imagen que va a tener la publicacion  
+    //  picture : "http://www.ejercito.mil.co/recursos_user/imagenes/2011/Febrero/tehumbert.jpg",
+	  picture : "http://www.ejercito.mil.co/recursos_user/imagenes"+imagen,
+	//link que referencia a la pagina donde se encuentra la publicación  
+    //  link : "http://www.ejercito.mil.co/?idcategoria=276994",
+	  link : "http://www.ejercito.mil.co/index.php?idcategoria="+linkpag,
+	//titulo que va a tener la publicación en el facebook  
+    //  name : "Capturado por el Ejército cabecilla de la banda criminal de ‘Cuchillo’",
+      name : titulo,	 
+	  
+	//Descripción que va a tener la publicación  
+    //  description : "Villavicencio. Tropas del Batallón de Ingenieros 7 ´General Carlos Albán´, unidad orgánica de la Séptima Brigada, capturaron al sujeto Carlos Humberto Correa conocido con el alias de ´Teniente Humbert´, importante cabecilla de la banda criminal ´ERPAC´ que lideraba el extinto Pedro Oliveiro Guerrero Castillo, alias ´Cuchillo´. La operación que contó con el apoyo de la Sijin Meta, tuvo lugar en el barrio Suba de la capital de la República, donde gracias a labores de inteligencia militar se logra la captura de este sujeto."
+	  description : resumen
+	  
+    },function(published){ 
+      if (published)
+       alert("publicado en muro!");
+      else
+       alert("No ha sido publicado,seguramente porque no esta identificado o no diste permisos");
+    }); 
+	
+   }
+ 
+
+	</script>
+	
+	
+{/literal}
+
+<!--Template Edición-->
+<div id="edicion">
+
+	{if $subMenuError != ""}
+		{strip}
+			{$subMenuError}<br>
+		{/strip}
+	{/if}
+
+	<form action="{$c_action}" method="POST" enctype="multipart/form-data" name="wEditor" target="_self">
+		<table class="mainTable" cellspacing="0" summary="Formulario de Edición">
+			<tr>
+				<td class="edicion_elemento userInfo">
+					{$userInfo.nombres} {$userInfo.apellidos} &lt; {$userInfo.username} &gt;
+				</td>
+			</tr>
+		    <tr>
+		    	<td class="edicion_titulo titulo">
+		    		{$c_titulo} [{$idcategoria}]
+		    	</td>
+		    </tr>
+		    <tr>
+		    	<td class="edicion_elemento salvar">
+		    		{$c_salvar}
+		    	</td>
+		    </tr>
+		    {if $c_submenu != ""}
+		    <tr>
+		    	<td class="edicion_elemento submenu">
+		    		{$c_submenu}
+		    	</td>
+		    </tr>
+			{/if}
+
+			<tr>
+				<td class="edicion_elemento resaltados">
+					{$c_formulario_titulo}
+				</td>
+			</tr>
+
+			{* La categoria 232841 solo puede ser editada por el administrador *}
+			{if $idcategoria!=232841 OR $administrador==TRUE OR $idpadre_form!=""}       			
+			<tr>
+				<td>
+					<table class="secondaryTable text-left" cellspacing="0" summary="">
+						{section name=mysec loop=$campos}
+						{strip}
+							{if $campos[mysec].nombre != ""}
+								<tr style='background:{cycle values="#FFFFFF,#F0F7FF"}'>
+									<td class="edicion_elemento nombreCampo">
+										{if $campos[mysec].clase == "requerido"}<strong style="color:blue;">{/if}
+										{$campos[mysec].nombre}
+										{if $campos[mysec].clase == "requerido"}</strong>{/if}
+									</td>
+									<td class="edicion_elemento">
+										{$campos[mysec].input}
+									</td>
+								</tr>
+							{else}
+								{$campos[mysec].input}
+							{/if}
+						{/strip}
+						{/section}
+					</table>
+				</td>
+			</tr>
+			{/if}
+					
+			<tr>
+				<td class="edicion_elemento salvar">
+					{$c_salvar}
+				</td>
+			</tr>
+			<tr>
+				<td class="edicion_elemento salvar">
+					{$c_micrositios}
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div>{$c_version}</div>
+</div>
+{if $iddisplay_form != 22}
+
+</div>
+</div>
+{/if}
+
+<!--Fin Template Edición-->
+

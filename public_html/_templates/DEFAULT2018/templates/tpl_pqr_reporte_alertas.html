@@ -1,0 +1,50 @@
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+<div style="text-align:right">
+<div class="boton_resaltado_pqr"><a href="{$esta_pagina}&exportarXml=1">Exportar XML</a></div>
+</div>
+<br>
+<table style="width:100%">
+	<tr  style="background:#000;color:#FFFFFF;font-weight:bold;text-align:center">
+		<th>Solicitud ID</th>
+		<th>Dependencia</th>
+		<th>Fecha de Creación</th>
+		<th>Plazo (Días)</th>
+		<th>Fecha Límite</th>
+		<th>Tiempo Restante</th>
+		<th>Estado</th>
+		<th>Detalle</th>
+	</tr>
+	{section name=index loop=$reportedatos}
+	
+	<!-- MUESTRA TODOS LOS DATOS --> 
+	
+	<!--
+	<tr align="center" bgcolor="{cycle values='#E0DABA,#F7FAFC'}"
+	{if $reportedatos[index].tiempo_restante<=0} style="font-weight:bold; color:red"{/if}>
+		<td>{$reportedatos[index].solicitud_id}</td>
+		<td>{$reportedatos[index].dependencia_nombre}</td>
+		<td>{$reportedatos[index].fecha_creacion}</td>
+		<td>{$reportedatos[index].plazo}</td>
+	 	<td>{$reportedatos[index].fecha_limite}</td>
+		<td>{$reportedatos[index].tiempo_restante}</td>
+		<td>{$reportedatos[index].estado_nombre}</td>
+		<td><a href="{$url_gestion}&solicitud_id={$reportedatos[index].solicitud_id}"><img src="{$dir_admin_images}btn_auditoria.jpg" alt="Ver detalles"></a></td>
+	</tr>
+	-->
+	
+	<!-- FILTRO QUE SOLO TRAE LAS SOLICITUDES VENCIDAS --> 
+	{if $reportedatos[index].tiempo_restante <= 0}
+	<tr align="center" bgcolor="{cycle values='#E0DABA,#F7FAFC'}" style="color:red;font-weight:bold">
+	  
+	    <td>{$reportedatos[index].solicitud_id}</td>
+		<td>{$reportedatos[index].dependencia_nombre}</td>
+		<td>{$reportedatos[index].fecha_creacion}</td>
+		<td>{$reportedatos[index].plazo}</td>
+	 	<td>{$reportedatos[index].fecha_limite}</td>
+		<td>{$reportedatos[index].tiempo_restante}</td>
+		<td>{$reportedatos[index].estado_nombre}</td>
+		<td><a href="{$url_gestion}&solicitud_id={$reportedatos[index].solicitud_id}"><img src="{$dir_admin_images}btn_auditoria.jpg" alt="Ver detalles"></a></td>	  
+	</tr>
+	{/if}
+	{/section}
+</table>

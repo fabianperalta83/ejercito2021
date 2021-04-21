@@ -1,0 +1,82 @@
+<script type="text/javascript" src="js/prototype.js"></script>
+<noscript>
+<p>{$smarty.const._ROT_NOSCRIPT}. Lightbox uses the Prototype Framework</p>
+</noscript>
+<script type="text/javascript" src="js/scriptaculous.js?load=effects"></script>
+<noscript>
+<p>Lightbox uses the Scriptaculous Effects Library</p>
+</noscript>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<noscript>
+<p>Lightbox is a simple, unobtrusive script used to overlay images on
+the current page.</p>
+</noscript>
+
+
+<link rel="stylesheet" href="js/colorbox/colorbox.css"/>
+<script src="js/colorbox/jquery.min.js"></script>
+<script src="js/colorbox/jquery.colorbox.js"></script>
+
+{literal}
+<script type="text/javascript">
+			$(document).ready(function(){
+			  //Examples of how to assign the Colorbox event to elements
+			  $(".group2").colorbox({rel:'group2', transition:"fade"}); 
+			  
+			  //Example of preserving a JavaScript event for inline calls.
+				$("#click").click(function(){ 
+					$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+					return false;
+				});
+			  
+            });			
+</script>			
+{/literal}
+
+<!--Template visualización publicaciones-->
+
+    <div style="padding-left:0px">
+
+    
+
+    <div style="margin-left: 22px;width:638px">
+	<table id="galeria_foto" style="margin-left:0px;width:80%;border:none">
+		<tr style="height: 285px;width: 783px;border:none">
+			{section name=mysec loop=$subMenu} {if
+			(($smarty.section.mysec.index)%3 == 0) &&
+			($smarty.section.mysec.index <>0)}
+		<tr style="height: 285px;width: 783px;border:none">
+			{/if}
+			<td style="width:25%;vertical-align:top;border:none">
+			<table class="contenido" summary="{$smarty.const._ROT_SUMMARY}" style="background:transparent;border:none">
+				<tr>
+					<td class="tdImg" colspan="2" style="height: 165px;border:none"><!--Cuadro de la Imagen-->
+					<a href="{$smarty.const._DIRIMAGES_USER}/{$subMenu[mysec].imagen}"
+						target="_blank" style="text-decoration:none"
+						title="{$subMenu[mysec].nombre}" class="group2">
+						<img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}/{$subMenu[mysec].imagen}&amp;w=650;h=432" alt="{$subMenu[mysec].nombre}"  style="padding-top:10px;"/>
+					</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="comentario" colspan="2" style="background-color:maroon;font-size:1.3em">
+						<a class="index_menu_segundo"
+							href="?idcategoria={$subMenu[mysec].idcategoria}" style="color:#FFF;text-shadow: black 0.1em 0.1em 0.2em">{$subMenu[mysec].nombre|truncate:75}
+						</a>
+					</td>
+				</tr>
+			</table>
+			</td>
+			{/section}
+		</tr>
+	</table>
+	</div>
+	
+
+	</div>
+
+{if $verMas != ""}
+    {$verMas}
+{/if}
+
+<!--Fin Template visualizar publicaciones-->

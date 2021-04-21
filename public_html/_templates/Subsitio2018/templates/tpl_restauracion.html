@@ -1,0 +1,55 @@
+{if $restauracion == 'A'}
+
+Por favor, ingrese su nueva contrase&ntilde;a.
+<br>
+<br>
+
+<form name="restauracion" action="?idcategoria={$idcategoria}" method="POST">
+	<input type="hidden" value="{$username}" name="username">
+	<input type="hidden" value="{$hash}" name="hash"> 
+	
+	
+	<table>
+		<tr>
+			<td>
+				Nueva contrase&ntilde;a: 
+			</td>
+			<td>
+				<input type="password" value="" name="contrasena" style="border:1px solid #000">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Confirmar nueva contrase&ntilde;a: 
+			</td>
+			<td>
+				<input type="password" value="" name="contrasena_confirmada" style="border:1px solid #000">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Enviar" name="Enviar" style="border:1px solid #000">
+			</td>
+			
+		</tr>
+	</table>
+	
+		
+</form>
+
+{/if}
+
+{if $restauracion == 'NA'}
+
+	Ya ha vencido su solicitud de restauraci&oacute;n de contrase&ntilde;a. Si desea realizarla a&uacute;n, debe solicitarla nuevamente.
+
+{/if}
+
+{if $error}
+	{$error}
+{/if}
+
+{if $exito}
+	{$exito}
+{/if}
+

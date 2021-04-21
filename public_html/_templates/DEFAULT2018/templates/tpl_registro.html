@@ -1,0 +1,84 @@
+
+<!--Template Formulario de Registro-->
+<div id="utilidades">
+
+	{if $subMenuError != ""}{strip}
+		<div class="advertencia"><br>
+			{$subMenuError}
+		<br></div>
+		{/strip}
+	{/if}
+
+	<div><br>{$c_formulario_titulo2}<br><br></div>
+
+	<form method="POST" action="{$c_action}" target="_self">
+		<input type="hidden" name="token" value="{$smarty.session.token}">
+		{section name=mysec loop=$campos2}{strip}
+			{if $campos2[mysec].nombre != ""}
+				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+					{$campos2[mysec].nombre}
+				</div>
+				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+						{$campos2[mysec].input}
+				</div>
+			{else}
+				{$campos2[mysec].input}
+			{/if}
+		{/strip}{/section}
+
+		{if $campos != ""}
+			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="text-align: center;">
+				<input type="submit" value="Recordar mis datos" class="btn btn-primary" />
+			</div>
+		{/if}
+	</form>
+
+	<div><br><br><br>{$c_formulario_titulo}<br></div>
+
+	<form method="POST" action="{$c_action}" target="_self">
+		<input type="hidden" name="token" value="{$smarty.session.token}">
+		
+		{section name=mysec loop=$campos}{strip}
+			{if $campos[mysec].nombre != ""}
+				{if $campos[mysec].input != ""}
+					<div class="col-md-4 col-xs-12 col-lg-4 col-sm-12">
+						{$campos[mysec].nombre}
+					</div>
+					<div class="col-md-8 col-xs-12 col-lg-8 col-sm-12">
+						{$campos[mysec].input}
+					</div>
+				{else}
+					<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="text-align: center; margin-bottom: 10px;">
+						<strong>{$campos[mysec].nombre}</strong>
+					</div>
+				{/if}
+			{else}
+				<div class="col-md-6 col-xs-12 col-lg-6 col-sm-12">
+					{$campos[mysec].input}
+				</div>
+			{/if}{/strip}
+		{/section}
+
+		{if $campos != ""}
+			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="text-align: center;">
+				<div class="titulo_formulario"></div>
+				<div class="lb_formulario_centro">
+					<div class='form-group'>
+						<label for="hash">Confirme el codigo: </label>
+						<input type="text" name="hash" id="hash" class="form-control" />
+					</div>
+				</div>
+				<div style="text-align:center">
+					<img src="tools/captcha.php" alt="Esto nos ayuda a prevenir los registros automatizados." />
+				</div>
+			</div>
+		   	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="text-align:center; background-position:center; margin-top:15px;">
+				<input type="submit" value="Crear mi Cuenta" class="btn btn-primary" />
+			</div>
+		{/if}
+	</form>
+
+	<br><br>
+
+</div>
+<!--Fin Template Formulario de Registro-->

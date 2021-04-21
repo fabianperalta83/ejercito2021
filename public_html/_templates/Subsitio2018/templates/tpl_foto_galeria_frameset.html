@@ -1,0 +1,10 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>{$smarty.const._NOMBRESITIO} :: Galer&iacute;a de Im&aacute;genes</title>
+</head>
+<FRAMESET ROWS="*,110" FRAMEBORDER="0" BORDER="0" FRAMESPACING="0">
+    <FRAME SRC="foto_galeria.php?idcategoria={$idcategoria}&amp;verfoto=1" NAME="foto" FRAMEBORDER="0" BORDER="0" FRAMESPACING="0" MARGINWIDTH="3" MARGINHEIGHT="3" scrolling="NO">
+    <FRAME SRC="foto_galeria.php?idpadre={$imagen.idpadre}&idcategoria={$idcategoria}" NAME="navegacion" FRAMEBORDER="0" BORDER="0" FRAMESPACING="0" MARGINWIDTH=0 MARGINHEIGHT=0>
+</FRAMESET>
+</html>

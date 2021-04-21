@@ -1,0 +1,53 @@
+
+<!--Template Buscar-->
+<div id="buscar">
+
+{if $subMenuError != ""}
+{strip}
+<!--Buscar:Error-->
+<div id="buscar_error">{$subMenuError}</div>
+<!--Fin Buscar:Error-->
+{/strip}
+{/if}
+
+<!--Buscar:Formulario Búsqueda-->
+<div id="buscar_formulario">
+	<form method="GET" action="{$c_action}" target="_self" name="busqueda">
+		<p class="buscar_form_info">{$c_formulario_titulo}</p>
+		<div>
+			<input type="hidden" name="idcategoria" value="{$idcategoria}">
+			<input type="text" name="cadena_buscar" value="{$cadena_buscar}" class="buscar_input" size="40">
+			<input type="submit" name="submit" value="{$c_buscar}" class="buscar_boton">
+		</div>
+	</form>
+</div>
+<!--Fin Buscar:Formulario Búsqueda-->
+
+{if $resultado_busqueda != ""}
+<!--Buscar:Resultados-->
+<div id="buscar_resultado">
+	<p class="buscar_res_busqueda">{$resultado_busqueda}</p>
+		{if $paginas}
+			<div style="text-align:center;font-size:10px;background:#fff;padding:10px;border:1px solid #999">{$paginas}</div>
+		{/if}
+	{if $set != ""}
+		<ul>
+			{section name=mysec loop=$set}
+			<li>
+				<p class="buscar_res_titulo">{$set[mysec].titulo}</p>
+				<p class="buscar_res_contenido">{$set[mysec].contenido}</p>
+		    </li>
+			{/section}
+		</ul>
+	{/if}
+	{if $paginas}
+	<div style="text-align:center;font-size:10px;background:#fff;padding:10px;border:1px solid #999">{$paginas}</div>
+	{/if}
+</div>
+<!--Fin Buscar:Resultados-->
+{/if}
+
+</div>
+<!--Fin Template Buscar-->
+
+<!-- Fin Template Buscar [tpl_buscar.html] -->

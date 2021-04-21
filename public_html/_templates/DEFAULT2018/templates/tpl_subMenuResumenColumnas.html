@@ -1,0 +1,63 @@
+<!-- Template Menu Primer Nivel Columnas-->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	{section name=mysec loop=$subMenu}
+		{if (($smarty.section.mysec.index)%2==0) && $smarty.section.mysec.index<>0}{/if}
+		<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 listaCuadro">
+			<div id="titulo_actualidad" style="margin-top:15px;margin-bottom:20px;">
+				<a style="text-decoration:none;" href="index.php?idcategoria={$subMenu[mysec].idcategoria}">
+					<strong style="color:#000000;font-size:0.813em;">{$subMenu[mysec].nombre}</strong>
+				</a>			
+			</div>
+			<div class="textarea_slider" style="height: 56px;margin-bottom:6px;">
+				<p>{$subMenu[mysec].entradilla|truncate:90:"...":"true"}</p>
+			</div>
+			{if $subMenu[mysec].imagen != ""}
+				<a href="index.php?idcategoria={$subMenu[mysec].idcategoria}" target="_blank"><p class="hidden">lista con cuadrado</p>
+					<img src="/tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&h=110" class="center-block img-resposive img-rounded" alt="{$subMenu[mysec].nombre}">
+				</a>
+			{/if}
+			<!-- <div class="vermasTitle">
+				<a class="dVermas" href="index.php?idcategoria={$subMenu[mysec].idcategoria}" style="border-bottom: 1px solid #333;">
+					<span>VER MAS</span> <strong style="color: #333; font-size:15px"> > </strong>
+				</a>
+			</div> -->
+		</div>
+    {/section}
+</div>
+
+<!-- Paginación de la categoria-->
+{if $verMas != ""}
+	{$verMas}
+{/if}
+
+<!-- Fin Template Menu Primer Nivel -->
+<style type="text/css">
+	.dVermas{
+		color: #000000;
+	}
+
+	@media (min-width: 1200px){
+		.col-lg-4 {
+		    width: 31%;
+		}
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		Actualizar_Tamano();
+	});
+	
+	jQuery(window).resize(function(e) {
+		Actualizar_Tamano();
+	});
+	
+	function Actualizar_Tamano(){
+		var width = window.innerWidth;
+		
+		if(width <= 1024){
+			$('.textarea_slider').attr('cols', "9");
+		}else{
+			$('.textarea_slider').attr('cols', "22");
+		}  
+	}
+</script>

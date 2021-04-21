@@ -1,0 +1,63 @@
+{literal}
+<script type="text/javascript">
+	enviarSolicitudDePassword = function( btn_obj )
+	{
+		// $('#serverMsg_ID').html("&nbsp;");
+		detenerProgramarMensaje();
+		if( $('#idTipoDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo tipo de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#numDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo n&uacute;mero de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#direccionCorreoElectronico').val() == "" )
+		{
+			mostrarMensajeError("El campo correo electronico es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		send_ajax_request('_include/libreta_mil_solicitud_estado.php?action=enviar_solicitud_password'
+			, 'form_div_ID'
+			, 'serverMsg2_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+		);
+		return true;
+	}
+	
+	$('#btn_enviar_solicitud_ID').hide();
+	$('#idTipoDocumento_ID').attr('readonly', true);
+	$('#numDocumento_ID').attr('readonly', true);
+        
+</script>
+{/literal}
+
+<div>
+	<table>
+		<thead>
+			<tr>
+				<th colspan="2">
+					Para dilingenciar el formulario RM3 es necesario tener una contrase&ntilde;a
+					, para solicitarla por favor digite la siguiente informaci&oacute;n
+				</th>
+			</tr>
+		</thead>
+		<tbody style="text-align: center;">
+			<tr>
+				<td colspan="2">Correo Electronico</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="text" name="direccionCorreoElectronico" id="direccionCorreoElectronico_ID" value="" /></td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2"><input type="button" onclick="enviarSolicitudDePassword(this);" value="Enviar" id="btn_enviar_solicitud_password_ID" /></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

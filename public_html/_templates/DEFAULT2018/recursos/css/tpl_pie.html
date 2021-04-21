@@ -1,0 +1,437 @@
+
+{if !$esHome}
+{$home_destacados_interna}
+{/if}
+<div class="container-fluid back-white">
+<!--
+    <div class="container">
+        <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 alto_contraste">
+            <div class="nuevoslide">
+                {section name=id loop=$destacados_footer}
+                <div class="testenado">
+                    <a href="{$destacados_footer[id].descripcion}" title="{$destacados_footer[id].nombre}" target="_blank">
+                        <img class="center-block" src="{$smarty.const._DIRRECURSOS_USER}imagenes/{$destacados_footer[id].imagen}" alt="{$destacados_footer[id].nombre}">
+                    </a>
+                </div>
+                {/section}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div id="img-mapaDefault" style="pointer-events: none;">
+                    <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES}contenido/icon-map.png&w=1100px" alt="Mapa Ejercito">
+                </div>
+                <div class="mapa" style="pointer-events: none;">
+                    <div class="icon-mapa"></div> -->
+                    <!--                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.7185214099036!2d-74.09803938597973!3d4.644214643439736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bc12ecdf0cd%3A0xf03314bbce2565a7!2sComando+General+de+las+Fuerzas+Militares!5e0!3m2!1ses-419!2sco!4v1529441393098" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen" title="Mapa Ejercito Nacional"></iframe>--> <!-- MARCADOR ORIGINAL anterios -->
+                    <!--
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1988.3599092140419!2d-74.09525827472739!3d4.643984598688231!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4e078636b07601cd!2sComando+del+Ej%C3%A9rcito!5e0!3m2!1ses!2sus!4v1558117030649!5m2!1ses!2sus" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen" title="Mapa Ejercito Nacional"></iframe> 
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+-->
+<!--hidden-sm hidden-xs classes removed from next block-->
+</div>
+<!--
+<div class="info-pie m360_mod hidden-sm hidden-xs">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2">
+                    <div class="row margin-info">
+                        <div class="title-footer">
+                            {if $smarty.const._EN_INGLES !=1}
+                            Ubicación:
+                            {else}
+                            Address:
+                            {/if}
+                        </div>
+                        <div class="info-footer">
+                            {$smarty.const._DIRECCION} <br>
+                            {$smarty.const._CIUDAD}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2">
+                    <div class="row margin-info">
+                        <div class="title-footer">
+                            {if $smarty.const._EN_INGLES !=1}
+                            Horario Atención:
+                            {else}
+                            Business Hours:
+                            {/if}
+                        </div>
+                        <div class="info-footer">
+                            {$smarty.const._INFO_ADICIONAL}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2">
+                    <div class="row margin-info">
+                        <div class="title-footer">
+                            {if $smarty.const._EN_INGLES !=1}
+                            Atención al ciudadano:
+                            {else}
+                            Customer service:
+                            {/if}
+                        </div>
+                        <div class="info-footer">
+                            PBX {$smarty.const._PBX_}<br>
+                            {$smarty.const._INFO_ADICIONAL2_}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2">
+                    <div class="row margin-info">
+                        <div class="title-footer">
+                            {if $smarty.const._EN_INGLES !=1} 
+                            Correo electrónico:
+                            {else}
+                            Email:
+                            {/if}
+                        </div>
+                        <div class="info-footer">
+                            {$smarty.const._EMAIL}
+                        </div>
+                        <div class="info-footer">
+                            {$smarty.const._EMAIL2}
+                        </div>
+                        <div class="title-footer">
+                            {if $smarty.const._EN_INGLES !=1}
+                            Nº de visitas:
+                            {else}
+                            Visits:
+                            {/if}
+                        </div>
+                        <div class="info-footer">
+                            {$smarty.const._CONTADOR}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+                    <div class="row">
+                        <img src="{$smarty.const._DIRIMAGES}/cabezote/logo.png" alt="Intranet" class="img-responsive" style="float: right; width: 80%;">
+                        <div class="info-politicas">
+                            <a href="index.php?idcategoria={$smarty.const._POLITICAS_PRIVACIDAD_}">
+                                Políticas de Privacidad y Condiciones de Uso
+                            </a>
+                        </div>
+                        <ul id="socialFooter" class="social social-footer col-xs-12">
+                            <li>
+                                <a href="{$smarty.const.__FACEBOOK}" title="Facebook" target="_blank" class="">
+                                    <i class="fa fa-facebook-square"></i>
+                                    <p class="hidden">{$smarty.const.__FACEBOOK}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__TWITTER}" title="Twitter" target="_blank" class="">
+                                    <i class="fa fa-twitter-square"></i>
+                                    <p class="hidden">{$smarty.const.__TWITTER}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__FLICKR}" title="Flickr" target="_blank" class="">
+                                    <i class="fa fa-flickr"></i>
+                                    <p class="hidden">{$smarty.const.__FLICKR}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__YOUTUBE}" title="Youtube" target="_blank" class="">
+                                    <i class="fa fa-youtube-play"></i>
+                                    <p class="hidden">{$smarty.const.__YOUTUBE}</p>
+                                </a>
+                            </li>
+                           
+                            <li>
+                                <a href="{$smarty.const.__INSTAGRAM}" title="Instagram" target="_blank" class="">
+                                    <i class="fa fa-instagram"></i>
+                                    <p class="hidden">{$smarty.const.__INSTAGRAM}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__BLOG}" title="Blog" target="_blank" class="">
+                                    <i class="fa fa-rss-square"></i>
+                                    <p class="hidden">{$smarty.const.__BLOG}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info-pie-responsive hidden-md hidden-lg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2 back-responsive">
+                <div class="row margin-info">
+                    <div class="title-footer">Ubicación:</div>
+                    <div class="info-footer">
+                        {$smarty.const._DIRECCION} <br>
+                        {$smarty.const._CIUDAD}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2 back-responsive">
+                <div class="row margin-info">
+                    <div class="title-footer">Horario Atención:</div>
+                    <div class="info-footer">
+                        {$smarty.const._INFO_ADICIONAL}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2 back-responsive">
+                <div class="row margin-info">
+                    <div class="title-footer">Atención al ciudadano:</div>
+                    <div class="info-footer">
+                        PBX {$smarty.const._PBX_}<br>
+                        {$smarty.const._INFO_ADICIONAL2_}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-2 col-md-2 back-responsive">
+                <div class="row margin-info">
+                    <div class="title-footer">Correo electrónico:</div>
+                    <div class="info-footer">
+                        {$smarty.const._EMAIL}
+                    </div>
+                    <div class="info-footer">
+                        {$smarty.const._EMAIL2}
+                    </div>
+                    <div class="title-footer">Nº de visitas:</div>
+                    <div class="info-footer">
+                        {$smarty.const._CONTADOR}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-4 col-md-4 back2-responsive">
+                <div class="row">
+                    <img src="{$smarty.const._DIRIMAGES}/cabezote/logo.png" alt="Intranet" class="img-responsive img-footer-responsive">
+                    <div class="info-politicas">
+                        <a href="index.php?idcategoria={$smarty.const._POLITICAS}">
+                            Políticas de Privacidad y Condiciones de Uso
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<style>
+
+    footer{
+        padding-top: 20px;
+        padding-left: 100px;
+        background: url('_templates/DEFAULT2018/recursos/images/footer.jpg') center center;
+        background-size: cover;
+        background-color: #ddd;
+        height: 550px;
+        
+    }
+    
+-->
+</style>
+<footer>
+    <div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                       
+                <ul>
+                    <li>
+                    <img src="{$smarty.const._DIRIMAGES}/cabezote/logo.png" alt="Intranet" class="img-responsive" style="float: left; width: 50%;">
+                    </li>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <li><a href="#">{$smarty.const._DIRECCION}</a></li>
+                    <li><a href="#">{$smarty.const._CIUDAD}</a></li>
+                    <br>
+                    <li><a href="#">Horario: 8:00am a 16:00 horas</a></li>
+                    <li><a href="#">Lunes a Viernes</a></li>
+                    <br>
+                    <li><a href="#">PBX 57-1018000111689</a></li>
+                    <li><a href="#">Telefono 57-12216336-2220950-4261499</a></li>
+                    <br>
+                    <li><a href="#">atencionciudadanaejc@ejercito.mil.co</a></li>
+                    <li><a href="#">contactenos@ejercito.mil.co</a></li>
+                    <br>
+                    <li><a href="#">Notificaciones Judiciales: ceoju@buzonejercito.mil.co</a></li>
+                    <br>
+                    <br>
+                    <li><a href="#">Ejercito Nacional de Colombia 2019 - Derechos reservados</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <br>
+                <br>
+                <br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1988.3599092140419!2d-74.09525827472739!3d4.643984598688231!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4e078636b07601cd!2sComando+del+Ej%C3%A9rcito!5e0!3m2!1ses!2sus!4v1558117030649!5m2!1ses!2sus" style="width: 100%; height: auto; min-height: 350px;" frameborder="0" allowfullscreen="allowfullscreen" title="Mapa Ejercito Nacional"></iframe> 
+            </div>
+            <hr>
+            <div class="col-md-12">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-4">
+                    <div class="row">
+                        
+                        <ul id="socialFooter" align="right" class="social social-footer col-xs-12">
+                            <li>
+                                <a href="{$smarty.const.__FACEBOOK}" title="Facebook" target="_blank" class="">
+                                    <i class="fa fa-facebook-square"></i>
+                                    <p class="hidden">{$smarty.const.__FACEBOOK}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__TWITTER}" title="Twitter" target="_blank" class="">
+                                    <i class="fa fa-twitter-square"></i>
+                                    <p class="hidden">{$smarty.const.__TWITTER}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__FLICKR}" title="Flickr" target="_blank" class="">
+                                    <i class="fa fa-flickr"></i>
+                                    <p class="hidden">{$smarty.const.__FLICKR}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__YOUTUBE}" title="Youtube" target="_blank" class="">
+                                    <i class="fa fa-youtube-play"></i>
+                                    <p class="hidden">{$smarty.const.__YOUTUBE}</p>
+                                </a>
+                            </li>
+                           
+                            <li>
+                                <a href="{$smarty.const.__INSTAGRAM}" title="Instagram" target="_blank" class="">
+                                    <i class="fa fa-instagram"></i>
+                                    <p class="hidden">{$smarty.const.__INSTAGRAM}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{$smarty.const.__BLOG}" title="Blog" target="_blank" class="">
+                                    <i class="fa fa-rss-square"></i>
+                                    <p class="hidden">{$smarty.const.__BLOG}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+</footer>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" >
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7pg0zUL-V26LU9W4hNtC5jsijpEqtyE"></script>
+
+{literal}
+<script type="text/javascript">
+    $('.nuevoslide').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+        prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+        dots: false,
+        speed: 2000,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                    prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                    prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                    prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                    prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                    dots: false
+                }
+            }
+        ]
+    });
+</script>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('mapa'), {
+            zoom: 16,
+            center: {lat: 4.627788, lng: -74.0956512093544}
+        });
+        var image = '{/literal}{$smarty.const._DIRIMAGES}icon-map.png{literal}';
+        var beachMarker = new google.maps.Marker({
+            position: {lat: 4.627788, lng: -74.149904},
+            map: map,
+            icon: image
+        });
+    }
+
+    $(document).on("ready", function () {
+        // Funciones de Google Maps
+        var punto = new google.maps.LatLng(4.627788, -74.149904);
+        var config = {
+            zoom: 16,
+            center: punto,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        mapa = new google.maps.Map($("#mapa")[0], config);
+        var iconod = '{/literal}{$smarty.const._DIRIMAGES}icon-map.png{literal}';
+        marker = new google.maps.Marker
+                ({
+                    position: new google.maps.LatLng(4.627788, -74.149904),
+                    icon: iconod,
+                    map: mapa,
+                    title: "Ejército Nacional de Colombia",
+                });
+    });
+</script>
+{/literal}
+<script type="text/javascript">comienzo();</script>

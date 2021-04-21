@@ -1,0 +1,40 @@
+<div class="personalizar-contenido">
+	<p class="personalizar-intro">
+		Las combinaciones presentadas fueron seleccionadas para favorecer a personas con discapacidad visual. Seleccione las combinaciones más adecuadas para mejorar su legibilidad y acceso a la información del Portal.
+	</p>
+    <form method="post" action="" name="personalizacion">
+        <fieldset>
+			<legend>Tipo de<br> Fuente</legend>
+			<ul>
+				<li>
+					<label for="letra1">
+						<input type="radio" name="letra" id="letra1" title="letra1" value="1" onclick="javascript:familyFont('1');" onkeypress="javascript:familyFont('1');" {if $letra == "1"} checked="checked" {/if}>
+						<span class="labelHidden">Arial</span>
+					</label>
+					<img alt="Arial" src="{$smarty.const._DIRIMAGES}personalizacion/letra_1.jpg">
+				</li>
+				<li><label for="letra2"><input type="radio" name="letra" id="letra2" title="letra2" value="2" onclick="javascript:familyFont('2');" onkeypress="javascript:familyFont('2');" {if $letra == "2"} checked="checked" {/if}><span class="labelHidden">Georgia</span></label><img alt="Georgia" src="{$smarty.const._DIRIMAGES}personalizacion/letra_2.jpg"></li>
+				<li><label for="letra3"><input type="radio" name="letra" id="letra3" title="letra3" value="3" onclick="javascript:familyFont('3');" onkeypress="javascript:familyFont('3');" {if $letra == "3"} checked="checked" {/if}><span class="labelHidden">Tahoma</span></label><img alt="Tahoma" src="{$smarty.const._DIRIMAGES}personalizacion/letra_3.jpg"></li>
+				<li><label for="letra4"><input type="radio" name="letra" id="letra4" title="letra4" value="4" onclick="javascript:familyFont('4');" onkeypress="javascript:familyFont('4');" {if $letra == "4"} checked="checked" {/if}><span class="labelHidden">Verdana</span></label><img alt="Verdana" src="{$smarty.const._DIRIMAGES}personalizacion/letra_4.jpg"></li>
+				<li><label for="letra5"><input type="radio" name="letra" id="letra5" title="letra5" value="5" onclick="javascript:familyFont('5');" onkeypress="javascript:familyFont('5');" {if $letra == "5"} checked="checked" {/if}><span class="labelHidden">Trebuchet MS</span></label><img alt="Trebuchet MS" src="{$smarty.const._DIRIMAGES}personalizacion/letra_5.jpg"></li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Tamaño de<br>la fuente</legend>
+			<ul>
+				<li><label for="tamano1"><input type="radio" name="tamano" id="tamano1" title="Tamaño1" value="1" onclick="javascript:sizeFont(1);" onkeypress="javascript:sizeFont(1);" {if $tamano == "1"} checked="checked" {/if}><span class="labelHidden">X-small</span></label><img alt="x-small" src="{$smarty.const._DIRIMAGES}personalizacion/a_1.jpg"></li>
+				<li><label for="tamano2"><input type="radio" name="tamano" id="tamano2" title="Tamaño2" value="2" onclick="javascript:sizeFont(2);" onkeypress="javascript:sizeFont(2);" {if $tamano == "2"} checked="checked" {/if}><span class="labelHidden">Small</span></label><img alt="small" src="{$smarty.const._DIRIMAGES}personalizacion/a_2.jpg"></li>
+				<li><label for="tamano3"><input type="radio" name="tamano" id="tamano3" title="Tamaño3" value="3" onclick="javascript:sizeFont(3);" onkeypress="javascript:sizeFont(3);" {if $tamano == "3"} checked="checked" {/if}><span class="labelHidden">Medium</span></label><img alt="medium" src="{$smarty.const._DIRIMAGES}personalizacion/a_3.jpg"></li>
+				<li><label for="tamano4"><input type="radio" name="tamano" id="tamano4" title="Tamaño4" value="4" onclick="javascript:sizeFont(4);" onkeypress="javascript:sizeFont(4);" {if $tamano == "4"} checked="checked" {/if}><span class="labelHidden">Large</span></label><img alt="large" src="{$smarty.const._DIRIMAGES}personalizacion/a_4.jpg"></li>
+			</ul>
+        </fieldset>
+		<fieldset>
+			<legend>Zonas<br>Interactivas</legend>
+			<ul>
+				<li><label for="zona1"><input type="radio" name="zona" id="zona" title="Zona1" value="1" onclick="javascript:sizeFont(1);" onkeypress="javascript:sizeFont(1);" {if $zona == "1"} checked="checked" {/if}><span class="labelHidden">Zona1</span></label><img alt="Zona1" src="{$smarty.const._DIRIMAGES}personalizacion/zona_1.jpg"></li>
+				<li><label for="zona2"><input type="radio" name="zona" id="zona" title="Zona2" value="2" onclick="javascript:sizeFont(2);" onkeypress="javascript:sizeFont(2);" {if $zona == "2"} checked="checked" {/if}><span class="labelHidden">Zona2</span></label><img alt="Zona2" src="{$smarty.const._DIRIMAGES}personalizacion/zona_2.jpg"></li>
+			</ul>
+		</fieldset>
+		<p class="button"><input type ="submit" id="enviar" name="enviar" value="Aceptar"></p><br>
+	</form>
+</div>

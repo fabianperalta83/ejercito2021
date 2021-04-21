@@ -1,0 +1,83 @@
+<!--Template Encuesta-->
+<div id="encuesta">
+
+    <!--Encuesta:Cuerpo-->
+	<div id="encuesta_cuerpo">
+
+
+	{*
+		{if $subSec!=""}
+			<!--<h3>{$resultados}</h3>-->
+			<form action="{$c_phpself}" method="post" name="form_encuesta">
+				<table summary="Encuesta"><!--cellspacing="0"-->
+					{section name=mysec loop=$subSec}
+						<tr>
+							{if $votacion}<td><fieldset><legend></legend><input id="encuesta" name="encuesta" type="radio" value="{$subSec[mysec].id}"/></fieldset></td>{/if}
+							<td>{$subSec[mysec].nombre}</td>
+						   	<td style="width:50;text-align:center">[<strong>{$subSec[mysec].contenido}</strong>]</td>
+						    <td style="width:25%;text-align:center">
+							    {if $subSec[mysec].por != 0 }
+								<img src="{$smarty.const._DIRIMAGES_AUX}/barra.jpg" width="{$subSec[mysec].por}" height="10" alt="{$subSec[mysec].por}%"/>{/if}<img src="{$smarty.const._DIRIMAGES_AUX}barra2.jpg"  width="{$subSec[mysec].dif}" height="10" alt=""/>
+								&nbsp;
+								[{$subSec[mysec].por}%]
+						    </td>
+						</tr>
+					{/section}
+				</table>
+				{if $votacion}<input name="submit" type="submit" value="{$votar}" class="encuesta_boton"/>{/if}
+			</form>
+		{/if}
+	*}
+
+
+		{if $votacion != 1 and $totalVotos > 0}
+			<div id="flash">
+				<table  summary="Encuesta"><!--cellspacing="0"-->
+					{section name=mysec loop=$subSec}
+						<tr>
+
+							<td>{$subSec[mysec].nombre}</td>
+						   	<td style="width:50;text-align:center">[<strong>{$subSec[mysec].contenido}</strong>]</td>
+						    <td style="width:25%;text-align:center">
+							    {if $subSec[mysec].por != 0 }
+							        <img src="{$smarty.const._DIRIMAGES_AUX}/barra.jpg" width="{$subSec[mysec].por}" height="10" alt="{$subSec[mysec].por}%"/>
+								{/if}
+								<img src="{$smarty.const._DIRIMAGES_AUX}barra2.jpg" width="{$subSec[mysec].dif}" height="10" alt=""/>
+								&nbsp;
+								[{$subSec[mysec].por}%]
+						    </td>
+						</tr>
+					{/section}
+				</table>
+			</div>
+
+			<script type="text/javascript">
+				// <![CDATA[
+				var fo = new FlashObject("tools/charts/{$type}.swf", "flash", "565", "420", 6, "");
+				fo.addParam("FlashVars", "&dataXML={$xmlEncuesta}");
+				fo.write("flash");
+				//]]>
+			</script>
+		{/if}
+
+		{if $votacion == 1}
+			<form action="{$c_phpself}" method="post" name="form_encuesta">
+				<table summary="Encuesta"><!--cellspacing="0"-->
+					{section name=mysec loop=$subSec}
+						<tr>
+							<td><fieldset><legend></legend><input name="encuesta" type="radio" title="NombreOpcion" value="{$subSec[mysec].id}"/></fieldset></td>
+							<td class="last">{$subSec[mysec].nombre}</td>
+						</tr>
+					{/section}
+				</table>
+				<input name="submit" type="submit" value="{$votar}" class="encuesta_boton"/>
+			</form>
+		{/if}
+
+	</div>
+		<!--Fin Encuesta:Cuerpo-->
+	{if $c_imprimir != ""}
+		<div id="encuesta_imprimir">{$c_imprimir}</div>
+	{/if}
+</div>
+<!--Fin Template Encuesta-->

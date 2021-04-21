@@ -1,0 +1,61 @@
+<!--Lista con Resumen:Contenidos-->
+<ol id="lista_resumen_contenidos">
+    {section name=mysec loop=$subMenu}
+    <li class="liFirst">
+        
+
+    	 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-left:0px;padding-right:0px;">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12"  style="padding-left:0px;padding-right:0px; background-color:white;">
+                <a href="{$subMenu[mysec].vinculo}"><p class="hidden">texto de contenido</p>
+                    {if $subMenu[mysec].imagen ==""}
+                         <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}escudo1.jpg&amp;w=400" alt="{$subMenu[mysec].nombre}" class="objectCover" style="width:100%; height:186px;">
+                    {else}
+                        <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&amp;w=400" alt="{$subMenu[mysec].nombre}" class="objectCover" style="width:100%; height:186px;">
+                    {/if}
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12  secondaryBody" style="padding-left:10px;padding-right:10px;background-color:white; height:186px;overflow: hidden;">
+                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-8" style="padding-left:0px;padding-right:0px;padding-top:5px; max-width:150px;">
+                    {if $subMenu[mysec].fecha1 != "0000-00-00 00:00:00" && $subMenu[mysec].fecha1 != ""}
+                        <p class="s_fecha">{$subMenu[mysec].fecha1|date_format:"%e de %B %Y"}</p>
+
+                    {/if}
+                </div>
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-4" style="max-width:50px;">
+                	<div id="share_social_network">
+						<div onmouseover="mostrar_segunda_listado({$subMenu[mysec].idcategoria})" onfocus="mostrar_segunda_listado({$subMenu[mysec].idcategoria})" onmouseout="ocultar_segunda_listado({$subMenu[mysec].idcategoria})" onblur="ocultar_segunda_listado({$subMenu[mysec].idcategoria})">
+							<div id="redessociales" class="ocultar_icono_listado{$subMenu[mysec].idcategoria} col-md-12 col-lg-12 col-sm-12 col-xs-12"></div>
+							<div class="redes_segunda_listado{$subMenu[mysec].idcategoria} col-md-12 col-lg-12 col-sm-12 col-xs-12" style="display: none; width: 250px; transform: rotate(90deg); left: -20px; margin-top: -40px; position: absolute;" >
+								<div class="caja-redes" style="margin-top: -30px;">
+									<div class="social-likes"  data-url="{$smarty.const._URL}index.php{$subMenu[mysec].vinculo}" data-title="{$subMenu[mysec].nombre}">
+										<span class="facebook" style="border: #fff"><a href="#" class="icon-button facebook2"  title="Share link on Facebook"><p class="hidden">Boton Facebook</p><span class="icon-facebook" style="transform: rotate(-90deg);"></span><span class="boton_hover"></span></a></span>
+										<span class="twitter" style="border: #fff"><a href="#" class="icon-button twitter2" title="Share link on Twitter"><p class="hidden">Boton Twitter</p><span class="icon-twitter" style="transform: rotate(-90deg);"></span><span class="boton_hover"></span></a></span>
+										<span class="plusone" style="border: #fff"><a href="#" class="icon-button google-plus2" title="Share link on Google+"><p class="hidden">Boton Google+</p><span class="icon-google-plus" style="transform: rotate(-90deg);"></span><span class="boton_hover"></span></a></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding:0px;">
+                {if $subMenu[mysec].nombre != ""}
+                    <h5 class="s_titulo "><a href="{$subMenu[mysec].vinculo}" class="wrap8">{$subMenu[mysec].nombre}</a></h5>
+                {/if}
+
+                {if $subMenu[mysec].entradilla != ""}
+						<p class="listaEntradilla wrap8">{$subMenu[mysec].entradilla|truncate:70:"...":true}</p>
+					{/if}
+                </div>
+            </div>
+
+        </div>
+
+        {if $subMenu[mysec].subtitulo != ""}
+			<p class="text-left ubicacion_noticias titulo_ubicacion">{$subMenu[mysec].subtitulo}</p>
+        {/if}
+
+    {/section}
+</ol>
+
+<!--Paginacion -->
+{if $verMas != ""} {$verMas} {/if}

@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+
+<table border=1>
+	<!--titulo-->
+	{if $head}
+	<tr>
+		{section name=idHead loop=$head}
+			<th>{$head[idHead]}</th>
+		{/section}
+	</tr>
+	{/if}
+	
+	<!--datos-->
+	{section name=idContent loop=$content}
+	<tr>
+		{section name=idHeads loop=$head}
+			{assign var="campo" value=$head[idHeads]}
+			{if $content[idContent].$campo}
+				<td>{$content[idContent].$campo|truncate:30}</td>
+			{else}
+				<td>&nbsp;</td>
+			{/if}
+		{/section}
+	</tr>
+	{/section}
+</table>
+
+</body>
+</html>

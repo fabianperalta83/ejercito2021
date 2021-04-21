@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>{$smarty.const._NOMBRESITIO}</title>
+<link href="../{$smarty.const._DIRCSS}estilo_general.css" rel="stylesheet" type="text/css">
+
+<!--[if IE]>
+	<link href="../{$smarty.const._DIRCSS}estilo_generalIE.css" rel="stylesheet" type="text/css">
+<![endif]-->
+
+	{literal}
+		<style type="text/css">
+		img{margin:/*19px*/0 0 0 16px;float:left;}
+		ul{list-style:none;font-size:0.75em;font-weight:bold;margin-top: 125px;padding:0px;border-top:1px solid #CC7574;border-bottom:1px solid #CD7978;text-align:right;background:#A10100;float:left;width:100%;}
+		li {margin:0;display:inline}
+		li a {color:#fff;margin:0;padding:0 1.2em;text-decoration:none;line-height:1.3em;}
+		li a:hover{text-decoration:underline}
+
+		</style>
+	{/literal}
+</head>
+
+<body style="padding:0 0 10px 0;background:#FFFFFF url(../{$smarty.const._DIRIMAGES}cabezote/banner/fondo-cabezote.jpg) no-repeat center center; width:100%;  margin-top: 140px;">
+	<div style="padding:0px 0 0 0;float:left;width:100%;">
+        <!-- <a href="../" target="_top" title="{$smarty.const._NOMBRESITIO}">
+            <img style="" src="../{$smarty.const._DIRIMAGES}/cabezote/escudo-ejercito.png" alt="{$smarty.const._ROT_ESCUDO_INST}:{$smarty.const._NOMBRESITIO}" style="height:300px">
+        </a>
+        <img style="float:right;margin:10px 20px 0 0;height:121px;" src="../{$smarty.const._DIRIMAGES}/cabezote/escudo-colombia.png" alt="{$smarty.const._ROT_ESCUDO_INST}:{$smarty.const._NOMBRESITIO}"/> -->
+        <ul>
+            <li>
+                <a style="background:url(../{$smarty.const._DIRIMAGES}bullet_4.gif) no-repeat right;" href="../" title="{$smarty.const._ROT_INICIO}" target="_top">{$smarty.const._ROT_INICIO}</a>
+            </li>
+            <li><a href="javascript:history.back();" title="{$smarty.const._ROT_VOLVER}" target="_top">{$smarty.const._ROT_VOLVER}</a></li>
+        </ul>
+	</div>
+</body>
+</html>

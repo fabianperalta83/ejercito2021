@@ -1,0 +1,199 @@
+
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+
+<link rel="stylesheet" href="js/development-bundle/themes/base/jquery.ui.all.css">
+
+<script type="text/javascript" src="js/Funciones_encuesta.js"></script>
+
+
+
+
+
+<script src="js/development-bundle/ui/jquery.ui.core.js"></script>
+
+<script src="js/development-bundle/ui/jquery.ui.widget.js"></script>
+
+<script src="js/development-bundle/ui/jquery.ui.datepicker.js"></script>
+
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
+
+
+
+
+<div>{$lbl_titulo}<div>
+<br>
+<!-- <div><b>Preguntas</b></div><br> -->
+<div class="parrafo">
+<p>
+<b>{$pregunta1.nombre}</b>
+<!--
+{$pregunta1.descripcion}-->
+<br>
+</p><p>
+<b>{$pregunta2.nombre}</b>
+<!--<br>
+{$pregunta2.descripcion}-->
+<br>
+</p><p>
+<b>{$pregunta3.nombre}</b>
+<!--<br>
+{$pregunta3.descripcion}-->
+<br>
+</p><p>
+<b>{$pregunta4.nombre}</b>
+<!--<br>
+{$pregunta4.descripcion}-->
+<br>
+</p><p>
+<b>{$pregunta5.nombre}</b>
+<!--<br>
+{$pregunta5.descripcion}-->
+<br>
+</p>
+</div> 
+<br>
+<center>
+<br><br>
+{section name=error loop=$errores}
+<li>{$errores[error]}</li>
+{/section}
+<br>
+<form name="filtro" method="POST">
+<table>
+<tr>
+<td><input type="text" name="desde" id="desde" value="{$desde}" size="10"></td>
+<td><input type="text" name="hasta" id="hasta" value="{$hasta}" size="10"></td>
+<td><input type="submit" value="Filtrar" name="filtrar"><input type="Submit" value="Descargar XML" name="descarga"> <input type="submit" value="Exportar a Excel" name="export"></td>
+</tr>
+<tr>
+<td>aaaa-mm-dd</td>
+<td>aaaa-mm-dd</td>
+</tr>
+</table>
+</form>
+
+<table cellpadding="10" border="1" class="tabla_result" cellspacing="0">
+<tr>
+<td><b>Opciones</b><br><br><b>Preguntas</b></td>
+{section name=hijos1 loop=$hijos_pregunta1}
+<td>
+<font size="3"><b>{$hijos_pregunta1[hijos1].nombre}</b>
+</td>
+{/section}
+
+</tr>
+<tr>
+
+<td><a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta1.idcategoria}); return false" href="#"><b>{$pregunta1.nombre}</b></a></td>
+{section name=total loop=$total_hijos}
+<td>
+<font size="3"  {if $total_hijos[total].cantidad != 0}color="darkred" style="font-weight:bold"{/if}><b>{$total_hijos[total].cantidad1}</b>
+</td>
+{/section}
+</tr>
+<tr>
+<td colspan="4">
+<div id="id_{$pregunta1.idcategoria}">
+</div>
+</td>
+</tr>
+
+<tr>
+<td><a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta2.idcategoria}); return false" href="#"><b>{$pregunta2.nombre}</b></a></td>
+</td>
+{section name=total2 loop=$total_hijos2}
+<td>
+<font size="3"   {if $total_hijos2[total2].cantidad2 != 0}color="darkred" style="font-weight:bold"{/if}><b>{$total_hijos2[total2].cantidad2}</b>
+</td>
+{/section}
+</tr>
+<tr>
+<td colspan="4">
+<div id="id_{$pregunta2.idcategoria}">
+</div>
+</td>
+</tr>
+<tr>
+<td><a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta3.idcategoria}); return false" href="#"><b>{$pregunta3.nombre}</b></a></td>
+{section name=total3 loop=$total_hijos3}
+<td>
+<font size="3"   {if $total_hijos3[total3].cantidad3 != 0}color="darkred" style="font-weight:bold"{/if}><b>{$total_hijos3[total3].cantidad3}</b>
+</td>
+{/section}
+</tr>
+<tr>
+<td colspan="4">
+<div id="id_{$pregunta3.idcategoria}">
+</div>
+</td>
+</tr>
+
+<tr>
+<td><a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta4.idcategoria}); return false" href="#"><b>{$pregunta4.nombre}</b></a></td>
+{section name=total4 loop=$total_hijos4}
+<td>
+<font size="3"   {if $total_hijos4[total4].cantidad4 != 0}color="darkred" style="font-weight:bold"{/if}><b>{$total_hijos4[total4].cantidad4}</b>
+</td>
+{/section}
+</tr>
+<tr>
+<td colspan="4">
+<div id="id_{$pregunta4.idcategoria}">
+</div>
+</td>
+</tr>
+
+<tr>
+<td><a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta5.idcategoria}); return false" href="#"><b>{$pregunta5.nombre}</b></a></td>
+{section name=total5 loop=$total_hijos5}
+<td>
+<font size="3"  {if $total_hijos5[total5].cantidad5 != 0}color="darkred" style="font-weight:bold; text-align:center"{/if}><b>{$total_hijos5[total5].cantidad5}</b>
+</td>
+{/section}
+</tr>
+<tr>
+<td colspan="4">
+<div id="id_{$pregunta5.idcategoria}">
+</div>
+</td>
+</tr>
+{if $esfiltro== true}
+<tr><td style="text-align:right"><b>TOTAL</b></td><td style="text-align:center"><b>{$totalB}</b></td><td colspan='2' style="text-align:center"><b>{$totalRM}</b></td></tr>
+{/if}
+<tr>
+<td colspan="10" style="text-align:right"><b>Total Encuestas</b><td><b><font size="5">{$suma5}</font></b></td>
+</tr>
+</table>
+<!--
+<br><br>
+<a  style="text-decoration:none; font-size: 15px; width: 20px" onclick="calificacion({$pregunta6.idcategoria}); return false" href="#"><b>{$pregunta6.nombre}</b>
+<div class="parrafo">
+<br><br>
+
+<table cellpadding="10" border="1" class="tabla_result" cellspacing="0">
+{section name=pregunta6 loop=$hijos_pregunta6}
+{section name=pregunta6 loop=$total_hijos6}
+<tr>
+<td><b>{$hijos_pregunta6[pregunta6].nombre}</b></td>
+<td><font size="3"   {if $total_hijos6[pregunta6].cantidad6 != 0}color="darkred" style="font-weight:bold"{/if}><b>{$total_hijos6[pregunta6].cantidad6}</b></font></td>
+</tr>
+
+{/section}
+</tr>
+<td colspan="4">
+<div id="id_{$pregunta6.idcategoria}">
+</div>
+</td>
+</tr>
+{/section}
+</table>
+-->
+
+
+
+
+
+
+

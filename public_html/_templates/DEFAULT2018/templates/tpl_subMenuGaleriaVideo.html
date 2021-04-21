@@ -1,0 +1,45 @@
+<link href="{$smarty.const._DIRJS}cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css" />
+<link href="{$smarty.const._DIRJS}cubeportfolio/css/portfolio.min.css" rel="stylesheet" type="text/css" />
+
+
+<div id="js-grid-juicy-projects" class="cbp" style="height: 300px!important;">
+	{section name=mysec loop=$subMenu}
+	    <div class="cbp-item web-design graphic">
+	        <div class="cbp-caption" style="height: 250px">
+	            <div class="cbp-caption-defaultWrap">
+                {if $subMenu[mysec].tipo == 'flv' || $subMenu[mysec].imagen|trim != '' }
+                  	<div style="background: url('{$subMenu[mysec].imagen}') no-repeat; background-position: center; background-size: cover; height: 250px;"></div>
+                {elseif $subMenu[mysec].tipo == 'youtube' }
+                  	<div style="background: url('http://img.youtube.com/vi/{$subMenu[mysec].idvideo}/0.jpg') no-repeat; background-position: center; background-size: cover; height: 250px;"></div>
+                {elseif $subMenu[mysec].tipo == 'mp4' }
+              		<video height="250px" width="100%" style="background-color: black;">
+			          	<source src="{$smarty.const._URL}{$smarty.const._DIRRECURSOS_USER}{$subMenu[mysec].descripcion}#t=2">
+			        </video>
+                {/if}
+            	</div>
+	            <div class="cbp-caption-activeWrap">
+	                <div class="cbp-l-caption-alignCenter">
+	                    <div class="cbp-l-caption-body">
+
+                        	<a data-image="{$subMenu[mysec].imagen}" href="{if $subMenu[mysec].tipo == 'mp4' || $subMenu[mysec].tipo == 'flv'}{$smarty.const._URL}{$smarty.const._DIRRECURSOS_USER}{$subMenu[mysec].descripcion}{else}https://www.youtube.com/watch?v={$subMenu[mysec].idvideo}{/if}" class="cbp-lightbox btn btn-default text-uppercase" data-title="{$subMenu[mysec].nombre}">Ver video</a>
+
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class=" uppercase text-center" style="font-weight: bold;font-size:1.2em">{$subMenu[mysec].nombre}</div>
+	        <div class="cbp-l-grid-projects-desc uppercase text-center">{$subMenu[mysec].entradilla}</div>
+	    </div>
+	{/section}
+</div>
+{if $verMas != ""}
+    {$verMas}
+{/if}
+
+<!-- plugins gallery -->
+<script src="{$smarty.const._DIRJS}cubeportfolio/js/jquery.cubeportfolio.js" type="text/javascript"></script>
+<script src="{$smarty.const._DIRJS}cubeportfolio/js/portfolio-1.min.js" type="text/javascript"></script>
+
+<!-- add on flv videos -->
+<link rel="stylesheet" href="{$smarty.const._DIRJS}jPlayer-2.9.2/dist/skin/pink.flag/css/jplayer.pink.flag.min.css"/>
+<script src="{$smarty.const._DIRJS}jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>

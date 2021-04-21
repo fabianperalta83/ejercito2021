@@ -1,0 +1,53 @@
+{section name=idSeccion1 loop=$seccion_internacional max=2 start=0}
+	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+		<p class="text-left ubicacion_internacional">
+			{$seccion_internacional[idSeccion1].subtitulo}
+		</p>
+	</div>
+	
+	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			<div class="linea_negra_div"></div>
+			<div class="titulo_noticia_internacional text-left" style="margin-right:10px;">
+				<a href="?idcategoria={$seccion_internacional[idSeccion1].idcategoria}#">
+					{$seccion_internacional[idSeccion1].nombre}
+				</a>
+			</div>
+			<div class="resumen_internacional_home">			
+					{$seccion_internacional[idSeccion1].entradilla|truncate:130:"":true}
+			</div>
+
+			
+		<!-- Botones de Redes Sociales  -->
+		<div class="share_social_network_internacional">
+			<div style="text-align: center;">
+				<div class="social-likes" data-url="{$smarty.const._URL}index.php?idcategoria={$seccion_internacional[idSeccion1].idcategoria}" data-title="{$seccion_internacional[idSeccion1].nombre}">
+							<span class="facebook" style="border: #fff"><a href="javascript:;" class="icon-button facebook2"  title="Share link on Facebook"><span class="hidden">Facebook</span><span class="icon-facebook"></span><span class="boton_hover"></span></a></span>
+							<span class="twitter" style="border: #fff"><a href="javascript:;" class="icon-button twitter2" title="Share link on Twitter"><span class="hidden">Twitter</span><span class="icon-twitter"></span><span class="boton_hover"></span></a></span>
+							<span class="plusone" style="border: #fff"><a href="javascript:;" class="icon-button google-plus2" title="Share link on Google+"><span class="hidden">Google pLus+</span><span class="icon-google-plus"></span><span class="boton_hover"></span></a></span>
+						</div>
+				          
+				
+			</div>      
+		</div>  
+	</div>
+	<!-- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+		<div id="titulo_tags" class="text-left">
+			TAGS: 
+		</div> -->
+		<!-- Botones de Redes Sociales  -->
+		<!-- <div id="share_social_network">
+			<div onmouseover="mostrar_segunda({$seccion_internacional[idSeccion1].idcategoria})" onmouseout="ocultar_segunda({$seccion_internacional[idSeccion1].idcategoria})">
+				<div id="redessociales" class="ocultar_icono{$seccion_internacional[idSeccion1].idcategoria} col-md-12 col-lg-12 col-sm-12 col-xs-12"></div>         
+				<div class="redes_segunda{$seccion_internacional[idSeccion1].idcategoria} col-md-12 col-lg-12 col-sm-12 col-xs-12" style="display:none; width:250px" >
+					<div class="caja-redes">
+						<div class="social-likes" data-url="{$smarty.const._URL}index.php?idcategoria={$seccion_internacional[idSeccion1].idcategoria}" data-title="{$seccion_internacional[idSeccion1].nombre}">
+							<span class="facebook" style="border: #fff"><a href="#" class="icon-button facebook2"  title="Share link on Facebook"><i class="icon-facebook"></i><span></span></a></span>
+							<span class="twitter" style="border: #fff"><a href="#" class="icon-button twitter2" title="Share link on Twitter"><i class="icon-twitter"></i><span></span></a></span>
+							<span class="plusone" style="border: #fff"><a href="#" class="icon-button google-plus2" title="Share link on Google+"><i class="icon-google-plus"></i><span></span></a></span>
+						</div>
+					</div>
+				</div>
+			</div>      
+		</div>  
+	</div> -->
+{/section}

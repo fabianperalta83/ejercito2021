@@ -1,0 +1,43 @@
+<style>	
+	.imagen_default
+	{
+		padding-left: 51px;
+		width: 53px;
+		height: 70px;
+		line-height: 32px;
+		background-image: url("_templates/DEFAULT2016/recursos/images/sprite_botones_ejercito.png");
+		background-repeat: no-repeat;
+		background-position: -460px -111px;
+	}
+</style>
+
+<!--Lista Sencilla-->
+<div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+	<center>
+		<div alt="" class="imagen_default"></div>
+	</center>
+</div>
+<div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
+	<ul>
+		{section name=mysec loop=$subMenu}
+			<li>
+				{if $subMenu[mysec].nombre != ""}
+					<div id="titulo_actualidad">
+						<div class="name_red_box">
+							<a href="{$subMenu[mysec].vinculo}&download=Y" class="wrap8">{$subMenu[mysec].nombre}</a>
+						</div>
+					</div>
+				{/if}
+			</li>
+		{/section}
+	</ul>
+</div>
+<!--Fin Lista Sencilla-->
+
+<!-- Paginacion -->
+
+{if $verMas != ""}
+    {$verMas}
+{/if}
+
+<!--Fin Lista Sencilla-->

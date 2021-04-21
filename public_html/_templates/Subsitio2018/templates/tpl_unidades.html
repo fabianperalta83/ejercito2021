@@ -1,0 +1,227 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Titulo de Unidades Militares -->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div class="img_red_box"></div>
+	<div class="name_red_box">{$c_titulo}</div>
+</div>
+
+<div class="class_segun_tamano_unidades col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	
+	<!-- Imagenes de las unidades Militares -->
+	<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+		<div class="row">
+			<ul class="nav nav-tabs nav-justified ul-divisiones">
+				<li>
+					<a href="https://goo.gl/kNlCUI" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/1.png" alt=""></a><div class="name_division">Primera Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/e1h4lf" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/2.png" alt=""></a><div class="name_division">Segunda Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/CJI7IM" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/3.png" alt=""></a><div class="name_division">Tercera Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/uuzBw4" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/4.png" alt=""></a><div class="name_division">Cuarta Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/mNz92r" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/5.png" alt=""></a><div class="name_division">Quinta Divisi&oacute;n</div><br><br>
+				</li>
+			</ul>
+		</div>
+		<br><br><br>
+	</div>
+	
+	<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+		<div class="row">
+			<ul class="nav nav-tabs nav-justified ul-divisiones">
+				<li>
+					<a href="https://goo.gl/FvLsoi" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/6.png" alt=""></a><div class="name_division">Sexta Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/ZBPR8W" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/7.png" alt=""></a><div class="name_division">Septima Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/tri9vf" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/8.png" alt=""></a><div class="name_division">Octava Divisi&oacute;n</div><br><br>
+				</li>
+				<li>
+					<a href="https://goo.gl/oVOf9Q" target="_new"><img src="https://ejercito.mil.co/{$smarty.const._DIRIMAGES_USER}iconos_division/9.png" alt=""></a><div class="name_division">Divisi&oacute;n de Aviaci&oacute;n Asalto &Aacute;ereo - DAVAA</div><br><br>
+				</li>
+			</ul>
+		</div>
+		<br><br><br>
+	</div>
+	
+	<!-- Mapa Google Maps -->
+	<div class="class_segun_tamano_mapa col-md-10 col-lg-10 col-sm-10 col-xs-10">
+		<div class="row">
+			<textarea name="" cols="30" rows="10" id="json_puntos" style="display: none;">
+				{$json_puntos}
+			</textarea>
+			<input type="hidden" value="{$web_url}" id="web_url">
+			<div id="mapa" style="height: 1050px;"></div>
+			<br><br><br>
+		</div>
+	</div>
+	
+	<!-- Imagenes de Destacadas -->
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2">
+		<div class="row">
+			<a href="https://goo.gl/x7Y1jv" target="_blank">
+					<div class="fonfo_destacado">
+						<div class="img_dest1"></div>
+						<div class="title_destacados">INCORsssRACI&Oacute;N</div>
+					</div>
+				</a>
+		</div>
+	</div>
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center">
+		<div class="row">
+			<a href="https://www.ejercito.mil.co/index.php?idcategoria=381779"  target="_blank">
+				<div class="fonfo_destacado">
+					<div class="img_dest2 img-responsive"></div>
+					<div class="title_destacados">PEDAGOG&Iacute;A PARA LA PAZ</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center">
+		<div class="row">
+			<a href="https://www.ejercito.mil.co/index.php?idcategoria=385326"  target="_blank">
+				<div class="fonfo_destacado">
+					<div class="img_dest3 img-responsive"></div>
+					<div class="title_destacados">LA VOZ DEL COMANDANTE</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center">
+		<div class="row">
+			<a href="">
+				<div class="fonfo_destacado">
+					<div class="img_dest4 img-responsive"></div>
+					<div class="title_destacados">NOTIFICACIONES JUDICIALES</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center">
+		<div class="row">
+			<a href="https://goo.gl/q0IAgl"  target="_blank">
+				<div class="fonfo_destacado">
+					<div class="img_dest5 img-responsive"></div>
+					<div class="title_destacados">PQRD</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="class_segun_tamano col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center">
+		<div class="row">
+			<a href="https://goo.gl/XVn7TS" target="_blank">
+				<div class="fonfo_destacado">
+					<div class="img_dest6 img-responsive"></div>
+					<div class="title_destacados">CLUB LANCITA</div>
+				</div>
+			</a>
+		</div>
+	</div>	
+	
+</div>
+
+{literal}
+
+	<script>
+		var nuevos_marcadores = [];
+		var marcadores_bd= [];
+		var mapa = null; 
+		
+		$(document).on("ready", function()
+		{     			
+			Actualizar_Tamano();
+			// Funciones de Google Maps
+			var punto = new google.maps.LatLng(4.700530, -74.088111);
+			var config = {
+				zoom:6,
+				center:punto,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				mapTypeControlOptions: 
+				{
+					style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+					position: google.maps.ControlPosition.BOTTOM_CENTER,
+					mapTypeIds: ['color_maps']// listado de mapas de google
+				}
+			};
+			mapa = new google.maps.Map( $("#mapa")[0], config);
+			
+			myJSONObject 	= $("#json_puntos").text();
+			url_base 		= $("#web_url").val();
+			
+			if(myJSONObject !== "empty")
+			{
+				marcadores = JSON.parse(myJSONObject);
+				
+				var marker, i;
+				for (i = 0; i < marcadores.length; i++) 
+				{  
+					var iconod = 'https://www.ejercito.mil.co/_templates/DEFAULT2016/recursos/images/pointer_maps.png';
+					marker = new google.maps.Marker
+					({						
+						position: new google.maps.LatLng(marcadores[i].lat, marcadores[i].lon),
+						icon 		: iconod,
+						map			: mapa,
+						url  		: marcadores[i].url,
+						title		: marcadores[i].title,
+					});
+					google.maps.event.addListener(marker, 'click', function() 
+					{
+						window.open(this.url,'_blank');
+					});
+				}
+			}
+			
+		});
+		
+		// Funciones al momento de que se modifique el tamaño de la pantalla
+		jQuery(window).resize(function(e) 
+		{
+			Actualizar_Tamano();
+		});
+		
+		// Función que modifica los elementos cuando el tamaño de la pantalla es menor a 1024
+		function Actualizar_Tamano()
+		{
+			var width = window.innerWidth;
+			
+			if(width <= 1024)
+			{
+				$(".class_segun_tamano").removeClass("col-md-2").addClass( "col-md-6" );
+				$(".class_segun_tamano").removeClass("col-lg-2").addClass( "col-lg-6" );
+				$(".class_segun_tamano").removeClass("col-sm-2").addClass( "col-sm-6" );
+				$(".class_segun_tamano").removeClass("col-xs-2").addClass( "col-xs-6" );
+				//$(".class_segun_tamano_unidades").removeClass("col-xs-12").addClass( "col-xs-6" );
+				
+				$(".class_segun_tamano_mapa").removeClass("col-md-10").addClass( "col-md-12" );
+				$(".class_segun_tamano_mapa").removeClass("col-lg-10").addClass( "col-lg-12" );
+				$(".class_segun_tamano_mapa").removeClass("col-sm-10").addClass( "col-sm-12" );
+				$(".class_segun_tamano_mapa").removeClass("col-xs-10").addClass( "col-xs-12" );
+				$("#mapa").css("height", "400px");
+			}
+			else
+			{
+				$(".class_segun_tamano").removeClass("col-md-6").addClass( "col-md-2" );
+				$(".class_segun_tamano").removeClass("col-lg-6").addClass( "col-lg-2" );
+				$(".class_segun_tamano").removeClass("col-sm-6").addClass( "col-sm-2" );
+				$(".class_segun_tamano").removeClass("col-xs-6").addClass( "col-xs-2" );
+				//$(".class_segun_tamano_unidades").removeClass("col-xs-6").addClass( "col-xs-12" );
+				
+				$(".class_segun_tamano_mapa").removeClass("col-md-12").addClass( "col-md-10" );
+				$(".class_segun_tamano_mapa").removeClass("col-lg-12").addClass( "col-lg-10" );
+				$(".class_segun_tamano_mapa").removeClass("col-sm-12").addClass( "col-sm-10" );
+				$(".class_segun_tamano_mapa").removeClass("col-xs-12").addClass( "col-xs-10" );
+				$("#mapa").css("height", "1050px");
+			}  
+		}
+	</script>
+	
+{/literal}
+

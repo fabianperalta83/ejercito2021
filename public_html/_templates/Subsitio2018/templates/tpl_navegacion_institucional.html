@@ -1,0 +1,30 @@
+<!-- <nav class="navbar navbar-institucional"> -->
+    <!-- <div class="navbar navbar-default navbar-institucional" role="navigation"> -->    <!-- DIV ORIGINAL -->
+        <div class="navbar navbar-default navbar-institucional" role="navigation"> <!-- AJUSTE MARGEN COMPLETA DEL NAVBAR INSTITUCIONAL 14/05/2019 -->
+        <div id="bs-example-navbar-collapse-2" class="hidden-sm hidden-xs collapse navbar-collapse navinstitucional">
+            <ul class="nav navbar-nav navbar-institucional-ul nav-ul-institucional" id="menu2">
+                {section name=mysec loop=$menuInstitucional}
+                    {if $menuInstitucional[mysec].nombre == Utilidades}    
+                        {if false_}
+                        {/if}
+                    {else}
+                        <li class="dropdown text-left">
+                            <a href="index.php?idcategoria={$menuInstitucional[mysec].idcategoria}"  class="dropdown-toggle top_link" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {$menuInstitucional[mysec].nombre}
+                            </a>
+                    {/if}
+                        <ul class="sub dropdown-menu dropdown-institucional">
+                            {section name=myhijos loop=$menuInstitucional[mysec].hijos}
+                                <li {if $smarty.section.myhijos.last} style="border: 0;" {/if}>
+                                    <a href="index.php?idcategoria={$menuInstitucional[mysec].hijos[myhijos].idcategoria}" onmouseover="Javascript: menuNivelTres({$menuInstitucional[mysec].hijos[myhijos].idcategoria})" onfocus="Javascript: menuNivelTres({$menuInstitucional[mysec].hijos[myhijos].idcategoria})" onmouseout="Javascript: noNivelTres({$menuInstitucional[mysec].hijos[myhijos].idcategoria})" onblur="Javascript: noNivelTres({$menuInstitucional[mysec].hijos[myhijos].idcategoria})">
+                                        {$menuInstitucional[mysec].hijos[myhijos].nombre}
+                                    </a>
+                                </li>
+                            {/section}
+                        </ul>
+                    </li>
+                {/section}
+            </ul>
+        </div>
+    </div>
+<!-- </nav> -->

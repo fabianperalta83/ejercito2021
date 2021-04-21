@@ -1,0 +1,8 @@
+{if $caso == ''}
+	<form action="" method="post" >
+		<input type="hidden" value="1" name="enviado" >
+		<input type="submit" value="Enviar" >
+	</form>
+{else}
+	Solicitud: {$caso}
+{/if}

@@ -1,0 +1,26 @@
+<!---Template Mapa-->
+<div id="utilidades">
+	{if $subMenuError != ""}
+		<div class="advertencia">
+			<strong>{$subMenuError}<strong>
+		</div>
+	{/if}
+	{if $arr_submenu != ""}
+		<!--Mapa:SubMenu-->
+		<ul id="menu_mapa">
+			{section name=mysec loop=$arr_submenu}
+				<li>{$arr_submenu[mysec].vinculo}</li>
+			{/section}
+		</ul>
+		<!--Fin Mapa:SubMenu-->
+	{/if}
+	{if $show_mapa != ""}
+		<!--Mapa:Contenido-->
+		<div id="contenido_mapa">
+			{$show_mapa}
+		</div>
+		<!--Fin Mapa:Contenido-->
+	{/if}
+</div>
+<!--Fin Template Mapa-->
+

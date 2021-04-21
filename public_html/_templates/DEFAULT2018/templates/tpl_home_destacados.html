@@ -1,0 +1,104 @@
+{assign var="imagen_accesibilidad" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/incorporacion.gif"} 
+{assign var="imagen_pedagogia" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/pedagogia.gif"} 
+{assign var="imagen_voz" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/voz.gif"} 
+{assign var="imagen_notificaciones" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/notificaciones.gif"} 
+{assign var="imagen_solicitudes" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/solicitudes.gif"} 
+{assign var="imagen_lancita" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/lancita.gif"} 
+
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod" style="font-family: 'Fira Sans', sans-serif;">
+	<div id="img-ayuda-dest1" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_accesibilidad}"  alt="">
+	</div>
+	<a href="https://goo.gl/x7Y1jv" target="_blank" 
+		{if file_exists($imagen_accesibilidad)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest1')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest1')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest1')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest1"></div>
+
+			<!--<div class="title_destacados">INCORPORACI&Oacute;N</div>-->
+			<!--<div class="line-red"></div>-->
+		</div>
+                
+	</a>
+    <br>
+    <br>
+    <div class="line-red" style="background-color: red;margin-left: -21px;"></div>
+    <p style="font-weight: bold;text-transform: full-width;font-size: 0.9em;">INCORPORACIÓN</p>
+    <br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod">
+	<div id="img-ayuda-dest2" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_pedagogia}"  alt="">
+	</div>
+	<a href="https://www.ejercito.mil.co/index.php?idcategoria=381779" {if file_exists($imagen_pedagogia)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest2')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest2')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest2')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest2"></div>
+<!--			<div class="title_destacados">PEDAGOG&Iacute;A PARA LA PAZ</div>
+			<div class="line-red"></div>-->
+		</div>
+	</a>
+    <br>
+    <p style="text-transform: full-width;font-size: 0.9em;">PEDAGOGÍA <br><font style="font-weight: bold;">PARA LA PAZ</font></p><br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>
+<!--			<div class="title_destacados">LA VOZ DEL COMANDANTE</div>
+			<div class="line-red"></div>-->
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod">
+	<div id="img-ayuda-dest3" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_voz}"  alt="">
+	</div>
+	<a href="https://www.ejercito.mil.co/index.php?idcategoria=385326" {if file_exists($imagen_voz)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest3')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest3')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest3')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest3"></div>
+
+		</div>
+	</a>
+    <br>
+    <p style="text-transform: full-width;font-size: 0.9em;">LA VOZ <br><font style="font-weight: bold;">DEL COMANDANTE</font></p><br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod">
+	<div id="img-ayuda-dest4" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_notificaciones}"  alt="">
+	</div>
+	<a href="https://www.ejercito.mil.co/index.php?idcategoria=357113" {if file_exists($imagen_notificaciones)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest4')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest4')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest4')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest4"></div>
+<!--			<div class="title_destacados">NOTIFICACIONES JUDICIALES</div>
+			<div class="line-red"></div>-->
+		</div>
+	</a>
+    <br>
+    <p style="text-transform: full-width;font-size: 0.9em;">NOTIFICACIONES <br><font style="font-weight: bold;">JUDICIALES</font></p><br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod">
+	<div id="img-ayuda-dest5" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_solicitudes}"  alt="">
+	</div>
+	<a href=" https://goo.gl/q0IAgl" {if file_exists($imagen_solicitudes)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest5')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest5')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest5')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest5"></div>
+<!--			<div class="title_destacados">REGISTRE SUS SOLICITUDES</div>
+			<div class="line-red"></div>-->
+		</div>
+	</a>
+    <br>
+    <p style="text-transform: full-width;font-size: 0.9em;">REGISTRE SUS <br><font style="font-weight: bold;">SOLICITUDES</font></p><br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>
+<div class="slide slide-destacados alto_contraste col-sm-12 m360_mod">
+	<div id="img-ayuda-dest6" style="display: none;">
+		<img src="tools/microsThumb.php?src={$imagen_lancita}"  alt="">
+	</div>
+	<a href="https://www.clublancita.mil.co/" target="_blank" {if file_exists($imagen_lancita)} onmouseover="mostrarSubMenuAyuda('img-ayuda-dest6')" onkeyup="mostrarSubMenuAyuda('img-ayuda-dest6')" onmouseleave="ocultarSubMenuAyuda('img-ayuda-dest6')" {/if}>
+		<div class="fonfo_destacado">
+			<div class="img_dest6"></div>
+<!--			<div class="title_destacados">SOY LANCITA</div>
+			<div class="line-red"></div>-->
+		</div>
+	</a>
+    <br>
+    <p style="text-transform: full-width;font-size: 0.9em;">SOY <br><font style="font-weight: bold;">LANCITA</font></p><br>
+            <div class="line-red" style="background-color: black;margin-left: -21px;"></div>
+</div>

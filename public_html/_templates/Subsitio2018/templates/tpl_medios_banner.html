@@ -1,0 +1,75 @@
+    
+	
+	<div id="medios">
+				
+				    <img src="{$smarty.const._DIRIMAGES}medios.png" alt="Medios"/>
+				   
+				    <br/>
+				
+				    <!-- Place somewhere in the <body> of your page -->
+				    <div class="flexslider">
+				        <ul class="slides">
+							<li>
+								<div class="emisora">
+									<a href="http://www.emisoraejercito.mil.co/" rel="nofollow" title="Emisora Ejército Nacional de Colombia" target="_blank">
+									  <img src="{$smarty.const._DIRIMAGES}logo-emisora.png" alt="Emisora Ejército NAcional de Colombia" />	
+									</a>
+								</div>
+							</li>
+							
+                            <li>
+                             <div class="emisora">
+								<a href="http://www.ejercito.mil.co/?idcategoria=266" rel="nofollow" title="Periódico En Guardia" target="_blank">
+								  <img src="{$smarty.const._DIRIMAGES}enguardia.png" alt="Periódico En Guardia" />	
+								</a>
+							 </div>
+                            </li> 
+
+                            <li>
+                             <div class="emisora">
+								<a href="http://www.ejercito.mil.co/?idcategoria=255" rel="nofollow" title="Revista Ejército" target="_blank">
+								  <img src="{$smarty.const._DIRIMAGES}revista_ejercito.png" alt="Revista Ejército" />	
+								</a>
+							 </div>
+                            </li>	
+							
+							<li>
+                             <div class="emisora">
+								<a href="http://www.ejercito.mil.co/?idcategoria=283281" rel="nofollow" title="Revista Primera Línea" target="_blank">
+								  <img src="{$smarty.const._DIRIMAGES}primera_linea.png" alt="Revista Primera Línea" />	
+								</a>
+							 </div>
+                            </li>
+							
+							
+							<li>
+							 <div class="emisora">
+							    <a href="http://www.clublancita.mil.co/" rel="nofollow" title="Club lancita" target="_blank">
+								  <img src="{$smarty.const._DIRIMAGES}Clublancita.jpg" alt="Club lancita"  style="padding-left:80px;"/>	
+								</a>
+							 </div>
+							</li>
+							
+						</ul>
+					</div>	
+
+
+                {literal}
+					<script type="text/javascript">   
+						$(window).load(function(){
+						  $('.flexslider').flexslider({
+							animation: "slide",
+							start: function(slider){
+							  $('body').removeClass('loading');
+							}
+						  });
+						});
+					</script>
+				{/literal}					
+
+					
+					
+					
+					
+				
+    </div>

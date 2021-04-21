@@ -1,0 +1,56 @@
+{if $subMenu != ""}
+
+<!--SubMenu Edición -->
+	<table style="width:100%;background:#6699CC;border:0" class="text-left" cellpadding=2 cellspacing=0 summary="Submenu">
+	<tr>
+	<td style="background:#FFF;text-align:center; font-size:20px;" colspan="6">
+		<b>{$rotSubMenu}</b>
+	</td>
+	</tr>
+
+{if $verMas != ""}
+	<tr>
+	<td colspan="6" style="background:#FFF;text-align:center">{$verMas}</td>
+	</tr>
+{/if}
+
+{section name=mysec loop=$subMenu}
+{strip}
+<tr style='background:{cycle values="#FFFFFF,#FFFFFF"}'>
+	<td width="16" class="" align="">
+		[{$subMenu[mysec].orden}]
+    </td>
+	<td class="TITULO_CONT1">
+       {$subMenu[mysec].vinculo}{$subMenu[mysec].info_candado}{$subMenu[mysec].info_home}
+    </td>
+
+	
+    <td width="37" class="edicion_elemento">
+		{$subMenu[mysec].boton_duplicar}
+    </td>
+    <td width="37" class="edicion_elemento">
+		{$subMenu[mysec].boton_activo}
+    </td>
+    
+    <td width="37" class="edicion_elemento">
+		{$subMenu[mysec].boton_borrar}
+    </td>
+  </tr>
+{/strip}
+{/section}
+
+{if $verMas != ""}
+	<tr>
+    <td style="background:#FFF;text-align:center" colspan="6">{$verMas}</td>
+	</tr>
+{/if}
+
+	<tr>
+    <td style="background:#fff;text-align:right" colspan="6">
+		{$rotSubMenuConvenciones}
+    </td>
+	</tr>
+</table>
+<!--FIN SubMenu Edición -->
+
+{/if}

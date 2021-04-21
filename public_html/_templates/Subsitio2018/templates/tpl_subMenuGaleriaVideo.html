@@ -1,0 +1,85 @@
+
+
+
+<link href="{$smarty.const._DIRJS}cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css" />
+<link href="{$smarty.const._DIRJS}cubeportfolio/css/portfolio.min.css" rel="stylesheet" type="text/css" />
+
+
+<div id="js-grid-juicy-projects" class="cbp" style="height: 300px!important;">
+	{section name=mysec loop=$subMenu}
+	 {if $subMenu[mysec].tipo == 'youtube' }
+	    <div class="cbp-item web-design graphic">
+	        <div class="cbp-caption" style="height: 250px">
+	            <div class="cbp-caption-defaultWrap">
+               		<div style="background: url('{$subMenu[mysec].imagen}'); height:250px;"></div>
+            	</div>
+	            <div class="cbp-caption-activeWrap">
+	                <div class="cbp-l-caption-alignCenter">
+	                    <div class="cbp-l-caption-body">
+
+                        	<a data-image="{$subMenu[mysec].imagen}" href="{if $subMenu[mysec].tipo == 'mp4' || $subMenu[mysec].tipo == 'flv'}{$smarty.const._URL}{$smarty.const._DIRRECURSOS_USER}{$subMenu[mysec].descripcion}{else}https://www.youtube.com/watch?v={$subMenu[mysec].idvideo}{/if}" class="cbp-lightbox btn btn-default text-uppercase wrap8" data-title="{$subMenu[mysec].nombre}">Ver video</a>
+
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="cbp-l-grid-projects-title uppercase text-center wrap8">{$subMenu[mysec].nombre}</div>
+	        <div class="cbp-l-grid-projects-desc uppercase text-center wrap8">{$subMenu[mysec].entradilla}</div>
+	    </div>
+	    {/if}
+	{/section}
+</div>
+{if $verMas != ""}
+    {$verMas}
+{/if}
+
+<!-- plugins gallery -->
+<script src="{$smarty.const._DIRJS}cubeportfolio/js/jquery.cubeportfolio.js" type="text/javascript"></script>
+<script src="{$smarty.const._DIRJS}cubeportfolio/js/portfolio-1.min.js" type="text/javascript"></script>
+
+<!-- add on flv videos -->
+<link rel="stylesheet" href="{$smarty.const._DIRJS}jPlayer-2.9.2/dist/skin/pink.flag/css/jplayer.pink.flag.min.css"/>
+<script src="{$smarty.const._DIRJS}jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+
+
+<style>
+	.fecha_titulo{
+		font-size: 10px;
+	}
+	.col-md-3.prueba {
+	    padding: 10px 0px 20px 0px;
+	    margin-bottom: 20px;
+	    text-align: center;
+	    font-family: Roboto-Light;
+	    color: #333;
+	    border-bottom: 1px solid #706f2c;
+	}
+
+	.pie-foto{
+		margin-top: 20px;
+	}
+
+	.pie-foto > a{
+	    color: #000000;
+	    margin-top:10px;
+	}
+</style>
+{literal}
+	<style type="text/css">
+		.pie-foto a {
+		    color: #211f1f;
+		    border-bottom: 1px solid #333;
+		}
+
+		.item_lista_video:hover p {
+		     text-decoration: none; 
+		}
+
+		.pie-foto a:hover {
+		    color: #c71521;
+		}
+		.pie-foto a strong{
+		    color: #c71521;;
+		}
+	</style>
+{/literal}

@@ -1,0 +1,44 @@
+<!--Template Formulario de Contacto-->
+<div id="utilidades">
+
+	{if $subMenuError != ""}
+		{strip}
+		<div class="advertencia"><br>
+			{$subMenuError}<br>
+		</div>
+		{/strip}
+	{/if}
+
+	<div><br />{$c_formulario_titulo}<br /></div>
+
+	<form method="POST" action="{$c_action}" target="_self">
+		<div>
+		{section name=mysec loop=$campos}
+			{strip}
+				{if $campos[mysec].nombre != ""}
+						<div class="col-md-4 col-xs-10 col-lg-6 col-sm-12">
+							<div class="row">
+								{if $campos[mysec].clase == "requerido"}<b>{/if}
+									{$campos[mysec].nombre}
+								{if $campos[mysec].clase == "requerido"}</b>{/if}
+							</div>
+						</div>
+						<div class="col-md-8 col-xs-10 col-lg-6 col-sm-12">
+							<div class="row">
+								{$campos[mysec].input}
+							</div>
+						</div>
+				{else}
+					{$campos[mysec].input}
+				{/if}
+			{/strip}
+		{/section}
+			<div>
+				<div class="col-md-12 col-xs-10 col-lg-12 col-sm-12" style="text-align:center; background-position:center; margin-top:15px;">
+					<input type="submit" value="Enviar" class="btn btn-default tpl_boton">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!--Fin Template Formulario de Contacto-->

@@ -1,0 +1,79 @@
+<!--Template Buscar-->
+{literal}
+<script type="text/javascript" language="Javascript">
+	function validar() {
+		formaFormulario = document.getElementById("frm_faq");
+		
+		if (formaFormulario.frm_pregunta.value == '') {
+			formaFormulario.frm_pregunta.focus();
+			alert("Necesita una meter una pregunta para poder enviarlo!.");
+			return false;
+		}
+		return true;
+	}
+</script>
+{/literal}
+<div id="faq">
+
+	{if $subMenuError != ""}
+		{strip}
+		<!--FAQ:Error-->
+			<div id="buscar_error">{$subMenuError}</div><br>
+		<!--Fin FAQ:Error-->
+		{/strip}
+	{/if}
+	
+	
+	{if $filtro}
+		<div class="formulario">
+			<form method="POST" action="{$c_action}" style="padding:0;margin:0 10px;">
+				<input type="hidden" name="token" value="{$smarty.session.token}">
+				<label for="filtro_antetitulo">Sección:</label>
+				<select name="filtro_antetitulo" id="filtro_antetitulo" title="filtro_antetitulo">
+					<option value="">[-- Ver Todos --]</option>
+					{section name=idvalue loop=$filtro}
+						<option value="{$filtro[idvalue]}" {if $filtro_antetitulo == $filtro[idvalue]}selected{/if}>{$filtro[idvalue]}</option>
+					{/section}
+				</select>
+				<input type="submit" name="Enviar" value="Filtrar" class="enviar"/>
+			</form>
+		</div>
+	{/if}
+	
+	<!--FAQ : Listado-->
+	{if $faq}
+		<ul>
+			{section name=mysec loop=$faq}
+			<li>
+				<h3><a href="?idcategoria={$faq[mysec].idcategoria}&amp;c">{$faq[mysec].nombre}</a></h3>
+				<p>{$faq[mysec].descripcion}</p>
+		    </li>
+			{/section}
+		</ul>
+	{/if}
+	<!--Fin FAQ : Listado-->
+	
+	<div style="border-top:1px solid #ccc;display:block; height:0;margin:20px 0 2px 0;"></div>
+	
+	{if $UsuarioRegistrado === TRUE}
+		<!--Buscar:Formulario Búsqueda-->
+		<div class="formulario">
+			<h3>Envie su pregunta</h3>
+			<form method="POST" action="{$c_action}" name="frm_faq" id="frm_faq" onsubmit="return validar();" style="margin:0 10px">
+				<input type="hidden" name="token" value="{$smarty.session.token}">
+				<label for="frm_pregunta">Pregunta:</label> <br>
+				<textarea name="frm_pregunta" rows="4" id="frm_pregunta"> </textarea><br>
+				<input type="submit" name="Enviar" value="Enviar" class="enviar"/>
+			</form>
+		</div>
+		<!--Fin Buscar:Formulario Búsqueda-->
+	{else}
+		<div class="formulario">
+			<p style="margin:0 10px">
+				Para enviar una pregunta usted debe estar autenticado en la página. <br>
+				Para autenticarse hágalo <a href="?idcategoria={$smarty.const._SLOGIN}&amp;cat_origen={$idcategoria}">aqu&iacute;</a>.<br>
+				Para registrarse en la página hagalo <a href="?idcategoria={$smarty.const._SREGISTRO}&amp;cat_origen={$idcategoria}">aqu&iacute;</a>.
+			</p>
+		</div>
+	{/if}
+</div>

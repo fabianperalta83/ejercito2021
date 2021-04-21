@@ -1,0 +1,184 @@
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+{literal}
+<script type="text/javascript" src="{/literal}{$DIRJS}select_dependientes.js{literal}"></script>
+{/literal}
+
+<form id="form_gestion" name="form_gestion" action="" method="post" enctype="multipart/form-data">
+
+{section name=index loop=$errores}
+
+		<div class="errores">
+			{if $errores[index]!=''}
+					<ul>
+						<li>
+						<font color="Red" style="font-weight: bold;">
+						{$errores[index]}
+						</font>
+						</li>
+					</ul>
+				{/if}
+			</div>
+{/section}
+
+			<div class="titulo_bloque">Solicitante</div>
+			<div id="solicitante">
+				<div class="lb_formulario_gestion_izq">{$lb_nombre}:</div>
+				<div>{$nombre}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_documento}:</div>
+				<div>{$tipo_documento_nombre} {$documento}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_email}:</div>
+				<div>{$email}&nbsp;</div>
+				<div class="lb_formulario_gestion_izq">{$lb_telefono}:</div>
+				<div>{$telefono}&nbsp;</div>
+				<div class="lb_formulario_gestion_izq">{$lb_celular}:</div>
+				<div>{$celular}&nbsp;</div>
+				<div class="lb_formulario_gestion_izq">{$lb_direccion}:</div>
+				<div>{$direccion}&nbsp;</div>
+				<div class="lb_formulario_gestion_izq">{$lb_ubicacion}:</div>
+				<div>{$ubicacion_miga}&nbsp;</div>
+			</div>
+
+			<div class="titulo_bloque">Solicitud</div>
+			<div id="info_solicitud">
+				<div class="lb_formulario_gestion_izq">{$lb_consecutivo}:</div>
+				<div>{$solicitud_id}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_origen}:</div>
+				<div>{$origen}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_medio}:</div>
+				<div>{$medio}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_fecha}:</div>
+				<div>{$fecha}</div>
+				<div class="lb_formulario_gestion_izq">{$lb_solicitud}:</div>
+				<div>{$solicitud}</div>
+			</div>
+			<div class="titulo_bloque">Estado actual</div>
+			<div id="estado_actual">
+				<div class="lb_formulario_gestion_izq" style="margin-top:5px">{$lb_estado}:</div>
+				<div style="margin-top:5px;margin-bottom:5px">
+					<select name="estado" style="width:150px">
+	    				{html_options values=$select_estado.id output=$select_estado.nombre selected="$estado"}
+	    			</select>
+				</div>
+				<div class="lb_formulario_gestion_izq">{$lb_tipo_solicitud}:</div>
+				<div>
+					<select id="tipo_solicitud" name="tipo_solicitud" style="width:150px" onchange="obtenerPlazo(this.id)">
+						{html_options values=$select_tipo_solicitud.id output=$select_tipo_solicitud.nombre selected="$tipo_solicitud"}
+					</select>
+				</div>
+				<div style="margin-top:10px;margin-bottom:10px">
+					<div class="lb_formulario_gestion_izq">{$lb_asunto}:</div>
+					<div id="asunto">
+						{section name=section_asunto loop=$select_asunto}
+							<div>
+								{$select_asunto[section_asunto]}
+							</div>
+						{/section}
+					</div>
+				</div>
+				<div style="margin-bottom:10px">
+					<div class="lb_formulario_gestion_izq">{$lb_responsable}:</div>
+					<div>
+						{section name=section_dependencia loop=$select_dependencia}
+							<div style="margin-left:170px">
+								{$select_dependencia[section_dependencia]}
+							</div>
+						{/section}
+					</div>
+				</div>
+				<!--<div class="lb_formulario_gestion_izq">{$lb_fecha_limite}:</div>
+				 <div><input type="text" name="fecha_limite" size="2" maxlength="2" value="{$fecha_limite}" style="width:15px" disabled/></div>-->
+				<div class="lb_formulario_gestion_izq">{$lb_fecha_limite}:</div>
+			<!-- 	<div id = "plazo" nombre = "plazo">{$fecha_limite} </div>-->
+				<input type="text" name="fecha_limite" id="fecha_limite" size="10" maxlength="10" value="{$fecha_limite}" style="width:15px" readonly = "readonly"/>
+				<!--*********************************************************FP*TMR*****************************************************************-->
+				<div class="lb_formulario_gestion_izq">Tiempo Respuesta</div><div>{if $tiempo2 == 0}{$error}{else}{$resultado} Dias{/if}</div><br><br>
+				<!--*********************************************************FP*TMR*****************************************************************-->
+				<div class="lb_formulario_gestion_izq">{$lb_resumen}:</div>
+				<div><textarea name="resumen" rows="5" cols="60">{$resumen}</textarea></div>
+				<div class="lb_formulario_gestion_izq">{$lb_respuesta}:</div>
+				<div><textarea name="respuesta" rows="5" cols="60">{$respuesta}</textarea></div>
+
+		   		<div class="lb_formulario_gestion">{$lb_adjuntar_advertencia}</div>
+
+				<br><div class="lb_formulario_gestion_izq"><label>{$lb_archivos}:</label></div>
+		        		{* Aqui se adicionan los campos de subir archivos *}
+		   		<br>
+		        <div style="border:solid 1px;width:500px;" align="justify">{$texto_ayuda}</div>
+	        	<br>
+
+		        <br>
+                <div class="lb_formulario_gestion_izq" style="margin-top:5px">{$lb_clasificacion}:</div>
+				<div style="margin-top:5px;margin-bottom:5px">
+					<select name="clasificacion[]" style="width:150px">
+	    				{html_options values=$select_clasificacion.id output=$select_clasificacion.nombre selected="$clasificacion"}
+	    			</select>
+				</div>
+				<br>
+
+		        <div class="lb_formulario_gestion_izq"><label>Comentarios del archivo:</label></div>
+		   		<div><textarea name="comentario[]" rows="5" cols="60"></textarea></div>
+
+		   		<div id="adjuntos">
+		   			<input type="file" name="archivos[]">
+		   		</div>
+                <input type="button" onClick="addCampoGestion()" value="{$lb_lk_subir_mas}" class="boton_small_pqr">
+
+                <div class="lb_formulario_gestion">{$lb_adjuntar_advertencia}</div>
+				<input type="hidden" name="solicitud_id" id="solicitud_id" value="{$solicitud_id}" />
+				<div class="btn_1"><input type="submit" name="enviar" id="enviar" value="{$lb_btn_enviar}" /></div><br />
+				 <div align="right" style="padding:0px 0xp 0px 50px" class="boton_resaltado_pqr"><a href="?idcategoria=228252" >Regresar</a></div><!-- style="text-decoration:none;background-color:#00BFFF;color:#FFFFFF" -->
+				 <br/>
+			</div>
+			   
+
+			<div class="titulo_bloque">Documentos</div>
+			<div id="documentos">
+			<table id="tbl_cambios" cellspacing="3px" bgcolor="#FFFFFF">
+				<tr style="background:#8B8B8B;color:#FFFFFF;text-align:center">
+					<th>Nobre del Documento</th>
+					<th>Clasificaci&oacute;n del Documento</th>
+					<th>Comentario</th>
+				</tr>
+					{section name=documento loop=$documentos}
+						<tr bgcolor="{cycle values="#FBF9FA,#E7E7E7"}">
+							<td width="20%"><a target="_blank" href="{$documentos[documento].ruta}">{$documentos[documento].documento_nombre} </a></td>
+							<td width="20%">{$documentos[documento].documentotipo}</td>
+							<td width="59%">{$documentos[documento].comentario}</td>
+
+						</tr>
+					{/section}
+			</table>
+			</div>
+
+			<div class="titulo_bloque">Historico de cambios</div>
+			<div id="transacciones">
+				<table id="tbl_cambios" cellspacing="3px" bgcolor="#FFFFFF">
+						<tr style="background:#8B8B8B;color:#FFFFFF;text-align:center">
+							<th>No</th>
+							<th>Campo modificado</th>
+							<th>Valor inicial</th>
+							<th>Valor final</th>
+							<th>Funcionario</th>
+							<th>Fecha</th>
+						</tr>
+					{section name=cambio loop=$historico_cambios}
+						<tr bgcolor="{cycle values='#FBF9FA,#E7E7E7'}">
+							<td >{$historico_cambios[cambio].indice}</td>
+							<td >{$historico_cambios[cambio].nombre_campo}</td>
+							<td >{$historico_cambios[cambio].valor_inicial}</td>
+							<td style="font-size:smaller;">{$historico_cambios[cambio].valor_final|truncate:30}</td>
+							<td style="font-size:smaller;">{$historico_cambios[cambio].usuario}</td>
+							<td >{$historico_cambios[cambio].fecha}</td>
+						</tr>
+					{/section}
+				</table>
+			</div>
+            <div style="padding:0 0 0 140px; text-align: center; float: left;">
+                <div class="boton_resaltado_pqr" style="float:left"><a href="{$esta_pagina}&exportarXml=1">Exportar historial del cambios en XML</a></div>
+                <div style="float:left;width:10px;height:10px"></div>
+                <div class="boton_resaltado_pqr" style="float:left"><a href="_include/pqr_crear_pdf_administracion.php?id_enviada={$solicitud_id}&ubicacion={$ubicacion_miga}" target="_blank">Exportal solicitud a formato PDF</a></div>
+            </div>
+	<!--	</td>
+	</tr>
+</table>-->
+</form>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>{$smarty.const._NOMBRESITIO} :: Galer&iacute;a de Im&aacute;genes</title>
+		{literal}
+<style type="text/css">
+body{margin:0;padding:0;text-align:center;background:#FAFAFA}
+#content{margin:auto;height:100%}
+</style>
+{/literal}
+<script type="text/javascript">
+var imagen_w = {$imagen.ancho};var imagen_h = {$imagen.alto};var sh=screen.availHeight;var sw=screen.availWidth;var xw =0;var xh =0;var plus = 10;
+var minw = 400;var minh = 50;{literal}
+navig = navigator.userAgent.toLowerCase();is_ie	= ((navig.indexOf("msie") != -1) && (navig.indexOf("opera") == -1));
+if(is_ie){plus =-10;}
+if(imagen_w < sw -20){if(imagen_w > minw){xw = imagen_w+6;}else{xw = minw;}}else{xw = sw;}
+if(imagen_h < sh){if(imagen_h > minh){xh = imagen_h+150+plus;}else{xh = minh+58+plus;}}else{xh = sh;}
+parent.window.resizeTo(xw, xh);
+//parent.window.moveTo(0,0);
+{/literal}
+</script>
+	</head>
+	<body>
+		<div id="content">
+			<img src="../{$imagen.cimagen}" alt="{$imagen.nombre}" title="{$imagen.nombre}">
+		</div>
+	</body>
+</html>

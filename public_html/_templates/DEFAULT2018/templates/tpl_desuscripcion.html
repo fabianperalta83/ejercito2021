@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>{$tituloPagina}</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<meta name="author" content="leonardo forero sandoval gerente@micrositios.net">
+	<meta name="copyright" content="&copy; 2002 micrositios ltda. www.micrositios.net">
+	<meta name="keywords" content="{$metaKeywords}">
+</head>
+<body style="background:#F2F2F2;">
+<h1 style="display:none;">{$smarty.const._NOMBREPAGINA}</h1>
+<div style="text-align:center;">
+	<div style="left:auto;">
+		<h3 style="padding:5px;background:#839FBB;font:bold 16px tahoma,helvetica;margin:0;">
+			Desuscripción al Boletín del Sitio {$smarty.const._NOMBREPAGINA}
+		</h3>
+		{if $intruso}
+				Acción realizada, no válida.
+		{else}
+			{if not $desuscribio}
+				<form action="" name="frm_desus" id="frm_desus">
+					<p style="margin:0;padding:15px 25px;text-align:center;background:#A8BBD2;font:12px tahoma,helvetica;">
+						<input type="hidden" name="accion" value="desusbribir">
+						<input type="hidden" name="cid" value="{$cid}">
+						<input type="hidden" name="listas" value="{$listas}">
+						Desea desuscribirse realmente ?
+						<input type="submit" value="Si"><br><br>
+						<input type="button" value="Ir al Home" onclick="location.href='{$smarty.const._URL}'">
+					</p>
+				</form>
+			{else}
+				<p style="margin:0;padding:15px 25px;text-align:center;background:#A8BBD2;font:12px tahoma,helvetica;">
+					{$mensaje_desuscripcion}<br><br>
+					<input type="button" value="Ir al Home" onclick="location.href='{$smarty.const._URL}'">
+				</p>
+			{/if}
+		{/if}
+	</div>
+</div>
+</body>
+</html>

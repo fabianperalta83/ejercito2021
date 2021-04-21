@@ -1,0 +1,7 @@
+     @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                 /* background: #ffffff!important;*/
+              }
+          }
+
+.carousel,.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item,.view,body,html{height:100%}.navbar{color:#ffffff;}.fondo1.page-footer,.top-nav-collapse, .top-nav-collapse {background:#ffffff; color:#000000}@media only screen and (max-width:768px){.navbar{}}.top-nav-collapse ul li ul a{background-color:transparent; color:#000000}

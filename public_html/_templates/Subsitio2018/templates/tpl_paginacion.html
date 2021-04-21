@@ -1,0 +1,38 @@
+{if $numPaginas > 1}
+	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+		<div id="titulo_actualidad">
+			<h3 class="pagerH5">{$smarty.const._ROT_PAGER}</h3>
+			<map title="{$smarty.const._ROT_NAV_PAGER}" name="nav_paginacion" class="container">
+				<div class="row">
+					<center>
+						<p class="paginacion-aux-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							
+							{if $numPaginas > 6 and $paginas.actualPage != 1}
+								<a href="index.php?idcategoria={$idcategoria}&amp;pag=1" class="boton wrap8">&lsaquo;&lsaquo;{$smarty.const._ROT_PRIMERO}</a>
+							{/if}
+							{if $paginas.previousPage != ''}
+								<a href="index.php?idcategoria={$idcategoria}&amp;pag={$paginas.previousPage}" class="boton wrap8">&lsaquo;{$smarty.const._ROT_ANTERIOR}</a>
+							{/if}
+							{if $paginas.pags}
+								{section name=idPag loop=$paginas.pags}
+									{if $paginas.actualPage != $paginas.pags[idPag]}
+										<a href="index.php?idcategoria={$idcategoria}&amp;pag={$paginas.pags[idPag]}" class="wrap8">{$paginas.pags[idPag]}</a>
+									{else}
+										<span class="actual wrap8">{$paginas.pags[idPag]}</span>
+									{/if}
+								{/section}
+							{/if}
+							{if $paginas.nextPage != ''}
+								<a href="index.php?idcategoria={$idcategoria}&amp;pag={$paginas.nextPage}" class="boton wrap8">{$smarty.const._ROT_SIGUIENTE}&rsaquo;</a>
+							{/if}
+							{if $numPaginas > 6 and $numPaginas != $paginas.actualPage}
+								<a href="index.php?idcategoria={$idcategoria}&amp;pag={$numPaginas}" class="boton wrap8">{$smarty.const._ROT_ULTIMO}&rsaquo;&rsaquo;</a>
+							{/if}
+							
+						</p>
+					</center>
+				</div>
+			</map>
+		</div>
+	</div>
+{/if}

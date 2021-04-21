@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>{$smarty.const._NOMBRESITIO}</title>
+<link href="../{$smarty.const._DIRCSS}estilo_general.css" rel="stylesheet" type="text/css">
+{literal}
+<style type="text/css">
+li {display:inline;margin:0;padding:0;}
+li a {color:#84B022;margin:0 5px 0 10px;text-decoration:none}
+li a:hover{text-decoration:underline}
+</style>
+{/literal}
+</head>
+<body>
+	<div style="width:400px">
+		{$nombre_responsable}<br />
+		{$nombre_entidad}<br />
+		<br />
+		Asunto: Solicitud en el sistema de Atenci&oacute;n al Ciudadano del
+		Ejército Nacional de Colombia- Solicitud Nro {$solicitud_id}<br />
+		<div style="text-align:left;font-weight:bold">Asunto: {$asunto}</div><br />
+		<div style="text-align:justify">Le ha sido asignada una solicitud en el sistema
+		de Atención al Ciudadano del Ejército Nacional de Colombia<br />
+		<br />
+		<b>Para gestionar esta solicitud debe hacer {$vinculo_gestion}</b>
+	</div>
+</body>
+</html>

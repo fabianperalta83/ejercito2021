@@ -1,0 +1,62 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Titulo de Directorio Telefonicos  -->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div class="img_red_box"></div>
+	<div class="name_red_box">{$c_titulo}<br><br><br></div>
+</div>
+
+<textarea name="" cols="30" rows="10" id="json_puntos" style="display: none;">{$json_puntos}</textarea>
+
+<div class="class_segun_tamano_unidades col-md-12 col-lg-12 col-sm-12 col-xs-12" style="min-height: 584px">
+	<div class="row">        
+		<div class="div_directorio_telefonico"></div>
+	</div>
+</div>
+
+
+{literal}
+
+	<script>		
+		$(document).on("ready", function()
+		{     			
+			Actualizar_Tamano();
+			myJSONObject 	= $("#json_puntos").text();
+			
+			if(myJSONObject !== "empty")
+			{
+				informacion = myJSONObject
+				$(".div_directorio_telefonico").html(informacion);
+			}
+		});
+		
+		// Funciones al momento de que se modifique el tamaño de la pantalla
+		jQuery(window).resize(function(e) 
+		{
+			Actualizar_Tamano();
+		});
+		
+		// Función que modifica los elementos cuando el tamaño de la pantalla es menor a 1024
+		function Actualizar_Tamano()
+		{
+			var width = window.innerWidth;
+			
+			if(width <= 1024)
+			{
+				$(".class_segun_tamano").removeClass("col-md-4").addClass( "col-md-12" );
+				$(".class_segun_tamano").removeClass("col-lg-4").addClass( "col-lg-12" );
+				$(".class_segun_tamano").removeClass("col-sm-4").addClass( "col-sm-12" );
+				$(".class_segun_tamano").removeClass("col-xs-4").addClass( "col-xs-12" );
+			}
+			else
+			{
+				$(".class_segun_tamano").removeClass("col-md-12").addClass( "col-md-4" );
+				$(".class_segun_tamano").removeClass("col-lg-12").addClass( "col-lg-4" );
+				$(".class_segun_tamano").removeClass("col-sm-12").addClass( "col-sm-4" );
+				$(".class_segun_tamano").removeClass("col-xs-12").addClass( "col-xs-4" );
+			}  
+		}
+	</script>
+	
+{/literal}
+

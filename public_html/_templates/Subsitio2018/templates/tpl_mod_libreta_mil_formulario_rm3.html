@@ -1,0 +1,995 @@
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+<link rel="stylesheet" href="js/development-bundle/themes/base/jquery.ui.all.css">
+<script type="text/javascript" src="js/development-bundle/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="js/development-bundle/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="js/development-bundle/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/development-bundle/ui/jquery.ui.tabs.js"></script>
+<script type="text/javascript" src="js/development-bundle/ui/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
+<script type="text/javascript" src="js/jquery.format.1.05.js"></script>
+
+<link media="screen,print" type="text/css" rel="stylesheet" href="_administracion/recursos/css/estilo_admin.css" />
+
+{literal}
+
+<script type="text/javascript">
+	var debug = false;
+	
+	send_ajax_request = function( url, data_div_ID, dest_div_ID, source_dom_obj, loader_div_ID, cancel_callback, toogleEnableButtonsFunc )
+	{
+		if( source_dom_obj != null && source_dom_obj != undefined )
+			if(source_dom_obj.pressed) {
+				return false;
+			}
+			else {
+				source_dom_obj.pressed = true;
+			}
+		
+		toogleEnableButtonsFunc(false); // deshabilitar botones
+		
+		/// if(! $('#'+loader_div_ID).length )
+		if( loader_div_ID != null && loader_div_ID != undefined && loader_div_ID != '' )
+		{
+			$('#'+loader_div_ID).show();
+		}
+
+		$('#'+loader_div_ID).show();
+		
+		var xhr = jQuery.ajax( {url: url // "save.php?action=ejecutarGuardar"
+			,ajaxSend: function()
+			{
+				// Nnuca se llamo :(
+				// alert("ajaxSend");
+			}
+			, success: function(data, textStatus, jqXHR) {
+				if( dest_div_ID != null && dest_div_ID != undefined && dest_div_ID != '' )
+				{
+					$('#'+dest_div_ID).empty().append( "<div style='color:red;'>"+data+"</div>" );
+				}
+			}
+			, error: function(jqXHR, textStatus, errorThrown) {
+				alert( "Ocurrio un error enviando la peticion al servidor: "+errorThrown );
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			, complete: function(jqXHR, textStatus)
+			{
+				toogleEnableButtonsFunc(true); // habilitar botones
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			,data: (( data_div_ID != null && data_div_ID != undefined )?($('#'+data_div_ID+' *').serialize()):'')
+			,dataType: "html"
+			,type: 'POST'
+			,contentType: "application/x-www-form-urlencoded;charset=utf-8"
+			// ,contentType: "application/x-www-form-urlencoded;charset=ISO-8859-1"
+		} );
+	}
+
+	overlay = function() {
+		el = document.getElementById("overlay");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	}
+
+	wf_action = function( btn_obj, solicitud_id, estado_id_inicial, estado_id_final )
+	{
+//		alert('Iniciando solicitud: '+'_include/dga_solicitud_registro.php?action=registro_solicitud&solicitud_id='+solicitud_id+'&estado_id_inicial='+estado_id_inicial+'&estado_id_final='+estado_id_final);
+		send_ajax_request('_include/libreta_mil_formulario_rm3.php?action=registro_solicitud&solicitud_id='+solicitud_id
+				+'&estado_id_inicial='+estado_id_inicial+'&estado_id_final='+estado_id_final
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+			, null
+			, toogleRotulos
+		);
+	}
+	
+	focus_any_container = function( obj )
+	{
+		try
+		{
+			if( obj.firstChild && obj.firstChild.tagName.toLowerCase() == "a" )
+			{
+				obj.firstChild.focus();
+			}else
+			{
+				aaa = document.createElement('a');
+				aaa.href = '#';
+				obj.insertBefore(aaa, obj.firstChild);
+				aaa.focus();
+			}
+		}catch(e)
+		{
+	//		alert("Error: "+e);
+		}
+	}
+	
+	toogleRotulos = function( enable )
+	{
+		if( enable )
+			$('#div_rotulos_ID :input').removeAttr('disabled');
+		else
+			$('#div_rotulos_ID :input').attr('disabled', true);
+	}
+	
+	toogleDataTieneSisben = function(noFocus)
+	{
+		toogleDataSetByRadio( 'tieneSisben', 'dataTieneSisben', noFocus?null:'puntajeSisben_ID' );
+	}
+
+	toogleDataSetByRadio = function( radioName, className, focusElementID, changeHideValue )
+	{
+		hideValue = "0";
+		if( changeHideValue != undefined && changeHideValue != null )
+		{
+			hideValue = changeHideValue;
+		}
+		if( $('input:radio[name='+radioName+']:checked').val() == hideValue )
+		{
+			// if( debug ) alert("hidding "+className+" with hideValue: "+hideValue);
+			$('.'+className+' :input').attr('disabled', true);
+			$('.'+className+' :input').datepicker('disable');
+			$('.'+className+'').hide(500);
+		}else
+		{
+//			$('.'+className+' :input').addClass('tpl_input_edicion_requerido');
+			$('.'+className+'').show(500);
+			$('.'+className+' :input').removeAttr('disabled');
+			$('.'+className+' :input').datepicker('enable');
+			if( focusElementID )
+			{
+				$('#'+focusElementID).focus();
+			}
+		}
+	}
+
+	toogleDataSetByCheckbox = function( checkboxName, className, focusElementID )
+	{
+		if( !$('input:checkbox[name='+checkboxName+']').is(':checked') )
+		{
+			$('.'+className+' :input').attr('disabled', true);
+			$('.'+className+' :input').datepicker('disable');
+			$('.'+className+'').hide(500);
+		}else
+		{
+//			$('.'+className+' :input').addClass('tpl_input_edicion_requerido');
+			$('.'+className+'').show(500);
+			$('.'+className+' :input').removeAttr('disabled');
+			$('.'+className+' :input').datepicker('enable');
+			if( focusElementID )
+			{
+				$('#'+focusElementID).focus();
+			}
+		}
+	}
+
+</script>
+
+{/literal}
+
+<div id="utilidades">
+
+<!--<form method="POST" action="" name="" id="" enctype="multipart/form-data">-->
+<div id="form_div_ID" class="demo">
+<input type="hidden" name="solicitud_id" value="{$solicitud_id}" id="solicitud_id_ID" />
+<input type="hidden" name="uid" value="{$uid}" id="uid_ID" />
+<input type="hidden" name="pid" value="{$pid}" id="pid_ID" />
+<div id="tabs" style="">
+	{if $esAdministradorDGA}
+	<div style="text-align:center; padding: 4px 0 6px 0;">
+		ADMINISTRADOR
+	</div>
+	{/if}
+	<div style="text-align:center; padding: 4px 0 6px 0;">
+		<a href="#" id="anclaSuperior_ID" onclick="return false;">
+	{if $solicitud_id neq ''}
+			<b style="color: red;" id="b_info_solicitud_id_ID">REGISTRO # {$solicitud_id}</b>
+	{else}
+			<b style="color: red;" id="b_info_solicitud_id_ID">&nbsp;</b>
+	{/if}
+		</a>
+	</div>
+	<ul style="margin: 0; font-size: 60%;">
+		<li><a href="#tabs-1">DATOS PERSONALES</a></li>
+		<li><a href="#tabs-2">INFORMACI&Oacute;N ACADEMICA</a></li>
+		<li><a href="#tabs-3">INFORMACI&Oacute;N LABORAL</a></li>
+		<li><a href="#tabs-4">INFORMACI&Oacute;N FAMILIAR</a></li>
+	</ul>
+	<div id="tabs-1">
+		<table style="border:0em solid #000000;text-align:left;background-position:center; width: 100%;" border="0">
+			<thead>
+				<tr><th colspan="2" style="text-align: center;">DATOS PERSONALES</th></tr>
+			</thead>
+			<tbody>
+				
+				<tr><td>Primer Nombre</td><td><input class="tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="primerNombre" value="{$primerNombre}" id="primerNombre_ID" onchange="actualizarInfoRepLegal();" />&nbsp;*</td></tr>
+				<tr><td>Segundo Nombre</td><td><input size="40" maxlength="254" type="text" name="segundoNombre" value="{$segundoNombre}" id="segundoNombre_ID" onchange="actualizarInfoRepLegal();" /></td></tr>
+				<tr><td>Primer Apellido</td><td><input class="tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="primerApellido" value="{$primerApellido}" id="primerApellido_ID" onchange="actualizarInfoRepLegal();" />&nbsp;*</td></tr>
+				<tr><td>Segundo Apellido</td><td><input size="40" maxlength="254" type="text" name="segundoApellido" value="{$segundoApellido}" id="segundoApellido_ID" onchange="actualizarInfoRepLegal();" /></td></tr>
+
+				<tr>
+					<td>Sexo</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="sexo_ID" name="sexo">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoSexo}
+								<option value="{$key}" {if ($sexo neq "") and ($sexo eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr>
+					<td>Nacionalidad</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="nacionalidad_ID" name="nacionalidad">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoNacionalidad}
+								<option value="{$key}" {if ($nacionalidad neq "") and ($nacionalidad eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr>
+					<td>Tipo de documento de identidad</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="idTipoDocumento_ID" name="idTipoDocumento" disabled="disabled">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoNumIdentificInternacional}
+								<option value="{$key}" {if ($idTipoDocumento neq "") and ($idTipoDocumento eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+				<tr>
+					<td>N&uacute;mero de documento</td>
+					<td>
+						<input class="tpl_input_edicion_requerido" type="text" id="numDocumento_ID" name="numDocumento" value="{$numDocumento}" disabled="disabled" />&nbsp;*
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Pa&iacute;s de Nacimiento</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="paisNacimiento_ID" name="paisNacimiento" onchange="otro_lugar_de_nacimiento();">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoPaises}
+								<option value="{$key}" {if ($paisNacimiento neq "") and ($paisNacimiento eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_departamentoNacimiento_ID" title="Ubicacion">
+					<td>Departamento de Nacimiento</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="departamentoNacimiento" id="departamentoNacimiento_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioNacimiento_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoNacimiento neq "") and ($departamentoNacimiento eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_municipioNacimiento_ID" title="Ubicacion">
+					<td>Municipio de Nacimiento</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="municipioNacimiento" id="municipioNacimiento_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosNacimiento}
+								<option value="{$key}" {if ($municipioNacimiento neq "") and ($municipioNacimiento eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_otroLugarNacimiento_ID" title="Otro lugar de Nacimiento"><td>Otro lugar de Nacimiento</td><td><input class="" size="40" maxlength="254" type="text" name="otroLugarNacimiento" value="{$otroLugarNacimiento}" id="otroLugarNacimiento_ID" /></td></tr>
+
+				<tr><td>Fecha de Nacimiento</td><td><input class="fecha_formulario_rdga tpl_input_edicion_requerido" maxlength="254" type="text" name="fechaNacimiento" value="{$fechaNacimiento}" id="fechaNacimiento_ID" readonly="readonly" size="12" />&nbsp;*</td></tr>
+				
+				<tr>
+					<td>Grupo &Eacute;tnico</td>
+					<td>
+						<select class="" id="etnica_ID" name="etnica">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoPertenenciaEtnica}
+								<option value="{$key}" {if ($etnica neq "") and ($etnica eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				
+				<tr title="Direccion de residencia"><td>Direcci&oacute;n</td><td><input class="tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="direccionResidencia" value="{$direccionResidencia}" id="direccionResidencia_ID" />&nbsp;*</td></tr>
+				<tr title="Barrio o vereda"><td>Barrio o vereda</td><td><input class="" size="40" maxlength="254" type="text" name="nomBarrioVereda" value="{$nomBarrioVereda}" id="nomBarrioVereda_ID" /></td></tr>
+				
+				<tr>
+					<td>Pa&iacute;s de Residencia</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="paisResidencia_ID" name="paisResidencia" onchange="otro_lugar_de_residencia();">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoPaises}
+								<option value="{$key}" {if ($paisResidencia neq "") and ($paisResidencia eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_departamentoResidencia_ID" title="Ubicacion">
+					<td>Departamento de Residencia</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="departamentoResidencia" id="departamentoResidencia_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioResidencia_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoResidencia neq "") and ($departamentoResidencia eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_municipioResidencia_ID" title="Ubicacion">
+					<td>Municipio de Residencia</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="municipioResidencia" id="municipioResidencia_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosResidencia}
+								<option value="{$key}" {if ($municipioResidencia neq "") and ($municipioResidencia eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_otroLugarResidencia_ID" title="Otro lugar de Residencia"><td>Otro lugar de Residencia</td><td><input class="" size="40" maxlength="254" type="text" name="otroLugarResidencia" value="{$otroLugarResidencia}" id="otroLugarResidencia_ID" /></td></tr>
+				
+				<tr title="Estatura"><td>Estatura (cm)</td><td><input class="warning-float tpl_input_edicion_requerido" maxlength="3" type="text" name="tallaCorporal" value="{$tallaCorporal}" id="tallaCorporal_ID" />&nbsp;*</td></tr>
+				<tr title="Peso"><td>Peso (Kg)</td><td><input class="warning-float tpl_input_edicion_requerido" maxlength="3" type="text" name="pesoCorporal" value="{$pesoCorporal}" id="pesoCorporal_ID" />&nbsp;*</td></tr>
+
+				<tr>
+					<td>Grupo Sangu&iacute;neo</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="codGrupoSanguineo_ID" name="codGrupoSanguineo">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoSanguineo}
+								<option value="{$key}" {if ($codGrupoSanguineo neq "") and ($codGrupoSanguineo eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+							<!--<option value="BOMBAY">BOMBAY</option>
+							<option value="PARA-BOMBAY">PARA-BOMBAY</option>-->
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr>
+					<td>RH</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="rh_ID" name="rh">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoRh}
+								<option value="{$key}" {if ($rh neq "") and ($rh eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr>
+					<td>Estrato</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" id="estrato_ID" name="estrato">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoEstrato}
+								<option value="{$key}" {if ($estrato neq "") and ($estrato eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr title="Tel&eacute;fono Fijo"><td>Tel&eacute;fono Fijo</td><td><input class="warning-integer tpl_input_edicion_requerido" maxlength="254" type="text" name="telefonoFijo" value="{$telefonoFijo}" id="telefonoFijo_ID" />&nbsp;*</td></tr>
+				<tr title="Tel&eacute;fono M&oacute;vil"><td>Tel&eacute;fono M&oacute;vil</td><td><input class="warning-integer" maxlength="254" type="text" name="telefonoMovil" value="{$telefonoMovil}" id="telefonoMovil_ID" /></td></tr>
+				<tr title="Correo electronico"><td>E-Mail</td><td><input class="warning-email tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="direccionCorreoElectronico" value="{$direccionCorreoElectronico}" id="direccionCorreoElectronico_ID" disabled="disabled" />&nbsp;*</td></tr>
+
+				<tr class="dataTieneSisben" title="Puntaje Sisben"><td>Puntaje Sisben</td><td><input class="warning-float" maxlength="12" type="text" name="puntajeSisben" value="{$puntajeSisben}" id="puntajeSisben_ID" /></td></tr>
+				
+				<tr>
+					<td>Estado Conyugal</td>
+					<td>
+						<select class="" id="estadoConyugal_ID" name="estadoConyugal">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoEstadoConyugal}
+								<option value="{$key}" {if ($estadoConyugal neq "") and ($estadoConyugal eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				
+				<tr title="Nombre de la esposa"><td>Nombre de la esposa</td><td><input class="" size="40" maxlength="254" type="text" name="nombreCompletoEsposa" value="{$nombreCompletoEsposa}" id="nombreCompletoEsposa_ID" /></td></tr>
+				
+				<tr>
+					<td>N&uacute;mero de Hijos</td>
+					<td>
+						<select class="" id="numHijos_ID" name="numHijos">
+							{foreach key=key item=item from=$grupoNumHijos}
+								<option value="{$key}" {if ($numHijos neq "") and ($numHijos eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Tipo de Vivienda</td>
+					<td>
+						<select class="" id="tipoVivienda_ID" name="tipoVivienda">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoTipoVivienda}
+								<option value="{$key}" {if ($tipoVivienda neq "") and ($tipoVivienda eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<div style="width: 100%; text-align:center;">
+			<!--<input type="button" value="Ultimo" onclick="$('#tabs').tabs('select', 4);" />-->
+			<input type="button" value="Siguiente" onclick="$('#tabs').tabs('select', 1); $('#anclaSuperior_ID').focus();" />
+		</div>
+	</div>
+	<div id="tabs-2">
+		<table style="border:0em solid #000000;text-align:left;background-position:center; width: 100%;">
+			<thead>
+				<tr><th colspan="2" style="text-align: center; vertical-align: middle;">INFORMACI&Oacute;N ACADEMICA</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>¿Es estudiante de Colegio Militar?</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="esEstudianteColegioMilitar" id="esEstudianteColegioMilitar_ID" >
+							{foreach key=key item=item from=$grupoNoSi}
+								<option value="{$key}" {if ($esEstudianteColegioMilitar neq "") and ($esEstudianteColegioMilitar eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Nivel Educativo</td>
+					<td>
+						<select class="" id="nivelEducativo_ID" name="nivelEducativo">
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoNivelEducativo}
+								<option value="{$key}" {if ($nivelEducativo neq "") and ($nivelEducativo eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				
+				<tr><td>Establecimiento donde estudi&oacute; el &uacute;ltimo a&ntilde;o</td><td><input class="tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="institucionEducativa" value="{$institucionEducativa}" id="institucionEducativa_ID" />&nbsp;*</td></tr>
+				
+				<tr id="tr_departamentoEstudio_ID" title="Ubicacion">
+					<td>Departamento de Estudio</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="departamentoEstudio" id="departamentoEstudio_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioEstudio_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoEstudio neq "") and ($departamentoEstudio eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr id="tr_municipioEstudio_ID" title="Ubicacion">
+					<td>Municipio de Estudio</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="municipioEstudio" id="municipioEstudio_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosEstudio}
+								<option value="{$key}" {if ($municipioEstudio neq "") and ($municipioEstudio eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+						&nbsp;*
+					</td>
+				</tr>
+
+				<tr><td>Fecha de Terminaci&oacute;n</td><td><input class="fecha_formulario_rdga tpl_input_edicion_requerido" maxlength="254" type="text" name="fechaTerminacionEstudio" value="{$fechaTerminacionEstudio}" id="fechaTerminacionEstudio_ID" size="12" />&nbsp;*</td></tr>
+
+				<tr>
+					<td colspan="2">
+						<table style="width:100%;">
+							<thead>
+								<tr>
+									<th colspan="2">
+										EDUCACIÓN SUPERIOR (PREGRADO Y POSTGRADO)     DILIGENCIE ESTE PUNTO EN ESTRICTO ORDEN CRONOLÓGICO.<br/>
+										EN CASO QUE SUS ESTUDIOS SEAN POR MÓDULOS, CRÉDITOS O AÑOS CONVIÉRTALOS A SEMESTRES
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>{$plantillaEstudios1}</td></tr>
+								<tr><td>{$plantillaEstudios2}</td></tr>
+								<tr><td>{$plantillaEstudios3}</td></tr>
+							</tbody>
+							<tfoot style="display: none;">
+								<tr>
+									<td colspan="6">
+										<input type="button" value="Agregar" onclick="agregarEstudio();" />
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="width: 100%; text-align:center;">
+			<input type="button" value="Anterior" onclick="$('#tabs').tabs('select', 0); $('#anclaSuperior_ID').focus();" />
+			<input type="button" value="Siguiente" onclick="$('#tabs').tabs('select', 2); $('#anclaSuperior_ID').focus();" />
+		</div>
+	</div>
+	<div id="tabs-3">
+		<table style="border:0em solid #000000;text-align:left;background-position:center; width: 100%;">
+				<tr><th colspan="4" style="text-align: center;">INFORMACI&Oacute;N LABORAL</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Profesi&oacute;n, Ocupaci&oacute;n u Oficio</td>
+					<td>
+						<select class="" name="codProfesion" id="codProfesion_ID" >
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoCodProfesion}
+								<option value="{$key}" {if ($codProfesion neq "") and ($codProfesion eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="">Empresa o Entidad donde labora</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="nombreEmpresa" value="{$nombreEmpresa}" id="nombreEmpresa_ID" /></td>
+				</tr>
+				<tr>
+					<td style="">Cargo</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="cargoEnEmpresa" value="{$cargoEnEmpresa}" id="cargoEnEmpresa_ID" /></td>
+				</tr>
+				<tr id="tr_departamentoEmpresa_ID" title="Ubicacion">
+					<td>Departamento de Ubicaci&oacute;n de la Empresa</td>
+					<td>
+						<select class="" name="departamentoEmpresa" id="departamentoEmpresa_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioEmpresa_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoEmpresa neq "") and ($departamentoEmpresa eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr id="tr_municipioEmpresa_ID" title="Ubicacion">
+					<td>Municipio de Ubicaci&oacute;n de la Empresa</td>
+					<td>
+						<select class="" name="municipioEmpresa" id="municipioEmpresa_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosEmpresa}
+								<option value="{$key}" {if ($municipioEmpresa neq "") and ($municipioEmpresa eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="">Salario Mensual</td>
+					<td style=""><input maxlength="254" type="text" name="salario" value="{$salario}" id="salario_ID" /></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<div style="width: 100%; text-align:center;">
+			<input type="button" value="Anterior" onclick="$('#tabs').tabs('select', 1); $('#anclaSuperior_ID').focus();" />
+			<input type="button" value="Siguiente" onclick="$('#tabs').tabs('select', 3); $('#anclaSuperior_ID').focus();" />
+		</div>
+	</div>
+	<div id="tabs-4">
+		<table style="border:0em solid #000000;text-align:left;background-position:center; width: 100%;">
+			<thead>
+				<tr><th style="text-align: center;" colspan="2">INFORMACI&Oacute;N FAMILIAR</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="2">
+						<fieldset style="border: 1px solid gray; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; width: 100%;">
+							<legend align="center" style="padding: 5px; border:1px solid black; font-size:90%; text-align:center;">Datos del Padre o de Quien Depende el Inscrito</legend>
+							<table style="border:0px solid #000000;text-align:left;background-position:center; width: 100%;">
+				
+				<tr>
+					<td style="">Nombre Completo</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="nombrePadre" value="{$nombrePadre}" id="nombrePadre_ID" /></td>
+				</tr>
+				<tr>
+					<td>Profesi&oacute;n, Ocupaci&oacute;n u Oficio</td>
+					<td>
+						<select class="" name="codProfesionPadre" id="codProfesionPadre_ID" >
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoCodProfesion}
+								<option value="{$key}" {if ($codProfesionPadre neq "") and ($codProfesionPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Vive?</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="vivePadre" id="vivePadre_ID" >
+							{foreach key=key item=item from=$grupoSiNo}
+								<option value="{$key}" {if ($vivePadre neq "") and ($vivePadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Separado?</td>
+					<td>
+						<select class="" name="separadoPadre" id="separadoPadre_ID" >
+							{foreach key=key item=item from=$grupoNoSi}
+								<option value="{$key}" {if ($separadoPadre neq "") and ($separadoPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr title="Direccion de residencia"><td>Direcci&oacute;n de residencia</td><td><input class="tpl_input_edicion_requerido" size="40" maxlength="254" type="text" name="direccionResidenciaPadre" value="{$direccionResidenciaPadre}" id="direccionResidenciaPadre_ID" />&nbsp;*</td></tr>
+				<tr id="tr_departamentoResidenciaPadre_ID" title="Ubicacion">
+					<td>Departamento de Residencia</td>
+					<td>
+						<select class="" name="departamentoResidenciaPadre" id="departamentoResidenciaPadre_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioResidenciaPadre_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoResidenciaPadre neq "") and ($departamentoResidenciaPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr id="tr_municipioResidenciaPadre_ID" title="Ubicacion">
+					<td>Municipio de Residencia</td>
+					<td>
+						<select class="" name="municipioResidenciaPadre" id="municipioResidenciaPadre_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosResidenciaPadre}
+								<option value="{$key}" {if ($municipioResidenciaPadre neq "") and ($municipioResidenciaPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr title="Tel&eacute;fono Fijo"><td>Tel&eacute;fono Fijo</td><td><input class="warning-float" maxlength="254" type="text" name="telefonoFijoPadre" value="{$telefonoFijoPadre}" id="telefonoFijoPadre_ID" /></td></tr>
+				<tr>
+					<td style="">Empresa o Entidad donde Labora</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="nombreEmpresaPadre" value="{$nombreEmpresaPadre}" id="nombreEmpresaPadre_ID" /></td>
+				</tr>
+				<tr><td>Fecha de Ingreso</td><td><input class="fecha_formulario_rdga" maxlength="254" type="text" name="fechaIngresoEmpresaPadre" value="{$fechaIngresoEmpresaPadre}" id="fechaIngresoEmpresaPadre_ID" size="12" /></td></tr>
+				<tr title="Direccion de la empresa del Padre"><td>Direcci&oacute;n de la empresa</td><td><input class="" size="40" maxlength="254" type="text" name="direccionEmpresaPadre" value="{$direccionEmpresaPadre}" id="direccionEmpresaPadre_ID" /></td></tr>
+				<tr id="tr_departamentoEmpresaPadre_ID" title="Ubicacion">
+					<td>Departamento de Residencia</td>
+					<td>
+						<select class="" name="departamentoEmpresaPadre" id="departamentoEmpresaPadre_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioEmpresaPadre_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoEmpresaPadre neq "") and ($departamentoEmpresaPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr id="tr_municipioEmpresaPadre_ID" title="Ubicacion">
+					<td>Municipio de Residencia</td>
+					<td>
+						<select class="" name="municipioEmpresaPadre" id="municipioEmpresaPadre_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosEmpresaPadre}
+								<option value="{$key}" {if ($municipioEmpresaPadre neq "") and ($municipioEmpresaPadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="">Cargo</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="cargoEnEmpresaPadre" value="{$cargoEnEmpresaPadre}" id="cargoEnEmpresaPadre_ID" /></td>
+				</tr>
+				<tr>
+					<td style="">Salario Mensual</td>
+					<td style=""><input maxlength="254" type="text" name="salarioPadre" value="{$salarioPadre}" id="salarioPadre_ID" /></td>
+				</tr>
+				
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<fieldset style="border: 1px solid gray; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; width: 100%;">
+							<legend align="center" style="padding: 5px; border:1px solid black; font-size:90%; text-align:center;">Datos de la Madre o de Quien Depende el Inscrito</legend>
+							<table style="border:0px solid #000000;text-align:left;background-position:center; width: 100%;">
+				
+				<tr>
+					<td style="">Nombre Completo</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="nombreMadre" value="{$nombreMadre}" id="nombreMadre_ID" /></td>
+				</tr>
+				<tr>
+					<td>Profesi&oacute;n, Ocupaci&oacute;n u Oficio</td>
+					<td>
+						<select class="" name="codProfesionMadre" id="codProfesionMadre_ID" >
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$grupoCodProfesion}
+								<option value="{$key}" {if ($codProfesionMadre neq "") and ($codProfesionMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Vive?</td>
+					<td>
+						<select class="tpl_input_edicion_requerido" name="viveMadre" id="viveMadre_ID" >
+							{foreach key=key item=item from=$grupoSiNo}
+								<option value="{$key}" {if ($viveMadre neq "") and ($viveMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Separada?</td>
+					<td>
+						<select class="" name="separadoMadre" id="separadoMadre_ID" >
+							{foreach key=key item=item from=$grupoNoSi}
+								<option value="{$key}" {if ($separadoMadre neq "") and ($separadoMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr title="Direccion de residencia de la Madre"><td>Direcci&oacute;n de residencia</td><td><input class="" size="40" maxlength="254" type="text" name="direccionResidenciaMadre" value="{$direccionResidenciaMadre}" id="direccionResidenciaMadre_ID" /></td></tr>
+				<tr id="tr_departamentoResidenciaMadre_ID" title="Ubicacion">
+					<td>Departamento de Residencia</td>
+					<td>
+						<select class="" name="departamentoResidenciaMadre" id="departamentoResidenciaMadre_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioResidenciaMadre_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoResidenciaMadre neq "") and ($departamentoResidenciaMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr id="tr_municipioResidenciaMadre_ID" title="Ubicacion">
+					<td>Municipio de Residencia</td>
+					<td>
+						<select class="" name="municipioResidenciaMadre" id="municipioResidenciaMadre_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosResidenciaMadre}
+								<option value="{$key}" {if ($municipioResidenciaMadre neq "") and ($municipioResidenciaMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr title="Tel&eacute;fono Fijo"><td>Tel&eacute;fono Fijo</td><td><input class="warning-float " maxlength="254" type="text" name="telefonoFijoMadre" value="{$telefonoFijoMadre}" id="telefonoFijoMadre_ID" /></td></tr>
+				<tr>
+					<td style="">Empresa o Entidad donde Labora</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="nombreEmpresaMadre" value="{$nombreEmpresaMadre}" id="nombreEmpresaMadre_ID" /></td>
+				</tr>
+				<tr><td>Fecha de Ingreso</td><td><input class="fecha_formulario_rdga" maxlength="254" type="text" name="fechaIngresoEmpresaMadre" value="{$fechaIngresoEmpresaMadre}" id="fechaIngresoEmpresaMadre_ID" size="12" /></td></tr>
+				<tr title="Direccion de la empresa de la Madre"><td>Direcci&oacute;n de la empresa</td><td><input class="" size="40" maxlength="254" type="text" name="direccionEmpresaMadre" value="{$direccionEmpresaMadre}" id="direccionEmpresaMadre_ID" /></td></tr>
+				<tr id="tr_departamentoEmpresaMadre_ID" title="Ubicacion">
+					<td>Departamento de Residencia</td>
+					<td>
+						<select class="" name="departamentoEmpresaMadre" id="departamentoEmpresaMadre_ID" onchange="cargar_municipios_nacimiento_x_depto(this.id, 'municipioEmpresaMadre_ID', this.options[this.selectedIndex].value);" style="width:180px" > 
+							<option value="">Seleccione...</option>
+							{foreach key=key item=item from=$gelDepartamentos}
+								<option value="{$key}" {if ($departamentoEmpresaMadre neq "") and ($departamentoResidenciaMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr id="tr_municipioEmpresaMadre_ID" title="Ubicacion">
+					<td>Municipio de Residencia</td>
+					<td>
+						<select class="" name="municipioEmpresaMadre" id="municipioEmpresaMadre_ID" style="width:180px">
+							<option value="">Seleccione...</OPTION> 
+							{foreach key=key item=item from=$gelMunicipiosEmpresaMadre}
+								<option value="{$key}" {if ($municipioEmpresaMadre neq "") and ($municipioEmpresaMadre eq $key)} selected="selected" {/if}>{$item}</option>
+							{/foreach}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="">Cargo</td>
+					<td style=""><input size="40" maxlength="254" type="text" name="cargoEnEmpresaMadre" value="{$cargoEnEmpresaMadre}" id="cargoEnEmpresaMadre_ID" /></td>
+				</tr>
+				<tr>
+					<td style="">Salario Mensual</td>
+					<td style=""><input maxlength="254" type="text" name="salarioMadre" value="{$salarioMadre}" id="salarioMadre_ID" /></td>
+				</tr>				
+				
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<fieldset style="border: 1px solid gray; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; width: 100%;">
+							<legend align="center" style="padding: 5px; border:1px solid black; font-size:90%; text-align:center;">Datos de los Hermanos</legend>
+							<table style="border:0px solid #000000;text-align:left;background-position:center; width: 100%;">
+				<tr>
+					<td colspan="2">
+						<table style="width:100%;">
+							<tbody>
+								<tr><td>{$plantillaHermano1}</td></tr>
+								<tr><td>{$plantillaHermano2}</td></tr>
+								<tr><td>{$plantillaHermano3}</td></tr>
+							</tbody>
+							<tfoot style="display: none;">
+								<tr>
+									<td colspan="6">
+										<input type="button" value="Agregar" onclick="agregarHermano();" />
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</td>
+				</tr>
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="width: 100%; text-align:center;">
+			<input type="button" value="Anterior" onclick="$('#tabs').tabs('select', 2); $('#anclaSuperior_ID').focus();" />
+			<!--<input type="button" value="Primero" onclick="$('#tabs').tabs('select', 0);" />-->
+		</div>
+	</div>
+	{if $esAdministradorDGA or $detalleModificacion neq ''}
+		<div style="width: 100%; text-align:center;" id="div_detalle_modificacion_ID">
+			Descripci&oacute;n de la devoluci&oacute;n del registro:
+			<br/>
+			<textarea {if not $esAdministradorDGA}readonly="readonly"{/if} cols="50" rows="3" name="detalleModificacion" id="detalleModificacion_ID" title="La descripci&oacute;n de la modificaci&oacute;n es opcional, pero se recomienda en caso de devoluci&oacute;n del registro escribir la raz&oacute;n de esta.">{$detalleModificacion}</textarea>
+		</div>
+		<br/>
+	{/if}
+	<div style="width: 100%; text-align:center;" id="div_rotulos_ID">
+		{$htmlRotulos}
+	</div>
+	<div id="div_imageAjaxLoader_ID" style="text-align: center; width:100%; display: none;">
+		<img src="./js/ajax-loader.gif" style="padding-top: 20px;" />
+	</div>
+	<div id="serverMsg_ID" style="width: 100%; text-align:center;">&nbsp;</div>
+</div>
+</div>
+<!--</form>-->
+
+</div>
+
+{literal}
+<script type="text/javascript">
+	$(function() {
+		$( "#tabs" ).tabs();
+//		$( "#tabs" ).tabs('select', 3);
+	});
+
+	$( '.fecha_formulario_rdga' ).datepicker({
+		showOn: 'both',
+		changeMonth: true,
+		changeYear: true,
+		buttonImage: "./_templates/Default/recursos/images/calendar.gif",
+		buttonImageOnly: true,
+		yearRange: '-70:+0', 
+		dateFormat: "yy-mm-dd" 
+	});
+
+	cargar_municipios_nacimiento_x_depto = function( html_depto_id, html_muncip_id, depto_id )
+	{
+//		alert('Cargando municipio desde la region: '+depto_id);
+		send_ajax_request('_include/libreta_mil_formulario_rm3.php?action=cargar_municipios_nacimiento_x_depto&html_depto_id='+html_depto_id+'&html_muncip_id='+html_muncip_id+'&depto_id='+depto_id
+			, null
+			, 'serverMsg_ID'
+			, null
+			, null
+			, null
+			, toogleRotulos
+		);
+	}
+	
+	otro_lugar_de_nacimiento = function( noAutoFocus )
+	{
+		pais_id = $('#paisNacimiento_ID').val();
+		if( pais_id == '170' )
+		{
+			// colombia
+			$('#departamentoNacimiento_ID').removeAttr('disabled');
+			$('#municipioNacimiento_ID').removeAttr('disabled');
+			$('#otroLugarNacimiento_ID').attr('disabled', 'true');
+			$('#tr_departamentoNacimiento_ID').show();
+			$('#tr_municipioNacimiento_ID').show();
+			$('#tr_otroLugarNacimiento_ID').hide();
+			if(!noAutoFocus)
+				$('#departamentoNacimiento_ID').focus();
+		}else{
+			// otro
+			$('#departamentoNacimiento_ID').attr('disabled', 'true');
+			$('#municipioNacimiento_ID').attr('disabled', 'true');
+			$('#otroLugarNacimiento').removeAttr('disabled');
+			$('#tr_departamentoNacimiento_ID').hide();
+			$('#tr_municipioNacimiento_ID').hide();
+			$('#tr_otroLugarNacimiento').show();
+			if(!noAutoFocus)
+				$('#otroLugarNacimiento').focus();
+		}
+	}
+
+	otro_lugar_de_residencia = function( noAutoFocus )
+	{
+		pais_id = $('#paisResidencia_ID').val();
+		if( pais_id == '170' )
+		{
+			// colombia
+			$('#departamentoResidencia_ID').removeAttr('disabled');
+			$('#municipioResidencia_ID').removeAttr('disabled');
+			$('#otroLugarResidencia_ID').attr('disabled', 'true');
+			$('#tr_departamentoResidencia_ID').show();
+			$('#tr_municipioResidencia_ID').show();
+			$('#tr_otroLugarResidencia_ID').hide();
+			if(!noAutoFocus)
+				$('#departamentoResidencia_ID').focus();
+		}else{
+			// otro
+			$('#departamentoResidencia_ID').attr('disabled', 'true');
+			$('#municipioResidencia_ID').attr('disabled', 'true');
+			$('#otroLugarResidencia').removeAttr('disabled');
+			$('#tr_departamentoResidencia_ID').hide();
+			$('#tr_municipioResidencia_ID').hide();
+			$('#tr_otroLugarResidencia').show();
+			if(!noAutoFocus)
+				$('#otroLugarResidencia').focus();
+		}
+	}
+
+
+
+// $(".numeric").format({type: "decimal", precision: 4,autofix:true});
+// $(".warning-integer").format({type: "decimal", autofix: false},function(){alert('1');this.parentNode.focus();alert('2');});
+$(".warning-unsigned-integer").format({type: "decimal", autofix: true, precision: 0, allow_negative: false},function(){ focus_any_container(this.parentNode); });
+$(".warning-integer").format({type: "decimal", autofix: true, precision: 0},function(){ focus_any_container(this.parentNode); });
+$(".warning-numeric").format({type: "decimal", autofix: true},function(){ focus_any_container(this.parentNode); });
+$(".warning-local-phone-number").format({type: "local-phone-number", autofix: true},function(){ focus_any_container(this.parentNode); });
+$(".warning-email").format({type:"email"},function(){ focus_any_container(this.parentNode); alert("Correo electronico mal formado!"); });
+$(".warning-float").format( {type: "decimal", precision: 10,autofix:true}
+	,function(){ focus_any_container(this.parentNode); alert("Formato numerico incorrecto");}
+);
+
+//$(".numeric").format({precision: 4,autofix:true});
+//$(".warning-numeric").format({autofix:true},function(){alert("Not an number");});
+//$(".positive").format({precision: 2,allow_negative:false,autofix:true});
+//$(".comma").format({precision: 6,decimal:',',autofix:true});
+//$(".integer").format({precision: 0,autofix:true});
+//$(".pos-integer").format({precision: 0,allow_negative:false,autofix:true});
+//$(".email").format({type:"email"});
+//$(".warning-email").format({type:"email"},function(){ if($(this).val()=="") alert("Please enter email!"); else alert("Wrong Email format!"); });
+//$(".phone-number").format({type:"phone-number",autofix:true});
+//$(".alphabet").format({type:"alphabet",autofix:true});
+
+// Se modifica la forma del formulario segun los datos q vienen del servidor
+//toggleDGAes(false);
+
+//mostrarCampoOtraCertificadora(document.getElementById('certificadoraISO14001_ID'), 'dataTieneISO14001OtraCertificadora', false);
+
+// Nuevas llamadas
+otro_lugar_de_nacimiento(true);
+otro_lugar_de_residencia(true);
+
+</script>
+{/literal}
+

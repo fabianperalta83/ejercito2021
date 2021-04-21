@@ -1,0 +1,57 @@
+<!--Template Producto-->
+<link href="{$rutaRecursos}estilo_producto.css" rel="stylesheet" type="text/css">
+<div id="default">
+	<!--Producto:Encabezado-->
+<div id="default_encabezados">
+{if $nombre != ""}<h2>{$nombre}</h2>{/if}
+{if $subtitulo != ""}<h3>{$subtitulo}</h3>{/if}
+{if $fecha != "" and $fecha != "0000-00-00"}<span id="fecha">{$fecha}</span>{/if}
+</div>
+	<!--Fin Producto:Encabezado-->
+
+	<!--Producto:Cuerpo-->
+<div id="default_cuerpo">
+{if $descripcion != ""}<p>{/if}
+{if $imagen != ""}
+	<a href="{$imagen}" target="_blank"><img src="funciones/phpThumb.php?src={$document_root}{$imagen}&h=80&q=50" alt="{$nombre}" border="0" height="80" align="left"></a>{/if}
+{if $descripcion != ""}<strong>{$t_descrip}</strong><br>{$descripcion}</p>{/if}
+{if $precio != ""}<p><strong>{$valorunit}:</strong> ${$precio}<br>{/if}
+{if $fabricante != ""}<strong>{$fabricante}:</strong> {$fabricante}</p>{/if}
+<form action="funciones/shop.php" name="adtocart_{$idcategoria}" method="post">
+<input type="hidden" name="idcategoria" value="{$idcategoria}">
+<input type="hidden" name="desde" value="{$idcategoria}">
+<strong>{$cantidad}:</strong> <input type="text" name="cantidad" size="3" maxlength="5" class="input_01" value="1">
+&nbsp; &nbsp;
+<input type="submit" name="submit" value="{$comprar}" class="boton_shop">
+</form>
+
+		<!--Producto:Cuerpo:Características-->
+{if $caracteristicas != ""}
+<h3>{$t_caracter}</h3>
+<table class="default_caracter">
+{section name=mysec loop=$caracteristicas}
+	<tr bgcolor='{cycle values="#eeeeff,#ffffff"}'>
+	<th valign="top">{$caracteristicas[mysec][0]}</th>
+	<td valign="top">{$caracteristicas[mysec][1]}</td>
+	</tr>
+{/section}
+</table>
+{/if}
+		<!--Fin Producto:Cuerpo:Características-->
+
+</div>
+{if $c_submenu != ""}<div id="default_submenu">{$c_submenu}</div>{/if}
+        <!--Fin Producto:Cuerpo-->
+
+{if ($c_subir != "" || $c_imprimir != "" || $c_cuentele != "")}
+        <!--Producto:Utilitarios-->
+<div id="default_utilitarios">
+<hr>
+{if $c_subir != ""}{$c_subir}{/if}
+{if $c_imprimir != ""}{$c_imprimir}{/if}
+{if $c_cuentele != ""}{$c_cuentele}{/if}</div>
+</div>
+        <!--Fin Producto:Utilitarios-->
+{/if}
+</div>
+<!--Fin Template Producto-->

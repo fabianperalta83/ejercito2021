@@ -1,0 +1,9 @@
+"activa","orden","orden_sub","asc_sub","paginas_sub","restringida","iddisplay","iddisplay_sub","nombre","antetitulo","subtitulo","entradilla","descripcion","en_mapa","en_buscador"
+1,100,"",0,0,0,3,10,"Parte refactoring","","","","_include/partePersonal/partePersonal.php",1,1
+1,10,"",0,0,0,3,0,"Crear o modificar  Partes","","","Formulario para tramitar el parte de personal de su &aacute;rea","_include/partePersonal/ayudantia_general.php",1,1
+1,20,"",0,0,0,3,0,"Ver Partes de  personal  de mi Dependencia","","","","_include/partePersonal/reportePartePersonalDependencia.php",1,1
+1,30,"",0,0,0,3,0,"Ver Partes de  Personal  (Todas las Dependencias)","","","","_include/partePersonal/reportePartePersonalGeneral.php",1,1
+1,40,"",0,0,0,3,0,"Novedades del Parte de Oficiales y Suboficiales","","","","_include/partePersonal/parte_formacion1.php",1,1
+0,50,"",0,0,0,3,0,"Novedades Parte PersonalPDF","","","","_include/partePersonal/parte_formacion1_pdf.php",1,1
+1,60,"",0,0,0,5,0,"Parte de Formaci&oacute;n General","","","","../_include/partePersonal/parte_formacion2.php",1,1
+0,70,"",0,0,0,3,0,"Parte de Formaci&oacute;n GeneralPDF","","","","_include/partePersonal/parte_formacion2_pdf.php",1,1

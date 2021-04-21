@@ -1,0 +1,238 @@
+* {margin:0;padding:0;color:#000;}
+html,body{text-align:center;background:#fff;color:#000;font:1em Arial, Helvetica, sans-serif;}
+body{float:left;width:100%;}
+body a img{border:0;}
+.secondaryBody{float:left;width:100%;}
+/*** h1: Titulo del Sitio ***/
+h1, h2, hr, .saltarnavegacion, .findelista, .vermasComplemento, .elementoImprimible {display:none;}
+ul, ol{list-style-type:none;}
+map span{display:none;}
+
+/*** contenedor de todos los componentes de la página ***/
+#contenedor{width:100%;float:left;text-align:left;}
+/*** cabezote:cabezote de la pagina ***/
+#cabezote {display:none}
+
+/*** navegacion_datos:contenedor del panel izquierdo y los datos (cuerpo_contenido) ***/
+#navegacion_datos{float:left;width:100%;}
+
+/*** Todo el panel lateral izquierda ***/
+#navegacion_principal{display:none}
+
+/*** Home ***/
+#datos{}
+#cuerpo_contenido{}
+
+/*** Home ***/
+.home{display:none}
+
+/*** Pie de Página ***/
+#footer{margin:0;padding:0;float:left;width:100%;color:#fff}
+#footer .aux-destacados-1{display:none}
+#footer .fi-aux-1{display:none}
+.f-aux-4{float:left;width:100%;padding:10px 0 0 0;border-top:1px solid #000}
+#footer ul{font-size:0.75em;}
+#footer li, #footer a, #footer span, #footer abbr{color:#5F7585;background:transparent;}
+
+#info_entidad{padding:0;text-align:center;float:left;width:100%;;}
+#info_entidad li{display:inline;margin:0 10px 0 0}
+#info_entidad .displayBlock{}
+#info_entidad .nombre_sitio{text-transform:uppercase;font-weight:bold;display:block;}
+#info_entidad .rss img{display:none}
+#info_micrositios{display:none}
+/*** Fin Pie de Página ***/
+
+/*** Estilos para el Template Default ***/
+#default{margin:20px 0 0;padding:0 0 20px;float:left;width:100%;}
+#default h4{display:none;}
+
+#dEncabezados{float:left;width:100%;padding:0 0 4px 0;}
+#default .dAntetitulo{color:#000;padding:0 5px;margin:0 0 5px 0;font-size:0.85em;font-weight:bold;} /**Antetítulo**/
+#default h3{color:#000;border-bottom:1px dotted #000;margin:0;padding:0 5px 4px;font-size:1.2em;font-weight:bold;} /**Título**/
+#default .dSubtitulo{color:#000;background:transparent;padding:2px 5px 0;font-size:0.9em} /**Subtítulo**/
+#default .default-aux-1{padding:0;margin:0;float:left;width:100%;}
+
+#default .fecha{color:#000;font-size:0.75em;text-align:right;float:left;width:100%;margin:5px 0 0 0;}
+
+#default_entradilla{width:100%;float:left;margin:15px 0 0 0;}
+#default .imgDefault{padding:0;margin:0;float:none}
+#default .ampliar{display:none}
+
+#default .entradilla{font-size:0.75em;font-weight:bold;margin:0 0 15px 0;color:#293640;text-align:justify}
+#default .default_descripcion{color:#293640;font-size:0.75em;text-align:justify}
+#default .default_descripcion ol {list-style:decimal;margin:0 3em;}
+#default .default_descripcion ul {list-style:disc;margin:0 3em;}
+#default .default_descripcion li {padding:8px 0;color:#000}
+
+#default .default_autor {color:#000;margin:15px 0 0 0;font-size:0.75em;text-align:right;float:left;width:100%;}
+
+#default .default_submenu {margin:10px 0 0 0;padding:20px 0 0 0;float:left;width:100%;border-top:1px solid #ccc;}
+#default .sinBorde{border:0;}
+
+#default_utilitarios{display:none}
+
+/*** Lista Sencilla ***/
+#lista_sencilla {font-size:0.75em;list-style:none;font-weight:bold}
+#lista_sencilla li {text-align:left;padding:0;margin:0 0 10px 0;float:left;width:100%;}
+#lista_sencilla li a {padding:0 0 0 15px;color:#000;text-decoration:underline;display:block;float:left;}
+#lista_sencilla li a:link{background:url(../images/bullet_5.gif) no-repeat left 6px}
+#lista_sencilla li a:active{}
+#lista_sencilla li a:hover {text-decoration:none;}
+#lista_sencilla li a:visited{background:url(../images/bullet_6.gif) no-repeat left 6px}
+
+/*** Descargar Archivo ***/
+.default_submenu form img{vertical-align:middle}
+.default_submenu form a{font-size:0.8em;text-decoration:underline;color:#000;}
+.default_submenu form a:hover{text-decoration:none}
+.default_submenu form span{font-size:0.8em;}
+.default_submenu form div{margin:10px 0 0 0;text-align:center}
+.default_submenu form div input{border:1px solid #ccc;background:#eee;padding:0.1em 0.3em;}
+
+/*** Lista con Resumen y Lista Contenido ***/
+#lista_resumen_contenidos li{float:left;width:100%;border-top:1px solid #ccc;padding:8px 0}
+#lista_resumen_contenidos .liFirst{border:none;padding-top:0;}
+
+#lista_resumen_contenidos .encabezados{float:left;width:100%;}
+#lista_resumen_contenidos .s_antetitulo {color:#000;margin:0 0 2px 0;padding:0;font-size:0.75em;}
+#lista_resumen_contenidos .s_titulo {font-size:0.8em;font-weight:bold;}
+#lista_resumen_contenidos .s_titulo a {color:#000;text-decoration:none;}
+#lista_resumen_contenidos .s_titulo a:hover {text-decoration:underline;}
+#lista_resumen_contenidos .s_subtitulo {margin:2px 0 0 0;font-size:0.75em;color:#000;background:transparent;}
+
+#lista_resumen_contenidos .contenido{float:left;width:100%;margin:19px 0 0 0;}
+#lista_resumen_contenidos img {float:left;margin:0px 15px 0 0;padding:0;line-height:0;}
+
+#lista_resumen_contenidos .s_fecha {color:#000;margin:0 5px 0 0;padding:0;font-size:0.75em;float:left;font-weight:normal}
+#lista_resumen_contenidos .listaEntradilla {color:#000;font-size:0.75em;margin:0px 0 0 0;text-align:justify}
+
+#lista_resumen_contenidos .dVermas{text-align:right;display:block;color:#000;text-decoration:underline;font-size:0.75em;padding:0 0 0 0;}
+#lista_resumen_contenidos .dVermas span{color:#000;}
+#lista_resumen_contenidos .dVermas:hover{text-decoration:none}
+
+/*** Galeria de Audio ***/
+.object,
+#videoContenedor{text-align:center;float:left;width:100%;}
+#lista_resumen_contenidos .s_titulo {color:#000;}
+#lista_resumen_contenidos .linkEscuchar {padding:0.2em 0.5em;border:1px solid #ccc; background:#eee;margin:10px 0 0 0;float:right}
+#lista_resumen_contenidos .linkEscuchar:hover{color:#003;text-decoration:none;}
+.object embed{width:158px;height:77px;}
+
+/*** Lista Primer Nivel ***/
+#menuprimernivel, #menuprimernivel table{border-collapse:collapse;width:100%;}
+#menuprimernivel th{text-align:left;}
+#menuprimernivel td{vertical-align:top;width:50%;padding:0.2em 0}
+#menuprimernivel table td{padding:0;}
+#menuprimernivel h5 {padding:3px 5px;margin:0 0.5em; font-size:0.8em;font-weight:bold;border-bottom:1px solid #ccc;}
+#menuprimernivel h5 a{color:#000;text-decoration:none;background:url(../images/bullet_3.gif) no-repeat left 8px;padding:0 0 0 7px}
+#menuprimernivel h5 a:hover {text-decoration:underline;}
+#menuprimernivel p {color:#000;padding:0.6em 1em 1.5em;font-size:0.75em;text-align:justify}
+#menuprimernivel p a{color:#ccc}
+
+/*** Galeria de Fotos ***/
+#galeria_foto, #galeria_foto table{width:100%;}
+#galeria_foto table{border-collapse:collapse;}
+#galeria_foto .contenido {border:1px solid #ccc; padding:0;background:#fff;text-align:center;}
+#galeria_foto .contenido th .linkInfo{display:none;}
+#galeria_foto .contenido .tdImg{height:153px;}
+#galeria_foto .comentario {height:45px;padding:0 2px;background:#fff;border:none;border-top:1px solid #F2F2F2;font-size:0.7em;font-weight:bold;}
+#galeria_foto .comentario a {color:#000;text-decoration:none;}
+#galeria_foto .comentario a:hover {text-decoration:underline;}
+
+/** Estilos Lightbox **/
+#lightbox{position: absolute;left: 0;width: 100%;z-index: 100;text-align: center;line-height: 0;}
+#lightbox a img{ border: none; }
+#outerImageContainer{position: relative;background-color: #fff;width: 250px;height: 250px;margin: 0 auto;}
+#imageContainer{padding: 10px;}
+#loading{position: absolute;top: 40%;left: 0%;height: 25%;width: 100%;text-align: center;line-height: 0;}
+#hoverNav{position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 10;}
+#imageContainer>#hoverNav{ left: 0;}
+#hoverNav a{ outline: none;}
+#prevLink, #nextLink{width: 49%;height: 100%;background: transparent url(../images/lightbox/blank.gif) no-repeat; /* Trick IE into showing hover */ display: block;}
+#prevLink { left: 0; float: left;}
+#nextLink { right: 0; float: right;}
+#prevLink:hover, #prevLink:visited:hover { background: url(../../../../js/themes/lightbox/prevlabel.gif) left 15% no-repeat; }
+#nextLink:hover, #nextLink:visited:hover { background: url(../../../../js/themes/lightbox/nextlabel.gif) right 15% no-repeat; }
+#imageDataContainer{font: 0.6em Arial, Helvetica, sans-serif;background-color: #fff;margin: 0 auto;line-height: 1.4em;}
+#imageData{	padding:0 10px; color: #666; }
+#imageData #imageDetails{ width: 70%; float: left; text-align: left; }
+#imageData #caption{ font-weight: bold;	}
+#imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}
+#imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em;	}
+#overlay{position: absolute;top: 0;left: 0;z-index: 90;width: 100%;height: 500px;background-color: #000;}
+/* Min-Width */
+.lbWidth { /* most browsers */position: absolute;top: 0px; left: 0px;width: 100%;min-width: 790px;}
+* html .lbContent { /* IE6 */margin-left: -790px;position:relative;}
+* html .lbMinWidth { /* IE6 */padding-left: 790px;}
+/* Clearfix */
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+/*.clearfix {display : inline-block;}*/
+/* Hides from IE-mac */
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+/* Paginacion */
+.pagerH5{display:none}
+.paginacion {text-align:center;margin-top:20px;background:#fff;float:left;width:100%;}
+.paginacion-aux-1{padding:2px 0 4px 0;}
+.paginacion a {font-size:0.75em;color:#000;padding:0 0.3em;background:transparent}
+.paginacion a:hover {text-decoration:none}
+.paginacion .boton {color:#000;font-size:0.7em;margin:0 3px 0 3px;background:transparent}
+.paginacion .boton:hover{text-decoration:none}
+.paginacion .actual {font-size:0.8em;font-weight:bold;color:#000;display:inline}
+
+/*** FAQ ***/
+#faq .formulario {display:block; border:1px solid #ccc; background:#fff; padding:5px 0;}
+#faq .formulario h3{color:#000;margin:0 5px 10px 5px; padding:5px;background:#fff;}
+#faq .formulario textarea{border:1px solid #ccc;vertical-align:middle;width:100%;}
+#faq .formulario p{color:#000;margin:0; padding:5px 0;}
+#faq .formulario p a{color:#000; font-weight:bold;}
+#faq .enviar{border:1px solid #ccc;margin:3px 0 0 0;padding:2px;}
+#default .default_descripcion #faq ul{text-align:left;margin:0;padding:0;}
+#default .default_descripcion #faq li{display:block;list-style-type: none;margin:15px 0;padding:2px;border:1px solid #ccc;border-top:3px solid #ccc;}
+#default .default_descripcion #faq li h3 {padding:7px; margin:0; color:#000;background:#fff}
+#default .default_descripcion #faq li h3 a{color:#000;text-decoration:none;}
+#default .default_descripcion #faq li h3 a:hover{text-decoration:underline;}
+#default .default_descripcion #faq li p{margin:0;padding:10px;color:#000;background:transparent;}
+
+/* Formulario de Personalizacion de Secciones */
+#personal_usuario .nombre_seccion{display:none}
+
+/* Template Home Usuario */
+#bloque_personal{display:none}
+
+/** Estilos Calendario **/
+#calendario{float:left;width:100%;}
+#calendario h3{text-transform:uppercase;text-align:center;font-size:1.2em;font-weight:bold;color:#000}
+#calendario table{border-collapse:collapse;width:80%;border:1px solid #ccc;margin:0 auto;text-align:center}
+#calendario th, #calendario td {padding:0.2em 0;text-align:center;border-right:1px solid #ccc;color:#000;}
+#calendario caption{font-size:1.2em;font-weight:bold;text-transform:capitalize;color:#000;padding:1em 0;margin:0 auto}
+#calendario thead{border-bottom:1px solid #ccc;}
+#calendario th{text-align:center;color:#000;/*background:transparent;*/background:#fff;}
+
+#meses caption{font-size:1em;}
+#meses td{border-bottom:1px solid #ccc;}
+#meses td a{color:#000;text-decoration:none;text-transform:capitalize;}
+#meses td a:hover{text-decoration:underline}
+
+#mes .semana{/*background:#F4F4F4;*/color:#000;}
+#mes .last {border-right:none;}
+
+#mes .evento{background:#aaa;}
+#mes .evento a{font-weight:bold}
+#mes .evento a:link{color:#000;background:transparent;}
+#mes .evento a:visited{color:#000}
+#mes .evento a:hover,#mes .evento a:active{color:#000;background:transparent;}
+
+#eventos_dia {margin:20px 0 0 10px}
+#eventos_dia .fecha_evento{font:bold 1em arial;color:#000;background:transparent;}
+#eventos_dia .nombre_evento{margin:5px 0 0 5px;}
+#eventos_dia .nombre_evento a{margin:5px 0 0 5px;font:bold 1em arial;color:#093A52;}
+
+/*Estilos nube etiquetas*/
+#titulo_nube{display:none}
+#default_utilitarios{display:none}
+#migas{display:none}
+#basica{display:none}
+#avanzada{display:none}
+#paginacion{display:none}

@@ -1,0 +1,78 @@
+<div class="home">
+<h2><a name="cont">{$smarty.const._ROT_CONTENT}</a></h2>
+{if $resumen != ""}<p class="homeEntradilla">{$resumen}</p>{/if}
+<ol>
+    {section name=idseccion loop=$secciones}
+    <li>
+    <div class="homeH3-aux-1{if $smarty.section.idseccion.first} homeH3-aux-1First{/if}">
+    <div class="homeH3-aux-2">
+    <h3><a href="?idcategoria={$secciones[idseccion].idcategoria}">{$secciones[idseccion].nombre}</a>
+    </h3>
+    </div>
+    </div>
+    <ol class="homeSubLista">
+        {section name=idNoticias loop=$secciones[idseccion].hijos max=$secciones[idseccion].conresumen}
+        <li {if $smarty.section.idNoticias.last}class="liResumenLast"{/if}>
+            <h4>
+                <a href="?idcategoria={$secciones[idseccion].hijos[idNoticias].idcategoria}" {if $secciones[idseccion].hijos[idNoticias].imagen}class="homeH4"{/if}>
+                    {$secciones[idseccion].hijos[idNoticias].nombre}
+                </a>
+            </h4>
+            {if $secciones[idseccion].hijos[idNoticias].imagen}
+                <div class="homeImg-aux-1">
+                <div class="homeImg-aux-2">
+                <div class="homeImg-aux-3">
+                <a href="?idcategoria={$secciones[idseccion].hijos[idNoticias].idcategoria}" title="{$secciones[idseccion].hijos[idNoticias].nombre}">
+                    <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$secciones[idseccion].hijos[idNoticias].imagen}&amp;w=161" alt="">
+                </a>
+                </div>
+                </div>
+                </div>
+            {/if}
+            {if $secciones[idseccion].hijos[idNoticias].autor or ($secciones[idseccion].hijos[idNoticias].fecha and $secciones[idseccion].hijos[idNoticias].fecha != '0000-00-00')}
+                <div class="autor-fecha-aux">
+                {if $secciones[idseccion].hijos[idNoticias].autor}
+                    <p class="homeAutor">{$smarty.const._ROT_AUTOR} {$secciones[idseccion].hijos[idNoticias].autor}</p>
+                {/if}
+                {if $secciones[idseccion].hijos[idNoticias].fecha and $secciones[idseccion].hijos[idNoticias].fecha != '0000-00-00'}
+                    <p class="homeFecha">{$smarty.const._ROT_PUBLICADO} {$secciones[idseccion].hijos[idNoticias].fecha}</p>
+                {/if}
+                </div>
+            {/if}
+            {if $secciones[idseccion].hijos[idNoticias].resumen}
+                <p>{$secciones[idseccion].hijos[idNoticias].resumen|truncate:400}</p>
+            {/if}
+            {if $secciones[idseccion].hijos[idNoticias].contenido}
+                <a class="homeVermas" href="?idcategoria={$secciones[idseccion].hijos[idNoticias].idcategoria}" title="{$secciones[idseccion].hijos[idNoticias].nombre}">
+                    <span>{$smarty.const._ROT_VERMAS}</span><span class="vermasComplemento">: {$secciones[idseccion].hijos[idNoticias].nombre}</span>
+                </a>
+            {/if}
+            {if not $smarty.section.idNoticias.last}
+                {if $secciones[idseccion].hijos[idNoticias].imagen}
+                <div class="lineaDivisoria">
+                {/if}
+                    <div class="lineaDivisoria-aux">&nbsp;</div>
+                {if $secciones[idseccion].hijos[idNoticias].imagen}
+                </div>
+                {/if}
+            {/if}
+        {/section}
+        {if $secciones[idseccion].sinresumen > 0}
+        <div class="lineaDivisoria-aux-2">&nbsp;</div>
+        {section name=idNoticias loop=$secciones[idseccion].hijos start=$secciones[idseccion].conresumen max=$secciones[idseccion].cantidad}
+        <li class="liSinResumen{if $smarty.section.idNoticias.first} liSinResumenFirst{/if}">
+            <h4>
+                <a href="?idcategoria={$secciones[idseccion].hijos[idNoticias].idcategoria}">
+                    {$secciones[idseccion].hijos[idNoticias].nombre}
+                </a>
+            </h4>
+            {if $secciones[idseccion].hijos[idNoticias].fecha and $secciones[idseccion].hijos[idNoticias].fecha != '0000-00-00'}
+                <p>&#91;{$secciones[idseccion].hijos[idNoticias].fecha}&#93;</p>
+            {/if}
+        {/section}
+        {/if}
+        <span class="findelista">({$smarty.const._ROT_END_SECTION}:{$secciones[idseccion].nombre})</span>
+    </ol>
+    {/section}
+</ol>
+</div>

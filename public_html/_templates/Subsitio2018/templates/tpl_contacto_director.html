@@ -1,0 +1,65 @@
+<!--Template Formulario de Contacto-->
+<div id="utilidades">
+
+	{if $subMenuError != ""}
+		{strip}
+		<div class="advertencia"><br>
+			{$subMenuError}<br>
+		</div>
+		{/strip}
+	{/if}
+
+
+<div style="margin:25px;text-align:justify;">
+Antes de enviar su mensaje al señor Director tenga en cuenta lo siguiente:<br />
+
+Ingrese los datos requeridos por el formulario de contacto:<br />
+
+<ul>
+	<li>Nombres completo : Escriba su(s) Nombre(s) y Apellidos</li>
+	<li>Email: Escriba su dirección de correo electrónico</li>
+	<li>Ciudad/Pais: Indique su lugar actual de residencia</li>
+	<li>Actividad: Indique su actividad (trabajo, estudio,etc)</li>
+	<li>Comentarios: Escriba el mensaje que quiere hacer llegar al Director de la Caja de Retiro</li>
+</ul>
+
+Nota: Es muy importante que proporcione un dirección de correo válida, esta será usada para informarle acerca del trámite realizado con su mensaje.
+
+<br /><br />
+<div align="center" style="border:1px solid green;background:#EEEECC;padding:5px;margin:12px;width:200px;">
+<a href="?idcategoria={$smarty.const._SCONTACTO}" title="Formulario de Quejas y Reclamos" style="color:green;text-decoration:none;">
+	Registrar Quejas y reclamos
+</a>
+</div>
+
+</div>
+
+	<form method="POST" action="{$c_action}" target="_self">
+		<table border="0" align="center" cellpadding="5" cellspacing="1" width="100%" summary="">
+		{section name=mysec loop=$campos}
+			{strip}
+				{if $campos[mysec].nombre != ""}
+					<tr style='background:{cycle values="#EEC,#FFF"}'>
+						<td>
+							{if $campos[mysec].clase == "requerido"}<b>{/if}
+								{$campos[mysec].nombre}
+							{if $campos[mysec].clase == "requerido"}</b>{/if}
+						</td>
+						<td>
+							{$campos[mysec].input}
+						</td>
+					</tr>
+				{else}
+					{$campos[mysec].input}
+				{/if}
+			{/strip}
+		{/section}
+			<tr>
+				<td align="center" colspan=2>
+					<input type="submit" value="Enviar" class="tpl_boton">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<!--Fin Template Formulario de Contacto-->

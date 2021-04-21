@@ -1,0 +1,27 @@
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+{literal}
+<script type="text/javascript" src="{/literal}{$DIRJS}select_dependientes.js{literal}"></script>
+<script language="javascript">
+function deshabilitar(){
+    document.form_solicitud.enviar.disabled=true;
+}
+</script>
+{/literal}
+<form id="form_solicitud" name="form_solicitud" onsubmit="deshabilitar();"  action="" method="post" enctype="multipart/form-data">
+
+<input type="hidden" name="accion" value="">
+<input type="hidden" name="ida"    value="">
+
+<table id="tabla_pqr" style="background-position:center;text-aling:center">
+
+<tr>
+	<td colspan="4">
+<h3>
+NO SE PUEDO GUARDAR LA SOLICITUD
+</h3>
+
+<strong>En estos momentos no se puede guardar informacion, porfavor cree de nuevo la peticion, si continua el error porfavor comuniquese con el administrador de la pagina</strong>
+
+	</td>
+</tr>
+</table>

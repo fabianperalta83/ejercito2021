@@ -1,0 +1,1 @@
+<img src="{$smarty.const._DIRIMAGES}encusestas-primer-trimestre.jpg" title="Consolidaci&oacuten estadisticas 1 trimestre." />

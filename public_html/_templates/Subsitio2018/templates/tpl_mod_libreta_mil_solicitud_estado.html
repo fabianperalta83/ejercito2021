@@ -1,0 +1,377 @@
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.format.1.05.js"></script>
+
+<link media="screen,print" type="text/css" rel="stylesheet" href="_administracion/recursos/css/estilo_admin.css" />
+
+{literal}
+
+<script type="text/javascript">
+	var debug = false;
+	
+	send_ajax_request = function( url, data_div_ID, dest_div_ID, source_dom_obj, loader_div_ID, cancel_callback, toogleEnableButtonsFunc )
+	{
+		if( source_dom_obj != null && source_dom_obj != undefined )
+			if(source_dom_obj.pressed) {
+				return false;
+			}
+			else {
+				source_dom_obj.pressed = true;
+			}
+		
+		if( toogleEnableButtonsFunc != null && toogleEnableButtonsFunc != undefined ) toogleEnableButtonsFunc(false);
+		
+		/// if(! $('#'+loader_div_ID).length )
+		if( loader_div_ID != null && loader_div_ID != undefined && loader_div_ID != '' )
+		{
+			$('#'+loader_div_ID).show();
+		}
+
+		$('#'+loader_div_ID).show();
+		
+		var xhr = jQuery.ajax( {url: url // "save.php?action=ejecutarGuardar"
+			,ajaxSend: function()
+			{
+				// Nnuca se llamo :(
+				// alert("ajaxSend");
+			}
+			, success: function(data, textStatus, jqXHR) {
+				if( dest_div_ID != null && dest_div_ID != undefined && dest_div_ID != '' )
+				{
+					$('#'+dest_div_ID).empty().append( "<div style='color:red;'>"+data+"</div>" );
+				}
+			}
+			, error: function(jqXHR, textStatus, errorThrown) {
+				alert( "Ocurrio un error enviando la peticion al servidor: "+errorThrown );
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			, complete: function(jqXHR, textStatus)
+			{
+				if( toogleEnableButtonsFunc != null && toogleEnableButtonsFunc != undefined ) toogleEnableButtonsFunc(true); // habilitar botones
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			,data: (( data_div_ID != null && data_div_ID != undefined )?($('#'+data_div_ID+' *').serialize()):'')
+			,dataType: "html"
+			,type: 'POST'
+			,contentType: "application/x-www-form-urlencoded;charset=utf-8"
+			// ,contentType: "application/x-www-form-urlencoded;charset=ISO-8859-1"
+		} );
+	}
+
+	overlay = function() {
+		el = document.getElementById("overlay");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	}
+	
+	var timeoutLimpiarMensaje = 0;
+	
+	programarLimpiarMensaje = function( msgPos )
+	{
+		// timeoutLimpiarMensaje = setTimeout("limpiarMensajeError("+msgPos+");", 3000);
+	}
+	
+	detenerProgramarMensaje = function( msgPos )
+	{
+		// clearTimeout(timeoutLimpiarMensaje);
+	}
+	
+	mostrarMensajeNormal = function( msg, msgPos )
+	{
+		pos = '';
+		if( msgPos != null && msgPos != undefined )
+			pos = msgPos;
+		detenerProgramarMensaje();
+		detenerProgramarMensaje();
+		$('#serverMsg'+pos+'_ID').html("<div style='color:black;'>"+msg+"</div>");
+		$('#serverMsg'+pos+'_ID').show();
+	}
+	
+	mostrarMensajeError = function( msg, msgPos )
+	{
+		pos = '';
+		if( msgPos != null && msgPos != undefined )
+			pos = msgPos;
+		detenerProgramarMensaje();
+		$('#serverMsg'+pos+'_ID').html("<b style='color:red;'>"+msg+"</b>");
+		$('#serverMsg'+pos+'_ID').show();
+	}
+	
+	limpiarMensajeError = function( msgPos )
+	{
+		pos = '';
+		if( msgPos != null && msgPos != undefined )
+			pos = msgPos;
+//		$('#serverMsg'+pos+'_ID').html("&nbsp;");
+		$('#serverMsg'+pos+'_ID').hide('slow');
+	}
+	
+	enviarSolicitudDeEstado = function( btn_obj )
+	{
+		detenerProgramarMensaje();
+		if( $('#idTipoDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo tipo de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#numDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo n&uacute;mero de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		send_ajax_request('_include/libreta_mil_solicitud_estado.php?action=enviar_solicitud_estado'
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+		);
+		return true;
+	}
+
+	reenviarSolicitudDePassword = function( btn_obj )
+	{
+		detenerProgramarMensaje();
+		if( $('#idTipoDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo tipo de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#numDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo n&uacute;mero de documento es obligatorio");
+			programarLimpiarMensaje();
+			return false;
+		}
+		send_ajax_request('_include/libreta_mil_solicitud_estado.php?action=reenviar_email_password'
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+		);
+		return true;
+	}
+
+	wf_action = function( btn_obj, solicitud_id, estado_id_inicial, estado_id_final )
+	{
+//		alert('Iniciando solicitud: '+'_include/dga_solicitud_registro.php?action=registro_solicitud&solicitud_id='+solicitud_id+'&estado_id_inicial='+estado_id_inicial+'&estado_id_final='+estado_id_final);
+		send_ajax_request('_include/dga_solicitud_registro.php?action=registro_solicitud&solicitud_id='+solicitud_id+'&estado_id_inicial='+estado_id_inicial+'&estado_id_final='+estado_id_final
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+			, null
+			, toogleRotulos
+		);
+	}
+	
+	focus_any_container = function( obj )
+	{
+		try
+		{
+			if( obj.firstChild && obj.firstChild.tagName.toLowerCase() == "a" )
+			{
+				obj.firstChild.focus();
+			}else
+			{
+				aaa = document.createElement('a');
+				aaa.href = '#';
+				obj.insertBefore(aaa, obj.firstChild);
+				aaa.focus();
+			}
+		}catch(e)
+		{
+	//		alert("Error: "+e);
+		}
+	}
+	
+	toogleRotulos = function( enable )
+	{
+		if( enable )
+			$('#div_rotulos_ID :input').removeAttr('disabled');
+		else
+			$('#div_rotulos_ID :input').attr('disabled', true);
+	}
+	
+	toogleDataTieneISO14001 = function(noFocus)
+	{
+		// Si: Mostar
+		// - Año
+		// - Certificadora
+		// No: Mostrar
+		// - En proceso
+		// Por defecto 0 esconde
+		radioName = "tieneISO14001";
+		toogleDataSetByRadio( radioName, 'dataTieneISO14001', noFocus?null:'annoISO14001_ID' ); // viene en 1 hide en 1 por lo que oculta
+		toogleDataSetByRadio( radioName, 'dataNoTieneISO14001', null, "1" ); // viene en 1 hide en 0 por lo q muestra
+		mostrarCampoOtraCertificadora( document.getElementById('certificadoraISO14001_ID'), 'dataTieneISO14001OtraCertificadora', 'nombreOtraCertifISO14001_ID', radioName );
+	}
+	
+	toogleDataSetByRadio = function( radioName, className, focusElementID, changeHideValue )
+	{
+		hideValue = "0";
+		if( changeHideValue != undefined && changeHideValue != null )
+		{
+			hideValue = changeHideValue;
+		}
+		if( $('input:radio[name='+radioName+']:checked').val() == hideValue )
+		{
+			// if( debug ) alert("hidding "+className+" with hideValue: "+hideValue);
+			$('.'+className+' :input').attr('disabled', true);
+			$('.'+className+' :input').datepicker('disable');
+			$('.'+className+'').hide(500);
+		}else
+		{
+//			$('.'+className+' :input').addClass('tpl_input_edicion_requerido');
+			$('.'+className+'').show(500);
+			$('.'+className+' :input').removeAttr('disabled');
+			$('.'+className+' :input').datepicker('enable');
+			if( focusElementID )
+			{
+				$('#'+focusElementID).focus();
+			}
+		}
+	}
+
+	toogleDataSetByCheckbox = function( checkboxName, className, focusElementID )
+	{
+		if( !$('input:checkbox[name='+checkboxName+']').is(':checked') )
+		{
+			$('.'+className+' :input').attr('disabled', true);
+			$('.'+className+' :input').datepicker('disable');
+			$('.'+className+'').hide(500);
+		}else
+		{
+//			$('.'+className+' :input').addClass('tpl_input_edicion_requerido');
+			$('.'+className+'').show(500);
+			$('.'+className+' :input').removeAttr('disabled');
+			$('.'+className+' :input').datepicker('enable');
+			if( focusElementID )
+			{
+				$('#'+focusElementID).focus();
+			}
+		}
+	}
+
+	mostrarCampoOtraCertificadora = function( selObject, className, focusElementID, radioName )
+	{
+		if( radioName )
+		{
+			if( $('input:radio[name='+radioName+']:checked').val() == "0" ) // NO
+			{
+				// Ocultamos el campo nombre certificadora
+				// $('.dataTieneOtroSistemaGestionAmbientalOtraCertificadora').hide(500);
+				$('.'+className+' :input').attr('disabled', true);
+				$('.'+className+' :input').datepicker('disable');
+				$('.'+className+'').hide(500);
+			}else
+			{
+				// Mostramos el campo nombre certificadora si y solo si su valor esta en Otra
+				if( selObject.value == "Otra" )
+				// if( $('#certificadoraOtroSistemaGestionAmbiental_ID').val() == "Otra" )
+				{
+					// $('.dataTieneOtroSistemaGestionAmbientalOtraCertificadora').show(500);
+					$('.'+className+'').show(500);
+					$('.'+className+' :input').removeAttr('disabled');
+					$('.'+className+' :input').datepicker('enable');
+					if( focusElementID )
+					{
+						$('#'+focusElementID).focus();
+					}
+				}
+			}
+		}else
+		{
+			// alert("name("+selObject.name+"): vale("+selObject.value+");");
+			if( selObject.value != "Otra" )
+			{
+				$('.'+className+' :input').attr('disabled', true);
+				$('.'+className+' :input').datepicker('disable');
+				$('.'+className+'').hide(500);
+			}else
+			{
+				$('.'+className+'').show(500);
+				$('.'+className+' :input').removeAttr('disabled');
+				$('.'+className+' :input').datepicker('enable');
+				if( focusElementID )
+				{
+					$('#'+focusElementID).focus();
+				}
+			}
+		}
+	}
+
+</script>
+
+<style type="text/css">
+#overlay {
+	visibility: hidden;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height:100%;
+	text-align:center;
+	z-index: 1000;
+	background:url(./js/background-trans.png) repeat
+}
+#overlay div {
+	width:300px;
+	margin: 100px auto;
+	background-color: red;
+	border:1px solid #000;
+	padding:15px;
+	text-align:center;
+}</style>
+
+{/literal}
+
+<div id="utilidades">
+
+<!--<form method="POST" action="" name="" id="" enctype="multipart/form-data">-->
+<div id="form_div_ID" class="demo" style="text-align:center; width:100%; ">
+	<center>
+	<table style="border:0em solid #000000;text-align:left;background-position:center; width: 60%;">
+		<thead>
+			<tr><th colspan="2" style="text-align: center;">Ingrese la siguiente informaci&oacute;n</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Tipo de documento de identidad</td>
+				<td>
+					<select id="idTipoDocumento_ID" name="idTipoDocumento">
+						<option value=""></option>
+						{foreach key=key item=item from=$grupoNumIdentificInternacional}
+							<option value="{$key}" {if ($idTipoDocumento neq "") and ($idTipoDocumento eq $key)} selected="selected" {/if}>{$item}</option> 
+						{/foreach}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>N&uacute;mero de documento</td>
+				<td>
+					<input type="text" id="numDocumento_ID" name="numDocumento" value="{$numDocumento}" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="serverMsg_ID" style="width: 100%; text-align:center;">&nbsp;</div>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2"><input type="button" onclick="enviarSolicitudDeEstado(this);" value="Enviar" id="btn_enviar_solicitud_ID" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="serverMsg2_ID" style="width: 100%; text-align:center;">&nbsp;</div>
+	</center>
+	<div id="div_imageAjaxLoader_ID" style="text-align: center; width:100%; display: none;">
+		<img src="./js/ajax-loader.gif" style="padding-top: 20px;" />
+	</div>
+</div>
+</div>
+

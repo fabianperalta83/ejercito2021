@@ -1,0 +1,53 @@
+<!--Template Buscar-->
+<div id="buscar">
+
+	{if $subMenuError != ""}
+		{strip}
+		<!--Buscar:Error-->
+			<div id="buscar_error">{$subMenuError}<div>
+		<!--Fin Buscar:Error-->
+		{/strip}
+	{/if}
+	
+	<!--Buscar:Formulario Búsqueda-->
+	<div id="buscar_formulario">
+		<form method="POST" action="{$c_action}" name="busquedas" id="busquedas">
+			<p class="buscar_form_info">{$c_formulario_titulo}</p>
+			<div>
+				<input type="hidden" name="idcategoria" value="{$idcategoria}">
+				<input type="text" name="cadena_buscar" value="{$cadena_buscar}" class="buscar_input" size="40">
+				<input type="submit" name="submit" value="{$c_buscar}" class="buscar_boton">
+				<input type="hidden" name="filtroLetra" value="">
+			</div>
+			<div><br />
+				{section name=id loop=$letras}
+					&nbsp;<a style="font:bold 0.9em verdana; color:#113864;" href="?idcategoria={$idcategoria}&amp;filtroLetra={$letras[id]}" Title="Filtrar por la letra {$letras[id]}">{$letras[id]}</a>
+				{/section}
+			</div>
+		</form>
+	</div>
+	<!--Fin Buscar:Formulario Búsqueda-->
+	
+	{if $envio_consulta === TRUE}
+		{if $resultado_busqueda != ""}
+			<!--Buscar:Resultados-->
+			<div id="lista_sencilla">
+				<p style="margin:0;padding:10px;color:#353535;font-weight:bold;">{$resultado_busqueda}</p>
+			
+				{if $set != ""}
+					<ul>
+						{section name=mysec loop=$set}
+							<li style="background:{cycle values='#fff,#f4f4f4'};">
+								{if $set[mysec].idcategoria != ""}<a href="?idcategoria={$set[mysec].idcategoria}">{/if}
+								{$set[mysec].contenido}
+								{if $set[mysec].idcategoria != ""}</a>{/if}
+							</li>
+					  	{/section}
+					</ul>
+				{/if}
+			
+			</div>
+			<!--Fin Buscar:Resultados-->
+		{/if}
+	{/if}
+</div>

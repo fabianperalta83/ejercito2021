@@ -1,0 +1,237 @@
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.all.css">
+<script type="text/javascript" src="development-bundle/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="development-bundle/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="development-bundle/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="development-bundle/ui/jquery.ui.tabs.js"></script>
+<script type="text/javascript" src="development-bundle/ui/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
+<script type="text/javascript" src="js/jquery.format.1.05.js"></script>
+
+<!--<script type="text/javascript" src="js/funciones.js"></script>-->
+{literal}
+<script type="text/javascript">
+	
+	filtro = function(x,tipo,orden,orienta,limite,inicio){
+		var Nregistros      = document.getElementById('vNpag').value
+		var visible         = '1';
+		var Excel='0';
+		if(x=='1')
+		{
+			Excel='1';
+		}
+//		if(document.po1.checkOculto.checked)
+//		{
+//			visible = '0';
+//		}
+		if(x=='2')
+		{
+			var irpag  = document.getElementById('irPag').value
+			var NpaginasAct= document.getElementById('npag').value
+			irpag=parseInt(irpag);
+			NpaginasAct=parseInt(NpaginasAct);
+			if(irpag<=NpaginasAct)
+			{
+					inicio= (irpag*Nregistros)-Nregistros; 
+			}else
+			{
+				alert ("La pagina a la que desea acceder sobre pasa el limite de las existentes");
+				Excel='2';
+			}
+		}
+
+		if(  Excel=='0'){
+			jQuery("#miTabla").html("<center><img src='./js/ajax-loader.gif' style='padding-top: 20px;' /></center>");
+		jQuery.ajax({
+			type: "GET"
+			,url: "./_include/dga_listado_solicitud.php?action=filtrar"
+				+"&visible="+visible
+				+"&orienta="+orienta
+				+"&orden="+orden
+				+"&inicio="+inicio
+				+"&tipo="+tipo
+			,data: $('#po1_ID *').serialize()
+			,dataType: "html"
+			,type: 'POST'
+			,success: function(msg){
+					$("#miTabla").html(msg);
+				}
+			});
+		}if(  Excel=='1')
+		{        
+			document.po1.submit();
+		}
+	}
+	
+	/***
+	** Función que le solicita la confirmación al admin para borrar los documentos adjuntos.
+	***/
+	function Ocultar( numero ) 
+	{
+		if(confirm('Está Seguro de Ocualtar esta solicitud? '))
+		{
+			EnviarFormulario( numero, 'Ocultar');
+		}
+	}
+	
+	function Mostrar( numero ) 
+	{
+		if(confirm('Está Seguro de Mostrar esta solicitud? '))
+		{
+			EnviarFormulario( numero, 'Mostrar');
+		}
+	}
+	
+	function EnviarFormulario( numero, accion )
+	{
+		document.po.numero.value = numero;
+		document.po.accion.value = accion;
+		document.po.submit();
+	}
+
+	
+    $(function(){
+        $( "#txtDesde" ).datepicker({
+                showOn: 'both',
+                changeMonth: true,
+                changeYear: true,
+                buttonImage: "./_templates/Default/recursos/images/calendar.gif",
+                buttonImageOnly: true,
+                yearRange: '-30:+0',
+                dateFormat: "yy-mm-dd"
+        });
+        $( "#txtHasta" ).datepicker({
+                showOn: 'both',
+                changeMonth: true,
+                changeYear: true,
+                buttonImage: "./_templates/Default/recursos/images/calendar.gif",
+                buttonImageOnly: true,
+                yearRange: '-30:+0',
+                dateFormat: "yy-mm-dd"
+        });
+    })
+    
+</script>
+{/literal}
+
+
+<form name="po" id="po" action="" method="POST">
+	<input name="numero" id="numero" value="" type="hidden">
+	<input name="accion" id="accion" value="" type="hidden">
+</form>
+ 
+{if $mensajeAdvertencia != ""}
+	<table width="100%"><tr><td style="background-color: #FFF000; color: red; text-align: center;">{$mensajeAdvertencia}</td></tr></table><br />
+{/if}
+<form name="po1" id="po1_ID" action="tools/getSolicitudCreditos.php" method="POST">
+<table width="100%" border="0">
+   
+    <tr>
+        <td>Filtrar N&uacute;mero de Solicitud:</td>
+        <td>
+            <input type="text" name="idSolicitud" value="" id="idSolicitud" size="15"/>
+        </td>
+        
+    </tr>
+
+    <tr>
+        <td>Filtrar por estado:</td>
+        <td>
+            <select name="idEstado" id="idEstado" style="" >{html_options values=$idEstados output=$nomEstados selected=$valfiltro}</select>
+        </td>
+    </tr>
+
+<!--    <tr>
+        <td>Filtrar por tipo de cr&eacute;dito:</td>
+        <td>
+            <select name="tiposfiltro" disabled="disabled">{html_options values=$id_tiposf output=$tiposf selected=$valfiltrot}</select>
+        </td>
+    </tr>-->
+
+    <tr>
+        <td>Filtrar por c&eacute;dula:</td>
+        <td>
+            <input type="text" id="identificacion" name="identificacion" size="17" />
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <div class="fechas" style="border: 0px solid #CCCCCC;">
+            <div class="dvFechaIn" style="display: inline;display:inline; width:50%; float:left">
+                <label>Fecha Desde</label>
+                <input type="text" size="10" name="txtDesde" id="txtDesde">
+
+            </div>
+            <div class="dvFechaFn" style="display: inline;display:inline; width:50%;">
+                <label style="margin-left:1.9em;">Fecha Hasta</label>
+                <input type="text" size="10" name="txtHasta" id="txtHasta">
+
+            </div>
+        </td>
+    </tr>
+    <!--<tr>
+        <td>Ver los ocultos: <input  type="Checkbox" id="checkOculto" name="checkOculto" value="1"/></td>
+        <td></td>
+    </tr>-->
+    <tr>
+        <td align="center" colspan="2"><input type="button" value="Filtrar" onClick="filtro(0,2,0,'DESC',{$Npag},0)"/></td>
+    </tr>
+    
+    <tr align="right">
+        <td width="100%"  colspan="2">
+            <SELECT class="tpl_input_edicion_requerido" id="vNpag" name="vNpag" value=""  onChange="filtro(0,0,0,'DESC',this.value,0)" > 
+                     <OPTION VALUE="2">2 Por Pagina
+                     <OPTION VALUE="5">5 Por Pagina
+                     <OPTION VALUE="10">10 Por Pagina
+                     <OPTION VALUE="25">25 Por Pagina
+                     <OPTION VALUE="50">50 Por Pagina
+                     <OPTION VALUE="100">100 Por Pagina
+                     <OPTION VALUE="500">500 Por Pagina
+                     <OPTION VALUE="1000">1000 Por Pagina           
+
+            </SELECT>
+        </td>
+    </tr>
+    
+</table>
+</form>		
+<form method="POST" name="myform" >
+
+    
+<table class="listado" width="100%" border="0" id="miTabla" cellpadding="0" cellspacing="0"><!--  cellspacing = "1" cellpadding="2" align="center" -->
+   <!--<tr align="center"><td align="center"><input type="submit"  name="exportarExcel" value="Exportar A Excel"/></td></tr>-->
+    <!--
+    -CREAR UN ESTILO PARA LA TABLA, CON CELLSPACIN Y CELLPADDING IGUALES A 0
+    -->
+        {section name=mysec loop=$encabezado}
+        <th><!-- align="center" -->
+            {$encabezado[mysec]}
+        </th>
+        {/section}
+        {$miHtml}
+</table>
+    <table width="100%" id="paginas" border="0">
+        <tr align="center" id="pagina" >
+        <td width="25%" align="right"></td>
+        <td width="50%" align="center" >
+            
+            {section name=npaginas loop=$paginas}
+            {$paginas[npaginas]}
+            {/section}
+        </td>    
+        <td width="25%" align="left" >
+                    &nbsp;<a href="#"  onclick="filtro(0,0,0,'DESC',2,2);return false"><img border="0" alt="Siguiente" src="_administracion/recursos/images/siguiente.png"></a>
+                    &nbsp;<a href="#"  onclick="filtro(0,0,0,'DESC',2,{$count});return false">&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" alt="Ultimo" src="_administracion/recursos/images/ultimo.png"></a>&nbsp;    
+      
+        </td>
+       </tr>
+       <tr id="parametri" align="center">
+            <td width="50%" align="center"  colspan="3" >
+                <input type="hidden" size="1" name="npag" id="npag" value="{$Npag}"> 
+                Pagina No: <input type="text" size="1" name="irPag" id="irPag"> &nbsp; <input type="button" value="Ir" onClick="filtro(2,0,0,'DESC',2,0,{$count})"/> &nbsp; &nbsp;Total Paginas->:{$Npag}
+            </td>
+       </tr> 
+    </table>
+</form>

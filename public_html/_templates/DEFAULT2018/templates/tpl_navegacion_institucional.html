@@ -1,0 +1,55 @@
+<!--<nav class="navbar navbar-institucional" style="margin-left: -400px;margin-right: -384px;">-->     <!-- NAVBAR ORIGINAL -->
+<nav class="navbar navbar-institucional">
+<!--    <nav class="navbar navbar-institucional" style="margin-left: -400px;margin-right: -381px;">  AJUSTE ANCHO NAVBAR 14/05/2019 -->
+    <div class="hidden-sm hidden-xs collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <input type="hidden" id="maxMenuIns" name="maxMenuIns" value="{$countmenuInstitucional}">
+        <input type="hidden" id="idsmenu" value="{$idsmenu}">
+        <ul class="nav nav-pills nav-justified nav-ul-institucional" id="menu2">
+            {section name=mysec loop=$menuInstitucional}
+                {if $menuInstitucional[mysec].idcategoria != $smarty.const._SUTILIDADES}
+                    <!-- <li class="dropdown text-left"> --> <!-- LI CLAS ORIGINAL -->
+                        <li class="dropdown text-left">     <!-- AJUSTE CENTRADO DE MENU 14/05/2019 -->
+                        <div id="div{$menuInstitucional[mysec].idcategoria}" class="dropdown-menu-hijos" style="display: none;" onmouseleave="ocultarSubMenu('div'+{$menuInstitucional[mysec].idcategoria})">
+                            <div style="min-height: 200px;">
+                                <img class="img-dropdown" src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/{$menuInstitucional[mysec].idcategoria}.gif&w=140" alt="{$menuInstitucional[mysec].nombre}">
+                            </div>
+                        </div>
+                        {assign var="imagen_ayuda" value="{$smarty.const._DIRIMAGES_USER}{$smarty.const._AYUDA_ACCESIBILIDAD}/{$menuInstitucional[mysec].idcategoria}.gif"} 
+                        <a href="index.php?idcategoria={$menuInstitucional[mysec].idcategoria}" class="dropdown-toggle top_link" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" 
+                        {if file_exists($imagen_ayuda)} onmouseover="mostrarSubMenu('div'+{$menuInstitucional[mysec].idcategoria})" onkeyup="mostrarSubMenu('div'+{$menuInstitucional[mysec].idcategoria})" {/if} onmouseleave="ocultarSubMenu('div'+{$menuInstitucional[mysec].idcategoria})">
+                            {$menuInstitucional[mysec].nombre}
+                        </a>
+                        <ul class="sub dropdown-menu dropdown-institucional">
+                            {section name=myhijos loop=$menuInstitucional[mysec].hijos}
+                                <li {if $smarty.section.myhijos.last} style="border: 0;" {/if}>
+                                    <a href="index.php?idcategoria={$menuInstitucional[mysec].hijos[myhijos].idcategoria}">
+                                        {$menuInstitucional[mysec].hijos[myhijos].nombre}
+                                    </a>
+                                </li>
+                            {/section}
+                        </ul>
+                    </li>
+                {/if}
+            {/section}
+        </ul>
+    </div>
+</nav>
+{literal}
+    <script type="text/javascript">
+        function mostrarSubMenu(idcategoria){
+            var str = document.getElementById("idsmenu").value;
+            var arreglo = str.split("-");
+
+            for (var i = 0; i < arreglo.length; i+=1) {
+                if(idcategoria == "div"+arreglo[i]){
+                    $('#div'+arreglo[i]).css('display','block');
+                }else{
+                    $('#div'+arreglo[i]).css('display','none');
+                }
+            }
+        }
+        function ocultarSubMenu(idcategoria){
+            $('#'+idcategoria).css('display','none');
+        }
+    </script>
+{/literal}

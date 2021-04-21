@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="{$smarty.const._DIRJS}/dante.js"></script>
+	<title>ACTA DE COMPRIMISO DE INTEGRIDAD Y TRANSPARENCIA</title>
+</head>
+
+<p><span style="font-weight: bold; text-align: -webkit-center;" >ACTA DE COMPRIMISO DE INTEGRIDAD Y TRANSPARENCIA</span></p>
+<body>
+<p><span class="alerta">{$alerta}</span></p>
+	<form class="form" action="" method="post">
+		<div class="form-group">
+			Yo, <input type="text" value="{$nombre}" class="form-control input-form" name="nombre_usuario" onkeypress="return soloLetras(event)" placeholder="Nombre" required="true">,<input class="form-control input-form" value="{$apellido}" name="apellido_usuario" placeholder="Apellidos" required="true" onkeypress="return soloLetras(event)"></input>
+			en mi calidad de servidor p&uacute;blico del Ej&eacute;rcito Nacional, en el grado de 
+
+
+			<!-- 
+}
+primer select, ya trae los datos, al cambiar no pasa nada 
+-->
+			
+			<select name="sel_1" required="true" class="form-control">
+			<!-- es bueno dejar una opción en blanco para que el usuario siempre seleccione algo, quemar una opcion en blanco -->
+			{if $grado}
+			<option value="{$grado}" selected>{$grado}</option>
+			{else}
+			<option value="-1"  selected>Seleccione...</option>
+			{/if}
+			{section name=grado loop=$grados}
+				<option value="{$grados[grado]}">{$grados[grado]}</option>
+			{/section}
+
+			
+			</select>,
+			org&aacute;nico de 
+						<!-- 
+este es el segundo select, al cambiar, se debe armar el tercer select que tiene id #sel_3
+el id_padre del este select es = 0.
+
+para armar el siguiente select, se envia el id_padre con el que trae los hijos, el id_padre será el que seleccione el usuario: $(this).val() = así obtiene el que seleccione el user
+y el id del siguiente select es #sel_3.
+al seleccionar oculta el ultimo select por si previamente habian seleccionado algo
+			-->
+			<select name="sel_2" class="form-control" id="sel_2" onchange="getDataToSelect($(this).val(),'#sel_3'); $('.hideme').attr('disabled','disabled').removeAttr('required').hide();">
+			<!-- es bueno dejar una opción en blanco para que el usuario siempre seleccione algo, quemar una opcion en blanco -->
+			
+			<option value="-1"  selected>Seleccione...</option>
+
+			{foreach key = key item=item from=$unidades}
+				<option value="{$item.id}">{$item.descripcion}</option>
+			{/foreach}
+			</select>,
+
+<!-- 
+tercer select, al cambiar debe armar el select 4 con el id #sel_4
+el id_padre del este select es = el valor que seleccione el usuario
+el tercer select es: #sel_4
+permance oculto hasta que seleccionen el anterior y hasta que tenga contenido
+ -->
+			<select name="sel_3" id="sel_3" class="form-control" onchange="getDataToSelect($(this).val(),'#sel_4');" style="display: none;">
+			<option  value="-1" selected>Seleccione</option>
+			</select> 
+
+
+<!-- 
+cuarto select, al cambiar ya no hace nada mas
+ -->
+			<select class="hideme form-control" name="sel_4" id="sel_4" style="display: none;"><option disabled="disabled" value="0" selected>Seleccione</option></select> 
+
+
+			Identificado con el n&uacute;mero  de <label for="identificacion_usuario">C&eacute;dula</label> <input type="text" name="identificacion_usuario" value="{$identificacion}" maxlength="13" minlength="10" class="form-control input-form" onkeypress="return validaNumericos(event)" placeholder="Idenficaci&oacute;n" id="identificacion_usuario" required="true">,teniendo en cuenta el compromiso institucional de luchar contra la corrupci&oacute;n y promover la generaci&oacute;n de cambios culturales y pedag&oacute;gicos por la transparencia, me comprometo desde mi rol y &aacute;rea de trabajo a actuar &iacute;ntegramente, con &eacute;tica y transparencia, asumiendo las siguientes obligaciones as&iacute;:
+
+			<ul style="list-style: none;">
+				<li>1.Me comprometo a no realizar pr&aacute;cticas de fraude, corrupci&oacute;n o violatorias de la ley, ya sea dentro de mis funciones y deberes de manera directa o influenciar para que se cometan.</li>
+				<li>2.Me comprometo a no ofrecer, ni aceptar ninguna clase de, d&aacute;diva, dinero u otra utilidad o promesa remuneratoria alguna, para dilatar retrasar u omitir alg&uacute;n acto propio de mi cargo </li>
+				<li>3.Me comprometo a actuar dentro de mis labores siempre por un inter&eacute;s institucional y com&uacute;n sobre un inter&eacute;s particular. </li>
+				<li>4.Me comprometo a denunciar ante las autoridades competentes todo acto u hecho il&iacute;cito del que tenga conocimiento y que pueda constituirse en un hecho de corrupci&oacute;n.</li>
+				<li>5.Me comprometo a promover, difundir, y colocar en pr&aacute;ctica las buenas costumbres &eacute;ticas y morales dentro de las &aacute;reas de responsabilidad que me han sido asignadas</li>
+				<li>6.Me comprometo de acuerdo a lo establecido en la Constituci&oacute;n y la ley a cuidar y custodiar, suministrar o divulgar  informaci&oacute;n real y completa de la cual conozca o acceda en raz&oacute;n a las funciones del cargo que en la actualidad ocupo,  todo en aras del desarrollo y fomento de la trasparencia institucional. </li>
+				<li>7.Me comprometo a impedir que alg&uacute;n agente interno o externo malintencionado, influya de manera directa o indirecta sobre los procesos, procedimientos contractuales o administrativos en las diferentes &aacute;reas donde yo tenga responsabilidad.</li>
+				<li>8.Me comprometo  a actuar con una conducta intachable frente a las responsabilidades de mi cargo dentro y fuera de la instituci&oacute;n.</li>
+				<li>9.Me comprometo expresamente a impartir instrucciones a mis subalternos y a recomendar a mis superiores dentro de la normatividad vigente, con el fin de evitar procedimientos indebidos y as&iacute; actuar de manera transparente ante la comunidad y todas las dem&aacute;s instituciones del Estado de Colombia.</li>
+				<li>10.La corrupci&oacute;n siempre afectara a la instituci&oacute;n y a sus integrantes, por eso <span style="font-weight: bold;">&quot;YO SOY DANTE&quot;.</span></li></br>
+			</ul>
+
+			<p style="text-align: -webkit-center;"><span style="margin-left: auto;margin-right: auto;">Este compromiso los suscribo de manera voluntaria.</span></p>
+			
+				<p style="text-align: -webkit-center;"><button type="submit" class="btn btn-primary"">Enviar Compromiso</button></p>			
+		</div>
+	</form>
+</body> 
+</html>
+{literal}
+<style type="text/css">
+	
+	.input-form
+	{
+		width: 22%;
+		height: 22px;
+		margin: 0;
+		display: -webkit-inline-box;
+	}
+	.form-control{
+		width: 22%;
+		display: -webkit-inline-box;
+		margin: 0;
+	}
+	.alerta
+	{
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+// Script para solo permitir letras
+	function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " abcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+ // Script que permite solo números.
+    function validaNumericos(event) {
+    if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;        
+
+     //console.log(validaNumericos);
+}
+	
+</script>
+
+
+{/literal}

@@ -1,0 +1,34 @@
+<div id="datos">
+	{if $rutetoroot != ""}
+		<map title="{$smarty.const._ROT_NAV_BREAD_CRUMBS}" name="nav_migas">
+	        <div id="migas">
+				<p>
+					<span class="wrap8">{$smarty.const._ROT_BREAD_CRUMBS_HERE}</span>
+					<a href="#fin6" class="saltarnavegacion wrap8">{$smarty.const._ROT_SKIP_BREAD_CRUMBS}</a>
+					{section name=mg loop=$rutetoroot}
+						{if $rutetoroot[mg].idcategoria <> $smarty.const._SINSTITUCIONAL && $rutetoroot[mg].idcategoria <> $smarty.const._SUTILIDADES}
+							{if !$smarty.section.mg.last}
+								<a href="index.php?idcategoria={$rutetoroot[mg].idcategoria}" class="wrap8">{$rutetoroot[mg].nombre}</a> /
+							{else}
+								<strong style="color:blue;">{$rutetoroot[mg].nombre}</strong>
+							{/if}
+						{/if}
+					{/section}		
+				</p>
+	        </div>
+			<p><a name="fin6" class="findelista wrap8">{$smarty.const._ROT_END_BREAD_CRUMBS}</a></p>
+		</map>
+		<hr>     
+	{/if}
+</div>
+<!--Cuerpo Contenido-->
+<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+	<div id="cuerpo_contenido" class="row">
+		{$contenido}	
+		{if $esHome}
+			</div>
+			</div>
+		{/if}
+	<hr>
+<!-- Redes Sociales nuevas -->
+<!--Fin Cuerpo Contenido-->

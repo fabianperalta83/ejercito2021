@@ -1,0 +1,113 @@
+<link href="{$smarty.const._DIRCSS}estilo_contratacion.css" rel="stylesheet" type="text/css">
+<br />
+<br />
+<div class="contratacion">
+<!--TITULO DE CONTRATACION-->
+<h2>{$info.titulo}</h2>
+
+<h3>Objeto:</h3>
+<p>{$info.objeto}</p>
+
+<!--INFORMACION DEL CONTRATO-->
+<table summary="">
+	<tr class="troscuro">
+		<td>Fecha de Creación</td>
+		<td>{$info.fecha_creacion}</td>
+	</tr>
+	<tr>
+		<td>Fecha de Apertura</td>
+		<td>{$info.fecha_apertura}</td>
+	</tr>
+	<tr class="troscuro">
+		<td>Fecha y Hora de Cierre</td>
+		<td>{$info.fecha_cierre}</td>
+	</tr>
+	<tr>
+		<td>Cuantía</td>
+		<td> {$info.cuantia}</td>
+	</tr>
+	<!-- ESTADO -->
+	<!--
+	<tr class="troscuro">
+		<td>Estado</td>
+		<td class="estado{$info.estadoid}">{$info.estado}</td>
+	</tr>
+	-->
+</table>
+
+<!--INFORMACION COMPLEMENTARIA-->
+<!--<h3>Información Complementaria</h3>-->
+<h3>Archivos adjuntos</h3>
+
+
+<table summary="" style="width:99%">
+	{section name=idinfoComp loop=$infoComp}
+	<tr {cycle values=",class=\"troscuro\""}>
+		<td>{$infoComp[idinfoComp].nombre}</td>
+		<td>{$infoComp[idinfoComp].valor}</td>
+	</tr>
+	{/section}
+</table>
+
+
+<!--INFORMACION DE LAS ETAPAS-->
+<!-- FECHAS ESTADOS  -->
+<!--
+<h3>Etapas</h3>
+<table summary="" cellpadding="0" cellspacing="5" style="width:99%">
+	<tr>
+		<td style="width:20px;padding:0;background:#FFFF00">&nbsp;</td>
+		<td>Fecha Proyectada</td>
+		<td style="width:20px;padding:0;background:#ff7b00">&nbsp;</td>
+		<td>Fecha Pasada</td>
+		<td style="width:20px;padding:0;background:#00CC00">&nbsp;</td>
+		<td>Fecha en Curso</td>
+	</tr>
+</table>
+-->
+<br/>
+<table summary="" class="tablaEtapas" style="width:99%">
+	{section name=idinfoEtapa loop=$infoEtapas}
+	<tr {cycle name=idcycle values=",class=\"troscuro\""}>
+	<!-- NOMBTRE ETAPAS -->
+	<!--
+		<td>{$infoEtapas[idinfoEtapa].titulo}</td>
+		<td>{$infoEtapas[idinfoEtapa].paso}</td>
+	-->	
+		<td>
+			{section name=idfile loop=$infoEtapas[idinfoEtapa].archivos}
+				{assign var=archivo value=$infoEtapas[idinfoEtapa].archivos[idfile]}
+				<div style="padding:5px;display:block;{cycle name=idcycle2 values=",background:#C6EBFF"}"><img src="{$archivo.img_extension}" alt="">&nbsp;&nbsp;<a href="?idcategoria={$archivo.idcategoria}&amp;download=Y" title="Publicado el dia {$archivo.fecha}">{$archivo.nombre}</a>&nbsp;<span style="font-size:0.8em;color:#555;">[{$archivo.fecha}]</span></div>
+			{/section}
+		</td>
+		
+		<!--  FECHA APERTURA CONTRATACIÓN -->
+		<!--
+		<td style="text-align:center;background:{$infoEtapas[idinfoEtapa].color_fecha_apertura}">{$infoEtapas[idinfoEtapa].fecha_apertura}</td>
+		-->
+	</tr>
+	{/section}
+</table>
+
+<!-- GRAFICO CONTRATACIÓN -->
+<!--
+{if $imgPlan}
+	<h3>Gr&aacute;fico de Planeaci&oacute;n</h3>
+	<div id="containerImgPlan" style="text-align:center;overflow:auto;width:99%">
+		<img id="imgPlan" src="{$imgPlan}" align="middle" alt="Cronograma del Proceso {$info.titulo}" title="Cronograma del Proceso {$info.titulo|escape}">
+	</div>
+{/if}
+-->
+<!--Fin Default:Cuerpo-->
+	
+	{if ($c_subir != "" || $c_imprimir != "" || $c_cuentele != "")}
+	        <!--Default:Utilitarios-->
+		<div id="default_utilitarios">
+			{if $c_subir != ""}{$c_subir}{/if}
+			{if $c_imprimir != ""}{$c_imprimir}{/if}
+			{if $c_cuentele != ""}{$c_cuentele}{/if}
+		</div>
+        <!--Fin Default:Utilitarios-->
+	{/if}
+</div>
+

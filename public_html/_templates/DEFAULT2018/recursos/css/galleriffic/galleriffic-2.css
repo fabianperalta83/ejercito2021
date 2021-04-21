@@ -1,0 +1,59 @@
+div.content {
+    /* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
+    display: none;
+    float: left;width:338px/*550px*/}
+div.content a,
+div.navigation a {text-decoration: none;color: #777;}
+div.content a:focus,
+div.content a:hover,
+div.content a:active {text-decoration: underline;}
+div.controls {margin-top: 5px;height: 23px;}
+div.controls a {padding: 5px;}
+div.ss-controls {float: left;}
+div.nav-controls {float: right;}
+div.slideshow-container {position: relative;clear: both;
+    /*height:451px*/; /* This should be set to be at least the height of the largest image in the slideshow */
+    min-height:224px}
+div.loader {position: absolute;top: 0;left: 0;background-image: url(../../images/galleriffic/loader.gif);background-repeat: no-repeat;background-position: center;width:338px/*550px*/;
+    /*height: 451px;*/ /* This should be set to be at least the height of the largest image in the slideshow */
+    min-height:253px}
+div.slideshow {}
+div.slideshow span.image-wrapper {display: block;position: absolute;top: 0;left: 0;}
+div.slideshow a.advance-link {display: block;width:444px/*550px*/;
+    /*height: 451px;*/ /* This should be set to be at least the height of the largest image in the slideshow */
+    min-height:27.750em;
+    /*line-height:249px451px;*/ /* This should be set to be at least the height of the largest image in the slideshow */
+    text-align: center;background-position:center center;background-repeat:no-repeat;margin-left: -46px;}
+div.slideshow a.advance-link:hover,
+div.slideshow a.advance-link:active,
+div.slideshow a.advance-link:visited {text-decoration: none;}
+div.slideshow img {vertical-align: middle;border: 1px solid #ccc;display:none}
+div.download {float: right;}
+div.caption-container {position: relative;clear: left;height: 75px;}
+span.image-caption {display: block;position: absolute;width:338px/*550px*/;top: 0;left: 0;}
+div.caption {padding:220px 83px 6px 0px;background-color:#000;opacity:0.5}
+div.image-title {font-weight: bold;font-size: 0.7em;width:230px;color:#FFF;text-align:justify}
+div.image-desc {line-height: 1.5;padding-top: 12px;}
+div.navigation-aux{text-align:center}
+div.navigation {position:relative/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */}
+ul.thumbs {clear: both;padding: 0; height: 166px; width: 252px; margin:-208px 0 0 238px;margin-top:-201px\9;margin-left:228px\9}
+ul.thumbs li {float: left;padding: 0/*;margin:13px 16px 0px 0*/;list-style: none;}
+a.thumb {/*padding:1px;*/display: block;background-position:center center;background-repeat:no-repeat;min-height:48px;text-align:center;text-indent:-50000px;width:64px}
+ul.thumbs li.selected a.thumb {/*border:1px solid #fff;*/padding:0}
+a.thumb:focus {outline: none;}
+ul.thumbs img {border: none;display:none;margin:0 auto}
+div.pagination {clear:both}
+div.navigation div.top {margin-bottom: 12px;height: 11px;}
+div.navigation div.bottom {float:left;margin-left:391px;margin-top:-130px;position:absolute}
+div.pagination a,
+div.pagination span.current,
+div.pagination span.ellipsis {display: block;float: left;margin-right: 2px;padding: 4px 7px 2px 7px;border: 1px solid #ccc;}
+div.pagination a:hover {/*background-color: #eee;*/text-decoration: none;}
+div.pagination span.current {font-weight: bold;background-color: #000;border-color: #000;color: #fff;}
+div.pagination span.ellipsis {border: none;padding: 5px 0 3px 2px;}
+
+div.pagination a{background-image:url(../../images/galleriffic/arrows-h.png);background-repeat:no-repeat;background-position:center center;height:59px;margin-right: -23px;padding:0px;border:none;position:absolute;text-indent:-10000px;top:164px;width:224px}
+div.pagination a.next{background-position:/*-26px*/0px center;right:-49px}
+div.pagination a.next:hover{background-position:right center;right:-43px}
+div.pagination a.prev{background-position:0 center;left:-152px}
+div.pagination a.prev:hover{background-position:0px center}

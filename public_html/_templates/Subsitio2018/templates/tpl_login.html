@@ -1,0 +1,100 @@
+<head>
+    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    	<script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
+    	
+    	<script type="text/javascript">
+    		
+
+    		/* $(window).load(
+            function(){
+    		 	alert("hola234");
+    		 	var element = document.getElementById("usuario");
+    		 	alert(document.getElementById("usuario").text);
+    		 	//document.getElementById("usuario").value="";
+    		 	//document.getElementById("password").value="";
+    		  });*/
+
+    		  function myfunction4(){
+    		  	 //document.forma1.target.value = "_self";
+            	//document.forma1.accion.value = "/login";
+            	if(document.getElementById("usuario").value == "" || document.getElementById("password").value == "")
+            	{
+            		//alert("Favor llenar Usuario o password");
+            		//swal("ADVERTENCIA", "Favor llenar Usuario o password !", "warning");
+            		swal({
+					  title: "ADVERTENCIA",
+					  text: "Favor llenar Usuario o password.",
+					  icon: "warning",
+					  button: "Aceptar",
+					});
+            	}
+            	else
+            	{
+            		if(grecaptcha && grecaptcha.getResponse().length > 0)
+					{
+					     //the recaptcha is checked
+					     // Do what you want here
+					     document.forma1.submit();
+					}
+					else
+					{
+					    //The recaptcha is not cheched
+					    //You can display an error message here
+					    //alert('Oops, favor llenar recaptcha !');
+					    //swal("ADVERTENCIA", "Favor llenar recaptcha !", "warning");
+					    swal({
+						  title: "ADVERTENCIA",
+						  text: "Por favor recuerde validar el reCatcha.",
+						  icon: "warning",
+						  button: "Aceptar",
+						});
+					}
+
+
+            		
+            	}
+            	
+    		  }
+    	</script>
+	</head>
+
+<!--Template Formulario de Login-->
+<div id="utilidades" class="row">
+	{if $subMenuError != ""}
+		{strip}
+			<div class="advertencia"><br>
+				{$subMenuError}
+			<br></div>
+		{/strip}
+	{/if}
+
+	<div><br>{$c_formulario_titulo}<br></div>
+
+	<form method="POST" name="forma1" action="{$c_action}" target="_self" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" autocomplete="off" style="padding: 15px 0;">
+		<div class="row">
+			{section name=mysec loop=$campos}
+				{strip}
+					{if $campos[mysec].nombre != ""}
+						<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+							{if $campos[mysec].clase == "requerido"}<strong>{/if}
+							{$campos[mysec].nombre}
+							{if $campos[mysec].clase == "requerido"}</strong>{/if}	
+						</div>
+						<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+							{$campos[mysec].input}
+						</div>
+					{else}
+						{$campos[mysec].input}
+					{/if}
+				{/strip}
+			{/section}	
+		</div>
+		<!--<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+			<input type="submit" value="Ingresar" class="btn" title="login" />
+		</div>-->
+
+	</form>
+	<input type="button" onclick="myfunction4()" value="Ingresar" class="btn" title="login" style="background: rgb(235,235,235); max-width:200px;" />
+</div>
+<!--Fin Template Formulario de Login-->
+

@@ -1,0 +1,19 @@
+/*@font-face{
+font-family:"AbadiMTCondensed";
+src: url("../fonts/AbadiMTCondensed.eot#" format('embedded-opentype'); );
+}*/
+
+
+@font-face{
+font-family:"AbadiMTCondensed";
+src: url("../fonts/AbadiMTCondensed.eot");
+src: url("../fonts/AbadiMTCondensed.eot#" format('embedded-opentype'); );
+}
+
+@font-face{
+font-family:"AgencyFB";
+src: url("../fonts/Agency_FB_0.eot");
+src: url("../fonts/Agency_FB_0.eot#" format('embedded-opentype'); );
+}
+#tweet{font-size: 11px !important; font-weight: normal !important; position:relative; top:0px !important;}
+#tweet h3{background:transparent; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important; height:12px;}

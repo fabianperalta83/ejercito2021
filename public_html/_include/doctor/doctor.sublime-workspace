@@ -1,0 +1,551 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"rec",
+				"recruit"
+			],
+			[
+				"ra",
+				"rand"
+			],
+			[
+				"add",
+				"addEmployee"
+			],
+			[
+				"em",
+				"employees"
+			],
+			[
+				"employee",
+				"employeeName"
+			],
+			[
+				"uns",
+				"unset"
+			],
+			[
+				"page",
+				"pagefactory"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"htmle",
+				"html_entity_decode"
+			],
+			[
+				"html",
+				"htmlentities"
+			],
+			[
+				"GE",
+				"_GET"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "config.inc.php",
+			"settings":
+			{
+				"buffer_size": 379,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 618,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/micros/class_iteradorvisibilidad.php",
+			"settings":
+			{
+				"buffer_size": 831,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/micros/class_iteradorestructura.php",
+			"settings":
+			{
+				"buffer_size": 644,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"comm",
+				"Toggle Block Comment"
+			],
+			[
+				"for",
+				"Snippet: for …"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"cla",
+				"Snippet: Class"
+			],
+			[
+				"newl",
+				"File: New View into File"
+			],
+			[
+				"clas",
+				"Snippet: Class"
+			],
+			[
+				"SNI",
+				"Snippet: <?php … ?>"
+			],
+			[
+				"PH",
+				"Set Syntax: PHP"
+			],
+			[
+				"sn",
+				"Snippet: <?php … ?>"
+			],
+			[
+				"sni",
+				"Snippet: <?php … ?>"
+			],
+			[
+				"ph",
+				"Set Syntax: PHP"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"snih",
+				"Snippet: html"
+			],
+			[
+				"snifo",
+				"Snippet: for …"
+			],
+			[
+				"snifor",
+				"Snippet: for …"
+			],
+			[
+				"toggb",
+				"Toggle Block Comment"
+			],
+			[
+				"snip",
+				"Snippet: html"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/leonardo/Sites/doctor/lib/micros/class_iteradorestructura.php",
+		"/Users/leonardo/Sites/doctor/lib/micros/class_iteradorvisibilidad2.php",
+		"/Users/leonardo/Sites/doctor/lib/micros/class_iteradorestructura2.php",
+		"/Users/leonardo/Sites/doctor/lib/micros/class_iteradorvisibilidad.php",
+		"/Users/leonardo/Sites/doctor/config.inc.php",
+		"/Users/leonardo/Sites/doctor/index.php",
+		"/Users/leonardo/Sites/doctor/README.md",
+		"/Users/leonardo/Sites/doctor/lib/micros/class_validadorestructura.php",
+		"/Users/leonardo/Sites/doctor/lib/micros/class_validadorvisibilidad.php",
+		"/Users/leonardo/Sites/doctor/config.php",
+		"/Users/leonardo/Sites/doctor/class_validadorvisibilidad.html",
+		"/Users/leonardo/Sites/doctor/class_iteradorestructura.html",
+		"/Users/leonardo/Sites/doctor/class_iteradorvisibilidad.html",
+		"/Users/leonardo/Sites/doctor/class_validadorestructura.php",
+		"/Users/leonardo/Sites/doctor/class_lib.php",
+		"/var/log/xdebug/xdebug.log",
+		"/Users/leonardo/Sites/objetos/objetos.sublime-project",
+		"/etc/php.ini",
+		"/Users/leonardo/Sites/objetos/index.php",
+		"/Users/leonardo/Sites/portal/lib/micros/pagefactory.php",
+		"/Users/leonardo/Sites/portal/lib/micros/class_usuario.php",
+		"/Users/leonardo/Sites/portal/lib/micros/class_url_limpia.php",
+		"/Users/leonardo/Sites/portal/lib/micros/class_nodo.php",
+		"/Users/leonardo/Sites/cotizador/config.inc.php",
+		"/Users/leonardo/Sites/cotizador/index.php",
+		"/Users/leonardo/Sites/cotizador/templates/ace/templates/index.html",
+		"/Users/leonardo/Sites/cotizador/templates/ace/index.html",
+		"/Users/leonardo/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/leonardo/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/leonardo/Downloads/colour_red/_FYI/Remove the footer link (aka Buy me some beer!).url",
+		"/Users/leonardo/Sites/cotizador/index.html",
+		"/Users/leonardo/Sites/cotizador/templates/default/templates/index.html",
+		"/Users/leonardo/Sites/cotizador/lib/micros/class_smartycotizador.php",
+		"/Users/leonardo/Sites/cotizador/test.php",
+		"/Users/leonardo/Sites/cotizador/lib/micros/class_Smarty.php",
+		"/Users/leonardo/Sites/cotizador/lib/core/class_url_limpia.php",
+		"/Users/leonardo/Sites/cotizador/test.tpl",
+		"/Users/leonardo/Sites/cotizador/smarty/demo/index.php",
+		"/Users/leonardo/Sites/cotizador/smarty/composer.json",
+		"/Users/leonardo/Sites/cotizador/lib/core/test.php",
+		"/Users/leonardo/Sites/cotizador/agrega_producto.php",
+		"/Users/leonardo/Sites/symfony/composer.phar",
+		"/Users/leonardo/Sites/portal/index.php",
+		"/Users/leonardo/Sites/portal/config.php",
+		"/Users/leonardo/Sites/portal/class_nodo.php",
+		"/Users/leonardo/Sites/portal/class_rectifica.php",
+		"/Users/leonardo/Sites/portal/class_buscagrupos.php",
+		"/Users/leonardo/Sites/symfony/composer.json",
+		"/Users/leonardo/Sites/symfony/app/console",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/etc/hosts",
+		"/private/var/log/apache2/error_log",
+		"/Users/leonardo/Sites/symfony/web/.htaccess",
+		"/private/etc/apache2/other/php5.conf",
+		"/etc/apache2/httpd.conf",
+		"/Users/leonardo/Sites/portal_base2/_config/constantes.php",
+		"/Users/leonardo/Sites/portal_base2/_config/iniciar.php",
+		"/Users/leonardo/Desktop/FUNDACION",
+		"/Users/leonardo/EPM",
+		"/Users/leonardo/1964",
+		"/Users/leonardo/Sites/portal_base2/test.txt",
+		"/Users/leonardo/Sites/portal_base2/bk.sql"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"`",
+			"tamano_maximo",
+			"uno",
+			"dos",
+			"marca_estructura",
+			"string",
+			"jorge",
+			"mary",
+			"::",
+			"harry",
+			"CON",
+			"sin",
+			"producto_",
+			"productos",
+			"producto_",
+			"producto_id",
+			"proyectos",
+			"proyecto",
+			"proyectos",
+			"tipo",
+			"i",
+			"empresa_activa",
+			"micros",
+			"lmKuZfSr",
+			"H1",
+			"h1",
+			"href=\"",
+			"h1",
+			"H1",
+			"h1",
+			"H1",
+			"h1",
+			"acivo",
+			"Smarty",
+			"smarty",
+			"{$ruta)",
+			"href=\"",
+			"templates",
+			"templates/ace/templates/",
+			"href=\"inbox.html\"",
+			"href=\"",
+			"href=\"assets",
+			"try{",
+			"literal",
+			"try{",
+			"ace.",
+			"/'",
+			"default",
+			"('",
+			"default",
+			"/default/",
+			"('",
+			"proyectos",
+			"title",
+			"pagina_nombre",
+			"this",
+			"empresa",
+			"proyecto",
+			"condition",
+			"Mensaje",
+			"PDOException",
+			"new",
+			"migas",
+			"vhos",
+			"view",
+			"'root'",
+			"'root'@'%'",
+			"root",
+			"prueba",
+			"zend",
+			"xdebug",
+			"xunit",
+			"PEAR"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "config.inc.php",
+					"settings":
+					{
+						"buffer_size": 379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.php",
+					"settings":
+					{
+						"buffer_size": 618,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/micros/class_iteradorvisibilidad.php",
+					"settings":
+					{
+						"buffer_size": 831,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								549,
+								549
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "lib/micros/class_iteradorestructura.php",
+					"settings":
+					{
+						"buffer_size": 644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								642,
+								642
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.7,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.xdebug":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 279.0,
+	"status_bar_visible": true
+}

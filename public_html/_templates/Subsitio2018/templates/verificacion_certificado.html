@@ -1,0 +1,27 @@
+<form method="post">
+{if $error != ''}
+<li>{$error}
+{/if}
+<table style="width:100%">
+	<tr>
+		<td>
+			<label for="codigo"><strong>INGRESE EL CODIGO DE VERIFICACI&Oacute;N</strong></label>
+		</td>
+		<td>
+			<input type="text" id="codigo" name="codigo" value="{$codigo}"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="submit" value="Verificar" name="enviar"/>
+		</td>
+	</tr>
+	{if $mensaje != ''}
+	<tr>
+		<td>
+			{$mensaje}
+		</td>
+	</tr>
+	{/if}
+</table>
+</form>

@@ -1,0 +1,109 @@
+{literal}
+<script type="text/javascript">
+	function mostrarOpcion(seccion) {
+		if (document.getElementById('check_'+seccion).checked) {
+			document.getElementById('seccion_'+seccion).className = 'selected';
+			document.getElementById('num_noticias_'+seccion).style.display = '';
+		} else {
+			document.getElementById('seccion_'+seccion).className = 'noselected';
+			document.getElementById('num_noticias_'+seccion).style.display = 'none';
+		}
+	}
+	/**
+	 * Funcion que pone informacion en la seccion escogida
+	 **/
+	function ponerInfo(seccion, cantidad) {
+		document.getElementById('check_'+seccion).checked = true;
+		document.getElementById('seccion_'+seccion).className = 'selected';
+		document.getElementById('num_noticias_'+seccion).style.display = '';
+		document.getElementById('num_noticias_'+seccion).value = cantidad;
+	}
+	
+	function validarNumero(myfield, e) {
+		var key;
+		var keychar;
+		
+		if (window.event)
+			key = window.event.keyCode;
+		else if (e)
+			key = e.which;
+
+		keychar = String.fromCharCode(key);
+		
+		// control keys
+		if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) ) {
+			return true;
+		} else if ((("123456789").indexOf(keychar) > -1)) {// numbers
+			return true;
+		}
+		return false;
+	}
+	
+</script>
+{/literal}
+
+{if $mensajeAlerta != ''}
+	<div class="advertencia"><br>
+	{$mensajeAlerta}
+	<br></div>
+{/if}
+
+<p>
+Seleccione las secciones y la cantidad de noticias que desee encontrar en el home. 
+Una vez terminada la personalización haga click en guardar.
+</p>
+
+<div id="personal_usuario">
+	<form method="POST" name="frm_secciones" action="">
+		<table cellpadding="5" cellspacing="0" width="99%">
+			{section name=mysec loop=$menuInstitucional max=3}
+			
+				<tr>
+					<td class="nombre_seccion">
+						{$menuInstitucional[mysec].nombre}
+					</td>
+				</tr>
+				
+				<tr>
+					<td >
+						{if $menuInstitucional[mysec].hijos}
+						<table cellpadding="0" cellspacing="3" width="100%">
+							<tr>
+							{section name=mysec2 loop=$menuInstitucional[mysec].hijos}
+								<td width="20%" id="seccion_{$menuInstitucional[mysec].hijos[mysec2].idcategoria}" class="noselected">
+								
+									<input  type="text" 
+											id="num_noticias_{$menuInstitucional[mysec].hijos[mysec2].idcategoria}" 
+											name="num_noticias_{$menuInstitucional[mysec].hijos[mysec2].idcategoria}"
+											value="3" size="1" maxlength="1" style="display:none;border:1px solid;float:right;"
+											onkeypress="return validarNumero(this, event);">
+									
+									<input  onclick="javascript:mostrarOpcion('{$menuInstitucional[mysec].hijos[mysec2].idcategoria}')" 
+											type="checkbox" id="check_{$menuInstitucional[mysec].hijos[mysec2].idcategoria}" 
+											name="seccion[]"
+											value="{$menuInstitucional[mysec].hijos[mysec2].idcategoria}">{$menuInstitucional[mysec].hijos[mysec2].nombre}
+									
+									<input type="hidden" name="padre_{$menuInstitucional[mysec].hijos[mysec2].idcategoria}" value="{$menuInstitucional[mysec].idcategoria}">
+									{section name=idInfo loop=$infoSecciones}
+										{if $menuInstitucional[mysec].hijos[mysec2].idcategoria == $infoSecciones[idInfo].idSeccion}
+											<script type="text/javascript" language="Javascript">
+												ponerInfo('{$infoSecciones[idInfo].idSeccion}', '{$infoSecciones[idInfo].cantidad}');
+											</script>
+										{/if}
+									{/section}							
+								</td>
+								{if ($smarty.section.mysec2.index + 1) mod 3 == 0}
+									</tr><tr>
+								{/if}
+							{/section}
+							</tr>
+						</table>
+						{/if}
+					</td>
+				</tr>
+			{/section}
+		</table>
+		<br>
+		<input type="submit" value="Guardar" class="button_usuario">
+	</form>
+</div>

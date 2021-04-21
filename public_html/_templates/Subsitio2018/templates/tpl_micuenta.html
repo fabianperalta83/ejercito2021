@@ -1,0 +1,70 @@
+
+<!-- Template Mi Cuenta -->
+<div id="utilidades">
+
+{if $subMenuError != ""}{strip}
+<div class="advertencia"><br>
+	{$subMenuError}
+<br></div>
+{/strip}
+{/if}
+
+<div><br>{$c_formulario_titulo}<br></div>
+
+{if $subMenuInfo != ""}
+{strip}
+	<div class="advertencia"><br>{$subMenuInfo}<br></div>
+{/strip}
+{/if}
+
+<form method="POST" action="{$c_action}">
+<table width="100%" cellpadding="3" cellspacing="1" align="center" border="0" summary="Mi cuenta">
+
+{if $cambiar_contrasena}
+	{section name=mysec loop=$campos}
+		<tr style='background:{cycle values="#F3F5F7,#FFF"}'>
+		<td>{$campos[mysec].nombre}</td>
+		<td>{$campos[mysec].input}</td>
+		</tr>
+	{/section}
+
+	<tr>
+	<th colspan="2">
+		<input type="submit" name="guardar_contrasena" value="Guardar" class="tpl_boton"><input type="submit" name="cancelar" value="Cancelar" class="tpl_boton">
+	</th>
+	</tr>
+
+{else}
+
+	{section name=mysec loop=$campos}
+	{if $campos[mysec].nombre != ""}
+	{if $campos[mysec].input != ""}
+		<tr style='background:{cycle values="#F3F5F7,#FFF"}'>
+		<td>{$campos[mysec].nombre}</td>
+		<td>{$campos[mysec].input}<span style = "padding: 0 0 0 10px;"> {$campos[mysec].link}</span></td>
+		</tr>
+	{else}
+		<tr><th colspan="2">{$campos[mysec].nombre}</th></tr>
+	{/if}
+	{else}
+		{$campos[mysec].input}
+	{/if}
+	{/section}
+
+	<tr>
+	<th colspan="2">
+		<input type="submit" name="Actualizar" value="Actualizar" class="tpl_boton">
+		<input type="submit" name="contrasena" value="Cambiar Contrase&ntilde;a" class="tpl_boton">
+		<input type="button" onclick="document.location.href='{$pagina_validacion}&email={$email}'" value='Validar PIN' class="tpl_boton">
+		<input type="submit" name="reenviar_pin" value="Reenviar PIN" class="tpl_boton">
+	</th>
+	</tr>
+{/if}
+
+</table>
+</form>
+<br><br>
+
+</div>
+<!-- Fin Template Mi Cuenta -->
+

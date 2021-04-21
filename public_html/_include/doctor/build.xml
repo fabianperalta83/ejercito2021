@@ -1,0 +1,60 @@
+<project name="doctor" default="build">
+    <property name="dir.src" value="${basedir}/src" />
+    <property name="dir.tests" value="${basedir}/tests" />
+    <property name="dir.build" value="${basedir}/build" />
+    <property name="dir.logs" value="${dir.build}/logs" />
+    <property name="dir.docs" value="${dir.build}/docs" />
+    <property name="dir.coverage" value="${dir.build}/coverage" />
+
+    <target name="clean">
+        <delete dir="${dir.build}"/>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${dir.logs}"/>
+        <mkdir dir="${dir.logs}"/>
+        <mkdir dir="${dir.docs}"/>
+        <mkdir dir="${dir.coverage}"/>
+    </target>
+
+    <target name="pdepend">
+        <exec dir="${basedir}" executable="pdepend" failonerror="true">
+            <arg line="--jdepend-xml='${dir.logs}/jdepend.xml'
+             --bad-documentation '${dir.src}'" />
+         </exec>
+     </target>
+
+    <target name="phpcpd">
+        <exec dir="${basedir}" executable="phpcpd" failonerror="true">
+        <arg line="--log-pmd '${dir.logs}/pmd.xml' '${dir.src}'" />
+    </exec>
+    </target>
+
+    <target name="phpcs">
+    <exec dir="${basedir}" executable="phpcs" output="${dir.logs}/checkstyle-report.xml" failonerror="false">
+        <arg line="--report=checkstyle
+                   --standard=Zend
+                   '${dir.src}'" />
+ 
+    </exec>
+    </target>
+
+    <target name="phpdoc">
+    <exec dir="${basedir}" executable="phpdoc" failonerror="true">
+        <arg line="-t '${dir.docs}'
+                   -d '${dir.src}'
+                   " />
+    </exec>
+    </target>
+
+    <target name="phpunit">
+    <exec dir="${basedir}" executable="phpunit" failonerror="true">
+        <arg line="--log-junit '${dir.logs}/junit.xml'
+                   --coverage-clover '${dir.logs}/clover.xml'
+                   --coverage-html '${dir.coverage}'
+                   '${dir.tests}'" />
+    </exec>
+    </target>
+
+    <target name="build" depends="clean, prepare, phpdoc, phpcpd, pdepend, phpcs, phpunit" />
+</project>

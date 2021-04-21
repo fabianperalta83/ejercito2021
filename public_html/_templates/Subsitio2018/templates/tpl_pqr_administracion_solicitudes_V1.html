@@ -1,0 +1,221 @@
+
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+{literal}
+<script type="text/javascript" src="{/literal}{$DIRJS}select_dependientes.js{literal}"></script>
+{/literal}
+
+<form id="form_solicitud" name="form_solicitud" action="" method="post">
+<table id="tabla_pqr" align="center">
+	<tr>
+	    <td colspan="4">
+	    	{if $flg_enviar=='ok'}
+				<div class="error">
+					<ul>
+						{section name=indice loop=$errores}
+							<li>{$errores[indice]}</li>
+						{/section}
+					</ul>
+				</div>
+			{else}
+				<div class="texto_normal">{$lb_introduccion_formulario}</div>
+			{/if}
+	    	<div class="titulo_formulario">{$lb_titulo_gestion}</div>
+		</td>
+	</tr>
+	<tr><td colspan="4">
+		<div style="margin-top:5px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>Consecutivo:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+						<div><input type="text" name="solicitud_id" id="solicitud_id" size="3" value="{$solicitud_id}"></div>
+					</td>
+				</tr>
+				<tr style="height:60px;background-color:{$color_fondo_formulario.0};">
+					<td style="vertical-align:top">
+						<div>&nbsp;</div>
+					</td>
+					<td>
+						<div style="float:left;margin:0 5px 0 0">
+							<div style="">{$lb_consecutivo_inicial}</div>
+							<div style=""><input type="text" name="desde" size="3"value={$desde}></div>
+							
+						</div>
+						<div>
+							<div style="">{$lb_consecutivo_final}</div>
+							<div style=""><input type="text" name="hasta" size="3" value="{$hasta}" ></div>
+							
+						</div>
+					</td>
+				</tr>
+				
+				
+				<!--  empiezza nuevo codigo -->
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_doc}:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+			
+				
+					<div>
+							
+							<div style=""><input type="text" name="doc_id" size="15" value="{$doc_id}" ></div>
+							
+						</div>
+					</td>
+				</tr>
+					<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_nombre}:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+			
+				
+					<div>
+							
+							<div style=""><input type="text" name="nombre" size="30" value="{$nombre}" ></div>
+							
+						</div>
+					</td>
+				</tr>
+				 <!-- finaliza el nuevo codigo-->
+				
+				
+				
+				<tr style="height:30px;background-color:{$color_fondo_formulario.1};">
+					<td>
+						<div>{$lb_tipo}</div>
+					</td>
+					<td>
+						<div>
+							<select name="tipo_solicitud">
+								{html_options values=$select_tipo_solicitud.id output=$select_tipo_solicitud.nombre selected="$tipo_solicitud"}
+							</select>
+						</div>					
+					</td>
+				</tr>
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_estado}</div
+					</td>
+					<td>
+						<div>
+							<select name="estado">
+								{html_options values=$select_estado.id output=$select_estado.nombre selected="$estado"}
+    						</select>
+						</div>
+					</td>
+				</tr>
+				{if $lb_dependencia!=''}
+				<tr style="height:80px;background-color:{$color_fondo_formulario.1};">
+					<td style="vertical-align:top">
+						<div>{$lb_dependencia}</div>
+					</td>
+					<td>
+						<div>
+							{section name=section_dependencia loop=$select_dependencia}
+								<div>
+									{$select_dependencia[section_dependencia]}
+								</div>
+							{/section}
+						</div>
+					</td>
+				</tr>
+				{/if}
+				<tr style="height:60px;background-color:{$color_fondo_formulario.0};">
+					<td style="vertical-align:top">
+						<div>Fecha</div>
+					</td>
+					<td>
+						<div style="float:left;margin:0 5px 0 0">
+							<div style="">{$lb_fecha_inicial}</div>
+							<div style=""><input type="text" name="fecha_inicial" size="10" maxlength="10" value="{$fecha_inicial}"></div>
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+						</div>
+						<div>
+							<div style="">{$lb_fecha_final}</div>
+							<div style=""><input type="text" name="fecha_final" size="10" maxlength="10" value="{$fecha_final}"></div>
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:30px;background-color:{$color_fondo_formulario.1};">
+					<td>
+						<div style="text-align:left">{$lb_ordenar}</div>
+					</td>
+					<td>
+						<div style="text-align:left">
+							<select name="ordenar">
+			    				{html_options values=$select_criterio_orden.id output=$select_criterio_orden.nombre selected="$ordenar"}
+			    			</select>
+						</div>
+					</td>				
+				</tr>
+			
+				<tr style="height:50px;background-color:{$color_fondo_formulario.0};">
+					<td colspan="2" style="vertical-align:center;">
+						<div style="text-align:center"><input type="submit" id="enviar" name="enviar" value="{$btn_lb_enviar}" /></div>
+						<div style="text-align:center">{$detalleXml}</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</td>
+	<tr><td>&nbsp;</td></tr>
+	</tr>
+	<tr>
+	    <td colspan="4">
+	    	<div class="titulo_formulario">{$lb_titulo_lista_solicitudes}</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="0" align="center">
+			<div id="lista_solicitudes">
+				<table width="100%" cellpadding="4" cellspacing="1" border="0">
+					<tr style="background:#8B8B8B;color:#FFFFFF">
+						<td>ID</td>
+						<td>FECHA</td>
+						<td>TIPO</td>
+						<td>DEPENDENCIA</td>
+						<td>ESTADO</td>
+						<td>ACCIONES</td>
+					</tr>
+					{section name=sec_solicitud loop=$solicitud}
+						<tr bgcolor="{cycle values="#FBF9FA,#E7E7E7"}">
+							<td>{$solicitud[sec_solicitud].id}</td>
+							<td>{$solicitud[sec_solicitud].fecha}</td>
+							<td>{$solicitud[sec_solicitud].tipo}</td>
+							<td>{$solicitud[sec_solicitud].dependencia}</td>
+							<td><div class="{$solicitud[sec_solicitud].clase}">{$solicitud[sec_solicitud].estado}</div></td>
+							<td><a href="{$url_gestion}&solicitud_id={$solicitud[sec_solicitud].id}"><img src="{$dir_admin_images}btn_auditoria.jpg" alt="Ver detalles"></a></td>
+						</tr>
+					{/section}
+				</table>
+			</div>
+			
+			<!-- Paginacion -->
+			<div class="paginacion_pqr">
+				<input type="hidden" name="pagina" value="">
+				{if $paginas.previousPage != ''}
+					<a onclick="document.form_solicitud.pagina.value='{$paginas.previousPage}';document.form_solicitud.submit()">&laquo; Anterior</a>&nbsp;
+				{/if}
+				{if $paginas.pags}
+					{section name=idPag loop=$paginas.pags}
+						{if $paginas.actualPage != $paginas.pags[idPag]}
+							&nbsp;<a onclick="document.form_solicitud.pagina.value='{$paginas.pags[idPag]}';document.form_solicitud.submit()">{$paginas.pags[idPag]}</a>&nbsp;
+						{else}
+							&nbsp;{$paginas.pags[idPag]}&nbsp;
+						{/if}
+					{/section}
+				{/if}
+				{if $paginas.nextPage != ''}
+					&nbsp;<a onclick="document.form_solicitud.pagina.value='{$paginas.nextPage}';document.form_solicitud.submit()">Siguiente &raquo;</a>
+				{/if}
+			</div>
+		</td>
+	</tr>
+</table>
+</form>

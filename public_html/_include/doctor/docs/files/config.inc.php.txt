@@ -1,0 +1,15 @@
+<?php
+$user = 'root';
+$pass = '';
+$base = 'ejercito';
+$tamano_maximo 	= 380000;
+$tamano_lote 	= 50000;
+$iteraciones    = ceil($tamano_maximo/$tamano_lote);
+
+$dbh = new PDO(sprintf('mysql:charset=utf8mb4;host=localhost;dbname=%s',$base), $user, $pass);
+
+function my_autoloader($class) {
+    include 'lib/micros/class_' . $class . '.php';
+}
+
+spl_autoload_register('my_autoloader');

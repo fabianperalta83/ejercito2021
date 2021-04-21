@@ -1,0 +1,58 @@
+<div style="border: 1px solid black;">
+<table style="width:100%;" cellpading="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td>Modalidad<br/>Acad&eacute;mica</td>
+			<td>
+				<select class="tpl_input_edicion_requerido" name="modalidadAcademica{$numEdu}" id="modalidadAcademica{$numEdu}_ID" >
+					<option value="">Seleccione...</option>
+					{foreach key=key item=item from=$grupoModalidadAcademica}
+						<option value="{$key}" {if ($modalidadAcademica neq "") and ($modalidadAcademica eq $key)} selected="selected" {/if}>{$item}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Semestres<br/>Aprobados</td>
+			<td><input class="" size="6" maxlength="6" type="text" name="semestresAprobados{$numEdu}" value="{$semestresAprobados}" id="semestresAprobados{$numEdu}_ID" /></td>
+		</tr>
+		<tr>
+			<td>Aprobado?</td>
+			<td>
+				<select class="tpl_input_edicion_requerido" name="estudioAprobado{$numEdu}" id="estudioAprobado{$numEdu}_ID" >
+					<option value="">Seleccione...</option>
+					{foreach key=key item=item from=$grupoEstudioAprobado}
+						<option value="{$key}" {if ($estudioAprobado neq "") and ($estudioAprobado eq $key)} selected="selected" {/if}>{$item}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Nombre de los<br/>Estudios</td>
+			<td>
+				<select class="tpl_input_edicion_requerido" name="nombreEstudios{$numEdu}" id="nombreEstudios{$numEdu}_ID" >
+					<option value="">Seleccione...</option>
+					{foreach key=key item=item from=$grupoCodProfesion}
+						<option value="{$key}" {if ($nombreEstudios neq "") and ($nombreEstudios eq $key)} selected="selected" {/if}>{$item}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Nombre del<br/>Establecimiento</td>
+			<td>
+				<select class="tpl_input_edicion_requerido" name="nombreEstablecimientoEstudios{$numEdu}" id="nombreEstablecimientoEstudios{$numEdu}_ID" >
+					<option value="">Seleccione...</option>
+					{foreach key=key item=item from=$grupoCodInstitucionEducativa}
+						<option value="{$key}" {if ($nombreEstablecimientoEstudios neq "") and ($nombreEstablecimientoEstudios eq $key)} selected="selected" {/if}>{$item}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Fecha<br/>Terminaci&oacute;n</td>
+			<td><input class="fecha_formulario_rdga" maxlength="254" type="text" name="fechaTerminacionEstudios{$numEdu}" value="{$fechaTerminacionEstudios}" id="fechaTerminacionEstudios{$numEdu}_ID" size="12" /></td>
+		</tr>
+	</tbody>
+</table>
+</div>

@@ -1,0 +1,74 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 galeria_fotos">
+	<div class="row">
+		<div class="col-md-12 col-lg-12  hidden-sm hidden-xs">
+			<div class="row" id="top_slider_foto"></div>
+		</div>
+		<div class="col-md-1 col-lg-1 hidden-sm hidden-xs">
+			<div class="row" id="left_slider_foto"></div>
+		</div>
+		<div class="col-md-10 col-lg-10 ">
+			<div class="row">
+				<div id="cont_carousel">
+					<div class="flexslider">
+						<div class="slides" id="slick">
+							{section name=mysec loop=$galeria_imagen}
+							    <div class="slick">
+							    	<a href="{$smarty.const._DIRIMAGES_USER}{$galeria_imagen[mysec].imagen}" class="fancybox" rel="gallery1" title="{$galeria_imagen[mysec].nombre}">
+							      	<div style="background:url('/tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$galeria_imagen[mysec].imagen}&w=230') no-repeat center; width: 95%; height: 150px; margin: auto;" class="img_back_noticias"><p class="hidden">{$smarty.const._DIRIMAGES_USER}{$galeria_imagen[mysec].nombre}</p></div>
+
+							      	</a>
+							    </div>
+						    {/section}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 col-lg-1 hidden-sm hidden-xs">
+			<div class="row" id="right_slider_foto"></div>
+		</div>
+		<div class="col-md-12 col-lg-12 hidden-sm hidden-xs">
+			<div class="row" id="bottom_slider_foto"></div>
+		</div>
+		<!-- Fin Version Web -->
+		
+	</div>
+</div>
+
+<script>
+$('#slick').slick({
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
+    responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true
+      }
+    },
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+	
+</script>

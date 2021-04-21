@@ -1,0 +1,65 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Administraci&oacute;n datos</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<table id="example">
+		<thead>
+			<tr>
+				<th>Grado</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Identificaci&oacute;n</th>
+				<th>Unidad1</th>
+				<th>Unidad2</th>
+				<th>Fecha</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			{section name=registros loop=$datos }
+				<tr>
+					<td>{$datos[registros].Grado}</td>
+					<td>{$datos[registros].Nombre}</td>
+					<td>{$datos[registros].Apellido}</td>
+					<td>{$datos[registros].identificacion}</td>
+					<td>{$datos[registros].Unidad1}</td>
+					<td>{$datos[registros].Unidad2}</td>
+					<td>{$datos[registros].fecha}</td>
+				</tr>
+			{/section}
+		</tbody>
+	</table>
+	<br>
+	<div class="panel panel-info" style="padding-top: 10px;">
+	<div class="panel-heading" style="color: #ff5555;">{$mensaje}</div>
+	<div class="panel-body">
+		<form action="" method="post">
+		<label for="Fecha1">Fecha 1:</label>
+		<input type="date" name="Fecha1" class="form-control" required="true"">
+		<label for="Fecha2">Fecha 2:</label>
+		<input type="date" name="Fecha2" class="form-control" required="true" minlength="2017-10-5"> <a href="">
+		<p><button type="submit" class="btn btn-success btn-sm">Exportar en Excel</button></p>
+		</a>
+	</form>	
+	</div>
+	</div>
+
+
+</body>
+</html>
+</html>
+{literal}
+<script type="text/javascript">
+	
+	$('#example').DataTable( {"language": { "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" } } );
+
+</script>
+
+{/literal}

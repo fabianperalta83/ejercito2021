@@ -1,0 +1,69 @@
+<div id="dv_cont_multimedia" class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+	<div id="videos">
+		<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12" id="video_multi" >
+			<div id="pantalla_videos" class="pantalla_dv">
+			 	<div class="slider-videos-for">
+					{section name=idMultiVideo loop=$videos_home_ppal max=4}
+						<div class="item_multi_video" id="itemMultiVideo_{$videos_home_ppal[idMultiVideo].idcategoria}">
+							{if $videos_home_ppal[idMultiVideo].tipo_video == flv || $videos_home_ppal[idMultiVideo].tipo_video == mp4 } 
+								<video loop="true" muted="muted">
+		                            <source src="{$smarty.const._URL}/{$smarty.const._DIRRECURSOS_USER}{$videos_home_ppal[idMultiVideo].descripcion}" type="video/mp4">
+		                                Your browser does not support the video tag.
+		                        </video>
+							{else}
+								{$videos_home_ppal[idMultiVideo].descripcion}
+							{/if}
+						</div>
+					{/section}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div id="galeria" style="display: none;">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="row">
+				<div class="flexbox hidden-sm hidden-xs">
+					{section name=idImgs loop=$galeria_imagenppal}
+						<div class="itema">
+							<a href="{$smarty.const._DIRIMAGES_USER}{$galeria_imagenppal[idImgs].imagen}" class="fancybox" rel="gallery1" title="{$galeria_imagenppal[idImgs].nombre}">
+								<img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$galeria_imagenppal[idImgs].imagen}&w=1000" alt="{$galeria_imagenppal[idImgs].nombre}" style="width: 100%;">
+							</a>
+						</div>
+					{/section}
+				<!-- 	<div class="col-md-3 col-lg-3 {if $smarty.section.idImgs.index == 1 || $smarty.section.idImgs.index == 3 || $smarty.section.idImgs.index == 4 || $smarty.section.idImgs.index == 6} img-large {else} img-short {/if}">
+					    	<div class="row">
+						    	<a href="{$smarty.const._DIRIMAGES_USER}{$galeria_imagen[idImgs].imagen}" class="fancybox" rel="gallery1" title="{$galeria_imagen[idImgs].nombre}">
+							      	<img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$galeria_imagen[idImgs].imagen}&w=250" alt="{$galeria_imagen[idImgs].nombre}" {if $smarty.section.idImgs.index == 4 || $smarty.section.idImgs.index == 6} style="margin-top: -40px;" {/if} {if $smarty.section.idImgs.index == 3 || $smarty.section.idImgs.index == 7} style="width: 100%;" {/if}>
+						      	</a>
+						    </div>
+					    </div> -->
+				</div>
+				<div id="slider-galeria" class="col-sm-12 col-xs-12 hidden-md hidden-lg carousel slide carousel-fade" data-ride="carousel">
+                	<div class="carousel-inner" role="listbox">
+                    	{section name=imag loop=$galeria_imagen}
+                           <div class="col-sm-12 col-xs-12 alto_contraste item {if $smarty.section.imag.index==0}active{/if}">
+		                        <a href="{$smarty.const._DIRIMAGES_USER}{$galeria_imagen[imag].imagen}" class="fancybox" rel="gallery1" title="{$galeria_imagen[imag].nombre}">
+							      	<img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$galeria_imagen[imag].imagen}&w=300" alt="{$galeria_imagen[imag].nombre}" style="margin: 0 auto;">
+						      	</a>
+                            </div>
+                        {/section}
+                   	</div>
+                </div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<div class="btn_vm_multi">
+				<a href="index.php?idcategoria={$smarty.const._GALERIA_FOTOGRAFICA}">
+					{if $smarty.const._EN_INGLES !=1}
+						Ver todas las imagenes
+					{else}
+						Listen to all audios
+					{/if}
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="clear_b"></div>
+</div>
+

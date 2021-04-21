@@ -1,0 +1,36 @@
+<!--Lista con Resumen:Contenidos-->
+<ol id="lista_resumen_contenidos">
+    {section name=mysec loop=$subMenu}
+    <li {if $smarty.section.mysec.first}class="liFirst"{/if}>
+        <div class="encabezados">
+            {if $subMenu[mysec].antetitulo != ""}
+                <p class="s_antetitulo wrap8">{$subMenu[mysec].antetitulo}</p>
+            {/if}
+            {if $subMenu[mysec].nombre != ""}
+                <h5 class="s_titulo wrap8"><a href="{$subMenu[mysec].vinculo}">{$subMenu[mysec].nombre}</a></h5>
+            {/if}
+
+            {if $subMenu[mysec].subtitulo != ""}
+                <p class="s_subtitulo wrap8">{$subMenu[mysec].subtitulo}</p>
+            {/if}
+        </div>
+
+        <div class="contenido">
+            {if $subMenu[mysec].imagen != ""}
+                <a href="{$subMenu[mysec].vinculo}"><p class="hidden">texto de contenido</p>
+                    <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&amp;w=160" alt="{$subMenu[mysec].nombre}">
+                </a>
+            {/if}
+             
+            {if $subMenu[mysec].imagen != "" or $subMenu[mysec].descripcion != ""}
+                {if $subMenu[mysec].descripcion != ""}
+                    <p class="listaEntradilla wrap8">{$subMenu[mysec].descripcion}</p>
+                {/if}
+               
+        </div>
+         <a class="dVermas wrap8" href="{$subMenu[mysec].vinculo}"><span class="wrap8">VER MAS <strong> > </strong></span></a>
+            {/if}
+    {/section}
+</ol>
+<!--Paginacion -->
+{if $verMas != ""} {$verMas} {/if}

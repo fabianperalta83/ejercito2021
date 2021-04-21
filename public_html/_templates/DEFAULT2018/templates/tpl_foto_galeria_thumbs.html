@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>{$smarty.const._NOMBRESITIO} :: Galer&iacute;a de Im&aacute;genes</title>
+			<style type="text/css">
+				{literal}
+				    body{margin:0;padding:0;text-align:center;background:#fff;}
+				    table{padding:10px 0 0 0}
+				    th {padding:5px;background:#fff;}
+				    th a {display:block;margin:0 5px;}
+				{/literal}
+			</style>
+	</head>
+	<body>
+		<div align="center">
+		
+			<!--Template Galeria de Imágenes-->
+				<table summary="Galer&iacute;a de Im&aacute;genes" cellpadding="0" cellspacing="0">
+					<tr> 
+				{section name=mysec loop=$subMenu}
+					{if $subMenu[mysec].imagen != ""}
+						<th style="{if not $smarty.section.mysec.last}border-right:2px solid #CCD1D7;{/if}" onmousemove="this.style.backgroundColor='#F3F5F7';" onmouseout="this.style.backgroundColor='#fff';">
+							<a href="{$subMenu[mysec].mlink}&amp;verfoto=1" target="foto"><img src="microsThumb.php?src={$subMenu[mysec].limagen}&amp;w={$subMenu[mysec].ancho}" alt="{$subMenu[mysec].nombre}" title="{$subMenu[mysec].nombre}" style="border:0"></a>
+						</th>
+					{/if}
+				{/section}
+				</table>
+			
+			<!--Fin Template Galeria de Imágenes-->
+		</div>
+	</body>
+</html>

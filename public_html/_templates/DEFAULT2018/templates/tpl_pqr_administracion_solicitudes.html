@@ -1,0 +1,319 @@
+<link href="{$DIRCSS}estilo_pqr.css" rel="stylesheet" type="text/css">
+{literal}
+<script type="text/javascript" src="{/literal}{$DIRJS}select_dependientes.js{literal}"></script>
+<script type="text/javascript" src="{/literal}{$DIRJS}nombre.js{literal}"></script>
+<script type="text/javascript" src="{/literal}{$DIRJS}ba.js{literal}"></script>
+<script type="text/javascript" src="{/literal}{$DIRJS}jquery.min.js{literal}"></script>
+<script type="text/javascript">
+	function definir_paginacion(valor)
+	{
+		document.form_solicitud.paginacion.value = valor;
+		document.form_solicitud.submit();
+	}
+        
+        showEncuesta = function (idSol){
+            $.ajax({
+            type: "GET",
+            url: "tools/getRespuestasEncuesta.php",
+            data: "action=showencuesta&solicitud_id="+idSol,
+            success: function(msg){
+                $("#scripts_ID").html(msg);
+            }
+        });
+            
+        }
+        hiddenEncuesta = function(){
+            $('.analisisencuesta').hide();
+        
+        }
+</script>
+{/literal}
+
+<form id="form_solicitud" name="form_solicitud" action="" method="post">
+<table id="tabla_pqr" align="center">
+	<tr>
+	    <td colspan="4">
+	    	{if $flg_enviar=='ok'}
+				<div class="error">
+					<ul>
+						{section name=indice loop=$errores}
+							<li>{$errores[indice]}</li>
+						{/section}
+					</ul>
+				</div>
+			{else}
+				<div class="texto_normal">{$lb_introduccion_formulario}</div>
+			{/if}
+	    	<div class="titulo_formulario" align="center">{$lb_titulo_gestion}</div>
+		</td>
+	</tr>
+	<tr><td colspan="4">
+		<div style="margin-top:5px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+				<!-- CONSECUTIVO -->
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>Consecutivo:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+						<div><input type="text" name="solicitud_id" id="solicitud_id" size="3" value="{$solicitud_id}" autocomplete="off"></div>
+					</td>
+				</tr>
+				<tr style="height:60px;background-color:{$color_fondo_formulario.0};">
+					<td style="vertical-align:top">
+						<div>&nbsp;</div>
+					</td>
+					<td>
+						<div style="float:left;margin:0 5px 0 0">
+							<div style="">{$lb_consecutivo_inicial}</div>
+							<div style=""><input type="text" name="desde" size="3" value="{$desde}" autocomplete="off"></div>
+
+						</div>
+						<div>
+							<div style="">{$lb_consecutivo_final}</div>
+							<div style=""><input type="text" name="hasta" size="3" value="{$hasta}" autocomplete="off"></div>
+
+						</div>
+					</td>
+				</tr>
+
+				<!-- HASH -->
+				<tr style="height:30px;background-color:{$color_fondo_formulario.1};">
+					<td>
+						<div>C�digo Hash:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+						<div><input type="text" name="hash" id="hash" size="15" value="{$hash}" autocomplete="off"></div>
+					</td>
+				</tr>
+
+
+				<!--  empiezza nuevo codigo -->
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_doc}:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+
+
+					<div>
+
+							<div style=""><input type="text" name="doc_id" size="15" value="{$doc_id}" autocomplete="off"></div>
+
+						</div>
+					</td>
+				</tr>
+                                <tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>Correo:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+
+
+					<div>
+
+							<div style=""><input type="text" name="mail_solicitud" size="15" value="{$mail_solicitud}" autocomplete="off"></div>
+
+						</div>
+					</td>
+				</tr>
+					<tr style="height:30px;background-color:{$color_fondo_formulario.1};">
+					<td>
+						<div>{$lb_nombre}:&nbsp;&nbsp;</div>
+					</td>
+					<td>
+
+					<div>
+							<div style=""><input type="text" name="nombre" size="30" value="{$nombre}" onkeyup="nombre_pqr()" id="caja_nombre" autocomplete="off"></div>
+							<div id="nombre_solicitante" style="display:none"></div>
+
+						</div>
+					</td>
+				</tr>
+				 <!-- finaliza el nuevo codigo-->
+
+
+
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_tipo}</div>
+					</td>
+					<td>
+						<div>
+							<select name="tipo_solicitud">
+								{html_options values=$select_tipo_solicitud.id output=$select_tipo_solicitud.nombre selected="$tipo_solicitud"}
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:30px;background-color:{$color_fondo_formulario.1};">
+					<td>
+						<div>{$lb_medio}</div>
+					</td>
+					<td>
+						<div>
+							<select name="medio_recepcion">
+								<option value="0">Seleccione</option>
+								{section name=medios loop=$lista_medios}
+									<option value="{$lista_medios[medios].medio_id}" {if $medio == $lista_medios[medios].medio_id}selected{/if}>{$lista_medios[medios].medio_nombre}</option>
+								{/section}
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div>{$lb_estado}</div>
+					</td>
+					<td>
+						<div>
+							<select name="estado">
+								{html_options values=$select_estado.id output=$select_estado.nombre selected="$estado"}
+    						</select>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:80px;background-color:{$color_fondo_formulario.1};">
+					<td style="vertical-align:top">
+						<div>Asunto</div>
+					</td>
+					<td>
+						<div>
+							{section name=section_asunto loop=$select_asunto}
+								<div>
+									{$select_asunto[section_asunto]}
+								</div>
+							{/section}
+						</div>
+					</td>
+				</tr>
+				{if $lb_dependencia!=''}
+				<tr style="height:80px;background-color:{$color_fondo_formulario.0};">
+					<td style="vertical-align:top">
+						<div>{$lb_dependencia}</div>
+					</td>
+					<td>
+						<div>
+							{section name=section_dependencia loop=$select_dependencia}
+								<div>
+									{$select_dependencia[section_dependencia]}
+								</div>
+							{/section}
+						</div>
+					</td>
+				</tr>
+				{/if}
+				<tr style="height:60px;background-color:{$color_fondo_formulario.1};">
+					<td style="vertical-align:top">
+						<div>Fecha</div>
+					</td>
+					<td>
+						<div style="float:left;margin:0 5px 0 0">
+							<div style="">{$lb_fecha_inicial}</div>
+							<div style=""><input type="text" name="fecha_inicial" size="10" maxlength="10" value="{$fecha_inicial}"></div>
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+						</div>
+						<div>
+							<div style="">{$lb_fecha_final}</div>
+							<div style=""><input type="text" name="fecha_final" size="10" maxlength="10" value="{$fecha_final}"></div>
+							<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:30px;background-color:{$color_fondo_formulario.0};">
+					<td>
+						<div style="text-align:left">{$lb_ordenar}</div>
+					</td>
+					<td>
+						<div style="text-align:left">
+							<select name="ordenar">
+			    				{html_options values=$select_criterio_orden.id output=$select_criterio_orden.nombre selected="$ordenar"}
+			    			</select>
+						</div>
+					</td>
+				</tr>
+				<tr style="height:50px;background-color:{$color_fondo_formulario.1};">
+					<td colspan="2" style="vertical-align:center;">
+						<div style="text-align:center"><input type="submit" id="enviar" name="enviar" value="{$btn_lb_enviar}" /></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="vertical-align:center;">
+						<div style="text-align:center"><input type="submit" name="descargaXML" value="Descargar XML"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</td>
+	<tr><td>&nbsp;</td></tr>
+	</tr>
+	<tr>
+	    <td colspan="4">
+	    	<div class="titulo_formulario" style="text-align:center;">{$lb_titulo_lista_solicitudes}</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="0" align="center">
+			<div id="lista_solicitudes">
+				<table width="100%" cellpadding="4" cellspacing="1" border="0">
+					<tr>
+						<th>ID</th>
+						<th>FECHA</th>
+						<th>TIPO</th>
+						<th>ASUNTO</th>
+						<th>DEPENDENCIA</th>
+						<th>ESTADO</th>
+						<th>ACCIONES</th>
+					</tr>
+					{section name=sec_solicitud loop=$solicitud}
+						<tr bgcolor="{cycle values="#FBF9FA,#E7E7E7"}" style="font:0.8em Arial">
+							<td>{$solicitud[sec_solicitud].id}</td>
+							<td>{$solicitud[sec_solicitud].fecha}</td>
+							<td>{$solicitud[sec_solicitud].tipo}</td>
+							<td>{$solicitud[sec_solicitud].asunto}</td>
+							<td>{$solicitud[sec_solicitud].dependencia}</td>
+							<td><div class="{$solicitud[sec_solicitud].clase}">{$solicitud[sec_solicitud].estado}</div></td>
+							<td>
+                                                            <a href="{$url_gestion}&solicitud_id={$solicitud[sec_solicitud].id}"><img src="{$dir_admin_images}btn_auditoria.jpg" alt="Ver detalles"></a>
+                                                            
+                                                            <img style="cursor:pointer" src="{$dir_admin_images}btn_resultado.jpg" alt="Ver Resultados" {if $solicitud[sec_solicitud].estado == 'Cerrado'} onclick="showEncuesta({$solicitud[sec_solicitud].id})" {/if}>
+                                                            
+                                                        </td>
+						</tr>
+					{/section}
+				</table>
+			</div>
+
+			<!-- Paginacion -->
+			<div class="paginacion_pqr">
+				<input type="hidden" name="pagina" value="">
+				{if $paginas.previousPage != ''}
+					<a onclick="document.form_solicitud.pagina.value='{$paginas.previousPage}';document.form_solicitud.submit()">&laquo; Anterior</a>&nbsp;
+				{/if}
+				{if $paginas.pags}
+					{section name=idPag loop=$paginas.pags}
+						{if $paginas.actualPage != $paginas.pags[idPag]}
+							&nbsp;<a onclick="document.form_solicitud.pagina.value='{$paginas.pags[idPag]}';document.form_solicitud.submit()">{$paginas.pags[idPag]}</a>&nbsp;
+						{else}
+							&nbsp;{$paginas.pags[idPag]}&nbsp;
+						{/if}
+					{/section}
+				{/if}
+				{if $paginas.nextPage != ''}
+					&nbsp;<a onclick="document.form_solicitud.pagina.value='{$paginas.nextPage}';document.form_solicitud.submit()">Siguiente &raquo;</a>
+				{/if}
+			</div>
+		</td>
+	</tr>
+</table>
+<input type="hidden" id="paginacion" name="paginacion" value = "{$paginacion}"/>
+{if $paginacion == 0}
+<div style="text-align:center"><input type="button" id="enviar" name="enviar" value="Mostrar p&aacute;ginaci&oacute;n" onclick="definir_paginacion(1)"/></div>
+{else}
+<div style="text-align:center"><input type="button" id="enviar" name="enviar" value="Quitar p&aacute;ginaci&oacute;n" onclick="definir_paginacion(0)" /></div>
+{/if}
+</form>
+
+<div class="analisisencuesta" style="display:none; left:450px; top:150px; background: #E6E6E6; z-index: 2; position: fixed; width: 750px; padding: 5px 5px 5px 5px; overflow: scroll; overflow-x:hidden; opacity: 0.9; filter:alpha(opacity=50);   border: 5px groove #BCD5E9; "></div>
+<div id="scripts_ID"></div>

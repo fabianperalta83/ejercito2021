@@ -1,0 +1,64 @@
+<script type="text/javascript" src="js/prototype.js"></script>
+<noscript>
+<p>{$smarty.const._ROT_NOSCRIPT}. Lightbox uses the Prototype Framework</p>
+</noscript>
+<script type="text/javascript" src="js/scriptaculous.js?load=effects"></script>
+<noscript>
+<p>Lightbox uses the Scriptaculous Effects Library</p>
+</noscript>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<noscript>
+<p>Lightbox is a simple, unobtrusive script used to overlay images on
+the current page.</p>
+</noscript>
+
+<!--Template visualización publicaciones-->
+
+    <div style="padding-left:0px">
+
+    <!-- <img src="{$smarty.const._DIRIMAGES}Cabeza.png" alt="Cabezotet" style="width:679px;margin-left:2px"/>-->
+
+     
+
+    <div style="background:url('_templates/DEFAULT2012/recursos/images/centro.png') repeat-y scroll 0 0 transparent;margin-left: 22px;width:638px">
+	<table id="galeria_foto" style="margin-left: 58px;width:80%;border:none">
+		<tr style="height: 317px;width: 783px;border:none">
+			{section name=mysec loop=$subMenu} {if
+			(($smarty.section.mysec.index)%3 == 0) &&
+			($smarty.section.mysec.index <>0)}
+		<tr style="height: 285px;width: 783px;border:none">
+			{/if}
+			<td style="width:25%;vertical-align:top;border:none">
+			<table class="contenido" summary="{$smarty.const._ROT_SUMMARY}" style="background:transparent;border:none">
+				<tr>
+					<td class="tdImg" colspan="2" style="height: 165px;border:none"><!--Cuadro de la Imagen-->
+					<a href="{$subMenu[mysec].entradilla}"
+						target="_blank" style="text-decoration:none"
+						title="{$subMenu[mysec].nombre}">
+						<img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}/{$subMenu[mysec].imagen}&amp;w=140;h=88" alt="{$subMenu[mysec].nombre}"  style="padding-top:10px;"/>
+					</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="comentario" colspan="2">
+						<a class="index_menu_segundo"
+							href="?idcategoria={$subMenu[mysec].idcategoria}" style="color:#FFF;text-shadow: black 0.1em 0.1em 0.2em">{$subMenu[mysec].nombre|truncate:75}
+						</a>
+					</td>
+				</tr>
+			</table>
+			</td>
+			{/section}
+		</tr>
+	</table>
+	</div>
+	
+	<!--<img src="{$smarty.const._DIRIMAGES}pie.png" alt="Cabezotet" style="width:638px;margin-left: 24px;"/>-->
+	
+	</div>
+
+{if $verMas != ""}
+    {$verMas}
+{/if}
+
+<!--Fin Template visualizar publicaciones-->

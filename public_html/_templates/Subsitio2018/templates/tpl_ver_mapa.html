@@ -1,0 +1,29 @@
+			<div id='mapa' style="text-align:center">
+
+			</div>			
+
+			<div id='mapa2'>
+			<script type="text/javascript">
+				// <![CDATA[
+				var agt=navigator.userAgent.toLowerCase();
+				//var x = parseInt(navigator.appVersion );
+				var x = agt.split(";");
+				//alert(agt);
+
+
+				var fo = new FlashObject("{$smarty.const._DIRRECURSOS_USER}Mapa/mapa.swf", "", "470", "500", 6, "");
+				fo.write("mapa");
+				document.getElementById('mapa').style.position = 'relative';
+				
+				//if(agt == "mozilla/4.0 (compatible; msie 6.0; windows nt 5.1; sv1)" || agt == "mozilla/4.0 (compatible; msie 6.0; windows nt 5.1; sv1; .net clr 2.0.50727)" || agt == "mozilla/4.0 (compatible; msie 6.0; windows nt 5.1; sv1; net clr 2.0.50727; infopath.2)")
+				if(x[1] == " msie 6.0")
+					document.getElementById('mapa').style.margin = '0px 0px 0 0px';
+				else
+					document.getElementById('mapa').style.margin = '0px 0px 0 0';
+				//]]>
+			</script>
+			</div>
+			<br/>
+			<div style="margin:5px;">
+			<a href="http://intranet/recursos_user/Mapa/tpl_ver_mapa.html" target="_blank">Ver mapa ampliado</a>
+			</div>

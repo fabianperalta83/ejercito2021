@@ -1,0 +1,39 @@
+<div id="actualidad">
+
+	<ol id="secActualidadMain">
+	 {section name=idmas loop=$hijoDestacadoMasNotas start=0 loop=5 step=1}
+
+	     {if $smarty.section.idmas.index eq 2}
+			         
+				 <li name="secActualidad" style="width:94%;*padding-bottom: 17px">
+			   
+			{else}
+			   
+			     <li name="secActualidad" style="border-bottom:0px dotted #000000;width:94%;*padding-bottom: 17px">
+			      
+		 {/if}
+		 
+						<!--<span><strong style="color:#990000;font-size:0.7em">{$hijoDestacadoMasNotas[idmas].hora1}</strong></span>-->
+						
+						<a href="index.php?idcategoria={$hijoDestacadoMasNotas[idmas].idcategoria}" target="_blank" 
+						  title="{$hijoDestacadoMasNotas[idmas].nombre}">
+						        {if $hijoDestacadoMasNotas[idmas].imagen != ''}
+								
+								   <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$hijoDestacadoMasNotas[idmas].imagen}&amp;w=129&amp;h=97" alt="{$hijoDestacadoMasNotas[idmas].nombre}#" /> 
+								   
+								{else}		
+								
+								   <img src="tools/microsThumb.php?src={$smarty.const._DIRIMAGES}cabezote/banner/DSC_0210_1.jpg&amp;w=129&amp;h=97" alt="{$hijoDestacadoMasNotas[idmas].nombre}#" /> 
+								   
+								{/if}
+								
+							 <span>{$hijoDestacadoMasNotas[idmas].nombre|truncate:100:"...":true}</span>
+							 
+						</a> 
+				
+			     </li>  
+			
+	 {/section}
+    </ol>
+	
+</div>	

@@ -1,0 +1,1374 @@
+
+
+<script src="{$smarty.const._DIRJS}cabezote.js"></script>
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}galleriffic/galleriffic-2.css" type="text/css">
+<!-- Implermentación de Librerias para Redes Sociales -->
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}redes_sociales/social-likes_birman.css" type="text/css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" type="text/css">
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}redes_sociales/style.css" type="text/css">
+<script src="{$smarty.const._DIRCSS}redes_sociales/social-likes.min.js"></script>
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+<!-- <div class="gif hidden-xs">
+        <img class="avion" alt="helicoptero" src="{$smarty.const._DIRIMAGES}cabezote/helicoptero-OKEY.gif">
+</div>
+<div class="gif_2 hidden-xs">
+        <img class="tanque_2" alt="carro" src="{$smarty.const._DIRIMAGES}cabezote/carro-animado.gif">
+</div> -->
+{if $smarty.const.VIDEO_BANNER_YOUTUBE == ""}
+<div  class="hidden-xs">
+<input type="hidden" name="url_youtube" id="url_youtube" value="{$smarty.const._URL_YOUTUBE_POPUP}">
+</div>
+{/if}
+<!-- CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 -->
+<input type="hidden" name="validar_eje_contador" id="validar_eje_contador" value="{$smarty.const._VALIDAR_EJE_CONTADOR}">
+<input type="hidden" name="validar_url_contador" id="validar_url_contador" value="{$smarty.const._VALIDAR_URL_CONTADOR}">
+<input type="hidden" name="validar_temp_contador" id="validar_temp_contador" value="{$smarty.const._VALIDAR_TEMP_CONTADOR}">
+<script type="text/javascript" src="_templates/DEFAULT2018/recursos/Bicentenario/js/multislider.js"></script>
+<!-- CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 -->
+
+<script>
+    //efecto scroll
+$(document).ready(function() {
+  $('a[href="#load_video"]').click(function() {
+    var destino = $(this.hash);
+    if (destino.length == 0) {
+      destino = $('a[name="' + this.hash.substr(1) + '"]');
+    }
+    if (destino.length == 0) {
+      destino = $('html');
+    }
+    $('html, body').animate({ scrollTop: destino.offset().top }, 750);
+    return false;
+  });
+
+  $('a[href="#seccion3"]').click(function() {
+    var destino = $(this.hash);
+    if (destino.length == 0) {
+      destino = $('a[name="' + this.hash.substr(1) + '"]');
+    }
+    if (destino.length == 0) {
+      destino = $('html');
+    }
+    $('html, body').animate({ scrollTop: destino.offset().top }, 950);
+    return false;
+  });
+
+
+  $('a[href="#home-silder1"]').click(function() {
+    var destino = $(this.hash);
+    if (destino.length == 0) {
+      destino = $('a[name="' + this.hash.substr(1) + '"]');
+    }
+    if (destino.length == 0) {
+      destino = $('html');
+    }
+    $('html, body').animate({ scrollTop: destino.offset().top }, 500);
+    return false;
+  });
+});
+
+/*
+     $('a.smooth').live('click', function(e) {  
+        e.preventDefault();
+        var link = $(this);  
+        var anchor  = link.attr('href');  
+        $('html, body').stop().animate({  
+            scrollTop: $(anchor).offset().top - ($('#menu').height()+21)
+        }, 1500, 'easeOutBack');  
+    });*/
+</script>
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-12" id="seccion1" >
+    <div  style="text-align: center;">
+        {if $smarty.const.VIDEO_BANNER_YOUTUBE != ""}
+             <a  href="#load_video"><img src="_templates/DEFAULT2018/recursos/images/scrolldw_mtr.png" class="hidden-xs" style="position:absolute; margin-left: -50px; margin-right: auto; z-index: 10; top: -54px; " alt="" /></a>
+        {else}
+             <a  href="#load_video"><img src="_templates/DEFAULT2018/recursos/images/scrolldw_mtr.png" class="hidden-xs"  style="position:absolute; margin-left: -50px; margin-right: auto; z-index: 10; top: -56px; " alt="" /></a>
+        {/if}
+      
+    </div>
+       
+
+
+</div>
+
+<style type="text/css">
+    
+     body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+</style>
+
+
+<h2 class="hidden">Sección Destacados</h2>
+
+<div class="container-fluid back-white" style="font-family: 'Fira Sans', sans-serif; "  id="descatados1">
+
+    <div class="container">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+            <div class="mySlider1 alto_contraste" id="SliderBicentenario" style="margin-top:20px; ">
+                {if $smarty.const._EN_INGLES !=1} {$destacados_home} {else} {$destacados_home_ingles} {/if}
+            </div>
+        </div>
+
+    </div>
+</div>
+<h2 class="hidden" style="font-family: 'Fira Sans', sans-serif;">Sección Noticias</h2>
+<div class="container-fluid back-grey margin-noticias" id="descatados2" style="font-family: 'Fira Sans', sans-serif; background: white; margin-top:-2px;">
+    <div class="container">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+            <div class="" style="text-align: left;margin-top:20px;margin-bottom:10px; font-family: 'Roboto-Bold'; font-size: 36px;width: 100%;">
+                
+                    {if $smarty.const._EN_INGLES !=1}
+                    <div class="col-md-5" style="font-size: 1.25em;font-weight: bold;" id="noticias_interes1">
+                        NOTICIAS DE INTERÉS
+                    </div>
+                    <div class="col-md-3" style="font-size: 0.5em;font-weight: bold;padding-top: -10px;" id="ver_noticias1">
+                        Ver todas las noticias&nbsp;<a href="index.php?idcategoria={$smarty.const._SECCIONES_RSS}"><button type="button" class="btn btn-danger btn-circle btn-lg" style="/*! border-radius: 62%; */width: 50px;height: 50px;padding: 10px 16px;font-size: 16px;line-height: 1.33;border-radius: 25px;"><i class="glyphicon glyphicon-plus"></i></button></a>
+                    </div>
+                    {else}
+                    <div class="col-md-7" style="font-size: 3em;font-weight: bold;">
+                        LATEST NEWS
+                    </div>
+                    <div class="col-md-3" style="font-size: 1em;">
+                        View all the news&nbsp;<a href="index.php?idcategoria={$smarty.const._SECCIONES_RSS}"><button type="button" class="btn btn-danger btn-circle btn-lg" style="/*! border-radius: 62%; */width: 50px;height: 50px;padding: 10px 16px;font-size: 16px;line-height: 1.33;border-radius: 25px;"><i class="glyphicon glyphicon-plus"></i></button></a>
+                    </div>
+                    {/if}
+                
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+        <br>
+        <br>
+                <div class="col-sm-4 col-12">
+                    
+                    <div class="box-noticias box-noticias-bicentenario  alto_contraste" style="background-color: transparent !important;">
+                        {if $internacional[0][0].imagen == ''}
+                        <div class="box-default-camara" style="background-color: transparent !important;">
+                            <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;background-color: transparent !important;" alt="Imagen">
+
+                             {if $smarty.const._EN_INGLES !=1}
+                                 <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: #862024;">INTERNACIONAL</div>
+                            {else}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: #862024;">International News</div>
+                            {/if}
+                        </div>
+                        {else}
+                        <div class="img-noticias imgContainer" style="
+                             background: url('{$smarty.const._DIRIMAGES_USER}{$internacional[0][0].imagen}')!important;
+                             background-size: cover!important;
+                             background-repeat: no-repeat!important;
+                             background-position: center center!important;
+                             width: 100%;
+                             height: 180px;
+                             border-bottom: none !important;
+                             ">
+                            <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$internacional[0][0].imagen}" alt='{$internacional[0][0].nombre|truncate:90:"...":true}' style="border-bottom: none !important;">
+                            {if $smarty.const._EN_INGLES !=1}
+                                 <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: #862024; font-size: 1em;">INTERNACIONAL</div>
+                            {else}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: #862024; font-size: 1em; ">International News</div>
+                            {/if}
+                            <!--                            <div class="fecha-noticias">
+                                {$internacional[lista][items2].fecha1|date_format:"%b - %e"}
+                            </div>-->
+                        </div>
+                        {/if}
+                        <!--<div class="fecha-noticias">
+                            {$internacional[lista][items2].fecha1|date_format:"%b - %e"}
+                        </div>-->
+                        <div class="content-noticia" style="background-color: transparent !important;">
+                            <div class="nombre-noticia alto_contraste">
+                                <br>
+                                <p style="text-align: justify;">
+                                    <a href="index.php?idcategoria={{$internacional[0][0].idcategoria}}#" title="Mas informacion sobre {$internacional[0][0].nombre|truncate:30:''}" class="wrap7" id="internacional1" style="font-size: 1.2em">
+                                        {$internacional[0][0].nombre|truncate:90:"...":true}
+                                    </a>
+                                </p>
+                                <p style="text-align: justify;font-size: 1em;text-transform: capitalize;">
+                                    {if $smarty.const._EN_INGLES !=1}
+                                        <i class="fa fa-calendar"></i>&nbsp;&nbsp;{$internacional[0][0].fecha1|date_format:"%B %e, %Y"}
+                                    {else}
+                                         <i class="calendar"></i>&nbsp;&nbsp;{$internacional[0][0].fecha1|date_format:"%m / %e / %Y"}
+                                     {/if}
+
+                                </p>
+                                <p style="text-align: justify;font-size: 0.7em;">
+
+                                    {$internacional[0][0].entradilla|truncate:110:"...":true}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <div class="col-sm-4 col-12">
+                   
+                    <div class="box-noticias box-noticias-bicentenario  alto_contraste" style="background-color: transparent !important;">
+                        {if $noticias[0][0].imagen == ''}
+                        <div class="box-default-camara" style="border-bottom: none !important;">
+                            <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;border-bottom: none !important;" alt="Imagen">
+                        </div>
+                        {else}
+                        <div class="img-noticias imgContainer" style="
+                             background: url('{$smarty.const._DIRIMAGES_USER}{$noticias[0][0].imagen}')!important;
+                             background-size: cover!important;
+                             background-repeat: no-repeat!important;
+                             background-position: center center!important;
+                             width: 100%;
+                             height: 180px;
+                             border-bottom: none !important;
+                             ">
+                            <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$noticias[0][0].imagen}" alt="{$noticias[0][0].nombre}" style="border-bottom: none !important;">
+                            {if $smarty.const._EN_INGLES !=1}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: forestgreen; font-size: 1em;">NACIONAL</div>
+                            {else}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: forestgreen; font-size: 1em;">National News</div>
+                            {/if} 
+                            <!--                            <div class="fecha-noticias">
+                                {$noticias[ids][items4].fecha1|date_format:"%b - %e"}
+                            </div>-->
+                        </div>
+                        {/if}
+                        <!--<div class="fecha-noticias">
+                            {$noticias[ids][items4].fecha1|date_format:"%b - %e"}
+                                                    </div>-->
+                        <div class="content-noticia" style="background-color: transparent !important;">
+                            <div class="nombre-noticia alto_contraste">
+                                <br>
+                                <p style="text-align: justify;">
+                                    <a href="index.php?idcategoria={{$noticias[0][0].idcategoria}}#" class="wrap7" style="font-size: 1.2em;" id="nacional1">
+                                        {$noticias[0][0].nombre}
+                                    </a>
+                                </p>
+                                {if $smarty.const._EN_INGLES !=1}
+                                    <p style="text-align: justify;font-size: 1em;text-transform: capitalize;">
+                                        <i class="fa fa-calendar"></i>&nbsp;&nbsp;{$noticias[0][0].fecha1|date_format:"%B %e, %Y"}
+                                    </p>
+                                {else}
+                                    <p style="text-align: justify;font-size: 1em;text-transform: capitalize;">
+                                        <i class="calendar"></i>&nbsp;&nbsp;{$noticias[0][0].fecha1|date_format:"%m / %e / %Y"}
+                                    </p>
+                                {/if}
+                                <p style="text-align: justify;font-size: 0.7em;">
+
+                                    {$noticias[0][0].entradilla|truncate:200:"...":true}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                   
+
+                </div>
+                <div class="col-sm-4 col-12">
+                    
+                    <div class="box-noticias box-noticias-bicentenario alto_contraste" style="background-color: transparent !important;">
+                        {if $actualidad[0][0].imagen == ''}
+                        <div class="box-default-camara" style="border-bottom: none !important;">
+                            <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                        </div>
+                        {else}
+                        
+                        <div class="img-noticias imgContainer" style="
+                             background: url('{$smarty.const._DIRIMAGES_USER}{$actualidad[0][0].imagen}')!important;
+                             background-size: cover!important;
+                             background-repeat: no-repeat!important;
+                             background-position: center center!important;
+                             width: 100%;
+                             height: 180px;
+                             border-bottom: none !important;
+                             ">
+
+                            <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$actualidad[0][0].imagen}" alt='{$actualidad[0][0].nombre|truncate:100:"...":true}' style="border-bottom: none !important;">
+                            {if $smarty.const._EN_INGLES !=1}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: forestgreen;">ACTUALIDAD</div>
+                            {else}
+                                <div style="position: absolute;bottom: -25px;color: #fff;padding: 1px 10px;opacity: 1;font-weight: bold;background-color: forestgreen;">Spotlight</div>
+                            {/if}
+                            <!--                            <div class="fecha-noticias">
+                                                            {$actualidad[id][items3].fecha1|date_format:"%b - %e"}
+                                                        </div>-->
+                        </div>
+                        {/if}
+                        <!--<div class="fecha-noticias">
+                            {$actualidad[id][items3].fecha1|date_format:"%b - %e"}
+                        </div>-->
+                        <div class="content-noticia" style="background-color: transparent !important;">
+                            <div class="nombre-noticia alto_contraste">
+                                <br>
+                                <p style="text-align: justify;">
+                                    <a href="index.php?idcategoria={{$actualidad[0][0].idcategoria}}#" class="wrap7" style="font-size: 1.2em;" id="actualidad1">
+                                        {$actualidad[0][0].nombre|truncate:200:"...":true}
+                                    </a>
+                                </p>
+                                {if $smarty.const._EN_INGLES !=1}
+                                    <p style="text-align: justify;font-size: 1em;text-transform: capitalize;">
+                                        <i class="fa fa-calendar"></i>&nbsp;&nbsp;{$actualidad[0][0].fecha1|date_format:"%B %e, %Y"}
+                                    </p>
+                                {else}
+                                    <p style="text-align: justify;font-size: 1em;text-transform: capitalize;">
+                                        <i class="calendar"></i>&nbsp;&nbsp;{$actualidad[0][0].fecha1|date_format:"%m / %e / %Y"}
+                                    </p>
+                                 {/if}
+                                <p style="text-align: justify;font-size: 0.7em;font-family: 'Fira Sans', sans-serif;">
+
+                                    {$actualidad[id][items3].entradilla|truncate:200:"...":true}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            
+            <!--            <div class="row">
+                            <div class="col-sm-4 col-12 red-bar alto_contraste">
+                                <div class="row title-box alto_contraste" onclick="showDiv('nacional')" onkeypress="showDiv('nacional')">
+                                    <span id="title-nacional" class="active">
+                                        {if $smarty.const._EN_INGLES !=1}
+                                        NACIONAL
+                                        {else}
+                                        NEWS
+                                        {/if}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-12 red-bar alto_contraste">
+                                <div class="row title-box alto_contraste" onclick="showDiv('actualidad')" onkeypress="showDiv('actualidad')">
+                                    <span id="title-actualidad">
+                                        {if $smarty.const._EN_INGLES !=1}
+                                        ACTUALIDAD
+                                        {else}
+                                        TOP STORIES
+                                        {/if}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-12 red-bar alto_contraste">
+                                <div class="row title-box-left alto_contraste" onclick="showDiv('internacional')" onkeypress="showDiv('internacional')">
+                                    <span id="title-internacional">
+                                        {if $smarty.const._EN_INGLES !=1}
+                                        INTERNACIONAL
+                                        {else}
+                                        SPECIAL REPORTS
+                                        {/if}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 slide-noticias alto_contraste" id="nacional">
+                                <div id="slider-noticias" class="carousel slide carousel-fade hidden-xs hidden-sm" data-ride="carousel">
+                                    <div class="left-button-logos">
+                                        <a href="#slider-noticias" role="button" data-slide="prev">
+                                            <div class="left-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Anterior</span>
+                                        </a>
+                                    </div>
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=ids loop=$noticias}
+                                        <div class="item {if $smarty.section.ids.index==0}active{/if}">
+                                            {section name=items4 loop=$noticias[ids]}
+                                            <div class="col-md-3 col-lg-3 alto_contraste">
+                                                <div class="box-noticias alto_contraste">
+                                                    {if $noticias[ids][items4].imagen == ''}
+                                                    <div class="box-default-camara">
+                                                        <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                    </div>
+                                                    {else}
+                                                    <div class="img-noticias imgContainer" style="
+                                                         background: url('{$smarty.const._DIRIMAGES_USER}{$noticias[ids][items4].imagen}')!important;
+                                                         background-size: cover!important;
+                                                         background-repeat: no-repeat!important;
+                                                         background-position: center center!important;
+                                                         width: 100%;
+                                                         height: 180px;
+                                                         ">
+                                                        <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$noticias[ids][items4].imagen}" alt="{$noticias[ids][items4].nombre}">	
+                                                        <div class="fecha-noticias">
+                                                            {$noticias[ids][items4].fecha1|date_format:"%b - %e"}
+                                                        </div>
+                                                    </div>
+                                                    {/if}
+                                                    <div class="fecha-noticias">
+                                                        {$noticias[ids][items4].fecha1|date_format:"%b - %e"}
+                                                                                </div>
+                                                    <div class="content-noticia">
+                                                        <div class="nombre-noticia alto_contraste">
+                                                            <a href="index.php?idcategoria={{$noticias[ids][items4].idcategoria}}#">
+                                                                {$noticias[ids][items4].nombre}
+                                                            </a>
+                                                        </div>
+                                                        <div class="line-noticias"></div>
+                                                        <div class="resumen-noticia alto_contraste">
+                                                            {$noticias[ids][items4].entradilla|truncate:118:"...":true}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/section}
+                                        </div>
+                                        {/section}
+                                    </div>
+                                    <div class="rigth-button-logos">
+                                        <a href="#slider-noticias" role="button" data-slide="next">
+                                            <div class="right-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Siguiente</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="slider-noticias-responsive" class="carousel slide carousel-fade hidden-md hidden-lg" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=it loop=$noticia}
+                                        <div class="col-sm-12 col-12 alto_contraste item {if $smarty.section.it.index==0}active{/if}">
+                                            <div class="row box-noticias alto_contraste">
+                                                {if $noticia[it].imagen == ''}
+                                                <div class="box-default-camara">
+                                                    <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                </div>
+                                                {else}
+                                                <div class="img-noticias imgContainer" style="
+                                                     background: url('{$smarty.const._DIRIMAGES_USER}{$noticia[it].imagen}')!important;
+                                                     background-size: cover!important;
+                                                     background-repeat: no-repeat!important;
+                                                     background-position: center center!important;
+                                                     width: 100%;
+                                                     height: 180px;
+                                                     ">
+                                                    <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$noticia[it].imagen}" alt="{$noticia[it].nombre}">
+                                                    <div class="fecha-noticias">
+                                                        {$noticia[it].fecha1|date_format:"%b - %e"}
+                                                    </div>
+                                                </div>
+                                                {/if}
+                                                <div class="fecha-noticias">
+                                                    {$noticia[it].fecha1|date_format:"%b - %e"}
+                                                                            </div>
+                                                <div class="content-noticia">
+                                                    <div class="nombre-noticia alto_contraste">
+                                                        <a href="index.php?idcategoria={{$noticia[it].idcategoria}}#">
+                                                            {$noticia[it].nombre}
+                                                        </a>
+                                                    </div>
+                                                    <div class="line-noticias"></div>
+                                                    <div class="resumen-noticia alto_contraste">
+                                                        {$noticia[it].entradilla|truncate:118:"...":true}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/section}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 alto_contraste">
+                                    <div class="btn_vm_multi">
+                                        <a href="index.php?idcategoria={$smarty.const._SECCIONES_RSS}">
+                                            {if $smarty.const._EN_INGLES !=1}
+                                            Ver todas las noticias
+                                            {else}
+                                            View all news
+                                            {/if}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 alto_contraste slide-actualidad" id="actualidad" style="display: none;">
+                                <div id="slide-actualidad" class="carousel slide carousel-fade hidden-sm hidden-xs" data-ride="carousel">
+                                    <div class="left-button-logos">
+                                        <a href="#slide-actualidad" role="button" data-slide="prev">
+                                            <div class="left-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Anterior</span>
+                                        </a>
+                                    </div>
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=id loop=$actualidad}
+                                        <div class="item {if $smarty.section.id.index==0}active{/if}">
+                                            {section name=items3 loop=$actualidad[id]}
+                                            <div class="col-md-3 col-lg-3 alto_contraste">
+            
+                                                <div class="box-noticias alto_contraste">
+                                                    {if $actualidad[id][items3].imagen == ''}
+                                                    <div class="box-default-camara">
+                                                        <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                    </div>
+                                                    {else}
+                                                    <div class="img-noticias imgContainer" style="
+                                                         background: url('{$smarty.const._DIRIMAGES_USER}{$actualidad[id][items3].imagen}')!important;
+                                                         background-size: cover!important;
+                                                         background-repeat: no-repeat!important;
+                                                         background-position: center center!important;
+                                                         width: 100%;
+                                                         height: 180px;
+                                                         ">
+                                                        <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$actualidad[id][items3].imagen}" alt='{$actualidad[id][items3].nombre|truncate:100:"...":true}'>
+                                                        <div class="fecha-noticias">
+                                                            {$actualidad[id][items3].fecha1|date_format:"%b - %e"}
+                                                        </div>
+                                                    </div>
+                                                    {/if}
+                                                    <div class="fecha-noticias">
+                                                        {$actualidad[id][items3].fecha1|date_format:"%b - %e"}
+                                                    </div>
+                                                    <div class="content-noticia">
+                                                        <div class="nombre-noticia alto_contraste">
+                                                            <a href="index.php?idcategoria={{$actualidad[id][items3].idcategoria}}#">
+                                                                {$actualidad[id][items3].nombre|truncate:100:"...":true}
+                                                            </a>	
+                                                        </div>
+                                                        <div class="line-noticias"></div>
+                                                        <div class="resumen-noticia alto_contraste">
+                                                            {$actualidad[id][items3].entradilla|truncate:110:"...":true}
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                            {/section}
+                                        </div>
+                                        {/section}
+                                    </div>
+                                    <div class="rigth-button-logos">
+                                        <a href="#slide-actualidad" role="button" data-slide="next">
+                                            <div class="right-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Siguiente</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="slide-actualidad-responsive" class="carousel slide carousel-fade hidden-md hidden-lg" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=ite loop=$actu}
+                                        <div class="col-sm-12 col-12 alto_contraste item {if $smarty.section.ite.index==0}active{/if}">
+                                            <div class="row box-noticias alto_contraste">
+                                                {if $actu[ite].imagen == ''}
+                                                <div class="box-default-camara">
+                                                    <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                </div>
+                                                {else}
+                                                <div class="img-noticias imgContainer" style="
+                                                     background: url('{$smarty.const._DIRIMAGES_USER}{$actu[ite].imagen}')!important;
+                                                     background-size: cover!important;
+                                                     background-repeat: no-repeat!important;
+                                                     background-position: center center!important;
+                                                     width: 100%;
+                                                     height: 180px;
+                                                     ">
+                                                    <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$actu[ite].imagen}" alt='{$actu[ite].nombre}'>	
+                                                    <div class="fecha-noticias">
+                                                        {$actu[ite].fecha1|date_format:"%b - %e"}
+                                                    </div>
+                                                </div>
+                                                {/if}
+                                                <div class="fecha-noticias">
+                                                    {$actu[ite].fecha1|date_format:"%b - %e"}
+                                                </div>
+                                                <div class="content-noticia">
+                                                    <div class="nombre-noticia alto_contraste">
+                                                        <a href="index.php?idcategoria={{$actu[ite].idcategoria}}#">
+                                                            {$actu[ite].nombre}
+                                                        </a>
+                                                    </div>
+                                                    <div class="line-noticias"></div>
+                                                    <div class="resumen-noticia alto_contraste">
+                                                        {$actu[ite].entradilla|truncate:118:"...":true}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/section}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 alto_contraste">
+                                    <div class="btn_vm_multi">
+                                        <a href="index.php?idcategoria={$smarty.const._SECCIONES_RSS_2}">
+                                            {if $smarty.const._EN_INGLES !=1}
+                                            Ver todas las noticias de actualidad
+                                            {else}
+                                            View all present news
+                                            {/if}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 alto_contraste slide-internacional" id="internacional" style="display: none;">
+                                <div id="slide-internacional" class="carousel slide carousel-fade hidden-xs hidden-sm" data-ride="carousel">
+                                    <div class="left-button-logos">
+                                        <a href="#slide-internacional" role="button" data-slide="prev">
+                                            <div class="left-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Anterior</span>
+                                        </a>
+                                    </div>
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=lista loop=$internacional}
+                                        <div class="item {if $smarty.section.lista.index==0}active{/if}">
+                                            {section name=items2 loop=$internacional[lista]}
+                                            <div class="col-md-3 col-lg-3 alto_contraste">
+                                                <div class="box-noticias alto_contraste">
+                                                    {if $internacional[lista][items2].imagen == ''}
+                                                    <div class="box-default-camara">
+                                                        <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                    </div>
+                                                    {else}
+                                                    <div class="img-noticias imgContainer" style="
+                                                         background: url('{$smarty.const._DIRIMAGES_USER}{$internacional[lista][items2].imagen}')!important;
+                                                         background-size: cover!important;
+                                                         background-repeat: no-repeat!important;
+                                                         background-position: center center!important;
+                                                         width: 100%;
+                                                         height: 180px;
+                                                         ">
+                                                        <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$internacional[lista][items2].imagen}" alt='{$internacional[lista][items2].nombre|truncate:90:"...":true}'>	
+                                                        <div class="fecha-noticias">
+                                                            {$internacional[lista][items2].fecha1|date_format:"%b - %e"}
+                                                        </div>
+                                                    </div>
+                                                    {/if}
+                                                    <div class="fecha-noticias">
+                                                        {$internacional[lista][items2].fecha1|date_format:"%b - %e"}
+                                                    </div>
+                                                    <div class="content-noticia">
+                                                        <div class="nombre-noticia alto_contraste">
+                                                            <a href="index.php?idcategoria={{$internacional[lista][items2].idcategoria}}#" title="Mas informacion sobre {$internacional[lista][items2].nombre|truncate:30:''}">
+                                                                {$internacional[lista][items2].nombre|truncate:90:"...":true}
+                                                            </a>
+                                                        </div>
+                                                        <div class="line-noticias"></div>
+                                                        <div class="resumen-noticia alto_contraste">
+                                                            {$internacional[lista][items2].entradilla|truncate:110:"...":true}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/section}
+                                        </div>
+                                        {/section}
+                                    </div>
+                                    <div class="rigth-button-logos">
+                                        <a href="#slide-internacional" role="button" data-slide="next">
+                                            <div class="right-minslide-arrow" aria-hidden="true"></div>
+                                            <span class="sr-only">Siguiente</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="slider-internacional-responsive" class="carousel slide carousel-fade hidden-md hidden-lg" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        {section name=itim loop=$inter}
+                                        <div class="col-sm-12 col-12 alto_contraste item {if $smarty.section.itim.index==0}active{/if}">
+                                            <div class="row box-noticias alto_contraste">
+                                                {if $inter[itim].imagen == ''}
+                                                <div class="box-default-camara">
+                                                    <img src="{$smarty.const._DIRIMAGES}contenido/img-default-noticias.jpg" style="width: 247px; height: 180px;" alt="Imagen">
+                                                </div>
+                                                {else}
+                                                <div class="img-noticias imgContainer" style="
+                                                     background: url('{$smarty.const._DIRIMAGES_USER}{$inter[itim].imagen}')!important;
+                                                     background-size: cover!important;
+                                                     background-repeat: no-repeat!important;
+                                                     background-position: center center!important;
+                                                     width: 100%;
+                                                     height: 180px;
+                                                     ">
+                                                    <img class="objectCover absolute absolute--right absolute--left absolute--top absolute--bottom full-size" src="{$smarty.const._DIRIMAGES_USER}{$inter[itim].imagen}" alt='{$inter[itim].nombre}'>	
+                                                    <div class="fecha-noticias">
+                                                        {$inter[itim].fecha1|date_format:"%b - %e"}
+                                                    </div>	
+                                                </div>
+                                                {/if}
+                                                <div class="fecha-noticias">
+                                                    {$inter[itim].fecha1|date_format:"%b - %e"}
+                                                </div>
+                                                <div class="content-noticia">
+                                                    <div class="nombre-noticia alto_contraste">
+                                                        <a href="index.php?idcategoria={{$inter[itim].idcategoria}}#">
+                                                            {$inter[itim].nombre}
+                                                        </a>
+                                                    </div>
+                                                    <div class="line-noticias"></div>
+                                                    <div class="resumen-noticia alto_contraste">
+                                                        {$inter[itim].entradilla|truncate:118:"...":true}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/section}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 alto_contraste">
+                                    <div class="btn_vm_multi">
+                                        <a href="index.php?idcategoria={$smarty.const._MAS_INTERNACIONAL}">
+                                            {if $smarty.const._EN_INGLES !=1}
+                                            Ver todas las noticias internacionales
+                                            {else}
+                                            View all international news
+                                            {/if}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+        </div>
+    </div>
+</div>
+
+<h2 class="hidden" style="font-family: 'Fira Sans', sans-serif;">Sección Videos</h2>
+<div class="container-fluid">
+        {$home_seccion_videos}
+        <input type="hidden" id="ruta_videos" value="{$smarty.const._URL}/{$smarty.const._DIRRECURSOS_USER}">
+        <input type="hidden" id="ruta_audios" value="{$smarty.const._DIRRECURSOS_USER}">
+
+    </div>
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-12" id="seccion2" >
+    <div style="text-align: center;">
+        <a href="#seccion3"><img src="_templates/DEFAULT2018/recursos/images/scrolldw_mtr.png" class="hidden-xs"  style="position:absolute; margin-left: -50px; margin-right: auto; z-index: 10;top: -55px;" alt="" /></a>
+        
+    </div>
+   
+
+
+</div>
+
+<h2 class="hidden" style="font-family: 'Fira Sans', sans-serif;">Sección Destacados Banner</h2>
+<div>
+                        
+                  <br>      
+                        
+                    </div>
+{$home_destacados_interna}
+<h2 class="hidden" style="font-family: 'Fira Sans', sans-serif;">Sección Estructura del EjÉrcito</h2>
+<div class="container-fluid" style="">
+    <div class="container" style="font-family: 'Fira Sans', sans-serif;">
+        <div class="row">
+            <div class="title-seccion2 title-seccion-estructura">
+            <a  data-toggle="modal" data-target="#EstructuraModal">
+                {if $smarty.const._EN_INGLES !=1}
+                <img class="img-responsive img-fluid" id="img_estr" src="{$smarty.const._DIRIMAGES_USER}Banners/ESTRUCTURA_ENC.png" alt="Estructura Ejercito show" style="min-height:80px;" >
+                 {else} <img class="img-responsive img-fluid"  id="img_estr" src="{$smarty.const._DIRIMAGES_USER}Banners/ESTRUCTURA_ENC.png" alt="Estructura ejercito mostrar" style="min-height:100px;"> {/if}
+            </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Estructura-->
+<div class="modal fade" id="EstructuraModal" tabindex="-1" role="dialog" aria-labelledby="EstructuraModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Estructura del ejercito</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="text-little">cerrar</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div id="estructura_ejercito">
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-xs-12 p-0">
+                    {$home_jefaturas}
+                </div>
+            </div>
+                
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid my-5" id="estr_4ejc">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://webapp.mindefensa.gov.co/Iwebsiath/appws_Login/appws_Login.php ">
+                        <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="_templates/DEFAULT2018/recursos/images/SIATH_IMAGE.jpeg" alt="SIATH">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="http://www.pqr.mil.co">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="_templates/DEFAULT2018/recursos/images/PQRS_IMAGE.jpeg" alt="PQRS">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://correo.buzonejercito.mil.co/?loginOp=logout">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="_templates/DEFAULT2018/recursos/images/CORREO_ELECTRONICO_IMAGE.jpeg" alt="CORREO">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://fovid2.ejercito.mil.co/Fovid-2.0/faces/seg_login.xhtml">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="_templates/DEFAULT2018/recursos/images/FOVID_IMAGE.jpeg" alt="FOVID">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="container-fluid back-grey" style="font-family: 'Fira Sans', sans-serif;">
+    <div class="container" style="margin-bottom: 40px;">
+        <div class="row">
+            <div class="col-12 col-xs-12 px-0" id="EJERCITO_REDES1" style="font-size: 2.6em; font-weight: bold; margin-top: 30px; margin-bottom: 25px;">
+                {if $smarty.const._EN_INGLES !=1} EJÉRCITO EN REDES SOCIALES {else} ARMY IN SOCIAL MEDIA {/if}  
+            </div>
+            <div id="facebook-plugin" class="col-md-6 col-lg-6 col-xs-12">
+                <iframe id="facebook-w" title="Facebook del Ejército Nacional de Colombia" src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/ejercitocolombia/&tabs=timeline&width=460&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1302240496568256" data-width="100%" data-height="700" style="border:none;overflow:hidden; min-height:500px;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                <style type="text/css">
+                    #facebook-w {
+                        width: 100% !important;
+                        height: 400px!important;
+                        display: block!important;
+                        visibility: visible!important;
+                    }
+                </style>
+            </div>
+            <div id="twitter-plugin" class="col-md-6 col-lg-6 col-12 col-xs-12">
+                <div class="embeb_ft">
+                    <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/COL_EJERCITO?ref_src=twsrc%5Etfw">Tweets by COL_EJERCITO</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+            <div class="col-12 col-xs-12">
+                <div class="col-md-12" align="center"  id="heroes_bicentenarios" style="font-size: 2.3em;font-weight: bold; margin: 30px 0;">
+                    #HÉROESBICENTENARIOS
+                </div>
+            </div>
+            <div class="col-12 col-xs-12">
+                <div class="embeb_ft">
+                    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                    <div class="elfsight-app-3b220980-33d5-4682-9854-fca4bee674af" style="width: 100%!important; max-width: unset;"></div>
+                </div>
+            </div>
+        </div>  <!-- NUEVO CONTENEDOR PARA WIDGET DE INSTAGRAM 15/05/2019 -->
+    </div>
+</div>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="http://es.presidencia.gov.co/Paginas/portada.aspx">
+                        <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="{$smarty.const._DIRIMAGES_USER}Destacados_Pie_Pagina/1.png" alt="Presidencia">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://www.mindefensa.gov.co/irj/portal/Mindefensa">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="{$smarty.const._DIRIMAGES_USER}Destacados_Pie_Pagina/4.png" alt="Presidencia">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://cgfm.mil.co/en">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="{$smarty.const._DIRIMAGES_USER}Destacados_Pie_Pagina/2.png" alt="Presidencia">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-12 col-md-3 my-3">
+                    <a target="_blank" href="https://www.gov.co">
+                         <img class="img-responsive img-fluid mx-auto d-block" style="display: block; margin: 0 auto;" src="{$smarty.const._DIRIMAGES_USER}Destacados_Pie_Pagina/3.png" alt="Presidencia">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-12" id="seccion3" >
+     <div  style="text-align: center;">
+        <a  href="#home-silder1"><img src="_templates/DEFAULT2018/recursos/images/scrollup_mtr.png" class="hidden-xs"  style="position:relative; margin-left: -50px; margin-right: auto; z-index: 10;" alt="" /></a>
+         <!-- transform: rotate(-180deg -->
+        
+    </div>
+   
+
+
+</div>
+
+
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"> {literal}
+<script type="text/javascript">
+    function showEntidades() {
+        if (document.getElementById('estructura_ejercito').style.display == 'none') {
+            $('#estructura_ejercito').slideToggle('slow');
+        } else {
+            $('#estructura_ejercito').slideToggle('hide');
+        }
+    }
+</script>
+<script language="JavaScript">
+    function Abrir_ventana(pagina) {
+        var opciones = "toolbar=false,location=false,directories=false,status=false,menubar=false,scrollbars=false,resizable=false,width=350px,height=130px,top=false,left=false";
+        window.open(pagina, "", opciones);
+    }
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $("#mygallery").justifiedGallery({
+            rowHeight: 200,
+            lastRow: 'justify',
+            margins: 3,
+            sizeRangeSuffixes: {
+                500: '_t',
+                2000: '_m'
+            }
+        }).on('jg.complete', function() {
+            $(this).find('a').colorbox({
+                maxWidth: '80%',
+                maxHeight: '80%',
+                opacity: 0.8,
+                transition: 'elastic',
+                current: ''
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    // Slide Destacados
+    $('.mySlider1').slick({
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        arrows: true,
+        nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+        prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+        dots: true,
+        speed: 4000,
+        autoplaySpeed: 3000,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                dots: false
+            }
+        }, {
+            breakpoint: 900,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                dots: false
+            }
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                dots: false
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                nextArrow: '<div class="slick-next right-minislide-arrow"></div>',
+                prevArrow: '<div class="slick-prev left-minislide-arrow"></div>',
+                dots: false
+            }
+        }]
+    });
+</script>
+{/literal} {literal}
+<!-- <script>
+        var playing = true;
+        var pauseButton = document.getElementById('pauseButton');
+
+        function pauseHomeslider(){
+                $('#pauseButton').removeClass('fa fa-pause');
+                $('#pauseButton').toggleClass('fa fa-play');
+                playing  = false;
+                $('#home-silder2').carousel('pause');
+        }
+
+        function playHomeslider(){	
+                $('#pauseButton').removeClass('fa fa-play');
+                $('#pauseButton').toggleClass('fa fa-pause');
+                playing = true;
+                $('#home-silder2').carousel('cycle');
+        }
+
+        pauseButton.onclick = function(){
+                if (playing){
+                        pauseHomeslider();
+                }else{
+                        playHomeslider();
+                }
+        }
+</script> -->
+<script type="text/javascript">
+    $(".item_lista_video").click(function(item) {
+        var src = $(this).attr("data-src");
+        var type = $(this).attr("data-type");
+
+        if (type == "archivo") {
+            var ruta = document.getElementById("ruta_videos").value;
+            var tag = '<video class="item_video_home" controls><source src="' + ruta + src + '" type="video/mp4"></video>';
+            $("#load_video").html(tag);
+        } else {
+            var tag = src;
+            $("#load_video").html(tag);
+        }
+    })
+
+    $(".item_lista_audio").click(function(item) {
+        var src = $(this).attr("data-src");
+        var type = $(this).attr("data-type");
+
+        var ruta = document.getElementById("ruta_audios").value;
+        var tag = '<audio controls="true"><source src="' + ruta + src + '" type="audio/ogg"><source src="' + ruta + src + '" type="audio/mpeg"><p>' + type + '</p></audio>';
+        $("#load_audio").html(tag);
+
+    })
+
+    function showDiv(nombre) {
+        if (nombre == "nacional") {
+            $("#nacional").css("display", "block");
+            $("#actualidad").css("display", "none");
+            $("#internacional").css("display", "none");
+            $("#title-nacional").addClass("active");
+            $("#title-internacional").removeClass("active");
+            $("#title-actualidad").removeClass("active");
+        }
+        if (nombre == "actualidad") {
+            $("#nacional").css("display", "none");
+            $("#actualidad").css("display", "block");
+            $("#internacional").css("display", "none");
+            $("#title-actualidad").addClass("active");
+            $("#title-internacional").removeClass("active");
+            $("#title-nacional").removeClass("active");
+        }
+        if (nombre == "internacional") {
+            $("#nacional").css("display", "none");
+            $("#actualidad").css("display", "none");
+            $("#internacional").css("display", "block");
+            $("#title-internacional").addClass("active");
+            $("#title-nacional").removeClass("active");
+            $("#title-actualidad").removeClass("active");
+        }
+    }
+
+    function showBox(nombre) {
+        if (nombre == "videos") {
+            $("#videos").css("display", "block");
+            $("#galeria").css("display", "none");
+            $("#audio").css("display", "none");
+            $("#title-videos").addClass("active");
+            $("#title-audio").removeClass("active");
+            $("#title-galeria").removeClass("active");
+        }
+        if (nombre == "galeria") {
+            $("#videos").css("display", "none");
+            $("#galeria").css("display", "block");
+            $("#audio").css("display", "none");
+            $("#title-galeria").addClass("active");
+            $("#title-audio").removeClass("active");
+            $("#title-videos").removeClass("active");
+        }
+        if (nombre == "audio") {
+            $("#videos").css("display", "none");
+            $("#galeria").css("display", "none");
+            $("#audio").css("display", "block");
+            $("#title-audio").addClass("active");
+            $("#title-videos").removeClass("active");
+            $("#title-galeria").removeClass("active");
+        }
+    }
+</script>
+{/literal} {literal}
+<script type="text/javascript">
+    //var a = jQuery.noConflict();
+    $(window).load(function() { //$(window).load() must be used instead of $(document).ready() because of Webkit compatibility						
+        /*---------------------------------
+         *	Example #01
+         *---------------------------------*/
+        $(".delaycaptions-01").sliderkit({
+            circular: true,
+            mousewheel: false,
+            keyboard: true,
+            shownavitems: 4,
+            navclipcenter: true,
+            auto: true,
+            panelfxspeed: 500,
+            delaycaptions: {
+                delay: 500, // must be equal or higher than panelfxspeed
+                position: 'bottom',
+                transition: 'sliding',
+                duration: 300, // must be less equal or higher than panelfxspeed
+                easing: 'easeOutExpo'
+            }
+        });
+    });
+</script>
+{/literal} {literal}
+<script type="text/javascript">
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function(slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+    $(function() {
+        $('.carousel_multimedia').each(function() {
+            $(this).carousel({
+                interval: 4000
+            });
+        });
+    });
+</script>
+{/literal} {literal}
+<script type="text/javascript">
+    // Wait until the DOM has loaded before querying the document
+    $(document).ready(function() {
+        $('ul.tabs').each(function() {
+            // For each set of tabs, we want to keep track of
+            // which tab is active and it's associated content
+            var $active, $content, $links = $(this).find('a');
+            // Use the first link as the initial active tab
+            $active = $links.first().addClass('active');
+            $content = $($active.attr('href'));
+            // Hide the remaining content
+            $links.not(':first').each(function() {
+                $($(this).attr('href')).hide();
+            });
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e) {
+                // Make the old tab inactive.
+                $active.removeClass('active');
+                $content.hide();
+                // Update the variables with the new link and content
+                $active = $(this);
+                $content = $($(this).attr('href'));
+                // Make the tab active.
+                $active.addClass('active');
+                $content.show();
+                // Prevent the anchor's default click action
+                e.preventDefault();
+            });
+        });
+
+        // var url = "https://svera.micrositios.us/EJERCITOOO/_templates/DEFAULT2016/recursos/css/jquery_youtube_popup/temporizador_popup.php";
+
+        // var url = {/literal}"{$smarty.const._DIRCSS}jquery_youtube_popup/temporizador_popup.php";{literal}
+        var url = "../tools/temporizador_popup.php";
+        retorno = new Array();
+        var ejecutar_ajax = $.ajax({
+            async: true,
+            url: url,
+            type: "POST",
+            data: {
+                funcion: 1
+            },
+            cache: false,
+
+            success: function(s) {
+                retorno = JSON.parse(s);
+                //var resultado = retorno[0];
+                /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+                var resultado = 1;
+                /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+
+                if (resultado == 1) {
+                    ejecutar_popup();
+                }
+            },
+            error: function(e) {
+                ejecutar_ajax.abort();
+            }
+        });
+    });
+    //Audio
+    function setVariableAudio(theValue) {
+        if (theValue != '') {
+            document['mp3Custom'].SetVariable('song.text', 'recursos_user' + theValue);
+        } else {
+            alert("No tiene un archivo de audio asociado.");
+        }
+    }
+
+    function ejecutar_popup() {
+        /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+        var validar_eje_contador = document.getElementById("validar_eje_contador").value;
+        var validar_url_contador = document.getElementById("validar_url_contador").value;
+        var validar_temp_contador = document.getElementById("validar_temp_contador").value;
+
+        if (validar_eje_contador == 1) {
+            $("#url_youtube").val("https://www.ejercito.mil.co/_templates/DEFAULT2018/recursos/contador/tpl_contador.html?url=" + validar_url_contador + "&temp=" + validar_temp_contador);
+        }
+        /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+        var url = document.getElementById("url_youtube").value;
+
+        if (url != "") {
+            /*if (window.innerHeight > 540)
+             {
+             var margintop = (window.innerHeight - 540) / 2;
+             }
+             else
+             {
+             var margintop = 50;
+             }
+             
+             var ventana_ancho = $(window).width();
+             
+             if (ventana_ancho > 1024)
+             {
+             
+             } */
+            //            var ifr = '<iframe src="" class="embed-responsive-item" title="Emisora" width="640" height="480" id="slvj-video-embed" style="border:0;"></iframe>';   /* VARIABLE ORIGINAL */
+
+            /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+            var ventana_ancho = $(window).width();
+            if (ventana_ancho > 1024)
+             {
+            var ifr = '<iframe src="" class="embed-responsive-item" title="Emisora" width="640" height="480" id="slvj-video-embed" style="border:0; width: 640px; height: 480px;"></iframe>';
+            /* CONTENEDORES PARA TRAER INFORMACIÓN DE LAS NUEVAS VARIABLES PARA POPUP 17/05/2019 */
+
+            var close = '<div id="slvj-close-icon"></div>';
+            var lightbox = '<div class="slvj-lightbox embed-responsive embed-responsive-16by9" style="top: 50%">';
+            var back = '<div id="slvj-back-lightbox">';
+            var bclo = '<div id="slvj-background-close"></div>';
+            var win = '<div id="slvj-window">';
+            var end = '</div></div></div>';
+
+            $('body').append(win + bclo + back + lightbox + close + ifr + end);
+            $('#slvj-window').hide();
+
+            $('#slvj-window').fadeIn();
+            $('#slvj-video-embed').attr('src', url);
+
+            $('#slvj-close-icon').click(function() {
+                $('#slvj-window').remove();
+                $('#slvj-window').fadeOut($.simpleLightboxVideo, function() {
+                    $(this).remove();
+                });
+            });
+
+            $('#slvj-background-close').click(function() {
+                $('#slvj-window').remove();
+                $('#slvj-window').fadeOut($.simpleLightboxVideo, function() {
+                    $(this).remove();
+                });
+            });
+
+            // Handle ESC key (key code 27)
+            document.addEventListener('keyup', function(e) {
+                if (e.keyCode == 27) {
+                    $('#slvj-window').remove();
+                    $('#slvj-window').hide();
+                }
+            });
+
+            var ventana_ancho = $(window).width();
+             
+            }
+
+            return false;
+        }
+    }
+</script>
+{/literal} {literal}
+<script type="text/javascript">
+    function mostrarSubMenuAyuda(div) {
+        $('#' + div).css('display', 'block');
+    }
+
+    function ocultarSubMenuAyuda(div) {
+        $('#' + div).css('display', 'none');
+    }
+    $('#SliderBicentenario').multislider({
+        duration: 750,
+        interval: 3000
+    });
+</script>
+<script type="text/javascript">
+    function converDate(timestamp) {
+        var date = new Date(timestamp * 1000);
+        var _mes = date.getMonth() + 1; //getMonth devuelve el mes empezando por 0
+        var _dia = date.getDate(); //getDate devuelve el dia del mes
+        var _anyo = date.getFullYear();
+        var _hour = date.getHours();
+        var _min = date.getMinutes();
+        var _seg = date.getSeconds();
+
+        return _anyo + '-' + _mes + '-' + _dia + ' ' + _hour + ':' + _min + ':' + _seg;
+    }
+
+    function getCurrentDate() {
+        var dt = new Date();
+
+        // Display the month, day, and year. getMonth() returns a 0-based number.
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var year = dt.getFullYear();
+        var hour = dt.getHours();
+        var min = dt.getMinutes();
+        var seg = dt.getSeconds();
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + seg;
+    }
+    $.ajax({
+            url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=499169839.bca222f.67a80757de2e4278b32919c2ff4e0467',
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(data) {
+
+            $.each(data.data, function(index, val) {
+
+                var fecha1 = moment(converDate(val.created_time));
+                var fecha2 = moment(getCurrentDate());
+
+                tiempo = fecha2.diff(fecha1, 'hours');
+
+                if (tiempo < 1) {
+                    tiempo = 'HACE ' + fecha2.diff(fecha1, 'minutes') + ' MINUTOS';
+                }
+                if (tiempo < 23) {
+
+                    tiempo = 'HACE ' + fecha2.diff(fecha1, 'hours') + ' HORAS';
+
+                }
+                if (tiempo > 23) {
+
+                    tiempo = 'HACE ' + fecha2.diff(fecha1, 'days') + ' D&iacute;AS';
+
+                }
+                $('#instagram-feed').append('<div><a href="https://www.instagram.com/' + val.user.username + '" target="_blank"><img class="img-cuenta" src="' + val.user.profile_picture + '" alt="" /><div><span class="titulo">' + val.user.username + '</span></div></a></div><div class="div-container"><br><div class="tiempo">' + tiempo + '</div><a href="' + val.link + '" target="_blank"><img class="img-micros" src="' + val.images.standard_resolution.url + '" alt="" />' +
+                    '<div class="redes"><span class="glyphicon glyphicon-heart-empty" style="color:#000;"></span><span class="like-text">' + val.likes.count + '</span><span class="glyphicon glyphicon-comment" style="color:#000;"></span><span class="coments-text">' + val.comments.count + '</span></div>' +
+                    '<div class="caption-text">' + val.caption.text + '</div>' +
+                    '</div></a>')
+
+
+            });
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+</script>
+
+
+{/literal}

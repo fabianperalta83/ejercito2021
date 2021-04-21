@@ -1,0 +1,49 @@
+/**
+ * Visualizacion del contenido del contrato
+ */
+.contratacion {float: right;font: 0.8em verdana,sans-serif;margin: 5px 20px;padding: 0;width: 70%;}
+.contratacion h2{font:1.6em tahoma,helvetica,sans-serif;margin:10px 0 0 0;padding:0 15px 10px 0;color:#465463;} /** Titulo */
+.contratacion h3{padding:2px 5px;margin:20px 0 10px 0;text-decoration:none;color:#537B85;font:bold 1.3em tahoma,helvetica;border-bottom:1px solid #537B85} /* Subtitulo */
+.contratacion p{}
+.contratacion table{width:99%}
+.contratacion table td{padding:5px}
+.contratacion table td a{color:#00e}
+.contratacion .troscuro {background:#eee;}
+.tablaEtapas td{border-bottom:1px solid #aaa}
+/**
+ * Visualizacion del filtro contenidos de contratos
+ */
+.filtroContratacion {font:0.7em arial,sans-serif;padding:5px;margin-bottom:20px;border:1px solid #ccc;background:#eee}
+.filtroContratacion select{font:1em arial,sans-serif}
+
+.lstcontrato {font:0.7em arial,sans-serif}
+.lstcontrato td {padding:5px;border-bottom:1px solid #4D6CBA;border-right:1px solid #4D6CBA}
+.lstcontrato td a {color:#395395;}
+.lstcontrato th {text-align:center;background:#9CC0E3;padding:5px;border-bottom:1px solid #4D6CBA;border-right:1px solid #4D6CBA;border-bottom:1px solid #4D6CBA;border-top:1px solid #4D6CBA}
+
+#edicion .center-table {float: none !important;margin: 0 auto !important;}
+
+
+.lstcontrato2 {padding:10px}
+.lstcontrato2 table {font:0.8em arial,sans-serif;}
+.lstcontrato2 table td{border:1px solid #AAA;}
+
+.lstcontrato2 h3 {margin:0;padding:10px 0;color:#537B85;font:1.2em tahoma,arial,sans-serif;}
+.lstcontrato2 h3 a {color:#537B85;text-decoration:none;}
+.lstcontrato2 h3 a:hover {text-decoration:underline;}
+.lstcontrato2 p {font:0.75em verdana,arial,sans-serif;}
+
+.estado1 {background:#93D9FF;} /* Adjudicada */
+.estado2 {background:#BEFF93;} /* Abierta */
+.estado3 {background:#E3D3AE;} /* Desierta */
+.estado4 {background:#FFEA93;} /* Anulada */
+.estado5 {background:#FF9393;} /* Fallida */
+.estado6 {background:#D2E4AD;} /* Aplazada */
+.estado7 {background:#ACE6DE;} /* Consulta oferentes */
+.estado8 {background:#FFF793;} /* Evaluación comites */
+.estado9 {background:#D6C7BC;} /* Cerrada */
+ 
+.paginacion {padding:5px;text-align:center;background:#eee;margin-top:10px}
+.paginacion a {font:14px arial;color:#000;text-decoration:none}
+.paginacion a:hover {text-decoration:underline}
+.paginacion b {font:bold 14px arial;color:#000}

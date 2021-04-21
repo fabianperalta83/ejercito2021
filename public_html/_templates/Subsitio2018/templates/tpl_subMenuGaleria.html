@@ -1,0 +1,47 @@
+<link href="{$smarty.const._DIRCSS}assets/global/plugins/cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css" />
+<link href="{$smarty.const._DIRCSS}assets/pages/css/portfolio.min.css" rel="stylesheet" type="text/css" />
+
+{literal}
+<style>
+    .cbp-caption,.cbp-caption-defaultWrap{
+        height: 200px;
+    }
+    .cbp-caption-defaultWrap{
+        background-repeat: no-repeat!important;
+        background-position: center center!important;
+        background-size: cover!important;
+    }
+    
+</style>
+{/literal}
+
+<div id="js-grid-juicy-projects" class="cbp">
+    {section name=mysec loop=$subMenu}
+    <div class="cbp-item graphic logos">
+        <div class="cbp-caption">
+            <div class="cbp-caption-defaultWrap" style="
+            background: url('tools/microsThumb.php?w=300&src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}');
+            ">
+                <!-- <img src="tools/microsThumb.php?w=300&src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}" alt="{if strlen($subMenu[mysec].texto_alternativo)>0}{$subMenu[mysec].texto_alternativo}{else}{$subMenu[mysec].nombre}{/if}">  -->
+            </div>
+            <div class="cbp-caption-activeWrap">
+                <div class="cbp-l-caption-alignCenter">
+                    <div class="cbp-l-caption-body">
+                        <a href="index.php?idcategoria={$subMenu[mysec].idcategoria}" class="cbp-l-caption-buttonLeft btn red uppercase btn red uppercase wrap8" >Informaci&oacute;n</a>
+                        <a href="{$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase wrap8" data-title="{$subMenu[mysec].nombre}<br>{$subMenu[mysec].resumen}">Ver Imagen</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center wrap8">{$subMenu[mysec].nombre}</div>
+        <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center wrap8">{$subMenu[mysec].antetitulo}</div>
+    </div>
+    {/section}
+</div>
+{if $verMas != ""}
+    {$verMas}
+{/if}
+<!--Fin Template Galeria de Imagenes -->
+<script src="{$smarty.const._DIRCSS}assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+<script src="{$smarty.const._DIRCSS}assets/pages/scripts/portfolio-1.min.js" type="text/javascript"></script>

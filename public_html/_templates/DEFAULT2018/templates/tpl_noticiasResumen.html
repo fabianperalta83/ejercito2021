@@ -1,0 +1,35 @@
+<div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
+    <!--Lista con Resumen:Contenidos-->
+    <ol id="lista_resumen_contenidos">
+        {section name=mysec loop=$subMenu}
+            <li {if $smarty.section.mysec.first} class="liFirst"{/if}>
+                <div class="encabezados text-left">
+                    {if $subMenu[mysec].nombre != ""}
+                       <div style="font-size:20px;font-family:'Fjalla One',sans-serif;"><a style="text-decoration:none" href="{$subMenu[mysec].vinculo}" target="_blank"><strong style="color:#000000;" id="Noticias_resumen1">{$subMenu[mysec].nombre}</strong></a></div><!-- <h5 class="s_titulo">   </h5> -->
+                    {/if}
+                </div>
+                <div class="contenido">
+                    {if $subMenu[mysec].imagen != ""}
+                        <a href="{$subMenu[mysec].vinculo}" target="_blank">
+                            <img src="/tools/microsThumb.php?src={$smarty.const._DIRIMAGES_USER}{$subMenu[mysec].imagen}&amp;w=160" alt="{$subMenu[mysec].nombre}">
+                        </a>
+                    {/if}
+                    {if $subMenu[mysec].fecha1 != "0000-00-00 00:00:00" && $subMenu[mysec].fecha1 != ""}
+                        <p class="s_fecha">{$subMenu[mysec].fecha1}/</p>
+                    {/if}
+                    {if $subMenu[mysec].imagen != "" or $subMenu[mysec].entradilla != ""}
+                        {if $subMenu[mysec].entradilla != ""}
+                            <p class="listaEntradilla">{$subMenu[mysec].entradilla}</p>
+                        {/if}
+                        <!-- <a class="dVermas" href="{$subMenu[mysec].vinculo}" target="_blank"><span>{$smarty.const._ROT_VERMAS}</span><span class="vermasComplemento">: {$subMenu[mysec].nombre}</span> [+]</a> -->
+                    {/if}
+                </div>
+            </li>
+        {/section}
+    </ol>
+    <!--Paginacion -->
+    {if $verMas != ""} {$verMas} {/if}
+</div>
+<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+
+</div>

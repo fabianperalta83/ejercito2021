@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ROOT SYSTEM "schema.dtd">
+<ROOT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <row>
+      <field name="idcategoria">165711196</field>
+      <field name="idpadre">165711214</field>
+      <field name="activa">1</field>
+      <field name="orden">60</field>
+      <field name="orden_sub"></field>
+      <field name="asc_sub">0</field>
+      <field name="paginas_sub">0</field>
+      <field name="restringida">0</field>
+      <field name="iddisplay">3</field>
+      <field name="iddisplay_sub">0</field>
+      <field name="template"></field>
+      <field name="fecha1">2008-09-16</field>
+      <field name="fecha2">2008-09-26 18:38:21</field>
+      <field name="fecha3">2008-09-22 13:53:51</field>
+      <field name="es_prototipo">0</field>
+      <field name="es_root">0</field>
+      <field name="autor"></field>
+      <field name="nombre">Publicar Imagen</field>
+      <field name="antetitulo"></field>
+      <field name="subtitulo"></field>
+      <field name="entradilla"></field>
+      <field name="descripcion">_include/repositorioImagenes/repositorioImagenes.php</field>
+      <field name="imagen"></field>
+      <field name="validacion">fd9a2a4567267ce25bba1428fa3e808e</field>
+      <field name="licitacion_estado" xsi:nil="true" />
+      <field name="licitacion_cuantia" xsi:nil="true" />
+      <field name="licitacion_fecha_apertura" xsi:nil="true" />
+      <field name="licitacion_fecha_cierre" xsi:nil="true" />
+      <field name="licitacion_ordenador_gasto" xsi:nil="true" />
+      <field name="licitacion_unidad" xsi:nil="true" />
+      <field name="licitacion_direccion" xsi:nil="true" />
+      <field name="cuenta">550</field>
+      <field name="idioma">0</field>
+      <field name="en_mapa">1</field>
+      <field name="en_buscador">1</field>
+      <field name="eliminado">0</field>
+      <field name="varsubsitio" xsi:nil="true" />
+      <field name="indexacion">0</field>
+    </row>
+    <row>
+      <field name="idcategoria">165711214</field>
+      <field name="idpadre">165462476</field>
+      <field name="activa">1</field>
+      <field name="orden">70</field>
+      <field name="orden_sub"></field>
+      <field name="asc_sub">0</field>
+      <field name="paginas_sub">0</field>
+      <field name="restringida">0</field>
+      <field name="iddisplay">3</field>
+      <field name="iddisplay_sub">10</field>
+      <field name="template"></field>
+      <field name="fecha1">2008-09-19</field>
+      <field name="fecha2">2008-09-29 16:24:18</field>
+      <field name="fecha3">2008-09-22 13:54:28</field>
+      <field name="es_prototipo">0</field>
+      <field name="es_root">0</field>
+      <field name="autor"></field>
+      <field name="nombre">Donar Imagen</field>
+      <field name="antetitulo"></field>
+      <field name="subtitulo"></field>
+      <field name="entradilla">Acuerdo de licencia de imagenes con Derechos Protegidos
+
+
+
+
+
+
+
+EL PRESENTE DOCUMENTO CONSTITUYE UN ACUERDO LEGAL ENTRE EL USUARIO Y STUDIO GABALDON. SIRVASE LEERLO DETENIDAMENTE. AL DESCARGAR Y/O UTILIZAR CUALQUIER IMAGEN CON DERECHOS PROTEGIDOS DP, USTED INDICA SU ACEPTACION DE QUEDAR VINCULADO POR LOS TERMINOS Y CONDICIONES DEL PRESENTE ACUERDO. SI USTED NO ESTA CONFORME CON EL, ABSTENGASE DE DESCARGAR Y/O UTILIZAR CUALQUIER IMAGEN DP DE ESTE SITIO WEB.
+
+
+
+SI ACEPTA LOS TERMINOS Y CONDICIONES DE ESTE ACUERDO EN NOMBRE Y REPRESENTACION DE UNA EMPRESA O DE SU MANDANTE, LA PRESENTE LICENCIA Y TODAS SUS RESTRICCIONES Y LIMITACIONES AFECTARAN A DICHA EMPRESA Y A USTED EN SU CALIDAD DE REPRESENTANTE Y/O AGENTE DE DICHA EMPRESA O MANDANTE. USTED REPRESENTA Y GARANTIZA A STUDIO GABALDON QUE TIENE AUTORIDAD SUFICIENTE PARA ACTUAR EN NOMBRE Y REPRESENTACION DE DICHA EMPRESA Y/O MANDANTE Y QUE NO HARA USO DE NINGUNA IMAGEN DP ENTREGADA POR STUDIO GABALDON EN BENEFICIO DE UNA TERCERA PERSONA O ENTIDAD SIN CONTRATAR PREVIAMENTE OTRA LICENCIA.
+
+
+
+LAS IMAGENES ESTAN PROTEGIDAS POR LAS LEYES Y TRATADOS INTERNACIONALES REFERENTES A LA PROPIEDAD INTELECTUAL Y AL DERECHO DE AUTOR.
+
+
+
+TODOS LOS DERECHOS QUE NO LE SEAN EXPRESAMENTE OTORGADOS EN VIRTUD DEL PRESENTE ACUERDO ESTAN RESERVADOS. EL DERECHO QUE LE AUTORIZA A USAR LAS IMAGENES CON DERECHOS PROTEGIDOS ESTA SUJETO AL PAGO DEL PRECIO DE LA LICENCIA CORRESPONDIENTE Y A LAS LIMITACIONES CONTENIDAS EN EL PRESENTE ACUERDO.
+
+
+
+I. Definiciones
+
+
+
+En este Acuerdo, los siguientes terminos tienen los siguientes significados:
+
+
+
+1.1 Imagen DP (imagen con derechos protegidos): se refiere a cualquier material grafico del que dispone STUDIO GABALDON pudiendo tratarse de obras fotograficas, meras fotografias y cualesquiera otras creaciones obtenidas por procedimientos analogos e incorporadas a cualquier tipo de soporte que STUDIO GABALDON suministra para su utilizacion y cuyo uso esta sujeto a las condiciones de la presente Licencia de uso.
+
+
+
+1.2 Factura: se refiere a la factura generada por ordenador o preimpresa que describe los parametros de uso de las Imagenes DP seleccionadas y la correspondiente tarifa por la licencia otorgada.
+
+
+
+1.3 Reproduccion: se refiere a cualquier copia o publicacion, total o parcial, de la Imagen DP por cualquier medio. La reproduccion incluye tambien cualquier distorsion o manipulacion de la totalidad o parte de la Imagen DP.</field>
+      <field name="descripcion">_include/repositorioImagenes/advertencia.php</field>
+      <field name="imagen"></field>
+      <field name="validacion">be90df295e8ff5df5b1f111968ce24be</field>
+      <field name="licitacion_estado" xsi:nil="true" />
+      <field name="licitacion_cuantia" xsi:nil="true" />
+      <field name="licitacion_fecha_apertura" xsi:nil="true" />
+      <field name="licitacion_fecha_cierre" xsi:nil="true" />
+      <field name="licitacion_ordenador_gasto" xsi:nil="true" />
+      <field name="licitacion_unidad" xsi:nil="true" />
+      <field name="licitacion_direccion" xsi:nil="true" />
+      <field name="cuenta">117</field>
+      <field name="idioma">0</field>
+      <field name="en_mapa">1</field>
+      <field name="en_buscador">1</field>
+      <field name="eliminado">0</field>
+      <field name="varsubsitio" xsi:nil="true" />
+      <field name="indexacion">0</field>
+    </row>
+    <row>
+      <field name="idcategoria">165711215</field>
+      <field name="idpadre">165711214</field>
+      <field name="activa">0</field>
+      <field name="orden">10</field>
+      <field name="orden_sub"></field>
+      <field name="asc_sub">0</field>
+      <field name="paginas_sub">0</field>
+      <field name="restringida">0</field>
+      <field name="iddisplay">0</field>
+      <field name="iddisplay_sub">0</field>
+      <field name="template"></field>
+      <field name="fecha1">2008-09-19</field>
+      <field name="fecha2">2008-09-29 16:37:12</field>
+      <field name="fecha3">2008-09-19 16:37:12</field>
+      <field name="es_prototipo">0</field>
+      <field name="es_root">0</field>
+      <field name="autor"></field>
+      <field name="nombre">advertencia registro</field>
+      <field name="antetitulo"></field>
+      <field name="subtitulo"></field>
+      <field name="entradilla"></field>
+      <field name="descripcion">Para poder aportar una imagen al ejercito debe ingresar al sistema con su usuario y constrasena.  Sino posee cuenta en el portal debe registrarse primero.</field>
+      <field name="imagen"></field>
+      <field name="validacion">c586e7cf30f65a6a022e625e1fcf4da8</field>
+      <field name="licitacion_estado" xsi:nil="true" />
+      <field name="licitacion_cuantia" xsi:nil="true" />
+      <field name="licitacion_fecha_apertura" xsi:nil="true" />
+      <field name="licitacion_fecha_cierre" xsi:nil="true" />
+      <field name="licitacion_ordenador_gasto" xsi:nil="true" />
+      <field name="licitacion_unidad" xsi:nil="true" />
+      <field name="licitacion_direccion" xsi:nil="true" />
+      <field name="cuenta">3</field>
+      <field name="idioma">0</field>
+      <field name="en_mapa">1</field>
+      <field name="en_buscador">1</field>
+      <field name="eliminado">1</field>
+      <field name="varsubsitio" xsi:nil="true" />
+      <field name="indexacion">0</field>
+    </row>
+    <row>
+      <field name="idcategoria">165711219</field>
+      <field name="idpadre">165711214</field>
+      <field name="activa">1</field>
+      <field name="orden">20</field>
+      <field name="orden_sub"></field>
+      <field name="asc_sub">0</field>
+      <field name="paginas_sub">1</field>
+      <field name="restringida">0</field>
+      <field name="iddisplay">3</field>
+      <field name="iddisplay_sub">5</field>
+      <field name="template"></field>
+      <field name="fecha1">2008-09-22</field>
+      <field name="fecha2">2008-10-02 10:14:51</field>
+      <field name="fecha3">2008-09-22 11:53:30</field>
+      <field name="es_prototipo">0</field>
+      <field name="es_root">0</field>
+      <field name="autor"></field>
+      <field name="nombre">Galeria Imagenes - Sin Aprobar</field>
+      <field name="antetitulo"></field>
+      <field name="subtitulo"></field>
+      <field name="entradilla">galeria</field>
+      <field name="descripcion">_include/repositorioImagenes/revision.php</field>
+      <field name="imagen"></field>
+      <field name="validacion">f06f5d84377d289f9597c08b07f32040</field>
+      <field name="licitacion_estado" xsi:nil="true" />
+      <field name="licitacion_cuantia" xsi:nil="true" />
+      <field name="licitacion_fecha_apertura" xsi:nil="true" />
+      <field name="licitacion_fecha_cierre" xsi:nil="true" />
+      <field name="licitacion_ordenador_gasto" xsi:nil="true" />
+      <field name="licitacion_unidad" xsi:nil="true" />
+      <field name="licitacion_direccion" xsi:nil="true" />
+      <field name="cuenta">114</field>
+      <field name="idioma">0</field>
+      <field name="en_mapa">1</field>
+      <field name="en_buscador">1</field>
+      <field name="eliminado">0</field>
+      <field name="varsubsitio" xsi:nil="true" />
+      <field name="indexacion">0</field>
+    </row>
+    <row>
+      <field name="idcategoria">165711222</field>
+      <field name="idpadre">165711214</field>
+      <field name="activa">1</field>
+      <field name="orden">70</field>
+      <field name="orden_sub"></field>
+      <field name="asc_sub">0</field>
+      <field name="paginas_sub">0</field>
+      <field name="restringida">0</field>
+      <field name="iddisplay">0</field>
+      <field name="iddisplay_sub">0</field>
+      <field name="template"></field>
+      <field name="fecha1">2008-09-22</field>
+      <field name="fecha2">2008-10-02 13:58:59</field>
+      <field name="fecha3">2008-09-22 13:58:59</field>
+      <field name="es_prototipo">0</field>
+      <field name="es_root">0</field>
+      <field name="autor"></field>
+      <field name="nombre">Publicacion Satisfactoria</field>
+      <field name="antetitulo"></field>
+      <field name="subtitulo"></field>
+      <field name="entradilla">Todo correcto publicacion satisfactoria</field>
+      <field name="descripcion">los editores verificaran la imagen antes de publicarla en el portal</field>
+      <field name="imagen"></field>
+      <field name="validacion">2c5a710482ed2b3cfb225fa66bac6128</field>
+      <field name="licitacion_estado" xsi:nil="true" />
+      <field name="licitacion_cuantia" xsi:nil="true" />
+      <field name="licitacion_fecha_apertura" xsi:nil="true" />
+      <field name="licitacion_fecha_cierre" xsi:nil="true" />
+      <field name="licitacion_ordenador_gasto" xsi:nil="true" />
+      <field name="licitacion_unidad" xsi:nil="true" />
+      <field name="licitacion_direccion" xsi:nil="true" />
+      <field name="cuenta">5</field>
+      <field name="idioma">0</field>
+      <field name="en_mapa">1</field>
+      <field name="en_buscador">1</field>
+      <field name="eliminado">0</field>
+      <field name="varsubsitio" xsi:nil="true" />
+      <field name="indexacion">0</field>
+    </row>
+</ROOT>

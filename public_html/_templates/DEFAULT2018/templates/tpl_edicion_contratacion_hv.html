@@ -1,0 +1,545 @@
+<div id="edicion">
+{literal}
+	<script language="Javascript" type="text/javascript">
+		var reAlphanumeric = /^[·ÈÌÛ˙Òa-z¡…Õ”⁄—A-Z0-9_ ]+$/;
+
+		function isEmpty(s) {
+			var aux = s.replace(/^\s+$/, "");
+			return ((aux == null) || (aux.length == 0))
+		}
+
+		/**
+		 * Crea un campo
+		 */
+		function crearCampo () {
+			nameId = prompt("Nombre del Campo");
+			nameId = nameId.replace(/^\s*(.+)\s*$/, "$1"); // trim del nombre
+
+			/** Verificaciones de los nombres */
+			if (isEmpty(nameId)) {
+				alert("El Nombre no puede estar vacÌo.");
+				return false;
+			}
+			if (!reAlphanumeric.test(nameId)) {
+				alert("El Nombre contiene caracteres no permitidos. (Solo letras, numeros y espacios)");
+				return false;
+			}
+
+			/**
+			 * Miramos que no exista el titulo
+			 */
+			try {
+				if (document.getElementById('trinfo_'+nameId).id == 'trinfo_'+nameId) {
+					alert("El titulo ya existe. Intentelo con otro titulo.");
+					return false;
+				}
+			} catch(e) {}
+
+
+			/**
+			 * Buscamos el "tbody" para que sirva la insercion dinamica del "tr" (problema de IE)
+			 */
+			var theTbody;
+			var theTable = document.getElementById('infoComp');
+			for(i = 0; i < theTable.childNodes.length; i++) {
+				if (theTable.childNodes[i].tagName == 'TBODY') {
+					theTbody = theTable.childNodes[i];
+					break;
+				}
+			}
+			if (typeof theTbody == "undefined") {
+				return false;
+			}
+			if(nameId != null && nameId != '') {
+				// Creacion del TR
+				trObj = document.createElement('tr');
+				trObj.setAttribute('id', 'trinfo_'+nameId);
+				trObj.className = "edicion_elemento";
+
+				// Creacion del TD
+				tdObj = document.createElement('td');
+				tdObj.innerHTML = '<input type="button" value="x" onclick="eliminarCampo(\''+nameId+'\')">';
+				trObj.appendChild(tdObj);
+
+				// Creacion del TD
+				tdObj = document.createElement('td');
+				tdObj.innerHTML = nameId;
+				trObj.appendChild(tdObj);
+
+				// Creacion del TD
+				tdObj = document.createElement('td');
+				tdObj.innerHTML = '<input type="text" size="35" name="info_'+nameId+'" value="">';
+				trObj.appendChild(tdObj);
+
+				// Creacion del TD
+				tdObj = document.createElement('td');
+				tdObj.innerHTML = '<input type="text" size="4" name="info_orden_'+nameId+'" value="" onKeyDown="return soloNumeros(event)">';
+				trObj.appendChild(tdObj);
+
+				theTbody.appendChild(trObj);
+			}
+		}
+		/**
+		 * Poner campo
+		 */
+		function ponerCampo (nameId, valor, orden) {
+			/** verificaciones */
+
+			nameId = nameId.replace(/^\s*(.+)\s*$/, "$1"); // trim del nombre
+
+			if (!reAlphanumeric.test(nameId)) {
+				return false;
+			}
+
+			/** Buscamos el "tbody" para que sirva la insercion dinamica del "tr" (problema de IE) */
+			var theTbody;
+			var theTable = document.getElementById('infoComp');
+			for(i = 0; i < theTable.childNodes.length; i++) {
+				if (theTable.childNodes[i].tagName == 'TBODY') {
+					theTbody = theTable.childNodes[i];
+					break;
+				}
+			}
+			if (typeof theTbody == "undefined") {
+				return false;
+			}
+			// Creacion del TR
+			trObj = document.createElement('tr');
+			trObj.setAttribute('id', 'trinfo_'+nameId);
+			trObj.className = "edicion_elemento";
+
+			// Creacion del TD
+			tdObj = document.createElement('td');
+			tdObj.innerHTML = '<input type="button" value="x" onclick="eliminarCampo(\''+nameId+'\')">';
+			trObj.appendChild(tdObj);
+
+			// Creacion del TD
+			tdObj = document.createElement('td');
+			tdObj.innerHTML = nameId;
+			trObj.appendChild(tdObj);
+
+			// Creacion del TD
+			tdObj = document.createElement('td');
+			tdObj.innerHTML = '<input type="text" size="35" name="info_'+nameId+'" value="'+valor+'">';
+			trObj.appendChild(tdObj);
+
+			// Creacion del TD
+			tdObj = document.createElement('td');
+			tdObj.innerHTML = '<input type="text" size="4" name="info_orden_'+nameId+'" value="'+orden+'" onKeyDown="return soloNumeros(event)">';
+			trObj.appendChild(tdObj);
+
+			theTbody.appendChild(trObj);
+		}
+		/**
+		 * Solo Numeros
+		 */
+		function soloNumeros(e) {
+			var code;
+			if(typeof e == "undefined") e = window.event;
+			if (e.keyCode) code = e.keyCode;
+			else if (e.which) code = e.which;
+
+			/**
+			 * Solamente numeros
+			 */
+			if ((code >= 48 && code <= 57) || code == 8) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		/**
+		 * Eliminar un campo
+		 */
+		function eliminarCampo(nameId) {
+			/** Buscamos el "tbody" para que sirva la insercion dinamica del "tr" (problema de IE) */
+			var theTbody;
+			var theTable = document.getElementById('infoComp');
+			var objR;
+			for(i = 0; i < theTable.childNodes.length; i++) {
+				if (theTable.childNodes[i].tagName == 'TBODY') {
+					theTbody = theTable.childNodes[i];
+					break;
+				}
+			}
+			if (typeof theTbody == "undefined") {
+				return false;
+			}
+			objR = document.getElementById("trinfo_"+nameId);
+			theTbody.removeChild(objR);
+		}
+	</script>
+
+	<!-- Calendario -->
+	<script type="text/javascript" src="_lib/jscalendar/calendar.php"></script>
+	<!-- language for the calendar -->
+
+	<script type="text/javascript" src="_lib/jscalendar/lang/calendar-es.js"></script>
+	<!-- the following script defines the Calendar.setup helper function, which makes
+	   adding a calendar a matter of 1 or 2 lines of code. -->
+	<script type="text/javascript" src="_lib/jscalendar/calendar-setup.js"></script>
+
+	<style type="text/css">
+		@import url("_lib/jscalendar/calendar-win2k-1.css");
+		@import url("_templates/Default/recursos/css/estilo_secab.css");
+	</style>
+{/literal}
+
+{if $subMenuError != ''}
+	{$subMenuError}<br>
+{/if}
+
+<form name="forma" action="" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="idcategoria" value="{$infocontrato.idcategoria}">
+	<input type="hidden" name="accion" value="{$accion}">
+	<input type="hidden" name="operacion" value="">
+
+	<table class="forma" summary="" style="border:0;width:100%;background:#69C" cellpadding="0" cellspacing="1">
+		<tr>
+			<td align=right class="edicion_elemento" style="background:#F0F7FF;padding:5px;font-weight:bold;">
+				{$userInfo.nombres} {$userInfo.apellidos} &lt; {$userInfo.username} &gt;
+			</td>
+		</tr>
+		<tr>
+			<td align=center class="edicion_titulo">
+				{$c_titulo}
+			</td>
+		</tr>
+		<tr>
+			<td class="edicion_elemento" style="text-align:center;background:#F0F7FF">
+				{$c_salvar}
+			</td>
+		</tr>
+
+	{if $c_submenu != ""}
+		<tr>
+			<td class="edicion_elemento" style="background:#F0F7FF">
+				{$c_submenu}
+			</td>
+		</tr>
+	{/if}
+		<tr>
+			<td>
+				<table width="100%" summary="Contrato" style="background:#F0F7FF" cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="2" class="edicion_elemento">
+							{$c_formulario_titulo}
+						</td>
+					</tr>
+
+					<tr class="edicion_elemento" style="background:#FFFFFF">
+						<td align="right">Nombre:</td>
+						<td><input type="text" name="nombre_form" value="{$infocontrato.nombre}" size="53"></td>
+					</tr>
+
+					<tr class="edicion_elemento">
+						<td align="right">Cargo al que aspira:</td>
+						<td><textarea name="entradilla_form" rows="7" cols="50">{$infocontrato.entradilla}</textarea></td>
+					</tr>
+{*
+					<tr class="edicion_elemento" style="background:#FFFFFF">
+						<td align="right">Autor:</td>
+						<td><input type="text" name="autor_form" value="{$infocontrato.autor}" size="53"></td>
+					</tr>*}
+
+					{*<tr class="edicion_elemento">
+						<td align="right">Fecha de CreaciÛn:</td>
+						<td><input type="text" name="fecha3_form" value="{$infocontrato.fecha3}" size="53" disabled></td>
+					</tr>*}
+
+					<tr class="edicion_elemento" style="background:#FFFFFF">
+						<td align="right">Fecha Apertura:</td>
+						<td>
+							<input type="text" name="fecha1_form" id="fecha1_form" value="{$infocontrato.fecha1}" size="53">
+							<button type="reset" id="f_trigger_b">...</button>
+							{literal}
+							<script type="text/javascript">
+							    Calendar.setup({
+							        inputField     :    "fecha1_form",      // id of the input field
+							        ifFormat       :    "%Y-%m-%d",       // format of the input field
+							        showsTime      :    true,            // will display a time selector
+							        button         :    "f_trigger_b",   // trigger for the calendar (button ID)
+							        singleClick    :    false,           // double-click mode
+							        step           :    1                // show all years in drop-down boxes (instead of every other year as default)
+							    });
+							</script>
+							{/literal}
+						</td>
+					</tr>
+
+					<tr class="edicion_elemento">
+						<td align="right">Fecha y Hora de firma Contrato:</td>
+						<td><input type="text" name="fecha2_form" id="fecha2_form" value="{$infocontrato.fecha2}" size="53">
+							{literal}
+							<button type="reset" id="f_watch_b">...</button>
+							<script type="text/javascript">
+							    Calendar.setup({
+							        inputField     :    "fecha2_form",      // id of the input field
+							        ifFormat       :    "%Y-%m-%d %H:%M:%S",       // format of the input field
+							        showsTime      :    true,            // will display a time selector
+							        button         :    "f_watch_b",   // trigger for the calendar (button ID)
+							        singleClick    :    false,           // double-click mode
+							        step           :    1                // show all years in drop-down boxes (instead of every other year as default)
+							    });
+							</script>
+							{/literal}
+						</td>
+					</tr>
+
+					<tr class="edicion_elemento" style="background:#FFFFFF">
+						<td align="right">Cedula:</td>
+						<td><input type="text" name="subtitulo_form" value="{$infocontrato.subtitulo}" size="53"></td>
+					</tr>
+
+					<tr class="edicion_elemento">
+						<td align="right">Estado:</td>
+						<td>
+							<select name="antetitulo_form">
+							{section name=idantetitulo loop=$estados}
+							 {if $smarty.section.idantetitulo.index == 2}
+								<option value="{$estados[idantetitulo].id}" {if $estados[idantetitulo].id == $infocontrato.antetitulo}selected{/if}>En Revisi&oacute;n</option>
+							{elseif $smarty.section.idantetitulo.index == 9}
+								<option value="{$estados[idantetitulo].id}" {if $estados[idantetitulo].id == $infocontrato.antetitulo}selected{/if}>Revisado</option>
+							{/if}
+							{/section}
+							</select>
+						</td>
+					</tr>
+					<tr class="edicion_elemento" style="background:#FFFFFF">
+						<td align="right">Activa:</td>
+						<td>
+							<select name="activa_form">
+								<option value="1">Activo</option>
+								<option value="0">Inactivo</option>
+							</select>
+							<script language="Javascript" type="text/javascript">
+								{if $infocontrato.activa != ''}
+									document.forma.activa_form.value = '{$infocontrato.activa}';
+								{else}
+									document.forma.activa_form.value = '1';
+								{/if}
+							</script>
+						</td>
+					</tr>
+					<tr class="edicion_elemento">
+						<td align="right">Orden:</td>
+						<td><input type="text" name="orden_form" value="{$infocontrato.orden}" size="5"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<!--CAMPOS DINAMICOS DE INFORMACION DINAMICA-->
+		{*<tr>
+			<td class="edicion_titulo" colspan="2" align="center">
+				Informaci&oacute;n Complementaria
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table width="100%" border="0" id="infoComp" style="background:#F0F7FF" cellpadding="2" cellspacing="2" summary="Campos Dinamicos de Informacion Complementaria">
+				<tbody>
+					<tr>
+						<td colspan="4" align="right">
+							<input type="button" onclick="crearCampo();" value="Adicionar Campo">
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<th align="center" style="background:#FFFFFF">Titulo</th>
+						<th align="center" style="background:#FFFFFF">Valor</th>
+						<th align="center" style="background:#FFFFFF">Orden</th>
+					</tr>
+				</tbody>
+			</table>
+			<script type="text/javascript" language="Javascript1.2">
+				{section name=idcampos loop=$infocomp}
+					ponerCampo('{$infocomp[idcampos].nombre}', '{$infocomp[idcampos].valor|escape:"html"}', '{$infocomp[idcampos].orden}');
+				{/section}
+			</script>
+			<td>
+		</tr>*}
+		<!--FIN CAMPOS DINAMICOS-->
+
+		<!--Archivos Adjuntos-->
+		<tr>
+			<td class="edicion_titulo" colspan="2" align="center">
+				Archivos Adjuntos
+			</td>
+		</tr>
+
+
+		{literal}
+		<script language="Javascript" type="text/javascript">
+			/**
+			 * Aqui estan las funciones para manejar la interfaz grafica
+			 * de las etapas.
+			 */
+			function manejarPanel(btnObj, id) {
+				try{
+					var panel = document.getElementById('panel'+id);
+
+					if (panel.style.display == 'none') {
+						document.getElementById('activa'+id).value = '1';
+						panel.style.display = '';
+						btnObj.value = "Desabilitar";
+					} else {
+						document.getElementById('activa'+id).value = '0';
+						panel.style.display = 'none';
+						btnObj.value = "Habilitar";
+					}
+				} catch(e) {alert(e);}
+			}
+			/**
+			 * Aqui estan las funciones para manejar la interfaz grafica
+			 * de las etapas.
+			 */
+			function manejarPanelArchivos(btnObj, id) {
+				var panelFile = document.getElementById('fileup'+id);
+
+				if (panelFile.style.display == 'none') {
+					panelFile.style.display = '';
+					document.getElementById("uploadfile"+id).value = "1";
+					btnObj.value = "Cerrar Panel Archivo";
+				} else {
+					panelFile.style.display = 'none';
+					document.getElementById("uploadfile"+id).value = "0";
+					btnObj.value = "Insertar Archivo";
+				}
+			}
+		</script>
+		{/literal}
+		<tr>
+			<td colspan="2">
+				<input type="hidden" name="idFileBorrar" id="idFileBorrar">
+				<table width="100%" style="background:#F0F7FF" cellpadding="2" cellspacing="0" summary="Etapas">
+					<!--PASOS-->
+					{section name=idPaso loop=$infopaso}
+						{if $smarty.section.idPaso.index == 0}
+						{assign var=idxpaso value=$smarty.section.idPaso.index}
+						{*<tr>
+							<th colspan="3" align="right">
+								{$infopaso[idPaso].titulo}
+							</th>
+						</tr>*}
+
+						<!--ETAPAS DEL PASO-->
+						{section name=idetapa loop=$infopaso[idPaso].etapas}
+							{if $smarty.section.idetapa.index < 3}
+							{assign var=idxetapa value=$smarty.section.idetapa.index}
+							{assign var=etapaActual value=$infopaso[idPaso].etapas[idetapa]}
+							<tr>
+								<td>
+									{strip}
+										{if $etapaActual.titulo == 'Adendos'}
+										<h4 style="background:#eee;padding:3px;margin:0;border:1px solid #ccc;font:0.8em verdana">
+										<input type="button" onclick="manejarPanel(this, '{$idxpaso}{$idxetapa}');" value="{if $etapaActual.activa != TRUE}Habilitar{else}Desabilitar{/if}">&nbsp;
+										Antecedentes
+										</h4>
+										{/if}
+									{/strip}
+
+									<input type="hidden" id="nombre_etapa{$idxpaso}{$idxetapa}" name="nombre_etapa{$idxpaso}{$idxetapa}" value="{$etapaActual.titulo}">
+									<input type="hidden" id="activa{$idxpaso}{$idxetapa}" name="activa{$idxpaso}{$idxetapa}" value="{if $etapaActual.activa === TRUE}1{else}0{/if}">
+
+									<div id="panel{$idxpaso}{$idxetapa}" {if $etapaActual.activa != TRUE}style="display:none"{/if}>
+										<table width="100%" style="background:#F0F7FF" summary="" cellpadding="5">
+
+											<tr class="edicion_elemento" style="background:#FFFFFF">
+												{*<td>Fecha Publicacion:</td>
+												<td>*}
+													<input type="hidden" name="fecha_apertura{$idxpaso}{$idxetapa}" id="fecha_apertura{$idxpaso}{$idxetapa}" value="{$smarty.now|date_format:'%Y-%m-%d'}{*$etapaActual.fecha_apertura*}" size="20">
+													{*<button type="reset" id="f_trigger_c">...</button>
+													<script type="text/javascript">
+													    {literal}Calendar.setup({{/literal}
+													        inputField     :    "fecha_apertura{$idxpaso}{$idxetapa}",      // id of the input field
+													        ifFormat       :    "%Y-%m-%d",       // format of the input field
+													        showsTime      :    true,            // will display a time selector
+													        button         :    "f_trigger_c",   // trigger for the calendar (button ID)
+													        singleClick    :    false,           // double-click mode
+													        step           :    1                // show all years in drop-down boxes (instead of every other year as default)
+													    {literal} });{/literal}
+													</script>
+												</td>*}
+												{*<td>Fecha y Hora Cierre:</td>
+												<td>*}
+													<input type="hidden" name="fecha_cierre{$idxpaso}{$idxetapa}" id="fecha_cierre{$idxpaso}{$idxetapa}" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}" size="20">
+													{*<button type="reset" id="f_trigger_d">...</button>
+													<script type="text/javascript">
+													     {literal}Calendar.setup({{/literal}
+													        inputField     :    "fecha_cierre{$idxpaso}{$idxetapa}",      // id of the input field
+													        ifFormat       :    "%Y-%m-%d %H:%M:%S",       // format of the input field
+													        showsTime      :    true,            // will display a time selector
+													        button         :    "f_trigger_d",   // trigger for the calendar (button ID)
+													        singleClick    :    false,           // double-click mode
+													        step           :    1                // show all years in drop-down boxes (instead of every other year as default)
+													     {literal} });{/literal}
+													</script>
+												</td>*}
+											</tr>
+
+											<tr class="edicion_elemento">
+												<th colspan="2" style="font:1em arial;text-align:center;">Archivos</th>
+												<th colspan="2" align="right"><input type="button" value="Insertar Archivo" onclick="manejarPanelArchivos(this, '{$idxpaso}{$idxetapa}');"></th>
+											</tr>
+
+											<tr id="fileup{$idxpaso}{$idxetapa}" class="edicion_elemento" style="display:none">
+												<td colspan="4">
+													<table style="background:#FFF9DF;border:1px dotted #ccc" width="100%" summary="Panel de Subir Archivo">
+														<tr class="edicion_elemento">
+															<td align="right">Nombre del Archivo:</td>
+															<td>
+																<input type="hidden" name="uploadfile{$idxpaso}{$idxetapa}" id="uploadfile{$idxpaso}{$idxetapa}" value="0">
+																<input type="text" name="upname{$idxpaso}{$idxetapa}" value="">
+															</td>
+														</tr>
+														<tr class="edicion_elemento">
+															<td align="right">Archivo:</td>
+															<td><input type="file" name="upfile{$idxpaso}{$idxetapa}"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+
+											<!--ARCHIVOS DE LA ETAPA-->
+											{if $infopaso[idPaso].etapas[idetapa].archivos}
+												{section name=idarchivo loop=$infopaso[idPaso].etapas[idetapa].archivos}
+													{assign var=archivoActual value=$infopaso[idPaso].etapas[idetapa].archivos[idarchivo]}
+													<tr class="edicion_elemento" style="background:#FFF9DF;border:1px dotted #ccc">
+														<td colspan="2" style="padding:5px"><img src="{$archivoActual.img_extension}" alt="">&nbsp;&nbsp;<a href="?idcategoria={$archivoActual.idcategoria}&download=Y" style="color:#00e">{$archivoActual.nombre}</a></td>
+														<td style="padding:5px" align="center">{$archivoActual.fecha}</td>
+														<td style="padding:5px" align="right"><input type="button" value="x" onclick="document.getElementById('idFileBorrar').value = '{$archivoActual.idcategoria}';this.form.submit();"></td>
+													</tr>
+												{/section}
+											{else}
+												<tr>
+													<td colspan="4" class="edicion_elemento" style="background:#FFFFFF;text-align:center">No hay archivos adjuntos</td>
+												</tr>
+											{/if}
+
+										</table>
+									</div>
+								</td>
+							</tr>
+							{/if}
+							{/section}
+						{/if}
+					{/section}
+				</table>
+			<td>
+		</tr>
+		<!--FIN ETAPAS-->
+
+		<tr>
+			<td class="edicion_elemento" style="text-align:center;background:#F0F7FF">
+				{$c_salvar}
+			</td>
+		</tr>
+		<tr>
+			<td class="edicion_elemento" style="text-align:center;background:#F0F7FF">
+				{$c_micrositios}
+			</td>
+		</tr>
+	</table>
+</form>
+</div>

@@ -1,0 +1,185 @@
+{literal}
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+	send_ajax_request = function( url, data_div_ID, dest_div_ID, source_dom_obj, loader_div_ID, cancel_callback, toogleEnableButtonsFunc )
+	{
+		if( source_dom_obj != null && source_dom_obj != undefined )
+			if(source_dom_obj.pressed) {
+				return false;
+			}
+			else {
+				source_dom_obj.pressed = true;
+			}
+		
+		if( toogleEnableButtonsFunc != null && toogleEnableButtonsFunc != undefined ) toogleEnableButtonsFunc(false);
+		
+		/// if(! $('#'+loader_div_ID).length )
+		if( loader_div_ID != null && loader_div_ID != undefined && loader_div_ID != '' )
+		{
+			$('#'+loader_div_ID).show();
+		}
+
+		$('#'+loader_div_ID).show();
+		
+		var xhr = jQuery.ajax( {url: url // "save.php?action=ejecutarGuardar"
+			,ajaxSend: function()
+			{
+				// Nnuca se llamo :(
+				// alert("ajaxSend");
+			}
+			, success: function(data, textStatus, jqXHR) {
+				if( dest_div_ID != null && dest_div_ID != undefined && dest_div_ID != '' )
+				{
+					$('#'+dest_div_ID).empty().append( "<div style='color:red;'>"+data+"</div>" );
+				}
+			}
+			, error: function(jqXHR, textStatus, errorThrown) {
+				alert( "Ocurrio un error enviando la peticion al servidor: "+errorThrown );
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			, complete: function(jqXHR, textStatus)
+			{
+				if( toogleEnableButtonsFunc != null && toogleEnableButtonsFunc != undefined ) toogleEnableButtonsFunc(true); // habilitar botones
+				$('#'+loader_div_ID).hide();
+				if( source_dom_obj != null && source_dom_obj != undefined )
+					source_dom_obj.pressed = false;
+			}
+			,data: (( data_div_ID != null && data_div_ID != undefined )?($('#'+data_div_ID+' *').serialize()):'')
+			,dataType: "html"
+			,type: 'POST'
+			,contentType: "application/x-www-form-urlencoded;charset=utf-8"
+			// ,contentType: "application/x-www-form-urlencoded;charset=ISO-8859-1"
+		} );
+	}
+	
+	aceptar = function( btn_obj )
+	{
+//		// $('#serverMsg_ID').html("&nbsp;");
+//		detenerProgramarMensaje();
+		if( $('#idTipoDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo tipo de documento es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#numDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo n&uacute;mero de documento es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#direccionCorreoElectronico').val() == "" )
+		{
+			mostrarMensajeError("El campo correo electronico es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		send_ajax_request('_include/libreta_mil_formulario_rm3.php?action=aceptar_preinscripcion'
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+		);
+		return true;
+	}
+	
+	denegar = function( btn_obj )
+	{
+//		// $('#serverMsg_ID').html("&nbsp;");
+//		detenerProgramarMensaje();
+		if( $('#idTipoDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo tipo de documento es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#numDocumento_ID').val() == "" )
+		{
+			mostrarMensajeError("El campo n&uacute;mero de documento es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		if( $('#direccionCorreoElectronico').val() == "" )
+		{
+			mostrarMensajeError("El campo correo electronico es obligatorio");
+//			programarLimpiarMensaje();
+			return false;
+		}
+		send_ajax_request('_include/libreta_mil_formulario_rm3.php?action=denegar_preinscripcion'
+			, 'form_div_ID'
+			, 'serverMsg_ID'
+			, btn_obj
+			, 'div_imageAjaxLoader_ID'
+		);
+		return true;
+	}
+	
+	mostrarMensajeError = function( msg, msgPos )
+	{
+		pos = '';
+		if( msgPos != null && msgPos != undefined )
+			pos = msgPos;
+		detenerProgramarMensaje();
+		$('#serverMsg'+pos+'_ID').html("<b style='color:red;'>"+msg+"</b>");
+		$('#serverMsg'+pos+'_ID').show();
+	}
+</script>
+{/literal}
+<div id="form_div_ID" class="demo" style="text-align:center; width:100%; ">
+	<center>
+	<table style="border:0em solid #000000;text-align:left;background-position:center; width: 60%;">
+		<thead>
+			<tr>
+				<th colspan="2" style="text-align: center;">
+					<div class="u2" id="u2"><div id="u2_rtf"><p style="text-align: left;"><span style="font-family: Microsoft PhagsPa; font-size: 18px; font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(51, 51, 51);">PRE-INSCRIPCION</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: italic; text-decoration: none; color: rgb(51, 51, 51);"> </span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: italic; text-decoration: none; color: rgb(51, 51, 51);"> </span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">Diligencie los siguientes datos para poder iniciar el trámite de inscripción.</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">Importante: Todos los campos marcados con asterisco (*) son obligatorios.</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">Información de Interés</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);"> </span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: italic; text-decoration: none; color: rgb(51, 51, 51);">ARTÍCULO 14. INSCRIPCIÓN.</span><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);"> Todo varón Colombiano tiene la obligación de inscribirse para definir su</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">situación militar dentro del lapso del año anterior en que cumpla la mayoría de edad, requisito sin el cual no podrá formular solicitudes de exención o aplazamiento. Cuando se llegue a la mayoría de edad sin haberse dado cumplimiento a esta obligación, la autoridad podrá compelerlo sin perjuicio de la aplicación de las sanciones que se establecen en la presente Ley.</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);"> </span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: italic; text-decoration: none; color: rgb(51, 51, 51);">PARÁGRAFO 1o</span><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">. Los alumnos de último año de estudios secundarios, sin importar la edad, deberán</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">inscribirse durante el transcurso del año lectivo por intermedio l respectivo plantel educativo, en</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">coordinación con la Dirección de Reclutamiento y Control Reservas del Ejército.</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: italic; text-decoration: none; color: rgb(51, 51, 51);">Ley 48 de 1993</span><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">. Artículo 10: Todo varón colombiano está obligado a definir su Situación Militar a partir de la fecha en que cumpla su mayoría de edad. La obligación militar de los colombianos termina el día en que cumpla 50 años de edad. </span></p></div></div>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Tipo de documento de identidad</td>
+				<td>
+					<select id="idTipoDocumento_ID" name="idTipoDocumento">
+						{foreach key=key item=item from=$grupoNumIdentificInternacional}
+							{if ($idTipoDocumento neq "") and ($idTipoDocumento eq $key)}
+								<option value="{$key}" {if ($idTipoDocumento neq "") and ($idTipoDocumento eq $key)} selected="selected" {/if}>{$item}</option> 
+							{/if}
+						{/foreach}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>N&uacute;mero de documento</td>
+				<td>
+					<input type="text" id="numDocumento_ID" name="numDocumento" value="{$numDocumento}" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<td>Correo Electronico</td>
+				<td><input type="text" name="direccionCorreoElectronico" id="direccionCorreoElectronico_ID" value="{$direccionCorreoElectronico}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="serverMsg_ID" style="width: 100%; text-align:center;">&nbsp;</div>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<div id="u11_rtf"><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: bold; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">Declaración de Veracidad</span></p><p style="text-align: left;"><span style="font-family: Arial; font-size: 11px; font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51);">Declaro que la información diligenciada es autentica y veraz. Autorizo a la Dirección de Reclutamiento para que verifique toda mi información sin restricción alguna</span>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td><input type="button" onclick="aceptar(this);" value="Aceptar" id="btn_enviar_solicitud_aceptar_ID" /></td>
+				<td><input type="button" onclick="denegar(this);" value="Rechazar" id="btn_enviar_solicitud_denegar_ID" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="serverMsg2_ID" style="width: 100%; text-align:center;">&nbsp;</div>
+	</center>
+	<div id="div_imageAjaxLoader_ID" style="text-align: center; width:100%; display: none;">
+		<img src="./js/ajax-loader.gif" style="padding-top: 20px;"  alt="" />
+	</div>
+</div>
+

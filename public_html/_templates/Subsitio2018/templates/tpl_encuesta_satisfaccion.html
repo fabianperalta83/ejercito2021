@@ -1,0 +1,81 @@
+{if $mensaje != ''}
+{$mensaje}
+{/if}
+{$error}
+{if $bandera == false}
+<form method="post">
+{section name=preguntas loop=$listado}
+{if $result == true}
+{assign var='name' value=$smarty.section.preguntas.index}
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0" width="565" height="420">
+		<param name=movie value="tools/charts/{$grafico}.swf">
+		<param name=quality value=high>
+		<param name=flashvars value="&dataXML={$xmlEncuesta[$name]}">
+		<embed src="tools/charts/{$grafico}.swf" flashvars="&dataXML={$xmlEncuesta[$name]}" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="565" height="420">
+		</embed>
+		</object> 
+{else}
+	{if $voto_realizado == false }
+		<table>
+		<tr>
+			<td colspan="2" style="color:#5F7585;font-weight:bold;font-size:0.8em">{$listado[preguntas].nombre}</td>
+			
+		</tr>
+		<tr>
+			<td colspan="2">
+				<strong>{$listado[preguntas].subtitulo}</strong>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				{if $listado[preguntas].tema != ''}{$listado[preguntas].tema}<br/>{/if}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				{if $listado[preguntas].resumen != ''} 
+				{$listado[preguntas].resumen}
+				{/if}
+			</td>
+		</tr>	
+		{section name=hijos loop=$listado[preguntas].hijos}
+		<tr>
+			<td colspan="2">
+			  <li style="color:#293640;display:block;font-size:0.7em;margin:0 0 0 10px">
+			    <fieldset style="border:0em solid #000000">
+				  <legend></legend>
+			       <input type="radio" title="opciones{$listado[preguntas].idcategoria}" name="opciones{$listado[preguntas].idcategoria}" value="{$listado[preguntas].hijos[hijos].idcategoria}"/>
+				
+				{$listado[preguntas].hijos[hijos].nombre}
+				</fieldset>
+			</td>
+		</tr>
+		{/section}
+		</table>
+		{elseif $voto_realizado == true}
+		{assign var='name' value=$smarty.section.preguntas.index}
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0" width="565" height="420">
+		<param name=movie value="tools/charts/pie3d.swf">
+		<param name=quality value=high>
+		<param name=flashvars value="&dataXML={$xmlEncuesta[$name]}">
+		<embed src="tools/charts/pie3d.swf" flashvars="&dataXML={$xmlEncuesta[$name]}" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="565" height="420">
+		</embed>
+		</object> 		
+	{/if}
+{/if}
+{/section}
+{if $voto_realizado == false and $result == false}
+<input type="submit" value="Votar" name="votar"/>
+<input type="submit" value="Resultados {if $es_admin	==	true} En Torta{/if}" name="resultados"/>
+{/if}
+{if $es_admin	==	true}
+{if $result == false}
+<input type="submit" value="Resultados En Barras" name="resultados1"/>
+{/if}
+<input type="submit" value="Exportar a Excel" name="exportar"/>
+{/if}
+{if $result == true}
+<input type="button" value="regresar" onClick="window.location='index.php?idcategoria={$idcategoria}'"/>
+{/if}
+</form>
+{/if}

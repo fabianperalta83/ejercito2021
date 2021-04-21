@@ -1,0 +1,90 @@
+<!--Template Formulario de Contacto-->
+
+<div id="utilidades" style="background:url(_templates/Default2009/recursos/images/logo-mail.gif) no-repeat center center;">
+
+	{if $subMenuError != ""}
+
+		{strip}
+
+		<div class="advertencia"><br>
+
+			{$subMenuError}<br>
+
+		</div>
+
+		{/strip}
+
+	{/if}
+
+<br />
+<br />
+<br />
+
+
+
+
+	<form method="POST" action="{$c_action}" target="_self">
+
+		<table border="0" align="center" cellpadding="5" cellspacing="1" width="100%" summary="">
+
+		{section name=mysec loop=$campos}
+
+			{strip}
+
+				{if $campos[mysec].nombre != ""}
+
+					<tr>
+
+						<td>
+
+							{if $campos[mysec].clase == "requerido"}<b>{/if}
+
+								{$campos[mysec].nombre}
+								
+							{if $campos[mysec].clase == "requerido"}</b>{/if}
+
+						</td>
+
+						<td>
+
+							{$campos[mysec].input}
+
+						</td>
+
+					</tr>
+
+				{else}
+
+					{$campos[mysec].input}
+
+				{/if}
+
+			{/strip}
+
+		{/section}
+
+			<tr>
+
+				<td align="center" colspan=2>
+
+					<input type="submit" value="Enviar" class="tpl_boton">
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div><br />{$c_formulario_titulo}<br /></div>
+
+</div>
+
+<!--Fin Template Formulario de Contacto-->

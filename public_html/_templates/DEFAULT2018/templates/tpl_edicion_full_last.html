@@ -1,0 +1,150 @@
+{literal}
+<script type="text/javascript" src="js/preview.js"></script>
+
+  <script type="text/javascript" src="_lib/image_manager/assets/dialog.js"></script>
+  <script type="text/javascript" src="_lib/image_manager/IMEStandalone.js"></script>
+
+  <!-- Calendario -->
+  <script type="text/javascript" src="_lib/jscalendar/calendar.php"></script>
+  <!-- language for the calendar -->
+
+  <script type="text/javascript" src="_lib/jscalendar/lang/calendar-es.js"></script>
+  <!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+  <script type="text/javascript" src="_lib/jscalendar/calendar-setup.js"></script>
+
+  <style type="text/css">
+    @import url("_lib/jscalendar/calendar-win2k-1.css");
+    @import url("_templates/Default/recursos/css/estilo_secab.css");
+  </style>
+
+  <script type="text/javascript">
+    //<![CDATA[
+
+    //Create a new Imanager Manager, needs the directory where the manager is
+    //and which language translation to use.
+    var manager = new ImageManager('_lib/image_manager','en');
+
+    //Image Manager wrapper. Simply calls the ImageManager
+    ImageSelector =
+    {
+      //This is called when the user has selected a file
+      //and clicked OK, see popManager in IMEStandalone to
+      //see the parameters returned.
+      update : function(params)
+      {
+        if(this.field && this.field.value != null)
+        {
+          this.field.value = params.f_file; //params.f_url
+        }
+      },
+      //open the Image Manager, updates the textfield
+      //value when user has selected a file.
+      select: function(textfieldID)
+      {
+        this.field = document.getElementById(textfieldID);
+        manager.popManager(this);
+      }
+    };
+
+    /**************************************************************/
+    /**
+     * Function cargarImagen
+     */
+    function cargarImagen(img) {
+      var objImg = document.getElementById("imgth");
+      var val = img.replace(/^\s*(.+)\s*$/, "$1");
+      if (val != '') {
+        objImg.src = unescape("tools/microsThumb.php?src=recursos_user/imagenes" + img);
+        objImg.style.display = 'block';
+      } else {
+        objImg.style.display = 'none';
+      }
+    }
+    //]]>
+    </script>
+{/literal}
+
+<!--Template Edición-->
+<div id="edicion">
+
+	{if $subMenuError != ""}
+		{strip}
+			{$subMenuError}<br>
+		{/strip}
+	{/if}
+
+		<form action="{$c_action}" method="POST"  name="wEditor" ><!--  enctype="multipart/form-data"  -->
+		<table class="mainTable" cellspacing="0" summary="Formulario de Edición">
+			<tr>
+				<td class="edicion_elemento userInfo">
+					{$userInfo.nombres} {$userInfo.apellidos} &lt; {$userInfo.username} &gt;
+				</td>
+			</tr>
+		    <tr>
+		    	<td class="edicion_titulo titulo">
+		    		{$c_titulo}
+		    	</td>
+		    </tr>
+		    <tr>
+		    	<td class="edicion_elemento salvar">
+		    		{$c_salvar}
+		    	</td>
+		    </tr>
+		    {if $c_submenu != ""}
+		    <tr>
+		    	<td class="edicion_elemento submenu">
+		    		{$c_submenu}
+		    	</td>
+		    </tr>
+			{/if}
+
+			<tr>
+				<td class="edicion_elemento resaltados">
+					{$c_formulario_titulo}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<table class="secondaryTable" cellspacing="0" summary="">
+						{section name=mysec loop=$campos}
+						{strip}
+							{if $campos[mysec].nombre != ""}
+								<tr style='background:{cycle values="#FFFFFF,#F0F7FF"}'>
+									<td class="edicion_elemento nombreCampo">
+										{if $campos[mysec].clase == "requerido"}<strong>{/if}
+										{$campos[mysec].nombre}
+										{if $campos[mysec].clase == "requerido"}</strong>{/if}
+									</td>
+									<td class="edicion_elemento">
+										{$campos[mysec].input}
+									</td>
+								</tr>
+							{else}
+								{$campos[mysec].input}
+							{/if}
+						{/strip}
+						{/section}
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="edicion_elemento salvar">
+					{$c_salvar}
+				</td>
+			</tr>
+			<tr>
+				<td class="edicion_elemento salvar">
+					{$c_micrositios}
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<div>{$c_version}</div>
+</div>
+
+
+<!--Fin Template Edición-->
+

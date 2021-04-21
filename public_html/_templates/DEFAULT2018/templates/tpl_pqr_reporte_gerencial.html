@@ -1,0 +1,64 @@
+<link href="{$DIRCSS}estilo_estadistica.css" rel="stylesheet" type="text/css">
+<script src="js/js.js"></script>
+{if $errores > 0 and $flg_enviar =='ok'}
+	<div class="error">
+				<ul>
+					{section name=indice loop=$errores}
+						<li>{$errores[indice]}</li>
+					{/section}
+				</ul>
+	</div>
+	<br/>
+{/if}
+
+
+<div class="titulo_formulario" style="font-size:small;">{$lb_titulo_reportes}</div><br><br>
+
+<table id="tabla_estadistica" align="left"">
+	<form id="form_estadistica" action="" method="POST" name="confirm">
+
+		<table width="100%">
+
+			<tr>
+				<td>
+					<div style="float:left;background-color:#F3F7FA;margin-right:15px;"><b>Periodo Reporte:</b></div>
+					<div style="float:left;background-color:#F3F7FA;margin-right:15px;">
+						<div style="">{$lb_fecha_inicial}</div>
+						<div style=""><input type="text" name="fecha_inicial" size="10" maxlength="10" value="{$fecha_inicial|truncate:10:""}"></div>
+						<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+					</div>
+
+					<div style="background-color:#F3F7FA;">
+						<div style="">{$lb_fecha_final}</div>
+						<div style=""><input type="text" name="fecha_final" size="10" maxlength="10" value="{$fecha_final|truncate:10:""}"></div>
+						<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				{*	<div style="float:left;background-color:#F3F7FA;margin-right:15px;"><b>Periodo Anterior:</b></div>
+					<div style="float:left;background-color:#F3F7FA;margin-right:15px;">
+						<div style="">{$lb_fecha_inicial}</div>
+						<div style=""><input type="text" name="fecha_inicial_ant" size="10" maxlength="10" value="{$fecha_inicial_ant|truncate:10:""}"></div>
+						<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+					</div>
+					<div style="background-color:#F3F7FA;">
+						<div style="">{$lb_fecha_final}</div>
+						<div style=""><input type="text" name="fecha_final_ant" size="10" maxlength="10" value="{$fecha_final_ant|truncate:10:""}"></div>
+						<div style="font-size:smaller;">(aaaa-mm-dd)</div>
+					</div> *}
+				</td>
+			</tr>
+			<tr>
+				<td align="left">
+					<div><input type="submit" name="enviar" value="Generar Informe"></div>
+				</td>
+			</tr>
+
+		</table>
+
+	</form>
+</table>
+
+

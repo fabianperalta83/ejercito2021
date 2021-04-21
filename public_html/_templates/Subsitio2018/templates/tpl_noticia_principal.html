@@ -1,0 +1,106 @@
+<script src="{$smarty.const._DIRJS}cabezote.js"></script>
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}galleriffic/galleriffic-2.css" type="text/css">
+
+<!-- ImplermentaciÃ³n de Librerias para Redes Sociales -->
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}redes_sociales/social-likes_birman.css" type="text/css">
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}redes_sociales/font-awesome.css" type="text/css">
+<link rel="stylesheet" href="{$smarty.const._DIRCSS}redes_sociales/style.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="{$smarty.const._DIRCSS}redes_sociales/social-likes.min.js"></script>
+
+<style>
+	.imagen_buscador
+	{
+		padding-left: 48px;
+		width: 56px;
+		height: 47px;
+		line-height: 32px;
+		background-image: url("_templates/DEFAULT2016/recursos/images/sprite_botones_ejercito.png");
+		background-repeat: no-repeat;
+		background-position: -481px -40px;
+	}
+</style>
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+	<div class="row">
+		<div class="titulo-interna">{$c_titulo}</div>
+		<div class="line-interna"></div>	
+	</div>
+
+</div>
+
+<!-- Listado de Todas las Noticias -->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div id="default" class="row">	
+		<!-- Formulario de Busqueda -->
+		<form action="?" name="frm_filtro">
+			<input type="hidden" name="idcategoria" value="{$idcategoria}">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+						<table>
+							<tr>
+								<td>
+									<input type="text" name="filtro_buscar" value="{$valor_filtro_busqueda}" id="filtro_buscar" class="form-control" placeholder="Encontrar">
+								</td>
+								<td>
+									<div id="imagen_buscador" class="">
+										<input type="submit" value="" class="buscar_filtro imagen_buscador" title="{$smarty.const._ROT_FILTRO_BUSCAR}" style="border: none; background: #eaeaea; background-image: url('_templates/DEFAULT2016/recursos/images/sprite_botones_ejercito.png'); background-repeat: no-repeat;background-position: -481px -40px;">
+									</div>
+								</td>
+							<tr>
+						</table>
+						<br>
+					</div>
+				</div>
+			</div>
+			<div id="avanzada" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<center>
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+							<select id="filtro_fecha" name="filtro_fecha" title="filtro_fecha" class="form-control">
+								{$selectFecha}
+							</select>
+						</div>
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+							<select name="filtro_antetitulo" class="form-control filtro_antetitulo" id="filtro_antetitulo" title="filtro_antetitulo">
+								<option value="" {if not $filtro_antetitulo[idAntetitulo]}selected{/if}>-- Todas las Categorias --</option>
+								{section name=idAntetitulo loop=$filtro_antetitulo}
+									<option value="{$filtro_antetitulo[idAntetitulo][1]}"{if $filtro_antetitulo[idAntetitulo][1] == $valor_filtro_antetitulo} selected{/if}>{$filtro_antetitulo[idAntetitulo][0]|truncate:50:"...":false}</option>
+								{/section}
+							</select>
+						</div>
+						<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+							<select name="filtro_autor" class="form-control filtro_autor" id="filtro_autor" title="filtro_autor">
+								<option value="" {if not $filtro_antetitulo[idAutor]}selected{/if}>-- Todos los Autores --</option>
+								{section name=idAutor loop=$filtro_autor}
+									<option value="{$filtro_autor[idAutor]}"{if $filtro_autor[idAutor] == $valor_filtro_autor} selected{/if}>{$filtro_autor[idAutor]|truncate:50:"...":false}</option>
+								{/section}
+							</select><br><br>
+						</div>
+					</center>	
+				</div>
+				
+			</div>
+		</form>
+
+		{if $c_submenu != ""}
+			<div class="default_submenu">
+				<p class="hidden">{$smarty.const._ROT_SUBCATEGORIAS}</p class="hidden">
+				{$c_submenu}
+			</div>
+		{/if}
+	</div>
+</div>
+
+<!-- Botones de Redes Sociales -->
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div class="caja-redes-2" style="text-align: right">
+		<div class="social-likes" data-url="{$smarty.const._URL}index.php?idcategoria={$idcategoria}" data-title="{$c_titulo}"><br>				
+			<span class="facebook" style="border: #fff"><a href="#" class="icon-button facebook2"  title="Share link on Facebook"><span class="icon-facebook"></span><p class="hidden">Facebook</p><span class="boton_hover"></span></a></span>
+			<span class="twitter" style="border: #fff"><a href="#" class="icon-button twitter2" title="Share link on Twitter"><span class="icon-twitter"></span><p class="hidden">Twitter</p><span class="boton_hover"></span></a></span>
+			<span class="plusone" style="border: #fff"><a href="#" class="icon-button google-plus2" title="Share link on Google+"><span class="icon-google-plus"></span><p class="hidden">Google Plus</p><span class="boton_hover"></span></a></span>						
+		</div>
+	</div>
+	<br><br><br>
+</div>

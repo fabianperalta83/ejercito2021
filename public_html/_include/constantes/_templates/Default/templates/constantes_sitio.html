@@ -1,0 +1,23 @@
+<p>Por medio de este formulario ud podra cambiar las constantes de sitio que permiten la configuracion del home.</p><br>
+
+
+<form method="POST">
+	<table>
+	{foreach item=datos from=$info_cajas key=llave}
+	<tr>	
+		<td>
+			{$datos.constante}
+		</td>
+		<td>
+			<input type="text" value="{$datos.valor}" size="80" name="{$datos.constante}" {if $datos.activo == 'false'}disabled style='background:url(recursos_user/inactiva.gif) no-repeat right'{else}style='background:url(recursos_user/activa.gif) no-repeat right'{/if}>
+			<input type="hidden" name="tipo{$llave}" value="{$datos.tipo}">
+		</td>
+	</tr>
+	{/foreach}
+	<tr>
+		<td colspan="2" align="right">
+			<input type="submit" value="Modificar" name="guardar">
+		</td>
+	</tr>
+	</table>
+</form>

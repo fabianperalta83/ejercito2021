@@ -1,0 +1,22 @@
+<p>Por medio de este formulario ud podra cambiar las constantes de sitio que permiten la configuracion del home.</p><br>
+
+
+<form method="POST">
+	<table>
+	{section name=datos loop=$info_cajas}
+	<tr>	
+		<td>
+			{$info_cajas[datos].constante}
+		</td>
+		<td>
+			<input type="text" value="{$info_cajas[datos].valor}" size="80" name="{$info_cajas[datos].constante}" {if $info_cajas[datos].activo == 'false'}disabled style='background:url(recursos_user/inactiva.gif) no-repeat right'{else}style='background:url(recursos_user/activa.gif) no-repeat right'{/if}>
+		</td>
+	</tr>
+	{/section}
+	<tr>
+		<td colspan="2" align="right">
+			<input type="submit" value="Modificar" name="guardar">
+		</td>
+	</tr>
+	</table>
+</form>

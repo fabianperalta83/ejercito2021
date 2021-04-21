@@ -1,0 +1,143 @@
+{strip}
+<link href="{$smarty.const._DIRCSS}estilo_contratacion.css" rel="stylesheet" type="text/css">
+
+<form action="" method="POST" name="listado">
+	<!--FILTRO-->
+	<table style="width:99%" summary="" class="filtroContratacion"><!---->
+		<tr><td><label for="nombre">Nombre:</label></td><td><input name="nombre" id="nombre" value="{$nombre}" /> </td></tr>
+		<tr>
+		<td>
+				<label for="anio">A&ntilde;o:</label><br>
+				<select name="anio" id="anio" title="anio">
+					<option value="">-- Todos --</option>
+					{section name=ident loop=$anios}
+					<option value='{$anios[ident].ano_id}' {if $ano==$anios[ident].ano_id}selected{/if}>
+						{$anios[ident].ano_nombre}
+					</option>
+					{/section}
+				</select>
+			</td>
+			<td>
+				<label for="estado">Estado:</label><br>
+				<select name="estado" id="estado" title="estado">
+					<option value="">-- Ver Todos --</option>
+					{section name=ident loop=$estados}
+					 {if $smarty.section.ident.index == 2 or $smarty.section.ident.index == 9}
+					<option class="estado{$estados[ident].id}" value='{$estados[ident].id}' {if $estado_id==$estados[ident].id}selected{/if}>
+						{if $smarty.section.ident.index == 2}
+						En Revisi&oacute;n
+						{else}
+						Revisado
+						{/if}
+					</option>
+					{/if}
+					{/section}
+				</select>
+
+			</td>
+			<td>
+				<label for="orden">Ordenar por:</label><br>
+				<select name="orden" id="orden" title="orden">
+					<option value="fecha3">Fecha de creación</option>
+					<option value="fecha1">Fecha de firma del contrato</option>
+					<option value="subtitulo">Cedula</option>
+				</select><br>
+				
+				<fieldset><legend></legend>
+				
+				<input type="radio" name="tipoorden" id="tipoordenASC" value="ASC"><label for="tipoordenASC"/>ASC &nbsp;</label><input type="radio" name="tipoorden" id="tipoordenDESC" value="DESC"/><label for="tipoordenDESC">DESC</label>
+				
+				</fieldset>
+
+				<script type="text/javascript">
+					document.listado.orden.value = '{$orden}';
+					{if $tipoorden == "ASC"}
+						document.getElementById("tipoorden{$tipoorden}").checked = true;
+					{else}
+						document.getElementById("tipoorden{$tipoorden}").checked = true;
+					{/if}
+					document.listado.estado.value = '{$estado}';
+					document.listado.anio.value = '{$anio}';
+				</script>
+			</td>
+			<td style="background-position:center;text-aling:center"><input type="submit" name="Submit" value="Filtrar"/></td>
+		</tr>
+	</table>
+
+	<table class="lstcontrato" summary=""  style="width:99%"><!--cellpadding="0" cellspacing="0"-->
+		<tr>
+			<th style="border-left:1px solid #4D6CBA">Nombre del aspirante</th>
+			<th>Cedula</th>
+			<th>Cargo al que aspira</th>
+			<th>Fecha Apertura / Cierre</th>
+			<th>Estado</th>
+		</tr>
+		{section name=idcont loop=$listado}
+		<tr>
+			<td style="border-left:1px solid #4D6CBA"><a href="?idcategoria={$listado[idcont].idcategoria}" title="Ir al Contrato">{$listado[idcont].nombre}</a></td>
+			<td style="white-space:nowrap;background-position:center;text-aling:center">{$listado[idcont].subtitulo}</td>
+			<td>{$listado[idcont].entradilla}</td>
+			<td style="background-position:center:text-aling:center">{$listado[idcont].fecha1} - {$listado[idcont].fecha2}</td>
+		<td style="background-position:center:text-aling:center" class="estado{$listado[idcont].antetitulo}">
+				{section name=ident2 loop=$estados}
+					{if $listado[idcont].antetitulo == $estados[ident2].id}
+						{if $smarty.section.ident2.index == 2}
+						En Revisi&oacute;n
+						{else}
+						Revisado
+						{/if}
+					{/if}
+				{/section}
+			</td>
+		</tr>
+		{/section}
+	</table>
+
+{*
+<!--LISTADO-->
+{section name=idcont loop=$listado}
+	<div class="lstcontrato2" {cycle name="lista" values=",style=\"background:#eee\""}>
+		<h3><a href="?idcategoria={$listado[idcont].idcategoria}" title="Ir al Contrato">{$listado[idcont].nombre}</a></h3>
+		<table style="width:100%" summary="">
+			<tr>
+				<td style="background-position:center:text-aling:center">Cuantia:{$listado[idcont].subtitulo}</td>
+				<td style="background-position:center:text-aling:center">Fecha Apertura<br>{$listado[idcont].fecha1}</td>
+				<td style="background-position:center:text-aling:center">Fecha Cierre<br>{$listado[idcont].fecha2}</td>
+				<td style="background-position:center:text-aling:center" class="estado{$listado[idcont].antetitulo}">
+					{section name=ident2 loop=$estados}
+						{if $listado[idcont].antetitulo == $estados[ident2].id}
+							{$estados[ident2].nombre}
+						{/if}
+					{/section}
+				</td>
+			</tr>
+		</table>
+		<br>
+		<strong style="font:1em tahoma,helvetica,sans-serif;">Objeto</strong>
+		<p>{$listado[idcont].entradilla}</p>
+	</div>
+{/section}
+*}
+
+	<!-- Paginacion -->
+	<div class="paginacion">
+		<input type="hidden" name="pag" value=""/>
+		{if $paginas.previousPage != ''}
+			<a href="#" onkeypress="document.listado.pag.value='{$paginas.previousPage}';document.listado.submit()" onclick="document.listado.pag.value='{$paginas.previousPage}';document.listado.submit()">&laquo; Anterior</a>&nbsp;
+		{/if}
+		{if $paginas.pags}
+			{section name=idPag loop=$paginas.pags}
+				{if $paginas.actualPage != $paginas.pags[idPag]}
+					&nbsp;<a href="#" onkeypress="document.listado.pag.value='{$paginas.pags[idPag]}';document.listado.submit()" onclick="document.listado.pag.value='{$paginas.pags[idPag]}';document.listado.submit()">{$paginas.pags[idPag]}</a>&nbsp;
+				{else}
+					&nbsp;<span class="actual">{$paginas.pags[idPag]}</span>&nbsp;
+				{/if}
+			{/section}
+		{/if}
+		{if $paginas.nextPage != ''}
+			&nbsp;<a href="#" onkeypress="document.listado.pag.value='{$paginas.nextPage}';document.listado.submit()" onclick="document.listado.pag.value='{$paginas.nextPage}';document.listado.submit()">Siguiente &raquo;</a>
+		{/if}
+	</div>
+</form>
+{/strip}
+
