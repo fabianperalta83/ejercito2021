@@ -423,12 +423,12 @@ function tpl_cabezote_nuevo($tituloPagina, $idcategoria, $menuInstitucional) {
 	    if (defined("_HOME_SLIDE") && _HOME_SLIDE != ''){
 	       	
 
-	        $query = sprintf("SELECT idcategoria, nombre, imagen,autor FROM %s WHERE idpadre = %s AND eliminado = 0 AND activa = 1 ORDER BY orden ASC LIMIT 10", _TBLCATEGORIA, _HOME_SLIDE);
+	        $query = sprintf("SELECT idcategoria, nombre, imagen,autor FROM %s WHERE idpadre = %s AND eliminado = 0 AND activa = 1 ORDER BY orden DESC LIMIT 10", _TBLCATEGORIA, _HOME_SLIDE);
 	        $slide_home = $db->GetAll($query);
 	        $smarty->assign('slide_home', $slide_home);
 
 	        
-			$queryBanner    =sprintf("SELECT * FROM subsitio_grafico WHERE global1 = 1 order by subsitio_grafico_fecini DESC LIMIT 10");
+			$queryBanner    =sprintf("SELECT * FROM subsitio_grafico WHERE global1 = 1 order by orden DESC LIMIT 10");
 			$r              = $db->GetAll($queryBanner);
 
 			$smarty->assign('slide_home1', $r);
